@@ -1,0 +1,93 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-primary: #0B2545;
+  --color-primary-dark: #071829;
+  --color-accent-cyan: #00D9FF;
+  --color-accent-amber: #FFA500;
+  --color-charcoal: #2B2D42;
+  --color-near-black: #0D1117;
+  
+  --spacing-section: 6rem;
+  --spacing-section-mobile: 3rem;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-white text-near-black antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display font-bold;
+  }
+
+  h1 {
+    @apply text-6xl md:text-7xl lg:text-8xl xl:text-9xl leading-[0.9] tracking-tight;
+  }
+
+  h2 {
+    @apply text-4xl md:text-5xl lg:text-6xl xl:text-7xl leading-[0.95] tracking-tight;
+  }
+
+  h3 {
+    @apply text-3xl md:text-4xl lg:text-5xl leading-tight tracking-tight;
+  }
+
+  h4 {
+    @apply text-2xl md:text-3xl leading-snug;
+  }
+
+  p {
+    @apply text-base md:text-lg leading-relaxed;
+  }
+}
+
+@layer components {
+  .btn {
+    @apply inline-flex items-center justify-center px-6 py-3 rounded-full font-medium transition-all duration-300;
+  }
+
+  .btn-primary {
+    @apply btn bg-primary text-white hover:bg-primary-dark hover:scale-105;
+  }
+
+  .btn-secondary {
+    @apply btn border-2 border-primary text-primary hover:bg-primary hover:text-white;
+  }
+
+  .btn-accent {
+    @apply btn bg-accent-cyan text-near-black hover:bg-opacity-90 hover:scale-105;
+  }
+
+  .section-padding {
+    @apply py-20 md:py-32 lg:py-40 xl:py-48;
+  }
+
+  .container-custom {
+    @apply max-w-[1400px] mx-auto px-8 md:px-12 lg:px-16 xl:px-20;
+  }
+
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-accent-cyan to-accent-amber;
+  }
+}
+
+@layer utilities {
+  .animation-delay-200 {
+    animation-delay: 0.2s;
+  }
+
+  .animation-delay-400 {
+    animation-delay: 0.4s;
+  }
+
+  .animation-delay-600 {
+    animation-delay: 0.6s;
+  }
+}
