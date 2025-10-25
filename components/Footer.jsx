@@ -1,18 +1,6 @@
 import Link from 'next/link'
 
 const footerLinks = {
-  regions: [
-    { name: 'AR', href: '#' },
-    { name: 'AU', href: '#' },
-    { name: 'BR', href: '#' },
-    { name: 'CN', href: '#' },
-    { name: 'DE', href: '#' },
-    { name: 'ID', href: '#' },
-    { name: 'JP', href: '#' },
-    { name: 'SG', href: '#' },
-    { name: 'UK', href: '#' },
-    { name: 'US', href: '#' },
-  ],
   legal: [
     { name: 'Kebijakan Privasi', href: '/privacy' },
     { name: 'Syarat & Ketentuan', href: '/terms' },
@@ -60,17 +48,6 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Regions (R/GA style) */}
-          <div>
-            <div className="text-sm uppercase tracking-wider text-gray-500 mb-4">ID</div>
-            <div className="grid grid-cols-2 gap-2 text-sm">
-              {footerLinks.regions.map((region) => (
-                <a key={region.name} href={region.href} className="text-gray-500 hover:text-white transition-colors">
-                  {region.name}
-                </a>
-              ))}
-            </div>
-          </div>
         </div>
 
         {/* Bottom Bar */}

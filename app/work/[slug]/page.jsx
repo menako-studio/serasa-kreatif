@@ -1,14 +1,7 @@
-import { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import Image from 'next/image'
 import Link from 'next/link'
 import { caseStudies } from '@/lib/case-data'
-
-interface CaseDetailPageProps {
-  params: {
-    slug: string
-  }
-}
 
 export async function generateStaticParams() {
   return caseStudies.map((study) => ({
@@ -16,7 +9,7 @@ export async function generateStaticParams() {
   }))
 }
 
-export async function generateMetadata({ params }: CaseDetailPageProps): Promise<Metadata> {
+export async function generateMetadata({ params }) {
   const caseStudy = caseStudies.find((study) => study.slug === params.slug)
 
   if (!caseStudy) {
@@ -36,7 +29,7 @@ export async function generateMetadata({ params }: CaseDetailPageProps): Promise
   }
 }
 
-export default function CaseDetailPage({ params }: CaseDetailPageProps) {
+export default function CaseDetailPage({ params }) {
   const caseStudy = caseStudies.find((study) => study.slug === params.slug)
 
   if (!caseStudy) {
@@ -47,24 +40,34 @@ export default function CaseDetailPage({ params }: CaseDetailPageProps) {
     <div className="pt-24">
       {/* Hero */}
       <section className="relative h-[60vh] min-h-[500px] bg-gray-900">
-        <Image src={caseStudy.image} alt={caseStudy.title} fill className="object-cover opacity-60" />
+        <Image
+          src={caseStudy.image}
+          alt={caseStudy.title}
+          fill
+          className="object-cover opacity-60"
+        />
         <div className="absolute inset-0 bg-gradient-to-t from-near-black via-transparent to-transparent" />
-        
-        <div className="container-custom relative h-full flex flex-col justify-end pb-16">
+
+        <div className="container-custom relative flex h-full flex-col justify-end pb-16">
           <Link
             href="/work"
-            className="inline-flex items-center gap-2 text-white hover:text-accent-cyan transition-colors mb-6"
+            className="mb-6 inline-flex items-center gap-2 text-white transition-colors hover:text-accent-cyan"
           >
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+            <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M15 19l-7-7 7-7"
+              />
             </svg>
             Back to Work
           </Link>
-          
-          <div className="inline-block px-4 py-2 bg-accent-cyan text-near-black rounded-full font-medium mb-4">
+
+          <div className="mb-4 inline-block rounded-full bg-accent-cyan px-4 py-2 font-medium text-near-black">
             {caseStudy.category}
           </div>
-          <h1 className="text-white mb-4">{caseStudy.title}</h1>
+          <h1 className="mb-4 text-white">{caseStudy.title}</h1>
           <p className="text-2xl text-gray-300">{caseStudy.client}</p>
         </div>
       </section>
@@ -72,23 +75,23 @@ export default function CaseDetailPage({ params }: CaseDetailPageProps) {
       {/* Overview */}
       <section className="section-padding bg-white">
         <div className="container-custom max-w-5xl">
-          <div className="grid md:grid-cols-3 gap-8 mb-16">
+          <div className="mb-16 grid gap-8 md:grid-cols-3">
             <div>
-              <h4 className="text-sm font-bold uppercase text-gray-500 mb-2">Client</h4>
-              <p className="text-xl font-display font-bold">{caseStudy.client}</p>
+              <h4 className="mb-2 text-sm font-bold uppercase text-gray-500">Client</h4>
+              <p className="font-display text-xl font-bold">{caseStudy.client}</p>
             </div>
             <div>
-              <h4 className="text-sm font-bold uppercase text-gray-500 mb-2">Timeline</h4>
-              <p className="text-xl font-display font-bold">{caseStudy.timeline}</p>
+              <h4 className="mb-2 text-sm font-bold uppercase text-gray-500">Timeline</h4>
+              <p className="font-display text-xl font-bold">{caseStudy.timeline}</p>
             </div>
             <div>
-              <h4 className="text-sm font-bold uppercase text-gray-500 mb-2">Our Role</h4>
-              <p className="text-xl font-display font-bold">{caseStudy.role}</p>
+              <h4 className="mb-2 text-sm font-bold uppercase text-gray-500">Our Role</h4>
+              <p className="font-display text-xl font-bold">{caseStudy.role}</p>
             </div>
           </div>
 
           <div className="prose prose-lg max-w-none">
-            <p className="text-2xl text-gray-700 leading-relaxed mb-8">{caseStudy.description}</p>
+            <p className="mb-8 text-2xl leading-relaxed text-gray-700">{caseStudy.description}</p>
           </div>
         </div>
       </section>
@@ -96,14 +99,14 @@ export default function CaseDetailPage({ params }: CaseDetailPageProps) {
       {/* Metrics */}
       <section className="section-padding bg-gray-50">
         <div className="container-custom max-w-5xl">
-          <h2 className="text-center mb-12">Key Results</h2>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+          <h2 className="mb-12 text-center">Key Results</h2>
+          <div className="grid grid-cols-2 gap-8 md:grid-cols-4">
             {caseStudy.metrics.map((metric, index) => (
               <div key={index} className="text-center">
-                <div className="text-5xl md:text-6xl font-display font-bold text-accent-cyan mb-2">
+                <div className="mb-2 font-display text-5xl font-bold text-accent-cyan md:text-6xl">
                   {metric.value}
                 </div>
-                <div className="text-gray-600 font-medium">{metric.label}</div>
+                <div className="font-medium text-gray-600">{metric.label}</div>
               </div>
             ))}
           </div>
@@ -114,7 +117,7 @@ export default function CaseDetailPage({ params }: CaseDetailPageProps) {
       <section className="section-padding bg-white">
         <div className="container-custom max-w-4xl">
           <h2 className="mb-8">The Challenge</h2>
-          <p className="text-xl text-gray-700 leading-relaxed">{caseStudy.challenge}</p>
+          <p className="text-xl leading-relaxed text-gray-700">{caseStudy.challenge}</p>
         </div>
       </section>
 
@@ -122,17 +125,20 @@ export default function CaseDetailPage({ params }: CaseDetailPageProps) {
       <section className="section-padding bg-gray-50">
         <div className="container-custom max-w-4xl">
           <h2 className="mb-8">Our Approach</h2>
-          <p className="text-xl text-gray-700 leading-relaxed">{caseStudy.approach}</p>
+          <p className="text-xl leading-relaxed text-gray-700">{caseStudy.approach}</p>
         </div>
       </section>
 
       {/* Gallery */}
       <section className="section-padding bg-white">
         <div className="container-custom max-w-6xl">
-          <h2 className="text-center mb-12">Project Gallery</h2>
-          <div className="grid md:grid-cols-2 gap-6">
+          <h2 className="mb-12 text-center">Project Gallery</h2>
+          <div className="grid gap-6 md:grid-cols-2">
             {caseStudy.gallery.map((image, index) => (
-              <div key={index} className="relative aspect-[4/3] rounded-2xl overflow-hidden bg-gray-100">
+              <div
+                key={index}
+                className="relative aspect-[4/3] overflow-hidden rounded-2xl bg-gray-100"
+              >
                 <Image
                   src={image}
                   alt={`${caseStudy.title} - Image ${index + 1}`}
@@ -149,14 +155,11 @@ export default function CaseDetailPage({ params }: CaseDetailPageProps) {
       <section className="section-padding bg-near-black text-white">
         <div className="container-custom max-w-4xl">
           <h2 className="mb-8">The Results</h2>
-          <p className="text-xl text-gray-300 leading-relaxed mb-8">{caseStudy.results}</p>
-          
+          <p className="mb-8 text-xl leading-relaxed text-gray-300">{caseStudy.results}</p>
+
           <div className="flex flex-wrap gap-3">
             {caseStudy.tags.map((tag, index) => (
-              <span
-                key={index}
-                className="px-4 py-2 bg-charcoal rounded-full text-sm font-medium"
-              >
+              <span key={index} className="rounded-full bg-charcoal px-4 py-2 text-sm font-medium">
                 {tag}
               </span>
             ))}
@@ -167,8 +170,8 @@ export default function CaseDetailPage({ params }: CaseDetailPageProps) {
       {/* CTA */}
       <section className="section-padding bg-accent-cyan">
         <div className="container-custom text-center">
-          <h2 className="text-near-black mb-6">Want Similar Results?</h2>
-          <p className="text-xl text-gray-800 mb-8 max-w-2xl mx-auto">
+          <h2 className="mb-6 text-near-black">Want Similar Results?</h2>
+          <p className="mx-auto mb-8 max-w-2xl text-xl text-gray-800">
             Let&apos;s discuss how we can help your brand achieve its goals.
           </p>
           <Link href="/contact" className="btn bg-near-black text-white hover:bg-charcoal">

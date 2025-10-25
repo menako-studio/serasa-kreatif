@@ -1,18 +1,9 @@
 'use client'
 
-import { useState, FormEvent } from 'react'
-
-interface FormData {
-  name: string
-  company: string
-  email: string
-  phone: string
-  budget: string
-  message: string
-}
+import { useState } from 'react'
 
 export default function ContactForm() {
-  const [formData, setFormData] = useState<FormData>({
+  const [formData, setFormData] = useState({
     name: '',
     company: '',
     email: '',
@@ -21,9 +12,9 @@ export default function ContactForm() {
     message: '',
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
-  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle')
+  const [submitStatus, setSubmitStatus] = useState('idle')
 
-  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
     setIsSubmitting(true)
     setSubmitStatus('idle')
@@ -57,9 +48,7 @@ export default function ContactForm() {
     }
   }
 
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
-  ) => {
+  const handleChange = (e) => {
     setFormData((prev) => ({
       ...prev,
       [e.target.name]: e.target.value,
@@ -68,9 +57,9 @@ export default function ContactForm() {
 
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
-      <div className="grid md:grid-cols-2 gap-6">
+      <div className="grid gap-6 md:grid-cols-2">
         <div>
-          <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
+          <label htmlFor="name" className="mb-2 block text-sm font-medium text-gray-700">
             Nama Lengkap *
           </label>
           <input
@@ -80,13 +69,13 @@ export default function ContactForm() {
             required
             value={formData.name}
             onChange={handleChange}
-            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent-cyan focus:border-transparent transition-all"
+            className="w-full rounded-lg border border-gray-300 px-4 py-3 transition-all focus:border-transparent focus:ring-2 focus:ring-accent-cyan"
             placeholder="Your name"
           />
         </div>
 
         <div>
-          <label htmlFor="company" className="block text-sm font-medium text-gray-700 mb-2">
+          <label htmlFor="company" className="mb-2 block text-sm font-medium text-gray-700">
             Perusahaan
           </label>
           <input
@@ -95,15 +84,15 @@ export default function ContactForm() {
             name="company"
             value={formData.company}
             onChange={handleChange}
-            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent-cyan focus:border-transparent transition-all"
+            className="w-full rounded-lg border border-gray-300 px-4 py-3 transition-all focus:border-transparent focus:ring-2 focus:ring-accent-cyan"
             placeholder="Your company name"
           />
         </div>
       </div>
 
-      <div className="grid md:grid-cols-2 gap-6">
+      <div className="grid gap-6 md:grid-cols-2">
         <div>
-          <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
+          <label htmlFor="email" className="mb-2 block text-sm font-medium text-gray-700">
             Email *
           </label>
           <input
@@ -113,13 +102,13 @@ export default function ContactForm() {
             required
             value={formData.email}
             onChange={handleChange}
-            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent-cyan focus:border-transparent transition-all"
+            className="w-full rounded-lg border border-gray-300 px-4 py-3 transition-all focus:border-transparent focus:ring-2 focus:ring-accent-cyan"
             placeholder="your@email.com"
           />
         </div>
 
         <div>
-          <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2">
+          <label htmlFor="phone" className="mb-2 block text-sm font-medium text-gray-700">
             Nomor Telepon *
           </label>
           <input
@@ -129,14 +118,14 @@ export default function ContactForm() {
             required
             value={formData.phone}
             onChange={handleChange}
-            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent-cyan focus:border-transparent transition-all"
+            className="w-full rounded-lg border border-gray-300 px-4 py-3 transition-all focus:border-transparent focus:ring-2 focus:ring-accent-cyan"
             placeholder="+62 812 xxxx xxxx"
           />
         </div>
       </div>
 
       <div>
-        <label htmlFor="budget" className="block text-sm font-medium text-gray-700 mb-2">
+        <label htmlFor="budget" className="mb-2 block text-sm font-medium text-gray-700">
           Kisaran Anggaran (opsional)
         </label>
         <select
@@ -144,7 +133,7 @@ export default function ContactForm() {
           name="budget"
           value={formData.budget}
           onChange={handleChange}
-          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent-cyan focus:border-transparent transition-all"
+          className="w-full rounded-lg border border-gray-300 px-4 py-3 transition-all focus:border-transparent focus:ring-2 focus:ring-accent-cyan"
         >
           <option value="">Select a range</option>
           <option value="< 10M">Di bawah 10 Juta</option>
@@ -156,7 +145,7 @@ export default function ContactForm() {
       </div>
 
       <div>
-        <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
+        <label htmlFor="message" className="mb-2 block text-sm font-medium text-gray-700">
           Ringkasan Proyek *
         </label>
         <textarea
@@ -166,19 +155,19 @@ export default function ContactForm() {
           rows={6}
           value={formData.message}
           onChange={handleChange}
-          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent-cyan focus:border-transparent transition-all resize-none"
+          className="w-full resize-none rounded-lg border border-gray-300 px-4 py-3 transition-all focus:border-transparent focus:ring-2 focus:ring-accent-cyan"
           placeholder="Tell us about your project, goals, and timeline..."
         />
       </div>
 
       {submitStatus === 'success' && (
-        <div className="bg-green-50 border border-green-200 text-green-800 px-4 py-3 rounded-lg">
+        <div className="rounded-lg border border-green-200 bg-green-50 px-4 py-3 text-green-800">
           Terima kasih! Kami akan menghubungi Anda dalam 24 jam.
         </div>
       )}
 
       {submitStatus === 'error' && (
-        <div className="bg-red-50 border border-red-200 text-red-800 px-4 py-3 rounded-lg">
+        <div className="rounded-lg border border-red-200 bg-red-50 px-4 py-3 text-red-800">
           Terjadi kesalahan. Silakan coba lagi atau hubungi kami melalui WhatsApp.
         </div>
       )}
@@ -186,12 +175,12 @@ export default function ContactForm() {
       <button
         type="submit"
         disabled={isSubmitting}
-        className="w-full btn-primary disabled:opacity-50 disabled:cursor-not-allowed"
+        className="btn-primary w-full disabled:cursor-not-allowed disabled:opacity-50"
       >
-  {isSubmitting ? 'Mengirim...' : 'Kirim Pesan'}
+        {isSubmitting ? 'Mengirim...' : 'Kirim Pesan'}
       </button>
 
-      <p className="text-sm text-gray-500 text-center">
+      <p className="text-center text-sm text-gray-500">
         Dengan mengirimkan formulir ini, Anda menyetujui kebijakan privasi kami.
       </p>
     </form>

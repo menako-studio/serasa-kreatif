@@ -1,7 +1,6 @@
-import { Metadata } from 'next'
 import Link from 'next/link'
 
-export const metadata: Metadata = {
+export const metadata = {
   title: 'Layanan Kami',
   description:
     'Kami menawarkan layanan branding, manajemen media sosial, konten kreatif, dan desain website. Transformasikan merek Anda bersama Serasa Kreatif.',
@@ -77,7 +76,7 @@ export default function ServicesPage() {
       <section className="section-padding bg-gradient-to-br from-primary via-charcoal to-near-black text-white">
         <div className="container-custom text-center">
           <h1 className="mb-6">Layanan Kami</h1>
-            <p className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto">
+          <p className="mx-auto max-w-3xl text-xl text-gray-300 md:text-2xl">
             Dari pemikiran strategis hingga eksekusi kreatif, kami menawarkan layanan lengkap untuk
             mentransformasi merek Anda dan memperkuat pesan Anda.
           </p>
@@ -91,22 +90,22 @@ export default function ServicesPage() {
             <div
               key={service.id}
               id={service.id}
-              className={`grid lg:grid-cols-2 gap-12 items-center ${
+              className={`grid items-center gap-12 lg:grid-cols-2 ${
                 index % 2 === 1 ? 'lg:flex-row-reverse' : ''
               }`}
             >
               {/* Content */}
               <div className={index % 2 === 1 ? 'lg:order-2' : ''}>
-                <div className="text-6xl mb-6">{service.icon}</div>
+                <div className="mb-6 text-6xl">{service.icon}</div>
                 <h2 className="mb-4">{service.title}</h2>
-                <p className="text-xl text-gray-700 mb-8">{service.description}</p>
+                <p className="mb-8 text-xl text-gray-700">{service.description}</p>
 
-                <h3 className="text-xl font-display font-bold mb-4">Yang Termasuk:</h3>
+                <h3 className="mb-4 font-display text-xl font-bold">Yang Termasuk:</h3>
                 <ul className="space-y-3">
                   {service.features.map((feature, fIndex) => (
                     <li key={fIndex} className="flex items-start gap-3">
                       <svg
-                        className="w-6 h-6 text-accent-cyan flex-shrink-0 mt-1"
+                        className="mt-1 h-6 w-6 flex-shrink-0 text-accent-cyan"
                         fill="none"
                         stroke="currentColor"
                         viewBox="0 0 24 24"
@@ -126,7 +125,7 @@ export default function ServicesPage() {
 
               {/* Image Placeholder */}
               <div className={index % 2 === 1 ? 'lg:order-1' : ''}>
-                <div className="relative aspect-square rounded-2xl bg-gradient-to-br from-accent-cyan/20 via-accent-amber/20 to-primary/20 overflow-hidden">
+                <div className="relative aspect-square overflow-hidden rounded-2xl bg-gradient-to-br from-accent-cyan/20 via-accent-amber/20 to-primary/20">
                   <div className="absolute inset-0 flex items-center justify-center text-8xl opacity-30">
                     {service.icon}
                   </div>
@@ -140,27 +139,40 @@ export default function ServicesPage() {
       {/* Process */}
       <section className="section-padding bg-gray-50">
         <div className="container-custom">
-          <div className="text-center mb-16">
+          <div className="mb-16 text-center">
             <h2 className="mb-4">Proses Kami</h2>
-              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                Kami mengikuti proses teruji untuk memastikan setiap proyek menghasilkan hasil yang luar biasa.
-              </p>
+            <p className="mx-auto max-w-3xl text-xl text-gray-600">
+              Kami mengikuti proses teruji untuk memastikan setiap proyek menghasilkan hasil yang
+              luar biasa.
+            </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
             {[
-              { step: '01', title: 'Discovery', description: 'Understanding your goals and audience' },
+              {
+                step: '01',
+                title: 'Discovery',
+                description: 'Understanding your goals and audience',
+              },
               { step: '02', title: 'Strategy', description: 'Planning the approach and execution' },
-              { step: '03', title: 'Creation', description: 'Bringing ideas to life with creativity' },
-              { step: '04', title: 'Launch & Optimize', description: 'Deploy and refine for success' },
+              {
+                step: '03',
+                title: 'Creation',
+                description: 'Bringing ideas to life with creativity',
+              },
+              {
+                step: '04',
+                title: 'Launch & Optimize',
+                description: 'Deploy and refine for success',
+              },
             ].map((phase) => (
               <div key={phase.step} className="text-center">
-                <div className="w-20 h-20 bg-accent-cyan rounded-full flex items-center justify-center mx-auto mb-6">
-                  <span className="text-3xl font-display font-bold text-near-black">
+                <div className="mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-full bg-accent-cyan">
+                  <span className="font-display text-3xl font-bold text-near-black">
                     {phase.step}
                   </span>
                 </div>
-                <h3 className="text-2xl font-display font-bold mb-3">{phase.title}</h3>
+                <h3 className="mb-3 font-display text-2xl font-bold">{phase.title}</h3>
                 <p className="text-gray-600">{phase.description}</p>
               </div>
             ))}
@@ -172,9 +184,9 @@ export default function ServicesPage() {
       <section className="section-padding bg-primary text-white">
         <div className="container-custom text-center">
           <h2 className="mb-6">Siap Memulai?</h2>
-          <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
-            Mari diskusikan bagaimana layanan kami dapat membantu merek Anda mencapai tujuannya. Hubungi kami untuk
-            konsultasi gratis.
+          <p className="mx-auto mb-8 max-w-2xl text-xl text-gray-300">
+            Mari diskusikan bagaimana layanan kami dapat membantu merek Anda mencapai tujuannya.
+            Hubungi kami untuk konsultasi gratis.
           </p>
           <Link href="/contact" className="btn-accent">
             Minta Konsultasi

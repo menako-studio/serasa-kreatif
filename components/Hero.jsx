@@ -3,21 +3,14 @@
 import Link from 'next/link'
 import { motion } from 'framer-motion'
 
-interface HeroProps {
-  title?: string
-  subtitle?: string
-  primaryCTA?: { text: string; href: string }
-  secondaryCTA?: { text: string; href: string }
-}
-
 export default function Hero({
   title = 'AGENSI KREATIF INDEPENDEN UNTUK ERA DIGITAL',
   subtitle = 'Kami menciptakan merek yang kuat dan kampanye yang berdampak untuk UMKM Indonesia',
   primaryCTA = { text: 'Minta Proposal', href: '/contact' },
   secondaryCTA = { text: 'Lihat Portofolio', href: '/work' },
-}: HeroProps) {
+}) {
   return (
-    <section className="relative min-h-screen flex items-center bg-black text-white pt-32 pb-20">
+    <section className="relative flex min-h-screen items-center bg-black pb-20 pt-32 text-white">
       <div className="container-custom relative z-10 w-full">
         <div className="max-w-6xl">
           {/* Text Content */}
@@ -27,14 +20,14 @@ export default function Hero({
             transition={{ duration: 0.6 }}
             className="space-y-16"
           >
-            <h1 className="font-display font-black text-white max-w-5xl animate-fade-in uppercase">
+            <h1 className="max-w-5xl animate-fade-in font-display font-black uppercase text-white">
               {title}
             </h1>
-            
+
             {/* Red accent box like R/GA */}
-            <div className="w-48 h-48 bg-red-600" />
-            
-            <p className="text-xl md:text-2xl text-gray-300 leading-relaxed max-w-xl animate-slide-up animation-delay-200">
+            <div className="h-48 w-48 bg-red-600" />
+
+            <p className="animation-delay-200 max-w-xl animate-slide-up text-xl leading-relaxed text-gray-300 md:text-2xl">
               {subtitle}
             </p>
           </motion.div>
@@ -47,12 +40,9 @@ export default function Hero({
           transition={{ delay: 1, duration: 1 }}
           className="absolute bottom-8 left-8"
         >
-          <motion.div
-            animate={{ y: [0, 10, 0] }}
-            transition={{ duration: 1.5, repeat: Infinity }}
-          >
+          <motion.div animate={{ y: [0, 10, 0] }} transition={{ duration: 1.5, repeat: Infinity }}>
             <svg
-              className="w-6 h-6 text-white"
+              className="h-6 w-6 text-white"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"

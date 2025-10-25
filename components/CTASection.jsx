@@ -1,20 +1,12 @@
 import Link from 'next/link'
 
-interface CTASectionProps {
-  title?: string
-  description?: string
-  primaryCTA?: { text: string; href: string }
-  secondaryCTA?: { text: string; href: string }
-  background?: 'primary' | 'accent' | 'gradient'
-}
-
 export default function CTASection({
   title = 'Mari Ciptakan Sesuatu yang Menakjubkan Bersama',
   description = 'Siap mentransformasi merek Anda? Hubungi kami dan mari diskusikan bagaimana kami dapat membantu bisnis Anda menonjol.',
   primaryCTA = { text: 'Mulai Proyek', href: '/contact' },
   secondaryCTA = { text: 'Lihat Portofolio', href: '/work' },
   background = 'primary',
-}: CTASectionProps) {
+}) {
   const bgClasses = {
     primary: 'bg-primary',
     accent: 'bg-accent-cyan',
@@ -30,13 +22,13 @@ export default function CTASection({
   return (
     <section className={`section-padding ${bgClasses[background]}`}>
       <div className="container-custom">
-        <div className="max-w-4xl mx-auto text-center space-y-8">
+        <div className="mx-auto max-w-4xl space-y-8 text-center">
           <h2 className={`${textClasses[background]}`}>{title}</h2>
           <p className={`text-xl ${background === 'accent' ? 'text-gray-800' : 'text-gray-300'}`}>
             {description}
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="flex flex-col justify-center gap-4 sm:flex-row">
             <Link
               href={primaryCTA.href}
               className={`btn ${

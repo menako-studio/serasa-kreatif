@@ -1,4 +1,3 @@
-import type { Metadata } from 'next'
 import { Inter, Poppins } from 'next/font/google'
 import './globals.css'
 import NavBar from '@/components/NavBar'
@@ -18,7 +17,7 @@ const poppins = Poppins({
   display: 'swap',
 })
 
-export const metadata: Metadata = {
+export const metadata = {
   title: {
     default: 'Serasa Kreatif | Digital Branding & Social Media Agency',
     template: '%s | Serasa Kreatif',
@@ -78,11 +77,7 @@ export const metadata: Metadata = {
   },
 }
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode
-}>) {
+export default function RootLayout({ children }) {
   return (
     <html lang="id" className={`${inter.variable} ${poppins.variable}`}>
       <body className="font-sans">
