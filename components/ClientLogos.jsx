@@ -4,12 +4,18 @@ import { useState } from 'react'
 import Image from 'next/image'
 
 const clients = [
-  { name: 'Japo', logo: '/assets/clients/japo.png' },
-  { name: 'Pregnasia Spa', logo: '/assets/clients/pregnasia.png' },
-  { name: 'Client 3', logo: '/assets/clients/client3.png' },
-  { name: 'Client 4', logo: '/assets/clients/client4.png' },
-  { name: 'Client 5', logo: '/assets/clients/client5.png' },
-  { name: 'Client 6', logo: '/assets/clients/client6.png' },
+  { name: 'Alobank', logo: '/assets/images/logo-partner/logo-alobank.png' },
+  { name: 'Arkaff', logo: '/assets/images/logo-partner/logo-arkaff.png' },
+  { name: 'BNI', logo: '/assets/images/logo-partner/logo-bni.png' },
+  { name: 'BSI', logo: '/assets/images/logo-partner/logo-bsi.png' },
+  { name: 'JAPO', logo: '/assets/images/logo-partner/logo-japo.png' },
+  { name: 'JobStreet Express', logo: '/assets/images/logo-partner/logo-jobstreet-express.png' },
+  { name: 'Lazada', logo: '/assets/images/logo-partner/logo-lazada.png' },
+  { name: 'Primaya Hospital', logo: '/assets/images/logo-partner/logo-primaya-hospital.png' },
+  { name: 'PUPR', logo: '/assets/images/logo-partner/logo-pupr.png' },
+  { name: 'Roposo', logo: '/assets/images/logo-partner/logo-roposo.png' },
+  { name: 'SR12', logo: '/assets/images/logo-partner/logo-sr12.png' },
+  { name: 'SYH', logo: '/assets/images/logo-partner/logo-syh.png' },
 ]
 
 export default function ClientLogos() {
@@ -23,8 +29,8 @@ export default function ClientLogos() {
             Dipercaya Oleh Brand Lokal
           </h2>
           <p className="mx-auto max-w-2xl text-gray-600">
-            We&apos;ve partnered with innovative companies to transform their brands and elevate
-            their social presence.
+            Kami telah bekerja sama dengan berbagai brand lokal untuk mentransformasi identitas dan
+            kehadiran digital mereka.
           </p>
         </div>
 
@@ -38,7 +44,7 @@ export default function ClientLogos() {
                 key={index}
                 className="flex items-center justify-center rounded-lg bg-white p-6 grayscale transition-shadow hover:shadow-lg hover:grayscale-0"
               >
-                <div className="relative flex h-16 w-full items-center justify-center">
+                <div className="relative flex h-16 w-full max-w-[160px] items-center justify-center px-2">
                   {isFailed ? (
                     <span className="font-medium text-gray-400">{client.name}</span>
                   ) : (
@@ -47,7 +53,7 @@ export default function ClientLogos() {
                       alt={client.name}
                       width={200}
                       height={80}
-                      className="object-contain"
+                      className="max-h-[56px] max-w-[140px] object-contain"
                       onError={() => setFailed((s) => ({ ...s, [key]: true }))}
                     />
                   )}
