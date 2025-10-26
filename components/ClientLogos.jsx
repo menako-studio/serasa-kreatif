@@ -2,6 +2,8 @@
 
 import { useState } from 'react'
 import Image from 'next/image'
+import SectionHeading from './SectionHeading'
+import SectionDescription from './SectionDescription'
 
 const clients = [
   { name: 'Alobank', logo: '/assets/images/logo-partner/logo-alobank.png' },
@@ -24,17 +26,15 @@ export default function ClientLogos() {
   return (
     <section className="section-padding bg-gray-50">
       <div className="container-custom">
-        <div className="mb-12 text-center">
-          <h2 className="mb-4 font-display text-3xl font-bold md:text-4xl">
-            Dipercaya Oleh Brand Lokal
-          </h2>
-          <p className="mx-auto max-w-2xl text-gray-600">
+        <div className="mb-12 ">
+          <SectionHeading>Dipercaya Oleh Brand Lokal</SectionHeading>
+          <SectionDescription>
             Kami telah bekerja sama dengan berbagai brand lokal untuk mentransformasi identitas dan
             kehadiran digital mereka.
-          </p>
+          </SectionDescription>
         </div>
 
-        <div className="grid grid-cols-2 items-center gap-8 md:grid-cols-3 lg:grid-cols-6">
+        <div className="grid items-center grid-cols-2 gap-8 md:grid-cols-3 lg:grid-cols-6">
           {clients.map((client, index) => {
             const key = client.logo || String(index)
             const isFailed = !!failed[key]
@@ -42,7 +42,7 @@ export default function ClientLogos() {
             return (
               <div
                 key={index}
-                className="flex items-center justify-center rounded-lg bg-white p-6 grayscale transition-shadow hover:shadow-lg hover:grayscale-0"
+                className="flex items-center justify-center p-6 transition-shadow bg-white rounded-lg grayscale hover:shadow-lg hover:grayscale-0"
               >
                 <div className="relative flex h-16 w-full max-w-[160px] items-center justify-center px-2">
                   {isFailed ? (

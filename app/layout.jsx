@@ -1,38 +1,31 @@
-import { Inter, Poppins } from 'next/font/google'
 import './globals.css'
 import NavBar from '@/components/NavBar'
 import Footer from '@/components/Footer'
 import StickyWhatsApp from '@/components/StickyWhatsApp'
+import { Inter } from 'next/font/google'
 
 const inter = Inter({
   subsets: ['latin'],
-  variable: '--font-inter',
-  display: 'swap',
-})
-
-const poppins = Poppins({
-  subsets: ['latin'],
-  weight: ['400', '600', '700', '800'],
-  variable: '--font-poppins',
+  variable: '--font-sans',
   display: 'swap',
 })
 
 export const metadata = {
   title: {
-    default: 'Serasa Kreatif | Digital Branding & Social Media Agency',
+    default: 'Serasa Kreatif — Creative Agency Indonesia',
     template: '%s | Serasa Kreatif',
   },
   description:
-    'Serasa Kreatif is a multidisciplinary digital branding and social media agency. We transform brands into irresistible forces with creative campaigns and data-driven insights.',
+    'Studio kreatif yang menggabungkan strategi dan estetika untuk hasil yang nyata. Brand design, digital campaign, dan social media untuk bisnis Indonesia.',
   keywords: [
-    'branding agency',
+    'creative agency indonesia',
+    'brand design',
     'social media management',
-    'digital branding',
-    'creative agency',
-    'graphic design',
+    'digital marketing',
+    'creative studio jakarta',
+    'branding agency',
     'Bintaro',
-    'Jakarta',
-    'Indonesia',
+    'Tangerang Selatan',
   ],
   authors: [{ name: 'Serasa Kreatif' }],
   creator: 'Serasa Kreatif',
@@ -53,6 +46,11 @@ export const metadata = {
         alt: 'Serasa Kreatif',
       },
     ],
+  },
+  icons: {
+    icon: '/assets/images/logo-serasa.png',
+    shortcut: '/assets/images/logo-serasa-blue.jpg',
+    apple: '/assets/images/logo-serasa-white.png',
   },
   twitter: {
     card: 'summary_large_image',
@@ -79,8 +77,8 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="id" className={`${inter.variable} ${poppins.variable}`}>
-      <body className="font-sans">
+    <html lang="id" className={inter.variable}>
+      <body className="font-sans antialiased">
         <NavBar />
         <main>{children}</main>
         <Footer />

@@ -1,115 +1,135 @@
 'use client'
-
-import Link from 'next/link'
 import { motion } from 'framer-motion'
+import Image from 'next/image'
+import { hero } from '@/lib/copy-id'
 
-export default function Hero({
-  title = 'AGENSI KREATIF INDEPENDEN UNTUK ERA DIGITAL',
-  subtitle = 'Kami menciptakan merek yang kuat dan kampanye yang berdampak untuk UMKM Indonesia (fast-refresh test)',
-  primaryCTA = { text: 'Minta Proposal', href: '/contact' },
-  secondaryCTA = { text: 'Lihat Portofolio', href: '/work' },
-}) {
+export default function Hero() {
   return (
-    <section className="relative flex min-h-screen items-center overflow-hidden bg-gradient-to-br from-primary via-primary-dark to-near-black pb-20 pt-32 text-white">
-      {/* Decorative infinity symbol */}
-      <div className="absolute right-10 top-20 h-64 w-64 opacity-5">
-        <svg viewBox="0 0 200 100" className="h-full w-full">
-          <path
-            d="M50,50 Q20,20 50,50 T100,50 Q130,80 100,50 T50,50"
-            stroke="currentColor"
-            strokeWidth="8"
-            fill="none"
-            className="text-accent-cyan"
-          />
-        </svg>
-      </div>
-
-      <div className="container-custom relative z-10 w-full">
-        <div className="max-w-6xl">
-          {/* Text Content */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="space-y-12"
-          >
-            {/* Small label */}
-            <div className="inline-block rounded-full border border-accent-cyan/30 bg-accent-cyan/10 px-6 py-2">
-              <span className="text-sm font-semibold uppercase tracking-wider text-accent-cyan">
-                Creative Agency Bintaro
-              </span>
-            </div>
-
-            <h1 className="max-w-5xl animate-fade-in font-display font-black text-white">
-              {title}
-            </h1>
-
-            {/* Cyan accent bar - different from RGA's red square */}
-            <div className="flex items-center gap-4">
-              <div className="h-2 w-24 rounded-full bg-gradient-to-r from-accent-cyan to-transparent" />
-              <div className="h-2 w-12 rounded-full bg-gradient-to-r from-accent-cyan to-transparent" />
-            </div>
-
-            <p className="animation-delay-200 max-w-2xl animate-slide-up text-xl leading-relaxed text-gray-300 md:text-2xl">
-              {subtitle}
-            </p>
-
-            {/* CTA Buttons */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.4, duration: 0.6 }}
-              className="flex flex-col gap-4 pt-4 sm:flex-row"
-            >
-              <Link
-                href={primaryCTA.href}
-                className="btn bg-accent-cyan font-bold text-near-black shadow-lg shadow-accent-cyan/20 hover:scale-105 hover:bg-opacity-90"
-              >
-                {primaryCTA.text}
-              </Link>
-              <Link
-                href={secondaryCTA.href}
-                className="btn border-2 border-white/30 text-white hover:border-white hover:bg-white/10"
-              >
-                {secondaryCTA.text}
-              </Link>
-            </motion.div>
-          </motion.div>
-        </div>
-
-        {/* Scroll indicator */}
+    <section className="relative pt-24 pb-12 text-white bg-black md:pb-16 md:pt-32">
+      <div className="container-custom">
+        {/* Hero headline - R/GA style: massive, tight, uppercase */}
         <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1, duration: 1 }}
-          className="absolute bottom-8 left-8"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="mb-12 md:mb-16"
         >
-          <div className="flex flex-col items-center gap-2">
-            <span className="text-xs uppercase tracking-wider text-gray-400">Scroll</span>
-            <motion.div
-              animate={{ y: [0, 10, 0] }}
-              transition={{ duration: 1.5, repeat: Infinity }}
-            >
-              <svg
-                className="h-6 w-6 text-accent-cyan"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M19 14l-7 7m0 0l-7-7m7 7V3"
-                />
-              </svg>
-            </motion.div>
+          <h1 className="font-sans text-[2.75rem] font-black uppercase leading-[0.9] tracking-tighter md:text-[4.5rem] lg:text-[6rem] xl:text-[7.5rem]">
+            {hero.headline}
+          </h1>
+
+          <div className="flex flex-wrap items-center gap-4 mt-8 md:gap-6">
+            <p className="max-w-md text-sm leading-relaxed text-white/70 md:text-base">
+              {hero.subhead}
+            </p>
+          </div>
+        </motion.div>
+
+        {/* Mosaic Grid - R/GA style */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="grid grid-cols-8 gap-2 md:gap-3"
+        >
+          {/* Large image left */}
+          <div className="col-span-8 row-span-2 md:col-span-4 md:row-span-2">
+            <div className="relative aspect-[4/3] overflow-hidden bg-red-600">
+              <Image
+                src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=800&q=80"
+                alt="karya kreatif"
+                fill
+                className="object-cover"
+                sizes="(max-width: 768px) 100vw, 50vw"
+                priority
+              />
+            </div>
+          </div>
+
+          {/* Small image top right */}
+          <div className="col-span-4 md:col-span-2">
+            <div className="relative aspect-[4/3] overflow-hidden bg-blue-600">
+              <Image
+                src="https://images.unsplash.com/photo-1551650975-87deedd944c3?w=400&q=80"
+                alt="karya kreatif"
+                fill
+                className="object-cover"
+                sizes="(max-width: 768px) 50vw, 25vw"
+              />
+            </div>
+          </div>
+
+          {/* Red solid block */}
+          <div className="col-span-4 md:col-span-2">
+            <div className="relative aspect-[4/3] bg-accent"></div>
+          </div>
+
+          {/* Bottom right image */}
+          <div className="col-span-4 md:col-span-2">
+            <div className="relative aspect-[4/3] overflow-hidden bg-purple-600">
+              <Image
+                src="https://images.unsplash.com/photo-1557804506-669a67965ba0?w=400&q=80"
+                alt="karya kreatif"
+                fill
+                className="object-cover"
+                sizes="(max-width: 768px) 50vw, 25vw"
+              />
+            </div>
+          </div>
+
+          {/* Beige text block */}
+          <div className="col-span-4 md:col-span-2">
+            <div className="relative flex aspect-[4/3] items-center justify-center bg-amber-50 p-6">
+              <div className="text-center">
+                <p className="font-sans text-sm font-black text-black uppercase md:text-base">
+                  Proyek Terbaru
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* More work items - additional row */}
+          <div className="col-span-4 md:col-span-2">
+            <div className="relative aspect-[4/3] overflow-hidden bg-green-600">
+              <Image
+                src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=400&q=80"
+                alt="karya kreatif"
+                fill
+                className="object-cover"
+                sizes="(max-width: 768px) 50vw, 25vw"
+              />
+            </div>
+          </div>
+
+          <div className="col-span-4 md:col-span-2">
+            <div className="relative aspect-[4/3] bg-white"></div>
+          </div>
+
+          <div className="col-span-4 md:col-span-2">
+            <div className="relative aspect-[4/3] overflow-hidden bg-gray-800">
+              <Image
+                src="https://images.unsplash.com/photo-1553877522-43269d4ea984?w=400&q=80"
+                alt="karya kreatif"
+                fill
+                className="object-cover"
+                sizes="(max-width: 768px) 50vw, 25vw"
+              />
+            </div>
+          </div>
+
+          <div className="col-span-4 md:col-span-2">
+            <div className="relative aspect-[4/3] overflow-hidden bg-yellow-500">
+              <Image
+                src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=400&q=80"
+                alt="karya kreatif"
+                fill
+                className="object-cover"
+                sizes="(max-width: 768px) 50vw, 25vw"
+              />
+            </div>
           </div>
         </motion.div>
       </div>
-
-      {/* Gradient overlay bottom */}
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-white to-transparent" />
     </section>
   )
 }
