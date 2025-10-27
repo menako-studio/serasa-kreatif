@@ -8,11 +8,15 @@ const config = {
   theme: {
     extend: {
       colors: {
-        primary: '#000000',
-        'primary-dark': '#1a1a1a',
-        accent: '#FF0000',
-        'accent-red': '#FF0000',
-        danger: '#FF0000',
+        // Brand palette derived from Serasa Kreatif logo
+        primary: '#04104b', // deep navy (brand background)
+        'primary-dark': '#020522',
+        // Teal/mint accent from the infinity mark
+        'brand-teal': '#00d6b6',
+        'brand-teal-600': '#00b388',
+        'brand-accent': '#00f0c4',
+        accent: '#00d6b6',
+        danger: '#ff4d4f',
         neutral: {
           50: '#fafafa',
           100: '#f5f5f5',

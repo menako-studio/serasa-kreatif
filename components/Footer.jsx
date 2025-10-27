@@ -2,14 +2,14 @@ import Link from 'next/link'
 
 const footerLinks = {
   legal: [
-    { name: 'Kebijakan Privasi', href: '/privacy' },
-    { name: 'Syarat & Ketentuan', href: '/terms' },
+    { name: 'Ketentuan Penggunaan', href: '/ketentuan-penggunaan' },
+    { name: 'Pemberitahuan Privasi', href: '/pemberitahuan-privasi' },
   ],
 }
 
 export default function Footer() {
   return (
-    <footer className="border-t border-gray-900 bg-black text-white">
+    <footer className="border-t border-primary-dark bg-primary text-white">
       <div className="container-custom py-12">
         <div className="mb-12 grid grid-cols-2 gap-8 md:grid-cols-3">
           {/* Contact Info */}
@@ -68,7 +68,7 @@ export default function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="flex flex-col items-center justify-between gap-4 border-t border-gray-900 pt-8 text-xs text-gray-600 md:flex-row">
+        <div className="flex flex-col items-center justify-between gap-4 border-t border-primary-dark pt-8 text-xs text-gray-200 md:flex-row">
           <p>© {new Date().getFullYear()} SERASA KREATIF. ALL RIGHTS RESERVED.</p>
           <div className="flex gap-6">
             {footerLinks.legal.map((link) => (

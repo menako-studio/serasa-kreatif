@@ -47,15 +47,17 @@
   }
 
   .btn-primary {
-    @apply btn bg-black text-white hover:bg-neutral-800;
+    /* primary uses brand navy */
+    @apply btn bg-primary text-white hover:bg-primary-dark;
   }
 
   .btn-secondary {
-    @apply btn border-2 border-black text-black hover:bg-black hover:text-white;
+    @apply btn border-2 border-primary text-primary hover:bg-primary hover:text-white;
   }
 
   .btn-accent {
-    @apply btn bg-accent text-white hover:bg-accent/90;
+    /* accent uses brand teal */
+    @apply btn bg-brand-teal text-white hover:bg-brand-teal/90;
   }
 
   .section-padding {

@@ -5,7 +5,7 @@ import { hero } from '@/lib/copy-id'
 
 export default function Hero() {
   return (
-    <section className="relative pt-24 pb-12 text-white bg-black md:pb-16 md:pt-32">
+    <section className="relative bg-primary pb-12 pt-24 text-white md:pb-16 md:pt-32">
       <div className="container-custom">
         {/* Hero headline - R/GA style: massive, tight, uppercase */}
         <motion.div
@@ -18,7 +18,7 @@ export default function Hero() {
             {hero.headline}
           </h1>
 
-          <div className="flex flex-wrap items-center gap-4 mt-8 md:gap-6">
+          <div className="mt-8 flex flex-wrap items-center gap-4 md:gap-6">
             <p className="max-w-md text-sm leading-relaxed text-white/70 md:text-base">
               {hero.subhead}
             </p>
@@ -81,7 +81,7 @@ export default function Hero() {
           <div className="col-span-4 md:col-span-2">
             <div className="relative flex aspect-[4/3] items-center justify-center bg-amber-50 p-6">
               <div className="text-center">
-                <p className="font-sans text-sm font-black text-black uppercase md:text-base">
+                <p className="font-sans text-sm font-black uppercase text-black md:text-base">
                   Proyek Terbaru
                 </p>
               </div>

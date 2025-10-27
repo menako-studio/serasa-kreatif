@@ -129,7 +129,7 @@ export default function WorkPage() {
 
           {/* Grid - 2 columns */}
           <div className="grid gap-1 md:grid-cols-2">
-            {featuredWork.map((work, index) => (
+            {featuredWork.map((work, _index) => (
               <Link
                 key={work.slug}
                 href={`/work/${work.slug}`}

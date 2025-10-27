@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Serasa Kreatif CMS Admin</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .tab-button.active {
+      background-color: #04104b;
+      color: white;
+    }
+  </style>
+</head>
+
+<body class="bg-gray-50">
+  <div class="min-h-screen">
+    <!-- Header -->
+    <header class="bg-[#04104b] text-white py-6">
+      <div class="container mx-auto px-4">
+        <h1 class="text-2xl font-bold">Serasa Kreatif CMS Admin</h1>
+        <p class="text-sm text-gray-300">Content Management System</p>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8">
+      <!-- Tabs -->
+      <div class="mb-6 flex gap-2 border-b border-gray-200">
+        <button class="tab-button active px-6 py-3 font-semibold" onclick="switchTab('blog')" id="tab-blog">
+          Blog Posts
+        </button>
+        <button class="tab-button px-6 py-3 font-semibold text-gray-600 hover:bg-gray-100"
+          onclick="switchTab('portfolio')" id="tab-portfolio">
+          Portfolio
+        </button>
+      </div>
+
+      <!-- Blog Tab -->
+      <div id="content-blog" class="tab-content">
+        <div class="mb-6 flex items-center justify-between">
+          <h2 class="text-xl font-bold">Blog Posts Management</h2>
+          <button onclick="showBlogForm()" class="rounded bg-[#04104b] px-6 py-2 text-white hover:bg-[#020522]">
+            + Tambah Blog Post
+          </button>
+        </div>
+
+        <!-- Blog Form -->
+        <div id="blog-form" class="mb-8 hidden rounded-lg bg-white p-6 shadow">
+          <h3 class="mb-4 text-lg font-semibold">
+            <span id="blog-form-title">Tambah</span> Blog Post
+          </h3>
+          <form onsubmit="submitBlogForm(event)" class="space-y-4">
+            <input type="hidden" id="blog-id" />
+            <div class="grid grid-cols-2 gap-4">
+              <div>
+                <label class="mb-1 block text-sm font-medium">Judul *</label>
+                <input type="text" id="blog-title" required class="w-full rounded border px-3 py-2" />
+              </div>
+              <div>
+                <label class="mb-1 block text-sm font-medium">Slug *</label>
+                <input type="text" id="blog-slug" required class="w-full rounded border px-3 py-2" />
+              </div>
+              <div>
+                <label class="mb-1 block text-sm font-medium">Kategori *</label>
+                <input type="text" id="blog-category" required class="w-full rounded border px-3 py-2" />
+              </div>
+              <div>
+                <label class="mb-1 block text-sm font-medium">Author</label>
+                <input type="text" id="blog-author" value="Tim Serasa Kreatif"
+                  class="w-full rounded border px-3 py-2" />
+              </div>
+              <div>
+                <label class="mb-1 block text-sm font-medium">Tanggal</label>
+                <input type="date" id="blog-date" class="w-full rounded border px-3 py-2" />
+              </div>
+              <div>
+                <label class="mb-1 block text-sm font-medium">Waktu Baca</label>
+                <input type="text" id="blog-readtime" placeholder="5 menit baca"
+                  class="w-full rounded border px-3 py-2" />
+              </div>
+            </div>
+            <div>
+              <label class="mb-1 block text-sm font-medium">Image URL *</label>
+              <input type="url" id="blog-image" required placeholder="https://..."
+                class="w-full rounded border px-3 py-2" />
+            </div>
+            <div>
+              <label class="mb-1 block text-sm font-medium">Excerpt</label>
+              <textarea id="blog-excerpt" rows="2" class="w-full rounded border px-3 py-2"></textarea>
+            </div>
+            <div>
+              <label class="mb-1 block text-sm font-medium">Content (HTML) *</label>
+              <textarea id="blog-content" required rows="8"
+                class="w-full rounded border px-3 py-2 font-mono text-sm"></textarea>
+            </div>
+            <div class="flex items-center">
+              <input type="checkbox" id="blog-published" checked class="mr-2" />
+              <label for="blog-published" class="text-sm font-medium">Published</label>
+            </div>
+            <div class="flex gap-2">
+              <button type="submit" class="rounded bg-[#04104b] px-6 py-2 text-white hover:bg-[#020522]">
+                Simpan
+              </button>
+              <button type="button" onclick="hideBlogForm()"
+                class="rounded border border-gray-300 px-6 py-2 hover:bg-gray-50">
+                Batal
+              </button>
+            </div>
+          </form>
+        </div>
+
+        <!-- Blog List -->
+        <div id="blog-list" class="rounded-lg bg-white shadow">
+          <div class="p-4">
+            <p class="text-gray-500">Loading...</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Portfolio Tab -->
+      <div id="content-portfolio" class="tab-content hidden">
+        <div class="mb-6 flex items-center justify-between">
+          <h2 class="text-xl font-bold">Portfolio Management</h2>
+          <button onclick="showPortfolioForm()" class="rounded bg-[#04104b] px-6 py-2 text-white hover:bg-[#020522]">
+            + Tambah Portfolio
+          </button>
+        </div>
+
+        <!-- Portfolio Form -->
+        <div id="portfolio-form" class="mb-8 hidden rounded-lg bg-white p-6 shadow">
+          <h3 class="mb-4 text-lg font-semibold">
+            <span id="portfolio-form-title">Tambah</span> Portfolio
+          </h3>
+          <form onsubmit="submitPortfolioForm(event)" class="space-y-4">
+            <input type="hidden" id="portfolio-id" />
+            <div class="grid grid-cols-2 gap-4">
+              <div>
+                <label class="mb-1 block text-sm font-medium">Judul *</label>
+                <input type="text" id="portfolio-title" required class="w-full rounded border px-3 py-2" />
+              </div>
+              <div>
+                <label class="mb-1 block text-sm font-medium">Slug *</label>
+                <input type="text" id="portfolio-slug" required class="w-full rounded border px-3 py-2" />
+              </div>
+              <div>
+                <label class="mb-1 block text-sm font-medium">Client *</label>
+                <input type="text" id="portfolio-client" required class="w-full rounded border px-3 py-2" />
+              </div>
+              <div>
+                <label class="mb-1 block text-sm font-medium">Kategori *</label>
+                <input type="text" id="portfolio-category" required class="w-full rounded border px-3 py-2" />
+              </div>
+              <div>
+                <label class="mb-1 block text-sm font-medium">Tahun</label>
+                <input type="text" id="portfolio-year" value="2025" class="w-full rounded border px-3 py-2" />
+              </div>
+              <div>
+                <label class="mb-1 block text-sm font-medium">Services (comma separated)</label>
+                <input type="text" id="portfolio-services" placeholder="Service 1, Service 2"
+                  class="w-full rounded border px-3 py-2" />
+              </div>
+            </div>
+            <div>
+              <label class="mb-1 block text-sm font-medium">Thumbnail URL *</label>
+              <input type="url" id="portfolio-thumbnail" required placeholder="https://..."
+                class="w-full rounded border px-3 py-2" />
+            </div>
+            <div>
+              <label class="mb-1 block text-sm font-medium">Description *</label>
+              <textarea id="portfolio-description" required rows="2" class="w-full rounded border px-3 py-2"></textarea>
+            </div>
+            <div>
+              <label class="mb-1 block text-sm font-medium">Challenge</label>
+              <textarea id="portfolio-challenge" rows="2" class="w-full rounded border px-3 py-2"></textarea>
+            </div>
+            <div>
+              <label class="mb-1 block text-sm font-medium">Solution</label>
+              <textarea id="portfolio-solution" rows="2" class="w-full rounded border px-3 py-2"></textarea>
+            </div>
+            <div>
+              <label class="mb-1 block text-sm font-medium">Results (one per line)</label>
+              <textarea id="portfolio-results" rows="3" placeholder="Result 1&#10;Result 2&#10;Result 3"
+                class="w-full rounded border px-3 py-2"></textarea>
+            </div>
+            <div>
+              <label class="mb-1 block text-sm font-medium">Images URLs (one per line)</label>
+              <textarea id="portfolio-images" rows="3" placeholder="https://...&#10;https://..."
+                class="w-full rounded border px-3 py-2"></textarea>
+            </div>
+            <div class="flex gap-4">
+              <div class="flex items-center">
+                <input type="checkbox" id="portfolio-featured" class="mr-2" />
+                <label for="portfolio-featured" class="text-sm font-medium">Featured</label>
+              </div>
+              <div class="flex items-center">
+                <input type="checkbox" id="portfolio-published" checked class="mr-2" />
+                <label for="portfolio-published" class="text-sm font-medium">Published</label>
+              </div>
+            </div>
+            <div class="flex gap-2">
+              <button type="submit" class="rounded bg-[#04104b] px-6 py-2 text-white hover:bg-[#020522]">
+                Simpan
+              </button>
+              <button type="button" onclick="hidePortfolioForm()"
+                class="rounded border border-gray-300 px-6 py-2 hover:bg-gray-50">
+                Batal
+              </button>
+            </div>
+          </form>
+        </div>
+
+        <!-- Portfolio List -->
+        <div id="portfolio-list" class="rounded-lg bg-white shadow">
+          <div class="p-4">
+            <p class="text-gray-500">Loading...</p>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script>
+    const API_BASE = window.location.origin
+
+    // Tab switching
+    function switchTab(tab) {
+      document.querySelectorAll('.tab-button').forEach((btn) => {
+        btn.classList.remove('active', 'text-white')
+        btn.classList.add('text-gray-600', 'hover:bg-gray-100')
+      })
+      document.querySelectorAll('.tab-content').forEach((content) => {
+        content.classList.add('hidden')
+      })
+
+      document.getElementById(`tab-${tab}`).classList.add('active', 'text-white')
+      document.getElementById(`tab-${tab}`).classList.remove('text-gray-600', 'hover:bg-gray-100')
+      document.getElementById(`content-${tab}`).classList.remove('hidden')
+
+      if (tab === 'blog') loadBlogPosts()
+      if (tab === 'portfolio') loadPortfolioItems()
+    }
+
+    // Blog Functions
+    async function loadBlogPosts() {
+      try {
+        const response = await fetch(`${API_BASE}/api/blog`)
+        const data = await response.json()
+
+        if (data.success) {
+          const html = data.data
+            .map(
+              (post) => `
+              <div class="border-b border-gray-200 p-4 hover:bg-gray-50">
+                <div class="flex items-start justify-between">
+                  <div class="flex-1">
+                    <h3 class="font-semibold">${post.title}</h3>
+                    <p class="text-sm text-gray-600">${post.category} • ${post.date} • ${post.readTime}</p>
+                    <p class="text-sm text-gray-500">${post.excerpt || ''}</p>
+                    <span class="inline-block mt-2 text-xs ${post.published ? 'bg-green-100 text-green-800' : 'bg-gray-100 text-gray-800'} px-2 py-1 rounded">
+                      ${post.published ? 'Published' : 'Draft'}
+                    </span>
+                  </div>
+                  <div class="flex gap-2">
+                    <button onclick='editBlogPost(${JSON.stringify(post)})' class="text-blue-600 hover:text-blue-800">Edit</button>
+                    <button onclick="deleteBlogPost(${post.id})" class="text-red-600 hover:text-red-800">Delete</button>
+                  </div>
+                </div>
+              </div>
+            `
+            )
+            .join('')
+
+          document.getElementById('blog-list').innerHTML =
+            html || '<div class="p-4 text-gray-500">Belum ada blog post</div>'
+        }
+      } catch (error) {
+        console.error('Error loading blog posts:', error)
+        document.getElementById('blog-list').innerHTML =
+          '<div class="p-4 text-red-600">Error loading data</div>'
+      }
+    }
+
+    function showBlogForm() {
+      document.getElementById('blog-form').classList.remove('hidden')
+      document.getElementById('blog-form-title').textContent = 'Tambah'
+      document.getElementById('blog-id').value = ''
+      document.querySelector('#blog-form form').reset()
+    }
+
+    function hideBlogForm() {
+      document.getElementById('blog-form').classList.add('hidden')
+    }
+
+    function editBlogPost(post) {
+      document.getElementById('blog-form').classList.remove('hidden')
+      document.getElementById('blog-form-title').textContent = 'Edit'
+      document.getElementById('blog-id').value = post.id
+      document.getElementById('blog-title').value = post.title
+      document.getElementById('blog-slug').value = post.slug
+      document.getElementById('blog-category').value = post.category
+      document.getElementById('blog-author').value = post.author
+      document.getElementById('blog-date').value = post.date
+      document.getElementById('blog-readtime').value = post.readTime
+      document.getElementById('blog-image').value = post.image
+      document.getElementById('blog-excerpt').value = post.excerpt || ''
+      document.getElementById('blog-content').value = post.content
+      document.getElementById('blog-published').checked = post.published
+      window.scrollTo({ top: 0, behavior: 'smooth' })
+    }
+
+    async function submitBlogForm(event) {
+      event.preventDefault()
+
+      const id = document.getElementById('blog-id').value
+      const isEdit = !!id
+
+      const data = {
+        title: document.getElementById('blog-title').value,
+        slug: document.getElementById('blog-slug').value,
+        category: document.getElementById('blog-category').value,
+        author: document.getElementById('blog-author').value,
+        date: document.getElementById('blog-date').value,
+        readTime: document.getElementById('blog-readtime').value,
+        image: document.getElementById('blog-image').value,
+        excerpt: document.getElementById('blog-excerpt').value,
+        content: document.getElementById('blog-content').value,
+        published: document.getElementById('blog-published').checked,
+      }
+
+      try {
+        const url = isEdit ? `${API_BASE}/api/blog/${id}` : `${API_BASE}/api/blog`
+        const method = isEdit ? 'PUT' : 'POST'
+
+        const response = await fetch(url, {
+          method,
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data),
+        })
+
+        const result = await response.json()
+
+        if (result.success) {
+          alert(result.message)
+          hideBlogForm()
+          loadBlogPosts()
+        } else {
+          alert('Error: ' + result.error)
+        }
+      } catch (error) {
+        console.error('Error:', error)
+        alert('Error saving blog post')
+      }
+    }
+
+    async function deleteBlogPost(id) {
+      if (!confirm('Yakin ingin menghapus blog post ini?')) return
+
+      try {
+        const response = await fetch(`${API_BASE}/api/blog/${id}`, {
+          method: 'DELETE',
+        })
+
+        const result = await response.json()
+
+        if (result.success) {
+          alert(result.message)
+          loadBlogPosts()
+        } else {
+          alert('Error: ' + result.error)
+        }
+      } catch (error) {
+        console.error('Error:', error)
+        alert('Error deleting blog post')
+      }
+    }
+
+    // Portfolio Functions
+    async function loadPortfolioItems() {
+      try {
+        const response = await fetch(`${API_BASE}/api/portfolio`)
+        const data = await response.json()
+
+        if (data.success) {
+          const html = data.data
+            .map(
+              (item) => `
+              <div class="border-b border-gray-200 p-4 hover:bg-gray-50">
+                <div class="flex items-start justify-between">
+                  <div class="flex gap-4 flex-1">
+                    <img src="${item.thumbnail}" alt="${item.title}" class="w-24 h-24 object-cover rounded" />
+                    <div class="flex-1">
+                      <h3 class="font-semibold">${item.title}</h3>
+                      <p class="text-sm text-gray-600">${item.client} • ${item.category} • ${item.year}</p>
+                      <p class="text-sm text-gray-500">${item.description}</p>
+                      <div class="mt-2 flex gap-2">
+                        <span class="inline-block text-xs ${item.published ? 'bg-green-100 text-green-800' : 'bg-gray-100 text-gray-800'} px-2 py-1 rounded">
+                          ${item.published ? 'Published' : 'Draft'}
+                        </span>
+                        ${item.featured ? '<span class="inline-block text-xs bg-yellow-100 text-yellow-800 px-2 py-1 rounded">Featured</span>' : ''}
+                      </div>
+                    </div>
+                  </div>
+                  <div class="flex gap-2">
+                    <button onclick='editPortfolioItem(${JSON.stringify(item)})' class="text-blue-600 hover:text-blue-800">Edit</button>
+                    <button onclick="deletePortfolioItem(${item.id})" class="text-red-600 hover:text-red-800">Delete</button>
+                  </div>
+                </div>
+              </div>
+            `
+            )
+            .join('')
+
+          document.getElementById('portfolio-list').innerHTML =
+            html || '<div class="p-4 text-gray-500">Belum ada portfolio</div>'
+        }
+      } catch (error) {
+        console.error('Error loading portfolio:', error)
+        document.getElementById('portfolio-list').innerHTML =
+          '<div class="p-4 text-red-600">Error loading data</div>'
+      }
+    }
+
+    function showPortfolioForm() {
+      document.getElementById('portfolio-form').classList.remove('hidden')
+      document.getElementById('portfolio-form-title').textContent = 'Tambah'
+      document.getElementById('portfolio-id').value = ''
+      document.querySelector('#portfolio-form form').reset()
+    }
+
+    function hidePortfolioForm() {
+      document.getElementById('portfolio-form').classList.add('hidden')
+    }
+
+    function editPortfolioItem(item) {
+      document.getElementById('portfolio-form').classList.remove('hidden')
+      document.getElementById('portfolio-form-title').textContent = 'Edit'
+      document.getElementById('portfolio-id').value = item.id
+      document.getElementById('portfolio-title').value = item.title
+      document.getElementById('portfolio-slug').value = item.slug
+      document.getElementById('portfolio-client').value = item.client
+      document.getElementById('portfolio-category').value = item.category
+      document.getElementById('portfolio-year').value = item.year
+      document.getElementById('portfolio-services').value = item.services.join(', ')
+      document.getElementById('portfolio-thumbnail').value = item.thumbnail
+      document.getElementById('portfolio-description').value = item.description
+      document.getElementById('portfolio-challenge').value = item.challenge || ''
+      document.getElementById('portfolio-solution').value = item.solution || ''
+      document.getElementById('portfolio-results').value = (item.results || []).join('\n')
+      document.getElementById('portfolio-images').value = (item.images || []).join('\n')
+      document.getElementById('portfolio-featured').checked = item.featured
+      document.getElementById('portfolio-published').checked = item.published
+      window.scrollTo({ top: 0, behavior: 'smooth' })
+    }
+
+    async function submitPortfolioForm(event) {
+      event.preventDefault()
+
+      const id = document.getElementById('portfolio-id').value
+      const isEdit = !!id
+
+      const servicesText = document.getElementById('portfolio-services').value
+      const resultsText = document.getElementById('portfolio-results').value
+      const imagesText = document.getElementById('portfolio-images').value
+
+      const data = {
+        title: document.getElementById('portfolio-title').value,
+        slug: document.getElementById('portfolio-slug').value,
+        client: document.getElementById('portfolio-client').value,
+        category: document.getElementById('portfolio-category').value,
+        year: document.getElementById('portfolio-year').value,
+        services: servicesText
+          ? servicesText.split(',').map((s) => s.trim())
+          : [],
+        thumbnail: document.getElementById('portfolio-thumbnail').value,
+        description: document.getElementById('portfolio-description').value,
+        challenge: document.getElementById('portfolio-challenge').value,
+        solution: document.getElementById('portfolio-solution').value,
+        results: resultsText
+          ? resultsText.split('\n').filter((r) => r.trim())
+          : [],
+        images: imagesText
+          ? imagesText.split('\n').filter((i) => i.trim())
+          : [],
+        featured: document.getElementById('portfolio-featured').checked,
+        published: document.getElementById('portfolio-published').checked,
+      }
+
+      try {
+        const url = isEdit ? `${API_BASE}/api/portfolio/${id}` : `${API_BASE}/api/portfolio`
+        const method = isEdit ? 'PUT' : 'POST'
+
+        const response = await fetch(url, {
+          method,
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data),
+        })
+
+        const result = await response.json()
+
+        if (result.success) {
+          alert(result.message)
+          hidePortfolioForm()
+          loadPortfolioItems()
+        } else {
+          alert('Error: ' + result.error)
+        }
+      } catch (error) {
+        console.error('Error:', error)
+        alert('Error saving portfolio item')
+      }
+    }
+
+    async function deletePortfolioItem(id) {
+      if (!confirm('Yakin ingin menghapus portfolio ini?')) return
+
+      try {
+        const response = await fetch(`${API_BASE}/api/portfolio/${id}`, {
+          method: 'DELETE',
+        })
+
+        const result = await response.json()
+
+        if (result.success) {
+          alert(result.message)
+          loadPortfolioItems()
+        } else {
+          alert('Error: ' + result.error)
+        }
+      } catch (error) {
+        console.error('Error:', error)
+        alert('Error deleting portfolio item')
+      }
+    }
+
+    // Initialize
+    loadBlogPosts()
+  </script>
+</body>
+
+</html>

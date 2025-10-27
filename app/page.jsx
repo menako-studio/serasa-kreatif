@@ -79,9 +79,9 @@ export default function HomePage() {
       <Hero />
 
       {/* PORTOFOLIO Section */}
-      <section className="bg-white section-padding">
+      <section className="section-padding bg-white">
         <div className="container-custom">
-          <div className="flex items-center justify-between mb-12">
+          <div className="mb-12 flex items-center justify-between">
             <SectionHeading>PORTOFOLIO</SectionHeading>
           </div>
 
@@ -92,13 +92,13 @@ export default function HomePage() {
           </div>
 
           <div className="mt-8 text-right">
-            <PrimaryButton href="/work">LIHAT SEMUA KARYA</PrimaryButton>
+            <PrimaryButton href="/portfolio">LIHAT SEMUA KARYA</PrimaryButton>
           </div>
         </div>
       </section>
 
       {/* APA YANG KAMI LAKUKAN Section */}
-      <section className="bg-white section-padding">
+      <section className="section-padding bg-white">
         <div className="container-custom">
           <div className="mb-12">
             <SectionHeading>APA YANG KAMI LAKUKAN</SectionHeading>
@@ -108,7 +108,7 @@ export default function HomePage() {
             <p className="mt-4 text-sm text-gray-600">Lihat bagaimana kami dapat membantu.</p>
           </div>
 
-          <div className="border-t border-gray-200 divide-y divide-gray-200">
+          <div className="divide-y divide-gray-200 border-t border-gray-200">
             {services.items.map((service, i) => (
               <ServiceAccordionItem
                 key={i}
@@ -122,7 +122,7 @@ export default function HomePage() {
           </div>
 
           <div className="mt-8">
-            <TextLink href="/contact">{services.ctaLearnMore}</TextLink>
+            <TextLink href="/kontak">{services.ctaLearnMore}</TextLink>
           </div>
         </div>
       </section>
@@ -131,7 +131,7 @@ export default function HomePage() {
       <ClientLogos />
 
       {/* BERITA Section */}
-      <section className="bg-white section-padding">
+      <section className="section-padding bg-white">
         <div className="container-custom">
           <div className="mb-12">
             <SectionHeading>BERITA</SectionHeading>
@@ -144,9 +144,9 @@ export default function HomePage() {
           </div>
 
           <div className="mt-12 text-right">
-            <TextLink href="/blog" className="font-bold no-underline uppercase hover:text-accent">
+            <TextLink href="/blog" className="font-bold uppercase no-underline hover:text-accent">
               LIHAT LAINNYA
-              <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="ml-2 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path
                   strokeLinecap="round"
                   strokeLinejoin="round"
@@ -160,26 +160,26 @@ export default function HomePage() {
       </section>
 
       {/* Join Section */}
-      <section className="text-white bg-black section-padding">
+      <section className="section-padding bg-black text-white">
         <div className="container-custom">
           <div className="max-w-4xl">
             <SectionHeading className="mb-12 text-white">Gabung Serasa Kreatif</SectionHeading>
 
-            <div className="grid gap-8 mb-16 md:grid-cols-3">
+            <div className="mb-16 grid gap-8 md:grid-cols-3">
               <div>
-                <div className="mb-2 text-xs font-bold tracking-wider text-gray-400 uppercase">
+                <div className="mb-2 text-xs font-bold uppercase tracking-wider text-gray-400">
                   LOKASI
                 </div>
                 <div className="text-lg">Bintaro, Tangerang Selatan</div>
               </div>
               <div>
-                <div className="mb-2 text-xs font-bold tracking-wider text-gray-400 uppercase">
+                <div className="mb-2 text-xs font-bold uppercase tracking-wider text-gray-400">
                   EMAIL
                 </div>
                 <div className="text-lg">hello@serasakreatif.id</div>
               </div>
               <div>
-                <div className="mb-2 text-xs font-bold tracking-wider text-gray-400 uppercase">
+                <div className="mb-2 text-xs font-bold uppercase tracking-wider text-gray-400">
                   INSTAGRAM
                 </div>
                 <div className="text-lg">@serasakreatif.id</div>
@@ -187,8 +187,8 @@ export default function HomePage() {
             </div>
 
             <PrimaryButton
-              href="/contact"
-              className="text-black bg-white border-white hover:bg-accent hover:text-white"
+              href="/kontak"
+              className="border-white bg-white text-black hover:bg-accent hover:text-white"
             >
               MULAI PROYEK
             </PrimaryButton>
@@ -197,9 +197,9 @@ export default function HomePage() {
       </section>
 
       {/* Footer Text - R/GA-style bold statement */}
-      <section className="py-16 text-white bg-black border-t border-gray-800">
+      <section className="border-t border-gray-800 bg-black py-16 text-white">
         <div className="container-custom">
-          <div className="font-sans text-3xl font-black leading-tight uppercase md:text-4xl lg:text-5xl xl:text-6xl">
+          <div className="font-sans text-3xl font-black uppercase leading-tight md:text-4xl lg:text-5xl xl:text-6xl">
             {footer.copyright}
             <br />
             {footer.statement.split('\n').map((line, i) => (
