@@ -9,7 +9,7 @@ import NewsCard from '@/components/NewsCard'
 import ServiceAccordionItem from '@/components/ServiceAccordionItem'
 import PrimaryButton from '@/components/PrimaryButton'
 import TextLink from '@/components/TextLink'
-import { services, footer } from '@/lib/copy-id'
+import { services } from '@/lib/copy-id'
 
 // Work showcase data with Unsplash images
 const workShowcase = [
@@ -79,18 +79,12 @@ export default function HomePage() {
       <Hero />
 
       {/* PORTOFOLIO Section */}
-      <section className="section-padding bg-white">
+      <section className="bg-white section-padding">
         <div className="container-custom">
-          <div className="mb-12 flex items-center justify-between">
+          <div className="flex items-center justify-between mb-12">
             <SectionHeading>PORTOFOLIO</SectionHeading>
           </div>
-
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-2">
-            {workShowcase.map((work) => (
-              <WorkCard key={work.slug} work={work} />
-            ))}
-          </div>
-
+          <WorkGrid works={workShowcase} />
           <div className="mt-8 text-right">
             <PrimaryButton href="/portfolio">LIHAT SEMUA KARYA</PrimaryButton>
           </div>
@@ -98,29 +92,21 @@ export default function HomePage() {
       </section>
 
       {/* APA YANG KAMI LAKUKAN Section */}
-      <section className="section-padding bg-white">
+      <section className="bg-white section-padding">
         <div className="container-custom">
           <div className="mb-12">
             <SectionHeading>APA YANG KAMI LAKUKAN</SectionHeading>
-            <SectionDescription>
+            <SectionDescription className="text-gray-900">
               {services.sectionIntro || services.sectionSubhead}
             </SectionDescription>
-            <p className="mt-4 text-sm text-gray-600">Lihat bagaimana kami dapat membantu.</p>
+            <p className="mt-4 text-sm text-gray-900">Lihat bagaimana kami dapat membantu.</p>
           </div>
-
-          <div className="divide-y divide-gray-200 border-t border-gray-200">
-            {services.items.map((service, i) => (
-              <ServiceAccordionItem
-                key={i}
-                service={service}
-                index={i}
-                isOpen={openAccordion === i}
-                onToggle={() => toggleAccordion(i)}
-                previewImage={workShowcase[i % workShowcase.length].image}
-              />
-            ))}
-          </div>
-
+          <AccordionGrid
+            items={services.items}
+            openIndex={openAccordion}
+            onToggle={toggleAccordion}
+            previewImages={workShowcase.map((w) => w.image)}
+          />
           <div className="mt-8">
             <TextLink href="/kontak">{services.ctaLearnMore}</TextLink>
           </div>
@@ -131,22 +117,16 @@ export default function HomePage() {
       <ClientLogos />
 
       {/* BERITA Section */}
-      <section className="section-padding bg-white">
+      <section className="bg-white section-padding">
         <div className="container-custom">
           <div className="mb-12">
             <SectionHeading>BERITA</SectionHeading>
           </div>
-
-          <div className="grid gap-3 md:grid-cols-2 lg:grid-cols-4">
-            {newsData.map((news, index) => (
-              <NewsCard key={index} news={news} />
-            ))}
-          </div>
-
+          <NewsGrid news={newsData} />
           <div className="mt-12 text-right">
-            <TextLink href="/blog" className="font-bold uppercase no-underline hover:text-accent">
+            <TextLink href="/blog" className="font-bold no-underline uppercase hover:text-accent">
               LIHAT LAINNYA
-              <svg className="ml-2 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path
                   strokeLinecap="round"
                   strokeLinejoin="round"
@@ -160,57 +140,79 @@ export default function HomePage() {
       </section>
 
       {/* Join Section */}
-      <section className="section-padding bg-black text-white">
+      <section className="text-white section-padding bg-brand-teal">
         <div className="container-custom">
           <div className="max-w-4xl">
             <SectionHeading className="mb-12 text-white">Gabung Serasa Kreatif</SectionHeading>
-
-            <div className="mb-16 grid gap-8 md:grid-cols-3">
+            <div className="grid gap-8 mb-16 md:grid-cols-3">
               <div>
-                <div className="mb-2 text-xs font-bold uppercase tracking-wider text-gray-400">
+                <div className="mb-2 text-xs font-bold tracking-wider uppercase text-white/80">
                   LOKASI
                 </div>
-                <div className="text-lg">Bintaro, Tangerang Selatan</div>
+                <div className="text-lg text-white">Bintaro, Tangerang Selatan</div>
               </div>
               <div>
-                <div className="mb-2 text-xs font-bold uppercase tracking-wider text-gray-400">
+                <div className="mb-2 text-xs font-bold tracking-wider uppercase text-white/80">
                   EMAIL
                 </div>
-                <div className="text-lg">hello@serasakreatif.id</div>
+                <div className="text-lg text-white">hello@serasakreatif.id</div>
               </div>
               <div>
-                <div className="mb-2 text-xs font-bold uppercase tracking-wider text-gray-400">
+                <div className="mb-2 text-xs font-bold tracking-wider uppercase text-white/80">
                   INSTAGRAM
                 </div>
-                <div className="text-lg">@serasakreatif.id</div>
+                <div className="text-lg text-white">@serasakreatif.id</div>
               </div>
             </div>
-
             <PrimaryButton
               href="/kontak"
-              className="border-white bg-white text-black hover:bg-accent hover:text-white"
+              className="text-black bg-white border-white hover:bg-accent hover:text-white"
             >
               MULAI PROYEK
             </PrimaryButton>
           </div>
         </div>
       </section>
-
-      {/* Footer Text - R/GA-style bold statement */}
-      <section className="border-t border-gray-800 bg-black py-16 text-white">
-        <div className="container-custom">
-          <div className="font-sans text-3xl font-black uppercase leading-tight md:text-4xl lg:text-5xl xl:text-6xl">
-            {footer.copyright}
-            <br />
-            {footer.statement.split('\n').map((line, i) => (
-              <span key={i}>
-                {line}
-                <br />
-              </span>
-            ))}
-          </div>
-        </div>
-      </section>
     </>
+  )
+}
+
+// Helper components (must be outside HomePage)
+
+function WorkGrid({ works }) {
+  return (
+    <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-2">
+      {works.map((work) => (
+        <WorkCard key={work.slug} work={work} />
+      ))}
+    </div>
+  )
+}
+
+function NewsGrid({ news }) {
+  return (
+    <div className="grid gap-3 md:grid-cols-2 lg:grid-cols-4">
+      {news.map((item, idx) => (
+        <NewsCard key={idx} news={item} />
+      ))}
+    </div>
+  )
+}
+
+function AccordionGrid({ items, openIndex, onToggle, previewImages }) {
+  return (
+    <div className="border-t border-gray-200 divide-y divide-gray-200">
+      {items.map((service, i) => (
+        <ServiceAccordionItem
+          key={i}
+          service={service}
+          index={i}
+          isOpen={openIndex === i}
+          onToggle={() => onToggle(i)}
+          previewImage={previewImages[i % previewImages.length]}
+          variant="light"
+        />
+      ))}
+    </div>
   )
 }

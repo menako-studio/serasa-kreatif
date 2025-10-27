@@ -4,164 +4,144 @@ import Link from 'next/link'
 export const metadata = {
   title: 'Portofolio Kami',
   description:
-    'Jelajahi portofolio kampanye branding dan media sosial kami yang sukses. Lihat bagaimana kami mentransformasi merek menjadi kekuatan yang menarik.',
+    'Jelajahi portofolio kampanye branding dan media sosial UMKM yang sukses. Lihat bagaimana Serasa Kreatif membantu merek lokal tumbuh dan menarik pelanggan.',
 }
 
-// Featured work data dengan Unsplash images
+// Data karya unggulan dengan gambar Unsplash
 const featuredWork = [
   {
     slug: 'japo-fashion-brand',
     title: 'JAPO',
-    subtitle: 'Brand identity untuk fashion brand lokal',
+    subtitle: 'Identitas merek untuk brand fashion lokal',
     image: 'https://images.unsplash.com/photo-1558769132-cb1aea1c4571?w=1200&q=80',
-    category: 'BRAND DESIGN',
+    category: 'DESAIN BRAND',
   },
   {
     slug: 'pregnasia-wellness',
     title: 'PREGNASIA SPA',
-    subtitle: 'Strategi media sosial untuk wellness brand',
+    subtitle: 'Strategi media sosial untuk bisnis wellness',
     image: 'https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=1200&q=80',
-    category: 'SOCIAL MEDIA STRATEGY',
+    category: 'MANAJEMEN MEDIA SOSIAL',
   },
   {
     slug: 'fnb-restaurant',
-    title: 'LOCAL F&B',
-    subtitle: 'Brand refresh untuk restoran lokal',
+    title: 'F&B LOKAL',
+    subtitle: 'Pembaruan brand untuk restoran UMKM',
     image: 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1200&q=80',
-    category: 'BRAND REFRESH',
+    category: 'REFRESH BRAND',
   },
   {
     slug: 'tech-startup',
-    title: 'TECH STARTUP',
-    subtitle: 'Digital campaign untuk tech startup',
+    title: 'TEKNOLOGI UMKM',
+    subtitle: 'Kampanye digital untuk startup teknologi',
     image: 'https://images.unsplash.com/photo-1551650975-87deedd944c3?w=1200&q=80',
-    category: 'DIGITAL CAMPAIGN',
+    category: 'KAMPANYE DIGITAL',
   },
 ]
 
+const filterOptions = {
+  regions: ['SEMUA WILAYAH', 'JABODETABEK', 'JAWA BARAT', 'JAWA TENGAH'],
+  services: [
+    'SEMUA LAYANAN',
+    'DESAIN BRAND',
+    'MANAJEMEN MEDIA SOSIAL',
+    'KAMPANYE DIGITAL',
+    'KONTEN KREATIF',
+  ],
+  industries: ['SEMUA INDUSTRI', 'FASHION', 'F&B', 'WELLNESS', 'TEKNOLOGI'],
+}
+
+function FilterSelect({ options }) {
+  return (
+    <div className="relative">
+      <select className="w-full px-4 py-3 text-sm tracking-wider text-white uppercase transition-colors bg-black border border-gray-700 appearance-none cursor-pointer hover:border-gray-500">
+        {options.map((opt) => (
+          <option key={opt}>{opt}</option>
+        ))}
+      </select>
+      <div className="absolute -translate-y-1/2 pointer-events-none right-4 top-1/2">
+        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+        </svg>
+      </div>
+    </div>
+  )
+}
+
+function FeaturedWorkGrid({ works }) {
+  return (
+    <div className="grid gap-1 md:grid-cols-2">
+      {works.map((work) => (
+        <Link
+          key={work.slug}
+          href={`/work/${work.slug}`}
+          className="group relative aspect-[4/3] overflow-hidden bg-gray-900"
+        >
+          <Image
+            src={work.image}
+            alt={work.title}
+            fill
+            className="object-cover transition-transform duration-700 group-hover:scale-105"
+            sizes="(max-width: 768px) 100vw, 50vw"
+          />
+          <div className="absolute inset-0 transition-colors bg-black/30 group-hover:bg-black/10" />
+          <div className="absolute bottom-0 left-0 right-0 p-8 md:p-12">
+            <div className="mb-2 text-xs tracking-widest text-gray-300 uppercase">
+              {work.category}
+            </div>
+            <h3 className="mb-2 text-3xl font-black text-white uppercase font-display md:text-4xl lg:text-5xl">
+              {work.title}
+            </h3>
+            <p className="text-sm text-gray-200 md:text-base">{work.subtitle}</p>
+          </div>
+        </Link>
+      ))}
+    </div>
+  )
+}
+
 export default function WorkPage() {
   return (
-    <div className="min-h-screen bg-black text-white">
+    <div className="min-h-screen text-white">
       {/* Hero Section */}
-      <section className="bg-black pb-20 pt-32">
+      <section className="pt-32 pb-20 bg-black">
         <div className="container-custom">
-          <h1 className="mb-16 font-display font-black uppercase text-white">WORK</h1>
+          <h1 className="mb-16 font-black text-white uppercase font-display">PORTOFOLIO</h1>
 
-          {/* Filters */}
-          <div className="mb-12 grid max-w-2xl grid-cols-1 gap-4 md:grid-cols-3">
-            <div className="relative">
-              <select className="w-full cursor-pointer appearance-none border border-gray-700 bg-black px-4 py-3 text-sm uppercase tracking-wider text-white transition-colors hover:border-gray-500">
-                <option>ALL REGIONS</option>
-                <option>JABODETABEK</option>
-                <option>JAWA BARAT</option>
-                <option>JAWA TENGAH</option>
-              </select>
-              <div className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2">
-                <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M19 9l-7 7-7-7"
-                  />
-                </svg>
-              </div>
-            </div>
-
-            <div className="relative">
-              <select className="w-full cursor-pointer appearance-none border border-gray-700 bg-black px-4 py-3 text-sm uppercase tracking-wider text-white transition-colors hover:border-gray-500">
-                <option>ALL SERVICES</option>
-                <option>BRAND DESIGN</option>
-                <option>SOCIAL MEDIA</option>
-                <option>DIGITAL CAMPAIGN</option>
-                <option>CONTENT CREATION</option>
-              </select>
-              <div className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2">
-                <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M19 9l-7 7-7-7"
-                  />
-                </svg>
-              </div>
-            </div>
-
-            <div className="relative">
-              <select className="w-full cursor-pointer appearance-none border border-gray-700 bg-black px-4 py-3 text-sm uppercase tracking-wider text-white transition-colors hover:border-gray-500">
-                <option>ALL INDUSTRIES</option>
-                <option>FASHION</option>
-                <option>F&B</option>
-                <option>WELLNESS</option>
-                <option>TECHNOLOGY</option>
-              </select>
-              <div className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2">
-                <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M19 9l-7 7-7-7"
-                  />
-                </svg>
-              </div>
-            </div>
+          {/* Filter */}
+          <div className="grid max-w-2xl grid-cols-1 gap-4 mb-12 md:grid-cols-3">
+            <FilterSelect options={filterOptions.regions} />
+            <FilterSelect options={filterOptions.services} />
+            <FilterSelect options={filterOptions.industries} />
           </div>
 
-          {/* Description */}
+          {/* Deskripsi */}
           <div className="max-w-xl">
             <p className="text-lg leading-relaxed text-gray-300">
-              Explore our work highlights across services, regions and clients.{' '}
-              <Link href="/contact" className="underline transition-colors hover:text-white">
-                Contact
+              Lihat karya terbaik kami dari berbagai layanan, wilayah, dan klien UMKM.{' '}
+              <Link href="/kontak" className="underline transition-colors hover:text-white">
+                Hubungi
               </Link>{' '}
-              the team to learn more.
+              tim Serasa Kreatif untuk konsultasi gratis.
             </p>
           </div>
         </div>
       </section>
 
       {/* Featured Work Section */}
-      <section className="bg-black py-12">
+      <section className="py-12 bg-black">
         <div className="container-custom">
-          <h2 className="mb-12 font-display text-2xl font-bold uppercase">FEATURED WORK</h2>
+          <h2 className="mb-12 text-2xl font-bold uppercase font-display">KARYA UNGGULAN</h2>
 
           {/* Grid - 2 columns */}
-          <div className="grid gap-1 md:grid-cols-2">
-            {featuredWork.map((work, _index) => (
-              <Link
-                key={work.slug}
-                href={`/work/${work.slug}`}
-                className="group relative aspect-[4/3] overflow-hidden bg-gray-900"
-              >
-                <Image
-                  src={work.image}
-                  alt={work.title}
-                  fill
-                  className="object-cover transition-transform duration-700 group-hover:scale-105"
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                />
-                <div className="absolute inset-0 bg-black/30 transition-colors group-hover:bg-black/10" />
-                <div className="absolute bottom-0 left-0 right-0 p-8 md:p-12">
-                  <div className="mb-2 text-xs uppercase tracking-widest text-gray-300">
-                    {work.category}
-                  </div>
-                  <h3 className="mb-2 font-display text-3xl font-black uppercase text-white md:text-4xl lg:text-5xl">
-                    {work.title}
-                  </h3>
-                  <p className="text-sm text-gray-200 md:text-base">{work.subtitle}</p>
-                </div>
-              </Link>
-            ))}
-          </div>
+          <FeaturedWorkGrid works={featuredWork} />
 
-          {/* Show More Button */}
+          {/* Tombol Lihat Lebih Banyak */}
           <div className="mt-16 text-center">
-            <button className="group inline-flex items-center gap-2 text-white transition-colors hover:text-gray-300">
-              <span className="text-sm uppercase tracking-wider">Show More</span>
+            <button className="inline-flex items-center gap-2 text-white transition-colors group hover:text-gray-300">
+              <span className="text-sm tracking-wider uppercase">Lihat Lebih Banyak</span>
               <svg
-                className="h-5 w-5 transform transition-transform group-hover:translate-y-1"
+                className="w-5 h-5 transition-transform transform group-hover:translate-y-1"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -179,77 +159,14 @@ export default function WorkPage() {
       </section>
 
       {/* Bottom CTA Section */}
-      <section className="section-padding border-t border-gray-900 bg-black">
+      <section className="bg-black border-t border-gray-900 section-padding">
         <div className="container-custom">
           <div className="max-w-2xl">
             <p className="mb-8 text-xl leading-relaxed text-gray-300 md:text-2xl">
-              If you have ideas for your brand, your business, or the world at large, we&apos;re
-              here to listen and collaborate. We can design a more human future together.
+              Punya ide untuk bisnis, merek, atau UMKM Anda? Kami siap mendengarkan dan
+              berkolaborasi. Bersama Serasa Kreatif, kita bisa membangun masa depan yang lebih baik
+              untuk UMKM Indonesia.
             </p>
-
-            <div className="space-y-3">
-              <a
-                href="https://wa.me/6281288971453"
-                className="group flex items-center gap-2 text-white transition-colors hover:text-gray-300"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <span className="text-sm">WhatsApp</span>
-                <svg
-                  className="h-4 w-4 transform transition-transform group-hover:translate-x-1"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M9 5l7 7-7 7"
-                  />
-                </svg>
-              </a>
-              <a
-                href="https://www.instagram.com/serasakreatif.id/"
-                className="group flex items-center gap-2 text-white transition-colors hover:text-gray-300"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <span className="text-sm">Instagram</span>
-                <svg
-                  className="h-4 w-4 transform transition-transform group-hover:translate-x-1"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M9 5l7 7-7 7"
-                  />
-                </svg>
-              </a>
-              <a
-                href="#"
-                className="group flex items-center gap-2 text-white transition-colors hover:text-gray-300"
-              >
-                <span className="text-sm">LinkedIn</span>
-                <svg
-                  className="h-4 w-4 transform transition-transform group-hover:translate-x-1"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M9 5l7 7-7 7"
-                  />
-                </svg>
-              </a>
-            </div>
           </div>
         </div>
       </section>
