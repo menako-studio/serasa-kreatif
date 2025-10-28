@@ -10,7 +10,6 @@ const navLinks = [
   { name: 'Layanan', href: '/layanan' },
   { name: 'Blog', href: '/blog' },
   { name: 'Tentang', href: '/tentang-kami' },
-  { name: 'Kontak', href: '/kontak' },
 ]
 
 export default function NavBar() {
@@ -87,11 +86,11 @@ export default function NavBar() {
             href="/kontak"
             className={`ml-4 rounded border-2 px-6 py-2 text-sm font-bold uppercase transition-colors ${
               isDarkNav
-                ? 'border-white bg-white text-black hover:border-red-600 hover:bg-red-600 hover:text-white'
-                : 'border-black bg-black text-white hover:border-red-600 hover:bg-red-600'
+                ? 'border-white bg-white text-black hover:border-brand-teal hover:bg-brand-teal hover:text-white'
+                : 'border-black bg-black text-white hover:border-brand-teal hover:bg-brand-teal'
             }`}
           >
-            Kontak
+            Hubungi Kami
           </Link>
         </div>
         {/* Mobile Menu Button */}

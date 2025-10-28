@@ -17,7 +17,7 @@ const featuredWork = [
     category: 'DESAIN BRAND',
   },
   {
-    slug: 'pregnasia-wellness',
+    slug: 'pregnansia-spa-social',
     title: 'PREGNASIA SPA',
     subtitle: 'Strategi media sosial untuk bisnis wellness',
     image: 'https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=1200&q=80',
@@ -74,7 +74,7 @@ function FeaturedWorkGrid({ works }) {
       {works.map((work) => (
         <Link
           key={work.slug}
-          href={`/work/${work.slug}`}
+          href={`/portfolio/${work.slug}`}
           className="group relative aspect-[4/3] overflow-hidden bg-gray-900"
         >
           <Image

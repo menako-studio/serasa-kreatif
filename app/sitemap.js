@@ -21,7 +21,7 @@ export default function sitemap() {
       priority: 0.7,
     },
     {
-      url: `${baseUrl}/portfolio/pregnasia-spa-social`,
+      url: `${baseUrl}/portfolio/pregnansia-spa-social`,
       lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 0.7,

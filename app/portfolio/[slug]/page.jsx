@@ -19,12 +19,36 @@ export async function generateMetadata({ params }) {
   }
 
   return {
-    title: `${caseStudy.title} | ${caseStudy.client}`,
+    title: `${caseStudy.client} - ${caseStudy.category}`,
     description: caseStudy.description,
+    keywords: [
+      `case study ${caseStudy.client.toLowerCase()}`,
+      caseStudy.category.toLowerCase(),
+      'portfolio serasa kreatif',
+      'studi kasus umkm',
+      ...caseStudy.tags.map((tag) => tag.toLowerCase()),
+    ],
     openGraph: {
-      title: `${caseStudy.title} | ${caseStudy.client}`,
+      title: `${caseStudy.client} - ${caseStudy.title}`,
+      description: caseStudy.description,
+      images: [
+        {
+          url: caseStudy.image,
+          width: 1200,
+          height: 630,
+          alt: `${caseStudy.client} - ${caseStudy.title}`,
+        },
+      ],
+      type: 'article',
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: `${caseStudy.client} - ${caseStudy.title}`,
       description: caseStudy.description,
       images: [caseStudy.image],
+    },
+    alternates: {
+      canonical: `https://serasakreatif.id/portfolio/${caseStudy.slug}`,
     },
   }
 }
@@ -37,23 +61,26 @@ export default function CaseDetailPage({ params }) {
   }
 
   return (
-    <div className="pt-24">
-      {/* Hero */}
-      <section className="relative h-[60vh] min-h-[500px] bg-gray-900">
+    <div className="bg-black">
+      {/* Hero Section - Full Screen */}
+      <section className="relative flex min-h-screen items-end bg-black">
         <Image
           src={caseStudy.image}
           alt={caseStudy.title}
           fill
-          className="object-cover opacity-60"
+          className="object-cover opacity-50"
+          priority
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-near-black via-transparent to-transparent" />
 
-        <div className="container-custom relative flex h-full flex-col justify-end pb-16">
+        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent" />
+
+        <div className="container-custom relative pb-16 pt-32 text-white">
+          {/* Back Button */}
           <Link
-            href="/work"
-            className="mb-6 inline-flex items-center gap-2 text-white transition-colors hover:text-accent-cyan"
+            href="/portfolio"
+            className="mb-8 inline-flex items-center gap-2 text-sm uppercase tracking-wider text-white transition-colors hover:text-gray-300"
           >
-            <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path
                 strokeLinecap="round"
                 strokeLinejoin="round"
@@ -61,105 +88,152 @@ export default function CaseDetailPage({ params }) {
                 d="M15 19l-7-7 7-7"
               />
             </svg>
-            Back to Work
+            BACK TO WORK
           </Link>
 
-          <div className="mb-4 inline-block rounded-full bg-accent-cyan px-4 py-2 font-medium text-near-black">
+          {/* Category Tag */}
+          <div className="mb-6 inline-block border border-white/30 px-4 py-2 text-xs font-bold uppercase tracking-widest">
             {caseStudy.category}
           </div>
-          <h1 className="mb-4 text-white">{caseStudy.title}</h1>
-          <p className="text-2xl text-gray-300">{caseStudy.client}</p>
+
+          {/* Title - Extra Large */}
+          <h1 className="font-display mb-6 text-5xl font-black uppercase leading-none text-white md:text-7xl lg:text-8xl">
+            {caseStudy.title}
+          </h1>
+
+          {/* Client Name */}
+          <p className="text-2xl font-light uppercase tracking-wide text-gray-300 md:text-3xl">
+            {caseStudy.client}
+          </p>
         </div>
       </section>
 
-      {/* Overview */}
-      <section className="section-padding bg-white">
-        <div className="container-custom max-w-5xl">
-          <div className="mb-16 grid gap-8 md:grid-cols-3">
+      {/* Overview - White Section */}
+      <section className="bg-white py-20 md:py-32">
+        <div className="container-custom max-w-6xl">
+          {/* Meta Info Grid */}
+          <div className="mb-16 grid gap-12 border-b border-gray-200 pb-16 md:grid-cols-3">
             <div>
-              <h4 className="mb-2 text-sm font-bold uppercase text-gray-500">Client</h4>
-              <p className="font-display text-xl font-bold">{caseStudy.client}</p>
+              <h4 className="mb-3 text-xs font-bold uppercase tracking-widest text-gray-500">
+                CLIENT
+              </h4>
+              <p className="font-display text-2xl font-black uppercase">{caseStudy.client}</p>
             </div>
             <div>
-              <h4 className="mb-2 text-sm font-bold uppercase text-gray-500">Timeline</h4>
-              <p className="font-display text-xl font-bold">{caseStudy.timeline}</p>
+              <h4 className="mb-3 text-xs font-bold uppercase tracking-widest text-gray-500">
+                TIMELINE
+              </h4>
+              <p className="font-display text-2xl font-black uppercase">{caseStudy.timeline}</p>
             </div>
             <div>
-              <h4 className="mb-2 text-sm font-bold uppercase text-gray-500">Our Role</h4>
-              <p className="font-display text-xl font-bold">{caseStudy.role}</p>
+              <h4 className="mb-3 text-xs font-bold uppercase tracking-widest text-gray-500">
+                OUR ROLE
+              </h4>
+              <p className="font-display text-2xl font-black uppercase">{caseStudy.role}</p>
             </div>
           </div>
 
-          <div className="prose prose-lg max-w-none">
-            <p className="mb-8 text-2xl leading-relaxed text-gray-700">{caseStudy.description}</p>
+          {/* Description */}
+          <div className="max-w-4xl">
+            <p className="text-xl leading-relaxed text-gray-800 md:text-2xl">
+              {caseStudy.description}
+            </p>
           </div>
         </div>
       </section>
 
-      {/* Metrics */}
-      <section className="section-padding bg-gray-50">
-        <div className="container-custom max-w-5xl">
-          <h2 className="mb-12 text-center">Key Results</h2>
-          <div className="grid grid-cols-2 gap-8 md:grid-cols-4">
+      {/* Key Results - Black Background */}
+      <section className="bg-black py-20 text-white md:py-32">
+        <div className="container-custom max-w-6xl">
+          <h2 className="font-display mb-16 text-4xl font-black uppercase md:text-5xl lg:text-6xl">
+            KEY RESULTS
+          </h2>
+          <div className="grid grid-cols-2 gap-8 md:grid-cols-4 md:gap-12">
             {caseStudy.metrics.map((metric, index) => (
-              <div key={index} className="text-center">
-                <div className="mb-2 font-display text-5xl font-bold text-accent-cyan md:text-6xl">
+              <div key={index}>
+                <div className="font-display mb-3 text-5xl font-black text-white md:text-6xl lg:text-7xl">
                   {metric.value}
                 </div>
-                <div className="font-medium text-gray-600">{metric.label}</div>
+                <div className="text-sm uppercase tracking-wider text-gray-400">{metric.label}</div>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Challenge */}
-      <section className="section-padding bg-white">
-        <div className="container-custom max-w-4xl">
-          <h2 className="mb-8">The Challenge</h2>
-          <p className="text-xl leading-relaxed text-gray-700">{caseStudy.challenge}</p>
+      {/* The Challenge - White */}
+      <section className="bg-white py-20 md:py-32">
+        <div className="container-custom max-w-5xl">
+          <h2 className="font-display mb-12 text-4xl font-black uppercase md:text-5xl lg:text-6xl">
+            THE CHALLENGE
+          </h2>
+          <p className="text-xl leading-relaxed text-gray-800 md:text-2xl md:leading-relaxed">
+            {caseStudy.challenge}
+          </p>
         </div>
       </section>
 
-      {/* Approach */}
-      <section className="section-padding bg-gray-50">
-        <div className="container-custom max-w-4xl">
-          <h2 className="mb-8">Our Approach</h2>
-          <p className="text-xl leading-relaxed text-gray-700">{caseStudy.approach}</p>
+      {/* First Gallery Image - Full Width */}
+      <section className="relative h-[60vh] min-h-[500px] md:h-[80vh]">
+        <Image
+          src={caseStudy.gallery[0]}
+          alt={`${caseStudy.title} - Image 1`}
+          fill
+          className="object-cover"
+        />
+      </section>
+
+      {/* Our Approach - White */}
+      <section className="bg-white py-20 md:py-32">
+        <div className="container-custom max-w-5xl">
+          <h2 className="font-display mb-12 text-4xl font-black uppercase md:text-5xl lg:text-6xl">
+            OUR APPROACH
+          </h2>
+          <p className="text-xl leading-relaxed text-gray-800 md:text-2xl md:leading-relaxed">
+            {caseStudy.approach}
+          </p>
         </div>
       </section>
 
-      {/* Gallery */}
-      <section className="section-padding bg-white">
-        <div className="container-custom max-w-6xl">
-          <h2 className="mb-12 text-center">Project Gallery</h2>
-          <div className="grid gap-6 md:grid-cols-2">
-            {caseStudy.gallery.map((image, index) => (
-              <div
-                key={index}
-                className="relative aspect-[4/3] overflow-hidden rounded-2xl bg-gray-100"
-              >
-                <Image
-                  src={image}
-                  alt={`${caseStudy.title} - Image ${index + 1}`}
-                  fill
-                  className="object-cover"
-                />
-              </div>
-            ))}
+      {/* Gallery Grid - 2 Images Side by Side */}
+      {caseStudy.gallery.length > 2 && (
+        <section className="grid md:grid-cols-2">
+          <div className="relative h-[50vh] min-h-[400px] md:h-[70vh]">
+            <Image
+              src={caseStudy.gallery[1]}
+              alt={`${caseStudy.title} - Image 2`}
+              fill
+              className="object-cover"
+            />
           </div>
-        </div>
-      </section>
+          <div className="relative h-[50vh] min-h-[400px] md:h-[70vh]">
+            <Image
+              src={caseStudy.gallery[2]}
+              alt={`${caseStudy.title} - Image 3`}
+              fill
+              className="object-cover"
+            />
+          </div>
+        </section>
+      )}
 
-      {/* Results */}
-      <section className="section-padding bg-near-black text-white">
-        <div className="container-custom max-w-4xl">
-          <h2 className="mb-8">The Results</h2>
-          <p className="mb-8 text-xl leading-relaxed text-gray-300">{caseStudy.results}</p>
+      {/* The Results - Black */}
+      <section className="bg-black py-20 text-white md:py-32">
+        <div className="container-custom max-w-5xl">
+          <h2 className="font-display mb-12 text-4xl font-black uppercase md:text-5xl lg:text-6xl">
+            THE RESULTS
+          </h2>
+          <p className="mb-16 text-xl leading-relaxed text-gray-300 md:text-2xl md:leading-relaxed">
+            {caseStudy.results}
+          </p>
 
+          {/* Tags */}
           <div className="flex flex-wrap gap-3">
             {caseStudy.tags.map((tag, index) => (
-              <span key={index} className="rounded-full bg-charcoal px-4 py-2 text-sm font-medium">
+              <span
+                key={index}
+                className="border border-white/30 px-4 py-2 text-xs font-bold uppercase tracking-wider"
+              >
                 {tag}
               </span>
             ))}
@@ -167,15 +241,37 @@ export default function CaseDetailPage({ params }) {
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="section-padding bg-accent-cyan">
-        <div className="container-custom text-center">
-          <h2 className="mb-6 text-near-black">Want Similar Results?</h2>
-          <p className="mx-auto mb-8 max-w-2xl text-xl text-gray-800">
-            Let&apos;s discuss how we can help your brand achieve its goals.
+      {/* Remaining Gallery Images - Full Width Stack */}
+      {caseStudy.gallery.length > 3 && (
+        <>
+          {caseStudy.gallery.slice(3).map((image, index) => (
+            <section key={index} className="relative h-[60vh] min-h-[500px] md:h-[80vh]">
+              <Image
+                src={image}
+                alt={`${caseStudy.title} - Image ${index + 4}`}
+                fill
+                className="object-cover"
+              />
+            </section>
+          ))}
+        </>
+      )}
+
+      {/* CTA Section - Red Accent */}
+      <section className="bg-brand-teal py-20 text-white md:py-32">
+        <div className="container-custom max-w-4xl text-center">
+          <h2 className="font-display mb-8 text-4xl font-black uppercase md:text-5xl lg:text-6xl">
+            WANT SIMILAR RESULTS?
+          </h2>
+          <p className="mx-auto mb-12 max-w-2xl text-xl leading-relaxed md:text-2xl">
+            Let&apos;s discuss how we can help your brand achieve its goals and transform your
+            digital presence.
           </p>
-          <Link href="/contact" className="btn bg-near-black text-white hover:bg-charcoal">
-            Hubungi Kami
+          <Link
+            href="/kontak"
+            className="inline-flex items-center border-2 border-white bg-white px-12 py-4 font-bold uppercase tracking-wider text-black transition-all hover:bg-transparent hover:text-white"
+          >
+            MULAI PROYEK
           </Link>
         </div>
       </section>

@@ -80,8 +80,8 @@ export default function AboutPage() {
             </p>
             <p className="text-sm leading-relaxed text-gray-300">
               Cara kerja kami yang menciptakan nilai strategis dan komersial—melalui ide yang
-              berpengaruh; ide yang mengembangkan merek dan bisnis, serta membentuk dampak
-              konsumen di mana pun mereka berada.
+              berpengaruh; ide yang mengembangkan merek dan bisnis, serta membentuk dampak konsumen
+              di mana pun mereka berada.
             </p>
           </div>
 
@@ -146,7 +146,7 @@ export default function AboutPage() {
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
             {[
               {
-                name: 'ADIB WAFI',
+                name: 'M. Yaser Ali',
                 role: 'Chief Executive Officer',
                 location: 'Jakarta',
               },
@@ -250,12 +250,12 @@ export default function AboutPage() {
       </section>
 
       {/* CTA - Dark navy background */}
-      <section className="text-white section-padding bg-primary">
+      <section className="text-white section-padding bg-brand-teal">
         <div className="text-center container-custom">
           <h2 className="mb-6 font-sans text-4xl font-black tracking-tight uppercase md:text-5xl lg:text-6xl">
             Bergabunglah dengan Serasa
           </h2>
-          <p className="max-w-2xl mx-auto mb-8 text-base leading-relaxed text-gray-300">
+          <p className="max-w-2xl mx-auto mb-8 text-base leading-relaxed ">
             Anda memiliki ide untuk merek Anda, bisnis, atau dunia secara luas. Kami di sini untuk
             mendengarkan dan berkolaborasi.
           </p>
