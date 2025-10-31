@@ -51,7 +51,7 @@ SANITY_API_TOKEN=your_api_token
 NEXT_PUBLIC_GA_MEASUREMENT_ID=G-XXXXXXXXXX
 
 # Optional: Email/Contact form
-CONTACT_EMAIL=hello@serasakreatif.id
+CONTACT_EMAIL=serasakreatif.id@gmail.com
 SMTP_HOST=smtp.example.com
 SMTP_PORT=587
 SMTP_USER=your_email
@@ -255,8 +255,8 @@ import { Resend } from 'resend'
 const resend = new Resend(process.env.RESEND_API_KEY)
 
 await resend.emails.send({
-  from: 'hello@serasakreatif.id',
-  to: ['admin@serasakreatif.id'],
+  from: 'serasakreatif.id@gmail.com',
+  to: ['serasakreatif.id@gmail.com'],
   subject: `New Contact: ${name}`,
   html: `<p>${message}</p>`,
 })
@@ -358,7 +358,7 @@ Follow [Conventional Commits](https://www.conventionalcommits.org/):
 
 For issues or questions:
 
-- Email: hello@serasakreatif.id
+- Email: serasakreatif.id@gmail.com
 - WhatsApp: +62 812-8897-1453
 - Instagram: [@serasakreatif.id](https://www.instagram.com/serasakreatif.id/)
 

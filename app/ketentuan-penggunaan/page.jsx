@@ -271,10 +271,10 @@ export default function TermsOfUsePage() {
                   <p className="mb-2">
                     Email:{' '}
                     <a
-                      href="mailto:hello@serasakreatif.id"
+                      href="mailto:serasakreatif.id@gmail.com"
                       className="hover:text-brand-teal text-primary underline"
                     >
-                      hello@serasakreatif.id
+                      serasakreatif.id@gmail.com
                     </a>
                   </p>
                   <p>

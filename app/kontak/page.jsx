@@ -38,10 +38,10 @@ export default function ContactPage() {
                   <p>Indonesia 15220</p>
                 </div>
                 <a
-                  href="mailto:hello@serasakreatif.id"
+                  href="mailto:serasakreatif.id@gmail.com"
                   className="mt-4 inline-block text-sm text-white underline transition-colors hover:text-gray-400"
                 >
-                  hello@serasakreatif.id
+                  serasakreatif.id@gmail.com
                 </a>
               </div>
 

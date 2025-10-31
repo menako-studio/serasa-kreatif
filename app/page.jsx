@@ -155,7 +155,7 @@ export default function HomePage() {
                 <div className="mb-2 text-xs font-bold tracking-wider uppercase text-white/80">
                   EMAIL
                 </div>
-                <div className="text-lg text-white">hello@serasakreatif.id</div>
+                <div className="text-lg text-white">serasakreatif.id@gmail.com</div>
               </div>
               <div>
                 <div className="mb-2 text-xs font-bold tracking-wider uppercase text-white/80">

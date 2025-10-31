@@ -334,10 +334,10 @@ export default function PrivacyNoticePage() {
                   <p className="mb-2">
                     Email:{' '}
                     <a
-                      href="mailto:privacy@serasakreatif.id"
+                      href="mailto:serasakreatif.id@gmail.com"
                       className="hover:text-brand-teal text-primary underline"
                     >
-                      privacy@serasakreatif.id
+                      serasakreatif.id@gmail.com
                     </a>
                   </p>
                   <p className="mb-2">
