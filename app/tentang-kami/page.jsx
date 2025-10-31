@@ -180,9 +180,7 @@ export default function AboutPage() {
       {/* Leadership - Light section with team grid */}
       <section className="section-padding bg-gray-50">
         <div className="container-custom">
-          <h3 className="mb-12 font-sans text-2xl font-black uppercase tracking-tight">
-            Global Leadership
-          </h3>
+          <h3 className="mb-12 font-sans text-2xl font-black uppercase tracking-tight">Tim Kami</h3>
 
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
             {TEAM_MEMBERS.map((member, index) => (

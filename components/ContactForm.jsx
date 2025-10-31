@@ -69,8 +69,8 @@ export default function ContactForm() {
             required
             value={formData.name}
             onChange={handleChange}
-            className="w-full rounded-lg border border-gray-300 px-4 py-3 transition-all focus:border-transparent focus:ring-2 focus:ring-accent-cyan"
-            placeholder="Your name"
+            className="focus:ring-accent-cyan w-full rounded-lg border border-gray-300 px-4 py-3 transition-all focus:border-transparent focus:ring-2"
+            placeholder="Nama Anda"
           />
         </div>
 
@@ -84,8 +84,8 @@ export default function ContactForm() {
             name="company"
             value={formData.company}
             onChange={handleChange}
-            className="w-full rounded-lg border border-gray-300 px-4 py-3 transition-all focus:border-transparent focus:ring-2 focus:ring-accent-cyan"
-            placeholder="Your company name"
+            className="focus:ring-accent-cyan w-full rounded-lg border border-gray-300 px-4 py-3 transition-all focus:border-transparent focus:ring-2"
+            placeholder="Nama perusahaan Anda"
           />
         </div>
       </div>
@@ -102,7 +102,7 @@ export default function ContactForm() {
             required
             value={formData.email}
             onChange={handleChange}
-            className="w-full rounded-lg border border-gray-300 px-4 py-3 transition-all focus:border-transparent focus:ring-2 focus:ring-accent-cyan"
+            className="focus:ring-accent-cyan w-full rounded-lg border border-gray-300 px-4 py-3 transition-all focus:border-transparent focus:ring-2"
             placeholder="your@email.com"
           />
         </div>
@@ -118,7 +118,7 @@ export default function ContactForm() {
             required
             value={formData.phone}
             onChange={handleChange}
-            className="w-full rounded-lg border border-gray-300 px-4 py-3 transition-all focus:border-transparent focus:ring-2 focus:ring-accent-cyan"
+            className="focus:ring-accent-cyan w-full rounded-lg border border-gray-300 px-4 py-3 transition-all focus:border-transparent focus:ring-2"
             placeholder="+62 812 xxxx xxxx"
           />
         </div>
@@ -133,9 +133,9 @@ export default function ContactForm() {
           name="budget"
           value={formData.budget}
           onChange={handleChange}
-          className="w-full rounded-lg border border-gray-300 px-4 py-3 transition-all focus:border-transparent focus:ring-2 focus:ring-accent-cyan"
+          className="focus:ring-accent-cyan w-full rounded-lg border border-gray-300 px-4 py-3 transition-all focus:border-transparent focus:ring-2"
         >
-          <option value="">Select a range</option>
+          <option value="">Pilih kisaran</option>
           <option value="< 10M">Di bawah 10 Juta</option>
           <option value="10M - 25M">10 - 25 Juta</option>
           <option value="25M - 50M">25 - 50 Juta</option>
@@ -155,8 +155,8 @@ export default function ContactForm() {
           rows={6}
           value={formData.message}
           onChange={handleChange}
-          className="w-full resize-none rounded-lg border border-gray-300 px-4 py-3 transition-all focus:border-transparent focus:ring-2 focus:ring-accent-cyan"
-          placeholder="Tell us about your project, goals, and timeline..."
+          className="focus:ring-accent-cyan w-full resize-none rounded-lg border border-gray-300 px-4 py-3 transition-all focus:border-transparent focus:ring-2"
+          placeholder="Ceritakan tentang proyek, tujuan, dan timeline Anda..."
         />
       </div>
 
