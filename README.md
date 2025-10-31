@@ -135,29 +135,77 @@ serasa-kreatif/
 - Section padding: `py-16 md:py-24 lg:py-32` (`.section-padding`)
 - Container: `max-w-7xl mx-auto px-6 md:px-8 lg:px-12` (`.container-custom`)
 
-## 🧪 Testing
+## 🧪 Testing & Quality Assurance
+
+This project includes **automated testing** that runs on every commit and push to ensure code quality and prevent bugs.
+
+### Quick Commands
+
+```bash
+# Full validation (run before production deploy)
+npm run validate
+
+# Pre-deployment checks
+npm run pre-deploy
+
+# Interactive validation script
+./scripts/pre-deploy.sh
+```
 
 ### Unit Tests (Vitest)
 
 ```bash
+# Run all unit tests
+npm run test:unit
+
+# Run tests in watch mode
 npm run test
-# or
-npm run test:watch
+
+# Run with coverage
+npm run test:unit -- --coverage
 ```
 
 ### E2E Tests (Playwright)
 
 ```bash
 npm run test:e2e
-# or
-npm run test:e2e:headed  # with browser UI
 ```
 
-### Type Checking
+### Automated Testing
+
+**Pre-Commit Hooks (Husky):**
+
+- ✅ Automatically runs on `git commit`
+- ✅ Lints and formats staged files
+- ✅ Validates commit message format
+
+**CI/CD Pipeline (GitHub Actions):**
+
+- ✅ Runs on every push and pull request
+- ✅ Runs linting, tests, and builds
+- ✅ Prevents merging broken code
+
+### Documentation
+
+For detailed testing information, see:
+
+- **[TESTING.md](./TESTING.md)** - Complete testing guide
+- **[TESTING-SETUP.md](./TESTING-SETUP.md)** - Setup and usage guide
+- **[DEPLOYMENT.md](./DEPLOYMENT.md)** - Pre-deployment checklist
+
+### Commit Message Format
+
+This project uses [Conventional Commits](https://www.conventionalcommits.org/):
 
 ```bash
-npm run type-check
+# Examples
+git commit -m "feat: add team section to about page"
+git commit -m "fix: correct email address in footer"
+git commit -m "docs: update README"
+git commit -m "style: format code with prettier"
 ```
+
+**Valid types:** `feat`, `fix`, `docs`, `style`, `refactor`, `perf`, `test`, `chore`, `ci`, `build`
 
 ### Linting
 
@@ -206,11 +254,13 @@ Refer to [Next.js deployment docs](https://nextjs.org/docs/deployment) for detai
 ### Adding CMS (Sanity)
 
 1. Install Sanity CLI:
+
    ```bash
    npm install -g @sanity/cli
    ```
 
 2. Initialize Sanity Studio:
+
    ```bash
    sanity init
    ```
@@ -271,6 +321,7 @@ await resend.emails.send({
 - Static generation where possible
 
 Target Lighthouse scores:
+
 - Performance: 90+
 - Accessibility: 95+
 - Best Practices: 95+
