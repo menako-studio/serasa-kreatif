@@ -20,7 +20,7 @@ export async function POST(request) {
     console.log('Contact form submission:', { name, company, email, phone, budget, message })
 
     // Simulate email/webhook sending (replace with actual implementation)
-  // Example: await sendEmail({ to: 'serasakreatif.id@gmail.com', subject: `New Contact: ${name}`, body: message })
+    // Example: await sendEmail({ to: 'serasakreatif.id@gmail.com', subject: `New Contact: ${name}`, body: message })
     // Example: await sendToSlack(webhookUrl, { name, email, message })
 
     return NextResponse.json(

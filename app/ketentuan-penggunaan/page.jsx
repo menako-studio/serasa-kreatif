@@ -81,7 +81,7 @@ export default function TermsOfUsePage() {
                   tujuan pribadi, non-komersial Anda. Silakan lihat{' '}
                   <a
                     href="/pemberitahuan-privasi"
-                    className="hover:text-brand-teal text-primary underline"
+                    className="text-primary underline hover:text-brand-teal"
                   >
                     Pemberitahuan Privasi
                   </a>{' '}
@@ -272,7 +272,7 @@ export default function TermsOfUsePage() {
                     Email:{' '}
                     <a
                       href="mailto:serasakreatif.id@gmail.com"
-                      className="hover:text-brand-teal text-primary underline"
+                      className="text-primary underline hover:text-brand-teal"
                     >
                       serasakreatif.id@gmail.com
                     </a>
@@ -281,7 +281,7 @@ export default function TermsOfUsePage() {
                     Telepon:{' '}
                     <a
                       href="tel:+6281288971453"
-                      className="hover:text-brand-teal text-primary underline"
+                      className="text-primary underline hover:text-brand-teal"
                     >
                       +62 812-8897-1453
                     </a>

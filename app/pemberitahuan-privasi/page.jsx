@@ -335,7 +335,7 @@ export default function PrivacyNoticePage() {
                     Email:{' '}
                     <a
                       href="mailto:serasakreatif.id@gmail.com"
-                      className="hover:text-brand-teal text-primary underline"
+                      className="text-primary underline hover:text-brand-teal"
                     >
                       serasakreatif.id@gmail.com
                     </a>
@@ -344,7 +344,7 @@ export default function PrivacyNoticePage() {
                     Telepon:{' '}
                     <a
                       href="tel:+6281288971453"
-                      className="hover:text-brand-teal text-primary underline"
+                      className="text-primary underline hover:text-brand-teal"
                     >
                       +62 812-8897-1453
                     </a>

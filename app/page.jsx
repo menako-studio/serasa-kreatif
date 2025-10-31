@@ -79,9 +79,9 @@ export default function HomePage() {
       <Hero />
 
       {/* PORTOFOLIO Section */}
-      <section className="bg-white section-padding">
+      <section className="section-padding bg-white">
         <div className="container-custom">
-          <div className="flex items-center justify-between mb-12">
+          <div className="mb-12 flex items-center justify-between">
             <SectionHeading>PORTOFOLIO</SectionHeading>
           </div>
           <WorkGrid works={workShowcase} />
@@ -92,7 +92,7 @@ export default function HomePage() {
       </section>
 
       {/* APA YANG KAMI LAKUKAN Section */}
-      <section className="bg-white section-padding">
+      <section className="section-padding bg-white">
         <div className="container-custom">
           <div className="mb-12">
             <SectionHeading>APA YANG KAMI LAKUKAN</SectionHeading>
@@ -117,16 +117,16 @@ export default function HomePage() {
       <ClientLogos />
 
       {/* BERITA Section */}
-      <section className="bg-white section-padding">
+      <section className="section-padding bg-white">
         <div className="container-custom">
           <div className="mb-12">
             <SectionHeading>BERITA</SectionHeading>
           </div>
           <NewsGrid news={newsData} />
           <div className="mt-12 text-right">
-            <TextLink href="/blog" className="font-bold no-underline uppercase hover:text-accent">
+            <TextLink href="/blog" className="font-bold uppercase no-underline hover:text-accent">
               LIHAT LAINNYA
-              <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="ml-2 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path
                   strokeLinecap="round"
                   strokeLinejoin="round"
@@ -140,25 +140,25 @@ export default function HomePage() {
       </section>
 
       {/* Join Section */}
-      <section className="text-white section-padding bg-brand-teal">
+      <section className="section-padding bg-brand-teal text-white">
         <div className="container-custom">
           <div className="max-w-4xl">
             <SectionHeading className="mb-12 text-white">Gabung Serasa Kreatif</SectionHeading>
-            <div className="grid gap-8 mb-16 md:grid-cols-3">
+            <div className="mb-16 grid gap-8 md:grid-cols-3">
               <div>
-                <div className="mb-2 text-xs font-bold tracking-wider uppercase text-white/80">
+                <div className="mb-2 text-xs font-bold uppercase tracking-wider text-white/80">
                   LOKASI
                 </div>
                 <div className="text-lg text-white">Bintaro, Tangerang Selatan</div>
               </div>
               <div>
-                <div className="mb-2 text-xs font-bold tracking-wider uppercase text-white/80">
+                <div className="mb-2 text-xs font-bold uppercase tracking-wider text-white/80">
                   EMAIL
                 </div>
                 <div className="text-lg text-white">serasakreatif.id@gmail.com</div>
               </div>
               <div>
-                <div className="mb-2 text-xs font-bold tracking-wider uppercase text-white/80">
+                <div className="mb-2 text-xs font-bold uppercase tracking-wider text-white/80">
                   INSTAGRAM
                 </div>
                 <div className="text-lg text-white">@serasakreatif.id</div>
@@ -166,7 +166,7 @@ export default function HomePage() {
             </div>
             <PrimaryButton
               href="/kontak"
-              className="text-black bg-white border-white hover:bg-accent hover:text-white"
+              className="border-white bg-white text-black hover:bg-accent hover:text-white"
             >
               MULAI PROYEK
             </PrimaryButton>
@@ -201,7 +201,7 @@ function NewsGrid({ news }) {
 
 function AccordionGrid({ items, openIndex, onToggle, previewImages }) {
   return (
-    <div className="border-t border-gray-200 divide-y divide-gray-200">
+    <div className="divide-y divide-gray-200 border-t border-gray-200">
       {items.map((service, i) => (
         <ServiceAccordionItem
           key={i}
