@@ -17,7 +17,7 @@ export async function POST(request) {
     // 4. Send auto-reply email
 
     // For now, just log the submission
-    console.log('Contact form submission:', { name, company, email, phone, budget, message })
+    console.info('Contact form submission:', { name, company, email, phone, budget, message })
 
     // Simulate email/webhook sending (replace with actual implementation)
     // Example: await sendEmail({ to: 'serasakreatif.id@gmail.com', subject: `New Contact: ${name}`, body: message })
