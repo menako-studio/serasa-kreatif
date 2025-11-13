@@ -7,9 +7,9 @@ import Image from 'next/image'
 
 const navLinks = [
   { name: 'Portfolio', href: '/portfolio' },
-  { name: 'Layanan', href: '/layanan' },
+  { name: 'Services', href: '/services' },
   { name: 'Blog', href: '/blog' },
-  { name: 'Tentang', href: '/tentang-kami' },
+  { name: 'About', href: '/about' },
 ]
 
 export default function NavBar() {
@@ -34,7 +34,7 @@ export default function NavBar() {
   }, [])
 
   // Pages that always use white navbar
-  const forceWhiteNav = ['/kontak', '/tentang-kami', '/blog', '/portfolio']
+  const forceWhiteNav = ['/contact', '/about', '/blog', '/portfolio']
   const isWhiteNav = forceWhiteNav.some((slug) => pathname.startsWith(slug))
   const isDarkNav = !isWhiteNav && !isScrolled
 
@@ -46,10 +46,10 @@ export default function NavBar() {
           : 'bg-primary py-6 backdrop-blur-sm'
       }`}
     >
-      <div className="flex items-center justify-between container-custom">
+      <div className="container-custom flex items-center justify-between">
         {/* Logo */}
         <Link href="/" className="flex items-center space-x-2">
-          <div className="relative w-40 h-10 md:h-12 md:w-52">
+          <div className="relative h-12 w-44 transition-all duration-300 md:h-16 md:w-64">
             <Image
               src={
                 isDarkNav
@@ -60,11 +60,12 @@ export default function NavBar() {
               fill={true}
               quality={100}
               style={{ objectFit: 'contain' }}
+              priority
             />
           </div>
         </Link>
         {/* Desktop Navigation */}
-        <div className="items-center hidden space-x-8 lg:flex">
+        <div className="hidden items-center space-x-8 lg:flex">
           {navLinks.map((link) => (
             <Link
               key={link.href}
@@ -83,14 +84,14 @@ export default function NavBar() {
             </Link>
           ))}
           <Link
-            href="/kontak"
+            href="/contact"
             className={`ml-4 rounded border-2 px-6 py-2 text-sm font-bold uppercase transition-colors ${
               isDarkNav
                 ? 'border-white bg-white text-black hover:border-brand-teal hover:bg-brand-teal hover:text-white'
                 : 'border-black bg-black text-white hover:border-brand-teal hover:bg-brand-teal'
             }`}
           >
-            Hubungi Kami
+            Contact Us
           </Link>
         </div>
         {/* Mobile Menu Button */}
@@ -99,7 +100,7 @@ export default function NavBar() {
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           aria-label="Toggle mobile menu"
         >
-          <div className="flex flex-col justify-between w-6 h-5">
+          <div className="flex h-5 w-6 flex-col justify-between">
             <span
               className={`h-0.5 w-full transition-all ${isDarkNav ? 'bg-white' : 'bg-black'} ${isMobileMenuOpen ? 'translate-y-2 rotate-45' : ''}`}
             />
@@ -117,7 +118,7 @@ export default function NavBar() {
         <div
           className={`mt-4 animate-fade-in border-t border-gray-200 py-6 lg:hidden ${isDarkNav ? 'bg-primary' : 'bg-white'}`}
         >
-          <div className="flex flex-col space-y-4 container-custom">
+          <div className="container-custom flex flex-col space-y-4">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
@@ -137,7 +138,7 @@ export default function NavBar() {
               </Link>
             ))}
             <Link
-              href="/kontak"
+              href="/contact"
               className={`px-6 py-3 text-center font-bold uppercase transition-colors ${
                 isDarkNav
                   ? 'bg-white text-black hover:bg-red-600 hover:text-white'
@@ -145,7 +146,7 @@ export default function NavBar() {
               }`}
               onClick={() => setIsMobileMenuOpen(false)}
             >
-              Kontak
+              Contact
             </Link>
           </div>
         </div>

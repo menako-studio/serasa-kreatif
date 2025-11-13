@@ -33,13 +33,13 @@ export default function sitemap() {
       priority: 0.7,
     },
     {
-      url: `${baseUrl}/layanan`,
+      url: `${baseUrl}/services`,
       lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 0.8,
     },
     {
-      url: `${baseUrl}/tentang-kami`,
+      url: `${baseUrl}/about`,
       lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 0.7,
@@ -51,19 +51,19 @@ export default function sitemap() {
       priority: 0.8,
     },
     {
-      url: `${baseUrl}/kontak`,
+      url: `${baseUrl}/contact`,
       lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 0.8,
     },
     {
-      url: `${baseUrl}/ketentuan-penggunaan`,
+      url: `${baseUrl}/terms-of-use`,
       lastModified: new Date(),
       changeFrequency: 'yearly',
       priority: 0.3,
     },
     {
-      url: `${baseUrl}/pemberitahuan-privasi`,
+      url: `${baseUrl}/privacy-policy`,
       lastModified: new Date(),
       changeFrequency: 'yearly',
       priority: 0.3,

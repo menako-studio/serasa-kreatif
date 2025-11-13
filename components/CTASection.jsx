@@ -1,10 +1,10 @@
 import Link from 'next/link'
 
 export default function CTASection({
-  title = 'Mari Ciptakan Sesuatu yang Menakjubkan Bersama',
-  description = 'Siap mentransformasi merek Anda? Hubungi kami dan mari diskusikan bagaimana kami dapat membantu bisnis Anda menonjol.',
-  primaryCTA = { text: 'Mulai Proyek', href: '/contact' },
-  secondaryCTA = { text: 'Lihat Portofolio', href: '/work' },
+  title = "Let's Create Something Amazing Together",
+  description = "Ready to transform your brand? Contact us and let's discuss how we can help your business stand out.",
+  primaryCTA = { text: 'Start Project', href: '/contact' },
+  secondaryCTA = { text: 'View Portfolio', href: '/work' },
   background = 'primary',
 }) {
   const bgClasses = {
@@ -33,7 +33,7 @@ export default function CTASection({
               href={primaryCTA.href}
               className={`btn ${
                 background === 'accent'
-                  ? 'bg-near-black text-white hover:bg-charcoal'
+                  ? 'bg-near-black hover:bg-charcoal text-white'
                   : 'bg-accent-cyan text-near-black hover:bg-opacity-90'
               } hover:scale-105`}
             >
@@ -44,7 +44,7 @@ export default function CTASection({
                 href={secondaryCTA.href}
                 className={`btn ${
                   background === 'accent'
-                    ? 'border-2 border-near-black text-near-black hover:bg-near-black hover:text-white'
+                    ? 'border-near-black text-near-black hover:bg-near-black border-2 hover:text-white'
                     : 'border-2 border-white text-white hover:bg-white hover:text-primary'
                 }`}
               >

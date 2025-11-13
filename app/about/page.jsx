@@ -1,9 +1,9 @@
 import Image from 'next/image'
 
 export const metadata = {
-  title: 'Tentang Kami',
+  title: 'About Us',
   description:
-    'Pelajari lebih lanjut tentang Serasa Kreatif, agensi branding digital dan manajemen media sosial berbasis di Bintaro, Jakarta.',
+    'Learn more about Serasa Kreatif, a digital branding agency and social media management based in Bintaro, Jakarta.',
 }
 
 const TEAM_MEMBERS = [
@@ -48,25 +48,29 @@ const TEAM_MEMBERS = [
 const WORK_PROCESS = [
   {
     number: '1',
-    title: 'WE REFRAME',
-    description:
-      'Kami mengubah cara kita melihat dunia dan menemukan peluang baru. Dipimpin oleh kepala strategi.',
+    title: 'We Discover',
+    description: 'We discover new insights and opportunities through strategic perspectives.',
   },
   {
     number: '2',
-    title: 'WE EXPERIMENT',
-    description: 'Kami mengadaptasi teknologi dan strategi untuk merek Anda dengan ide baru.',
+    title: 'We Explore	',
+    description: 'We explore ideas and concepts to find what works best for your brand.',
   },
   {
     number: '3',
-    title: 'WE THINK COMMERCIALLY',
-    description: 'Kami fokus pada tujuan dan kemampuan untuk nilai komersial yang bertahan lama.',
+    title: 'We Focus',
+    description: 'We strategize with clear goals to drive meaningful commercial impact.',
   },
   {
     number: '4',
-    title: 'WE CRAFT',
+    title: 'We Create',
+    description: 'We create with precision and purpose to build brands that stand out.',
+  },
+  {
+    number: '5',
+    title: 'We Reflect',
     description:
-      'Kami tidak hanya bicara desain; kami menciptakan dan membangun dengan standar tinggi.',
+      'We optimize and report monthly, refining each strategy through performance insights and client feedback.',
   },
 ]
 
@@ -76,32 +80,18 @@ export default function AboutPage() {
       {/* Hero - R/GA style geometric visual */}
       <section className="section-padding bg-white pt-32">
         <div className="container-custom">
-          {/* Geometric Visual Grid */}
-          <div className="mb-16 grid grid-cols-2 gap-2 md:grid-cols-4 md:gap-3">
-            <div className="aspect-square bg-black"></div>
-            <div className="aspect-square bg-white"></div>
-            <div className="aspect-square bg-black"></div>
-            <div className="aspect-square bg-white"></div>
-            <div className="aspect-square bg-white"></div>
-            <div className="aspect-square bg-black">
-              <div className="flex h-full items-center justify-center">
-                <div className="h-1/3 w-1/3 bg-accent"></div>
-              </div>
-            </div>
-            <div className="aspect-square bg-white"></div>
-            <div className="aspect-square bg-black"></div>
-          </div>
+          <h1 className="mb-16 font-sans text-4xl font-black uppercase tracking-tight md:text-5xl lg:text-6xl">
+            ABOUT US
+          </h1>
 
           {/* Statement */}
           <div className="max-w-3xl">
             <p className="mb-8 text-lg leading-relaxed text-gray-900 md:text-xl">
-              Serasa Kreatif adalah agensi untuk transformasi merek.
+              Scale faster. Stand out stronger. With Serasa Kreatif.
             </p>
             <p className="text-lg leading-relaxed text-gray-900 md:text-xl">
-              Ketika teknologi mengubah dunia, kami merangkulnya dan berkembang.
-            </p>
-            <p className="text-lg leading-relaxed text-gray-900 md:text-xl">
-              Kami membantu merek menyesuaikan diri dan menonjol di era digital.
+              We believe every brand has a story worth telling. Through creativity and strategy, we
+              help brands thrive in the digital era, stand out, and drive real business results.
             </p>
           </div>
         </div>
@@ -113,17 +103,10 @@ export default function AboutPage() {
           <div className="grid gap-12 lg:grid-cols-2">
             <div>
               <p className="text-sm leading-relaxed text-gray-700">
-                Nilai-nilai kami menggerakkan dan membentuk karakter dari tim Serasa Kreatif. Kami
-                adalah orang-orang yang penasaran, berani, dan berkomitmen untuk menjalankan bisnis
-                secara bertanggung jawab.
-              </p>
-            </div>
-            <div>
-              <p className="text-sm leading-relaxed text-gray-700">
-                Penawaran desain dan keahlian kami bekerja bersama di berbagai disiplin, praktik,
-                dan sektor. Ini memungkinkan kami untuk merancang dan memberikan sistem operasi
-                merek yang kohesif yang memanfaatkan potensi teknologi kunci, platform, dan budaya
-                untuk memberikan nilai lebih kepada bisnis, orang, dan planet.
+                Our commitment is reflected in years of experience collaborating with diverse
+                companies across various industries: enhancing brand identity, elevating digital
+                presence, driving growth, and bringing businesses closer to their ultimate goals.
+                Your growth journey starts with Serasa Kreatif.
               </p>
             </div>
           </div>
@@ -134,20 +117,13 @@ export default function AboutPage() {
       <section className="section-padding bg-primary text-white">
         <div className="container-custom">
           <h2 className="mb-16 font-sans text-3xl font-black uppercase tracking-tight md:text-4xl lg:text-5xl">
-            CARA KAMI BEKERJA
+            Our Framework
           </h2>
 
           <div className="mb-12 max-w-3xl">
             <p className="mb-6 text-sm leading-relaxed text-gray-300">
-              Serasa Kreatif adalah budaya kolaborasi yang mengintegrasikan kemampuan strategis,
-              kreatif, dan teknis untuk memberikan pertumbuhan dengan tujuan. Kami percaya bahwa
-              yang terbaik dari perspektif yang berbeda mengalahkan perspektif terbaik dari yang
-              terbaik.
-            </p>
-            <p className="text-sm leading-relaxed text-gray-300">
-              Cara kerja kami yang menciptakan nilai strategis dan komersial—melalui ide yang
-              berpengaruh; ide yang mengembangkan merek dan bisnis, serta membentuk dampak konsumen
-              di mana pun mereka berada.
+              We integrate strategic thinking, creative excellence, and technical expertise to
+              consistently deliver impactful results for brands.
             </p>
           </div>
 
@@ -180,7 +156,7 @@ export default function AboutPage() {
       {/* Leadership - Light section with team grid */}
       <section className="section-padding bg-gray-50">
         <div className="container-custom">
-          <h3 className="mb-12 font-sans text-2xl font-black uppercase tracking-tight">Tim Kami</h3>
+          <h3 className="mb-12 font-sans text-2xl font-black uppercase tracking-tight">Our Team</h3>
 
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
             {TEAM_MEMBERS.map((member, index) => (
@@ -212,23 +188,23 @@ export default function AboutPage() {
           <div className="grid items-start gap-12 lg:grid-cols-2">
             <div>
               <h2 className="mb-6 font-sans text-3xl font-black uppercase tracking-tight md:text-4xl">
-                LOKASI KAMI
+                OUR LOCATION
               </h2>
               <p className="mb-8 text-base leading-relaxed text-gray-700">
-                Berbasis di Bintaro, Tangerang Selatan, kami melayani klien di Jakarta dan seluruh
-                Jabodetabek. Kehadiran lokal membantu kami memahami pasar dan menyampaikan solusi
-                yang sesuai dengan audiens Anda.
+                Based in Bintaro, South Tangerang, we serve clients in Jakarta and throughout
+                Jabodetabek. Our local presence helps us understand the market and deliver solutions
+                that resonate with your audience.
               </p>
               <div className="space-y-4 border-t border-gray-200 pt-6">
                 <div>
                   <div className="mb-1 text-xs font-medium uppercase tracking-wider text-gray-500">
-                    Alamat
+                    Address
                   </div>
-                  <p className="text-sm text-gray-900">Bintaro, Tangerang Selatan, Indonesia</p>
+                  <p className="text-sm text-gray-900">Bintaro, South Tangerang, Indonesia</p>
                 </div>
                 <div>
                   <div className="mb-1 text-xs font-medium uppercase tracking-wider text-gray-500">
-                    Telepon
+                    Phone
                   </div>
                   <a
                     href="tel:+6281288971453"
@@ -276,17 +252,13 @@ export default function AboutPage() {
       <section className="section-padding bg-brand-teal text-white">
         <div className="container-custom text-center">
           <h2 className="mb-6 font-sans text-4xl font-black uppercase tracking-tight md:text-5xl lg:text-6xl">
-            Bergabunglah dengan Serasa
+            Ready to grow? Let&apos;s make it happen with Serasa
           </h2>
-          <p className="mx-auto mb-8 max-w-2xl text-base leading-relaxed ">
-            Anda memiliki ide untuk merek Anda, bisnis, atau dunia secara luas. Kami di sini untuk
-            mendengarkan dan berkolaborasi.
-          </p>
           <a
-            href="/kontak"
+            href="/contact"
             className="inline-flex items-center border-2 border-white px-8 py-4 font-bold uppercase text-white transition-all duration-300 hover:bg-white hover:text-primary"
           >
-            Mulai Proyek
+            Start Project
           </a>
         </div>
       </section>

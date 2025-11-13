@@ -2,8 +2,8 @@ import Link from 'next/link'
 
 const footerLinks = {
   legal: [
-    { name: 'Ketentuan Penggunaan', href: '/ketentuan-penggunaan' },
-    { name: 'Pemberitahuan Privasi', href: '/pemberitahuan-privasi' },
+    { name: 'Terms of Use', href: '/terms-of-use' },
+    { name: 'Privacy Notice', href: '/privacy-policy' },
   ],
 }
 
@@ -14,7 +14,7 @@ export default function Footer() {
         <div className="mb-12 grid grid-cols-2 gap-8 md:grid-cols-3">
           {/* Contact Info */}
           <div>
-            <div className="mb-4 text-sm uppercase tracking-wider text-gray-200">KONTAK</div>
+            <div className="mb-4 text-sm uppercase tracking-wider text-gray-200">CONTACT</div>
             <div className="space-y-2 text-sm">
               <p className="text-white">Bintaro, Tangerang Selatan</p>
               <p className="text-white">+62 812-8897-1453</p>
@@ -55,13 +55,13 @@ export default function Footer() {
 
           {/* Open Roles */}
           <div>
-            <div className="mb-4 text-sm uppercase tracking-wider text-gray-200">KARIR</div>
+            <div className="mb-4 text-sm uppercase tracking-wider text-gray-200">CAREER</div>
             <div className="space-y-2 text-sm">
               <Link
-                href="/careers"
+                href="https://glints.com/id/companies/serasa-kreatif/18ff2d09-7fe6-4088-b3a8-dfd1ecabf2f3"
                 className="block text-white transition-colors hover:text-accent"
               >
-                Bergabung dengan Kami
+                Join Our Team
               </Link>
             </div>
           </div>

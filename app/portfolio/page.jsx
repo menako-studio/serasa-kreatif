@@ -2,65 +2,65 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 export const metadata = {
-  title: 'Portofolio Kami',
+  title: 'Our Portfolio',
   description:
-    'Jelajahi portofolio kampanye branding dan media sosial UMKM yang sukses. Lihat bagaimana Serasa Kreatif membantu merek lokal tumbuh dan menarik pelanggan.',
+    'Explore our portfolio of successful SME branding and social media campaigns. See how Serasa Kreatif helps local brands grow and attract customers.',
 }
 
-// Data karya unggulan dengan gambar Unsplash
+// Featured work data with Unsplash images
 const featuredWork = [
   {
     slug: 'japo-fashion-brand',
     title: 'JAPO',
-    subtitle: 'Identitas merek untuk brand fashion lokal',
+    subtitle: 'Brand identity for local fashion brand',
     image: 'https://images.unsplash.com/photo-1558769132-cb1aea1c4571?w=1200&q=80',
-    category: 'DESAIN BRAND',
+    category: 'BRAND DESIGN',
   },
   {
     slug: 'pregnansia-spa-social',
     title: 'PREGNASIA SPA',
-    subtitle: 'Strategi media sosial untuk bisnis wellness',
+    subtitle: 'Social media strategy for wellness business',
     image: 'https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=1200&q=80',
-    category: 'MANAJEMEN MEDIA SOSIAL',
+    category: 'SOCIAL MEDIA MANAGEMENT',
   },
   {
     slug: 'fnb-restaurant',
-    title: 'F&B LOKAL',
-    subtitle: 'Pembaruan brand untuk restoran UMKM',
+    title: 'LOCAL F&B',
+    subtitle: 'Brand refresh for SME restaurant',
     image: 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1200&q=80',
-    category: 'REFRESH BRAND',
+    category: 'BRAND REFRESH',
   },
   {
     slug: 'tech-startup',
-    title: 'TEKNOLOGI UMKM',
-    subtitle: 'Kampanye digital untuk startup teknologi',
+    title: 'SME TECHNOLOGY',
+    subtitle: 'Digital campaign for tech startup',
     image: 'https://images.unsplash.com/photo-1551650975-87deedd944c3?w=1200&q=80',
-    category: 'KAMPANYE DIGITAL',
+    category: 'DIGITAL CAMPAIGN',
   },
 ]
 
 const filterOptions = {
-  regions: ['SEMUA WILAYAH', 'JABODETABEK', 'JAWA BARAT', 'JAWA TENGAH'],
+  regions: ['ALL REGIONS', 'JABODETABEK', 'WEST JAVA', 'CENTRAL JAVA'],
   services: [
-    'SEMUA LAYANAN',
-    'DESAIN BRAND',
-    'MANAJEMEN MEDIA SOSIAL',
-    'KAMPANYE DIGITAL',
-    'KONTEN KREATIF',
+    'ALL SERVICES',
+    'BRAND DESIGN',
+    'SOCIAL MEDIA MANAGEMENT',
+    'DIGITAL CAMPAIGN',
+    'CREATIVE CONTENT',
   ],
-  industries: ['SEMUA INDUSTRI', 'FASHION', 'F&B', 'WELLNESS', 'TEKNOLOGI'],
+  industries: ['ALL INDUSTRIES', 'FASHION', 'F&B', 'WELLNESS', 'TECHNOLOGY'],
 }
 
 function FilterSelect({ options }) {
   return (
     <div className="relative">
-      <select className="w-full px-4 py-3 text-sm tracking-wider text-white uppercase transition-colors bg-black border border-gray-700 appearance-none cursor-pointer hover:border-gray-500">
+      <select className="w-full cursor-pointer appearance-none border border-gray-700 bg-black px-4 py-3 text-sm uppercase tracking-wider text-white transition-colors hover:border-gray-500">
         {options.map((opt) => (
           <option key={opt}>{opt}</option>
         ))}
       </select>
-      <div className="absolute -translate-y-1/2 pointer-events-none right-4 top-1/2">
-        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <div className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2">
+        <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
         </svg>
       </div>
@@ -84,12 +84,12 @@ function FeaturedWorkGrid({ works }) {
             className="object-cover transition-transform duration-700 group-hover:scale-105"
             sizes="(max-width: 768px) 100vw, 50vw"
           />
-          <div className="absolute inset-0 transition-colors bg-black/30 group-hover:bg-black/10" />
+          <div className="absolute inset-0 bg-black/30 transition-colors group-hover:bg-black/10" />
           <div className="absolute bottom-0 left-0 right-0 p-8 md:p-12">
-            <div className="mb-2 text-xs tracking-widest text-gray-300 uppercase">
+            <div className="mb-2 text-xs uppercase tracking-widest text-gray-300">
               {work.category}
             </div>
-            <h3 className="mb-2 text-3xl font-black text-white uppercase font-display md:text-4xl lg:text-5xl">
+            <h3 className="font-display mb-2 text-3xl font-black uppercase text-white md:text-4xl lg:text-5xl">
               {work.title}
             </h3>
             <p className="text-sm text-gray-200 md:text-base">{work.subtitle}</p>
@@ -104,44 +104,44 @@ export default function WorkPage() {
   return (
     <div className="min-h-screen text-white">
       {/* Hero Section */}
-      <section className="pt-32 pb-20 bg-black">
+      <section className="bg-black pb-20 pt-32">
         <div className="container-custom">
-          <h1 className="mb-16 font-black text-white uppercase font-display">PORTOFOLIO</h1>
+          <h1 className="font-display mb-16 font-black uppercase text-white">PORTFOLIO</h1>
 
           {/* Filter */}
-          <div className="grid max-w-2xl grid-cols-1 gap-4 mb-12 md:grid-cols-3">
+          <div className="mb-12 grid max-w-2xl grid-cols-1 gap-4 md:grid-cols-3">
             <FilterSelect options={filterOptions.regions} />
             <FilterSelect options={filterOptions.services} />
             <FilterSelect options={filterOptions.industries} />
           </div>
 
-          {/* Deskripsi */}
+          {/* Description */}
           <div className="max-w-xl">
             <p className="text-lg leading-relaxed text-gray-300">
-              Lihat karya terbaik kami dari berbagai layanan, wilayah, dan klien UMKM.{' '}
-              <Link href="/kontak" className="underline transition-colors hover:text-white">
-                Hubungi
+              See our best work from various services, regions, and SME clients.{' '}
+              <Link href="/contact" className="underline transition-colors hover:text-white">
+                Contact
               </Link>{' '}
-              tim Serasa Kreatif untuk konsultasi gratis.
+              Serasa Kreatif team for a free consultation.
             </p>
           </div>
         </div>
       </section>
 
       {/* Featured Work Section */}
-      <section className="py-12 bg-black">
+      <section className="bg-black py-12">
         <div className="container-custom">
-          <h2 className="mb-12 text-2xl font-bold uppercase font-display">KARYA UNGGULAN</h2>
+          <h2 className="font-display mb-12 text-2xl font-bold uppercase">FEATURED WORK</h2>
 
           {/* Grid - 2 columns */}
           <FeaturedWorkGrid works={featuredWork} />
 
-          {/* Tombol Lihat Lebih Banyak */}
+          {/* Load More Button */}
           <div className="mt-16 text-center">
-            <button className="inline-flex items-center gap-2 text-white transition-colors group hover:text-gray-300">
-              <span className="text-sm tracking-wider uppercase">Lihat Lebih Banyak</span>
+            <button className="group inline-flex items-center gap-2 text-white transition-colors hover:text-gray-300">
+              <span className="text-sm uppercase tracking-wider">Load More</span>
               <svg
-                className="w-5 h-5 transition-transform transform group-hover:translate-y-1"
+                className="h-5 w-5 transform transition-transform group-hover:translate-y-1"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -159,7 +159,7 @@ export default function WorkPage() {
       </section>
 
       {/* Bottom CTA Section */}
-      <section className="bg-black border-t border-gray-900 section-padding">
+      <section className="section-padding border-t border-gray-900 bg-black">
         <div className="container-custom">
           <div className="max-w-2xl">
             <p className="mb-8 text-xl leading-relaxed text-gray-300 md:text-2xl">

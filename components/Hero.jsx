@@ -1,7 +1,7 @@
 'use client'
 import { motion } from 'framer-motion'
 import Image from 'next/image'
-import { hero } from '@/lib/copy-id'
+import { hero } from '@/lib/copy-en'
 
 export default function Hero() {
   return (

@@ -60,7 +60,7 @@ export default function ContactForm() {
       <div className="grid gap-6 md:grid-cols-2">
         <div>
           <label htmlFor="name" className="mb-2 block text-sm font-medium text-gray-700">
-            Nama Lengkap *
+            Full Name *
           </label>
           <input
             type="text"
@@ -70,13 +70,13 @@ export default function ContactForm() {
             value={formData.name}
             onChange={handleChange}
             className="focus:ring-accent-cyan w-full rounded-lg border border-gray-300 px-4 py-3 transition-all focus:border-transparent focus:ring-2"
-            placeholder="Nama Anda"
+            placeholder="Your Name"
           />
         </div>
 
         <div>
           <label htmlFor="company" className="mb-2 block text-sm font-medium text-gray-700">
-            Perusahaan
+            Company
           </label>
           <input
             type="text"
@@ -85,7 +85,7 @@ export default function ContactForm() {
             value={formData.company}
             onChange={handleChange}
             className="focus:ring-accent-cyan w-full rounded-lg border border-gray-300 px-4 py-3 transition-all focus:border-transparent focus:ring-2"
-            placeholder="Nama perusahaan Anda"
+            placeholder="Your company name"
           />
         </div>
       </div>
@@ -109,7 +109,7 @@ export default function ContactForm() {
 
         <div>
           <label htmlFor="phone" className="mb-2 block text-sm font-medium text-gray-700">
-            Nomor Telepon *
+            Phone Number *
           </label>
           <input
             type="tel"
@@ -126,7 +126,7 @@ export default function ContactForm() {
 
       <div>
         <label htmlFor="budget" className="mb-2 block text-sm font-medium text-gray-700">
-          Kisaran Anggaran (opsional)
+          Budget Range (optional)
         </label>
         <select
           id="budget"
@@ -135,18 +135,18 @@ export default function ContactForm() {
           onChange={handleChange}
           className="focus:ring-accent-cyan w-full rounded-lg border border-gray-300 px-4 py-3 transition-all focus:border-transparent focus:ring-2"
         >
-          <option value="">Pilih kisaran</option>
-          <option value="< 10M">Di bawah 10 Juta</option>
-          <option value="10M - 25M">10 - 25 Juta</option>
-          <option value="25M - 50M">25 - 50 Juta</option>
-          <option value="50M - 100M">50 - 100 Juta</option>
-          <option value="> 100M">Di atas 100 Juta</option>
+          <option value="">Select range</option>
+          <option value="< 10M">Under 10 Million</option>
+          <option value="10M - 25M">10 - 25 Million</option>
+          <option value="25M - 50M">25 - 50 Million</option>
+          <option value="50M - 100M">50 - 100 Million</option>
+          <option value="> 100M">Over 100 Million</option>
         </select>
       </div>
 
       <div>
         <label htmlFor="message" className="mb-2 block text-sm font-medium text-gray-700">
-          Ringkasan Proyek *
+          Project Summary *
         </label>
         <textarea
           id="message"
@@ -156,19 +156,19 @@ export default function ContactForm() {
           value={formData.message}
           onChange={handleChange}
           className="focus:ring-accent-cyan w-full resize-none rounded-lg border border-gray-300 px-4 py-3 transition-all focus:border-transparent focus:ring-2"
-          placeholder="Ceritakan tentang proyek, tujuan, dan timeline Anda..."
+          placeholder="Tell us about your project, goals, and timeline..."
         />
       </div>
 
       {submitStatus === 'success' && (
         <div className="rounded-lg border border-green-200 bg-green-50 px-4 py-3 text-green-800">
-          Terima kasih! Kami akan menghubungi Anda dalam 24 jam.
+          Thank you! We will contact you within 24 hours.
         </div>
       )}
 
       {submitStatus === 'error' && (
         <div className="rounded-lg border border-red-200 bg-red-50 px-4 py-3 text-red-800">
-          Terjadi kesalahan. Silakan coba lagi atau hubungi kami melalui WhatsApp.
+          An error occurred. Please try again or contact us via WhatsApp.
         </div>
       )}
 
@@ -177,11 +177,11 @@ export default function ContactForm() {
         disabled={isSubmitting}
         className="btn-primary w-full disabled:cursor-not-allowed disabled:opacity-50"
       >
-        {isSubmitting ? 'Mengirim...' : 'Kirim Pesan'}
+        {isSubmitting ? 'Sending...' : 'Send Message'}
       </button>
 
       <p className="text-center text-sm text-gray-500">
-        Dengan mengirimkan formulir ini, Anda menyetujui kebijakan privasi kami.
+        By submitting this form, you agree to our privacy policy.
       </p>
     </form>
   )

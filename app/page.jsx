@@ -9,60 +9,60 @@ import NewsCard from '@/components/NewsCard'
 import ServiceAccordionItem from '@/components/ServiceAccordionItem'
 import PrimaryButton from '@/components/PrimaryButton'
 import TextLink from '@/components/TextLink'
-import { services } from '@/lib/copy-id'
+import { services } from '@/lib/copy-en'
 
 // Work showcase data with Unsplash images
 const workShowcase = [
   {
     slug: 'japo-brand-identity',
     title: 'JAPO',
-    category: 'Branding & Media Sosial',
+    category: 'Branding & Social Media',
     image: 'https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=800&q=80',
-    description: 'Identitas merek modern untuk brand fashion lokal',
+    description: 'Modern brand identity for local fashion brand',
   },
   {
     slug: 'pregnasia-spa-social',
     title: 'PREGNASIA SPA',
-    category: 'Manajemen Media Sosial',
+    category: 'Social Media Management',
     image: 'https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=800&q=80',
-    description: 'Strategi konten wellness & spa',
+    description: 'Wellness & spa content strategy',
   },
   {
     slug: 'local-brand-refresh',
     title: 'ANDROID',
-    category: 'Kampanye Digital',
+    category: 'Digital Campaign',
     image: 'https://images.unsplash.com/photo-1551650975-87deedd944c3?w=800&q=80',
-    description: 'Kampanye digital untuk tech brand',
+    description: 'Digital campaign for tech brand',
   },
   {
     slug: 'fnb-campaign',
     title: 'F&B BRAND',
-    category: 'Refresh Merek',
+    category: 'Brand Refresh',
     image: 'https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=800&q=80',
-    description: 'Pembaruan identitas kuliner modern',
+    description: 'Modern culinary identity refresh',
   },
 ]
 
 // News data
 const newsData = [
   {
-    category: 'WAWASAN',
-    title: 'Tren Branding UMKM 2025',
+    category: 'INSIGHTS',
+    title: 'SME Branding Trends 2025',
     image: 'https://images.unsplash.com/photo-1557804506-669a67965ba0?w=400&q=80',
   },
   {
-    category: 'PROYEK',
-    title: 'Kampanye Digital yang Sukses',
+    category: 'PROJECT',
+    title: 'Successful Digital Campaign',
     image: 'https://images.unsplash.com/photo-1553877522-43269d4ea984?w=400&q=80',
   },
   {
-    category: 'BUDAYA',
-    title: 'Di Balik Aktivitas Serasa',
+    category: 'CULTURE',
+    title: 'Behind Serasa Activities',
     image: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=400&q=80',
   },
   {
-    category: 'PENGUMUMAN',
-    title: 'Kolaborasi Baru 2025',
+    category: 'ANNOUNCEMENT',
+    title: 'New Collaboration 2025',
     image: 'https://images.unsplash.com/photo-1556761175-b413da4baf72?w=400&q=80',
   },
 ]
@@ -78,28 +78,28 @@ export default function HomePage() {
     <>
       <Hero />
 
-      {/* PORTOFOLIO Section */}
+      {/* PORTFOLIO Section */}
       <section className="section-padding bg-white">
         <div className="container-custom">
           <div className="mb-12 flex items-center justify-between">
-            <SectionHeading>PORTOFOLIO</SectionHeading>
+            <SectionHeading>PORTFOLIO</SectionHeading>
           </div>
           <WorkGrid works={workShowcase} />
           <div className="mt-8 text-right">
-            <PrimaryButton href="/portfolio">LIHAT SEMUA KARYA</PrimaryButton>
+            <PrimaryButton href="/portfolio">VIEW ALL WORK</PrimaryButton>
           </div>
         </div>
       </section>
 
-      {/* APA YANG KAMI LAKUKAN Section */}
+      {/* WHAT WE DO Section */}
       <section className="section-padding bg-white">
         <div className="container-custom">
           <div className="mb-12">
-            <SectionHeading>APA YANG KAMI LAKUKAN</SectionHeading>
+            <SectionHeading>WHAT WE DO</SectionHeading>
             <SectionDescription className="text-gray-900">
               {services.sectionIntro || services.sectionSubhead}
             </SectionDescription>
-            <p className="mt-4 text-sm text-gray-900">Lihat bagaimana kami dapat membantu.</p>
+            <p className="mt-4 text-sm text-gray-900">See how we can help.</p>
           </div>
           <AccordionGrid
             items={services.items}
@@ -108,7 +108,7 @@ export default function HomePage() {
             previewImages={workShowcase.map((w) => w.image)}
           />
           <div className="mt-8">
-            <TextLink href="/kontak">{services.ctaLearnMore}</TextLink>
+            <TextLink href="/contact">{services.ctaLearnMore}</TextLink>
           </div>
         </div>
       </section>
@@ -116,16 +116,16 @@ export default function HomePage() {
       {/* Client Logos */}
       <ClientLogos />
 
-      {/* BERITA Section */}
+      {/* NEWS Section */}
       <section className="section-padding bg-white">
         <div className="container-custom">
           <div className="mb-12">
-            <SectionHeading>BERITA</SectionHeading>
+            <SectionHeading>NEWS</SectionHeading>
           </div>
           <NewsGrid news={newsData} />
           <div className="mt-12 text-right">
             <TextLink href="/blog" className="font-bold uppercase no-underline hover:text-accent">
-              LIHAT LAINNYA
+              SEE MORE
               <svg className="ml-2 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path
                   strokeLinecap="round"
@@ -143,32 +143,32 @@ export default function HomePage() {
       <section className="section-padding bg-brand-teal text-white">
         <div className="container-custom">
           <div className="max-w-4xl">
-            <SectionHeading className="mb-12 text-white">Gabung Serasa Kreatif</SectionHeading>
+            <SectionHeading className="mb-12">Join Serasa Kreatif</SectionHeading>
             <div className="mb-16 grid gap-8 md:grid-cols-3">
               <div>
-                <div className="mb-2 text-xs font-bold uppercase tracking-wider text-white/80">
-                  LOKASI
+                <div className="mb-2 text-xs font-bold uppercase tracking-wider text-primary">
+                  LOCATION
                 </div>
-                <div className="text-lg text-white">Bintaro, Tangerang Selatan</div>
+                <div className="text-lg text-primary">Bintaro, South Tangerang</div>
               </div>
               <div>
-                <div className="mb-2 text-xs font-bold uppercase tracking-wider text-white/80">
+                <div className="mb-2 text-xs font-bold uppercase tracking-wider text-primary">
                   EMAIL
                 </div>
-                <div className="text-lg text-white">serasakreatif.id@gmail.com</div>
+                <div className="text-lg text-primary">serasakreatif.id@gmail.com</div>
               </div>
               <div>
-                <div className="mb-2 text-xs font-bold uppercase tracking-wider text-white/80">
+                <div className="mb-2 text-xs font-bold uppercase tracking-wider text-primary">
                   INSTAGRAM
                 </div>
-                <div className="text-lg text-white">@serasakreatif.id</div>
+                <div className="text-lg text-primary">@serasakreatif.id</div>
               </div>
             </div>
             <PrimaryButton
-              href="/kontak"
+              href="/contact"
               className="border-white bg-white text-black hover:bg-accent hover:text-white"
             >
-              MULAI PROYEK
+              START PROJECT
             </PrimaryButton>
           </div>
         </div>

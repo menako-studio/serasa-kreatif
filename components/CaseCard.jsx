@@ -23,7 +23,7 @@ export default function CaseCard({ slug, title, client, category, image, descrip
         <div className="space-y-4 p-6">
           <div>
             <p className="mb-1 text-sm text-gray-500">{client}</p>
-            <h3 className="font-display text-2xl font-bold text-near-black transition-colors group-hover:text-accent-cyan">
+            <h3 className="font-display text-near-black group-hover:text-accent-cyan text-2xl font-bold transition-colors">
               {title}
             </h3>
           </div>
@@ -35,7 +35,7 @@ export default function CaseCard({ slug, title, client, category, image, descrip
             <div className="flex gap-6 border-t border-gray-100 pt-4">
               {metrics.map((metric, index) => (
                 <div key={index}>
-                  <div className="font-display text-2xl font-bold text-accent-cyan">
+                  <div className="font-display text-accent-cyan text-2xl font-bold">
                     {metric.value}
                   </div>
                   <div className="text-xs text-gray-500">{metric.label}</div>
@@ -46,7 +46,7 @@ export default function CaseCard({ slug, title, client, category, image, descrip
 
           {/* CTA */}
           <div className="flex items-center gap-2 pt-2 font-medium text-primary transition-all group-hover:gap-4">
-            <span>Lihat Studi Kasus</span>
+            <span>View Case Study</span>
             <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path
                 strokeLinecap="round"
