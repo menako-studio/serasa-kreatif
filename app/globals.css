@@ -13,42 +13,58 @@
   }
 
   body {
-    @apply bg-white text-black antialiased;
+    @apply bg-white text-neutral-900 antialiased;
   }
 
-  h1, h2, h3, h4, h5, h6 {
+  /* Typography System - Serasa Kreatif Brand */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     @apply font-sans font-black;
+    letter-spacing: -0.02em;
   }
 
   h1 {
-    @apply text-5xl md:text-6xl lg:text-7xl xl:text-8xl leading-[0.95] tracking-tight uppercase;
+    @apply text-5xl uppercase leading-[0.95] tracking-tighter md:text-6xl lg:text-7xl xl:text-8xl;
   }
 
   h2 {
-    @apply text-3xl md:text-4xl lg:text-5xl xl:text-6xl leading-tight tracking-tight uppercase;
+    @apply text-3xl uppercase leading-tight tracking-tight md:text-4xl lg:text-5xl xl:text-6xl;
   }
 
   h3 {
-    @apply text-2xl md:text-3xl lg:text-4xl leading-tight tracking-tight uppercase;
+    @apply text-2xl uppercase leading-tight tracking-tight md:text-3xl lg:text-4xl;
   }
 
   h4 {
-    @apply text-xl md:text-2xl leading-snug uppercase;
+    @apply text-xl uppercase leading-snug tracking-tight md:text-2xl;
+  }
+
+  h5 {
+    @apply text-lg uppercase leading-snug tracking-tight md:text-xl;
   }
 
   p {
-    @apply text-base md:text-lg leading-relaxed;
+    @apply text-base leading-relaxed md:text-lg;
+  }
+
+  /* Link Styles */
+  a {
+    @apply transition-colors duration-300;
   }
 }
 
 @layer components {
+  /* Button System */
   .btn {
-    @apply inline-flex items-center justify-center px-6 py-3 font-bold uppercase transition-all duration-300;
+    @apply inline-flex items-center justify-center px-8 py-4 text-sm font-bold uppercase tracking-wide transition-all duration-300 md:text-base;
   }
 
   .btn-primary {
-    /* primary uses brand navy */
-    @apply btn bg-primary text-white hover:bg-primary-dark;
+    @apply btn bg-primary text-white shadow-lg hover:bg-primary-dark hover:shadow-xl;
   }
 
   .btn-secondary {
@@ -56,16 +72,34 @@
   }
 
   .btn-accent {
-    /* accent uses brand teal */
-    @apply btn bg-brand-teal text-white hover:bg-brand-teal/90;
+    @apply btn bg-brand-teal text-white shadow-lg hover:bg-brand-teal-600 hover:shadow-xl;
   }
 
+  .btn-outline {
+    @apply btn border-2 border-white text-white hover:bg-white hover:text-primary;
+  }
+
+  /* Layout Components */
   .section-padding {
     @apply py-16 md:py-20 lg:py-24;
   }
 
   .container-custom {
-    @apply max-w-[1400px] mx-auto px-6 md:px-8 lg:px-12;
+    @apply mx-auto max-w-[1400px] px-6 md:px-8 lg:px-12;
+  }
+
+  /* Card Styles */
+  .card {
+    @apply bg-white shadow-md transition-shadow duration-300 hover:shadow-xl;
+  }
+
+  .card-overlay {
+    @apply group relative overflow-hidden;
+  }
+
+  .card-overlay::after {
+    content: '';
+    @apply absolute inset-0 bg-gradient-to-t from-primary/90 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100;
   }
 }
 

@@ -1,4 +1,9 @@
 import Image from 'next/image'
+import PageSection from '@/components/PageSection'
+import SectionHeading from '@/components/SectionHeading'
+import TeamMemberCard from '@/components/TeamMemberCard'
+import ProcessStep from '@/components/ProcessStep'
+import ContactInfoItem from '@/components/ContactInfoItem'
 
 export const metadata = {
   title: 'About Us',
@@ -53,7 +58,7 @@ const WORK_PROCESS = [
   },
   {
     number: '2',
-    title: 'We Explore	',
+    title: 'We Explore',
     description: 'We explore ideas and concepts to find what works best for your brand.',
   },
   {
@@ -77,32 +82,33 @@ const WORK_PROCESS = [
 export default function AboutPage() {
   return (
     <div className="min-h-screen bg-white">
-      {/* Hero - R/GA style geometric visual */}
-      <section className="section-padding bg-white pt-32">
+      {/* Hero */}
+      <PageSection bgColor="bg-white" paddingSize="xlarge">
         <div className="container-custom">
-          <h1 className="mb-16 font-sans text-4xl font-black uppercase tracking-tight md:text-5xl lg:text-6xl">
+          <h1 className="mb-12 font-sans text-5xl font-black uppercase leading-none tracking-tight md:text-6xl lg:text-7xl">
             ABOUT US
           </h1>
-
-          {/* Statement */}
-          <div className="max-w-3xl">
-            <p className="mb-8 text-lg leading-relaxed text-gray-900 md:text-xl">
+          <div className="max-w-4xl">
+            <p className="mb-6 text-2xl font-medium leading-relaxed text-gray-900 md:text-3xl lg:text-4xl">
               Scale faster. Stand out stronger. With Serasa Kreatif.
             </p>
-            <p className="text-lg leading-relaxed text-gray-900 md:text-xl">
+            <p className="text-xl leading-relaxed text-gray-700 md:text-2xl">
               We believe every brand has a story worth telling. Through creativity and strategy, we
               help brands thrive in the digital era, stand out, and drive real business results.
             </p>
           </div>
         </div>
-      </section>
+      </PageSection>
 
-      {/* Mission Statement - Light background */}
-      <section className="section-padding bg-gray-50">
+      {/* Mission Statement */}
+      <PageSection bgColor="bg-gray-50">
         <div className="container-custom">
-          <div className="grid gap-12 lg:grid-cols-2">
-            <div>
-              <p className="text-sm leading-relaxed text-gray-700">
+          <div className="grid gap-16 lg:grid-cols-12">
+            <div className="lg:col-span-8">
+              <h2 className="mb-6 font-sans text-xs font-bold uppercase tracking-widest text-gray-500">
+                Our Commitment
+              </h2>
+              <p className="text-lg leading-relaxed text-gray-800 md:text-xl">
                 Our commitment is reflected in years of experience collaborating with diverse
                 companies across various industries: enhancing brand identity, elevating digital
                 presence, driving growth, and bringing businesses closer to their ultimate goals.
@@ -111,124 +117,80 @@ export default function AboutPage() {
             </div>
           </div>
         </div>
-      </section>
+      </PageSection>
 
-      {/* How We Work - Dark section */}
-      <section className="section-padding bg-primary text-white">
+      {/* How We Work */}
+      <PageSection bgColor="bg-primary text-white" paddingSize="large">
         <div className="container-custom">
-          <h2 className="mb-16 font-sans text-3xl font-black uppercase tracking-tight md:text-4xl lg:text-5xl">
+          <SectionHeading white className="mb-6">
             Our Framework
-          </h2>
-
-          <div className="mb-12 max-w-3xl">
-            <p className="mb-6 text-sm leading-relaxed text-gray-300">
+          </SectionHeading>
+          <div className="mb-16 max-w-3xl">
+            <p className="text-lg leading-relaxed text-gray-300">
               We integrate strategic thinking, creative excellence, and technical expertise to
               consistently deliver impactful results for brands.
             </p>
           </div>
-
-          {/* Process Steps */}
           <div className="space-y-0 border-t border-white/10">
             {WORK_PROCESS.map((step) => (
-              <div
+              <ProcessStep
                 key={step.number}
-                className="border-b border-white/10 py-8 transition-all hover:bg-white/5"
-              >
-                <div className="grid gap-6 md:grid-cols-12">
-                  <div className="md:col-span-2">
-                    <div className="text-6xl font-black text-brand-teal">{step.number}</div>
-                  </div>
-                  <div className="md:col-span-10">
-                    <h3 className="mb-3 font-sans text-xl font-bold uppercase tracking-tight md:text-2xl">
-                      {step.title}
-                    </h3>
-                    <p className="max-w-2xl text-sm leading-relaxed text-gray-300">
-                      {step.description}
-                    </p>
-                  </div>
-                </div>
-              </div>
+                number={step.number}
+                title={step.title}
+                description={step.description}
+              />
             ))}
           </div>
         </div>
-      </section>
+      </PageSection>
 
-      {/* Leadership - Light section with team grid */}
-      <section className="section-padding bg-gray-50">
+      {/* Team */}
+      <PageSection bgColor="bg-gray-50" paddingSize="large">
         <div className="container-custom">
-          <h3 className="mb-12 font-sans text-2xl font-black uppercase tracking-tight">Our Team</h3>
-
+          <div className="mb-16">
+            <SectionHeading className="mb-4">Our Team</SectionHeading>
+            <p className="max-w-2xl text-lg text-gray-600">
+              Meet the creative minds behind Serasa Kreatif
+            </p>
+          </div>
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
             {TEAM_MEMBERS.map((member, index) => (
-              <div key={index} className="group">
-                <div className="relative mb-4 aspect-square overflow-hidden bg-gray-300">
-                  <Image
-                    src={member.image}
-                    alt={member.name}
-                    fill
-                    quality={100}
-                    className="object-cover grayscale transition-all duration-300 group-hover:scale-105 group-hover:grayscale-0"
-                    sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
-                  />
-                </div>
-                <h4 className="mb-1 font-sans text-sm font-bold uppercase tracking-tight">
-                  {member.name}
-                </h4>
-                <p className="mb-1 text-xs text-gray-600">{member.role}</p>
-                <p className="text-xs text-gray-500">{member.location}</p>
-              </div>
+              <TeamMemberCard
+                key={index}
+                name={member.name}
+                role={member.role}
+                location={member.location}
+                image={member.image}
+              />
             ))}
           </div>
         </div>
-      </section>
+      </PageSection>
 
       {/* Location */}
-      <section className="section-padding bg-white">
+      <PageSection bgColor="bg-white" paddingSize="large">
         <div className="container-custom">
-          <div className="grid items-start gap-12 lg:grid-cols-2">
+          <div className="grid items-start gap-16 lg:grid-cols-2">
             <div>
-              <h2 className="mb-6 font-sans text-3xl font-black uppercase tracking-tight md:text-4xl">
-                OUR LOCATION
-              </h2>
-              <p className="mb-8 text-base leading-relaxed text-gray-700">
+              <SectionHeading className="mb-8">Our Location</SectionHeading>
+              <p className="mb-12 text-lg leading-relaxed text-gray-700 md:text-xl">
                 Based in Bintaro, South Tangerang, we serve clients in Jakarta and throughout
                 Jabodetabek. Our local presence helps us understand the market and deliver solutions
                 that resonate with your audience.
               </p>
-              <div className="space-y-4 border-t border-gray-200 pt-6">
-                <div>
-                  <div className="mb-1 text-xs font-medium uppercase tracking-wider text-gray-500">
-                    Address
-                  </div>
-                  <p className="text-sm text-gray-900">Bintaro, South Tangerang, Indonesia</p>
-                </div>
-                <div>
-                  <div className="mb-1 text-xs font-medium uppercase tracking-wider text-gray-500">
-                    Phone
-                  </div>
-                  <a
-                    href="tel:+6281288971453"
-                    className="text-sm text-gray-900 transition-colors hover:text-brand-teal"
-                  >
-                    +62 812-8897-1453
-                  </a>
-                </div>
-                <div>
-                  <div className="mb-1 text-xs font-medium uppercase tracking-wider text-gray-500">
-                    Email
-                  </div>
-                  <a
-                    href="mailto:serasakreatif.id@gmail.com"
-                    className="text-sm text-gray-900 transition-colors hover:text-brand-teal"
-                  >
-                    serasakreatif.id@gmail.com
-                  </a>
-                </div>
+              <div className="space-y-6 pt-8 ">
+                <ContactInfoItem label="Address">
+                  Bintaro, South Tangerang, Indonesia
+                </ContactInfoItem>
+                <ContactInfoItem label="Phone" href="tel:+6281288971453">
+                  +62 812-8897-1453
+                </ContactInfoItem>
+                <ContactInfoItem label="Email" href="mailto:serasakreatif.id@gmail.com">
+                  serasakreatif.id@gmail.com
+                </ContactInfoItem>
               </div>
             </div>
-
-            {/* Google Maps - grayscale for R/GA aesthetic */}
-            <div className="overflow-hidden">
+            <div className="overflow-hidden rounded-lg shadow-lg">
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.034922619612!2d106.7072774775167!3d-6.259130293729463!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69fb0014bc1b3b%3A0xe8270de58c702a2c!2sKlinik%20Kreatif%20Serasa!5e0!3m2!1sen!2sid!4v1761229643021!5m2!1sen!2sid"
                 width="600"
@@ -237,7 +199,6 @@ export default function AboutPage() {
                   border: 0,
                   width: '100%',
                   height: '500px',
-                  filter: 'grayscale(100%)',
                 }}
                 allowFullScreen
                 loading="lazy"
@@ -246,22 +207,24 @@ export default function AboutPage() {
             </div>
           </div>
         </div>
-      </section>
+      </PageSection>
 
-      {/* CTA - Dark navy background */}
-      <section className="section-padding bg-brand-teal text-white">
+      {/* CTA */}
+      <PageSection bgColor="bg-brand-teal text-white" paddingSize="xlarge">
         <div className="container-custom text-center">
-          <h2 className="mb-6 font-sans text-4xl font-black uppercase tracking-tight md:text-5xl lg:text-6xl">
-            Ready to grow? Let&apos;s make it happen with Serasa
+          <h2 className="mb-8 font-sans text-4xl font-black uppercase leading-tight tracking-tight text-primary md:text-5xl lg:text-6xl">
+            Ready to grow?
+            <br />
+            Let&apos;s make it happen with Serasa
           </h2>
           <a
             href="/contact"
-            className="inline-flex items-center border-2 border-white px-8 py-4 font-bold uppercase text-white transition-all duration-300 hover:bg-white hover:text-primary"
+            className="inline-flex items-center border-2 border-white bg-white px-12 py-5 text-lg font-bold uppercase text-primary transition-all duration-300 hover:bg-transparent hover:text-white"
           >
             Start Project
           </a>
         </div>
-      </section>
+      </PageSection>
     </div>
   )
 }
