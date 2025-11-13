@@ -15,16 +15,14 @@ export default function ServicesPageClient() {
   }
 
   return (
-    <div className="min-h-screen bg-black">
+    <div className="min-h-screen bg-primary">
       {/* Hero Section */}
       <section className="section-padding pb-20 pt-32 text-white">
         <div className="container-custom">
           <SectionHeading white className="mb-8 text-4xl md:text-5xl lg:text-6xl">
-            {servicesPage.heroHeadline}
+            We blend strategy and storytelling to create digital experiences that drive sales and
+            growth.
           </SectionHeading>
-          <SectionDescription white className="max-w-4xl text-gray-300">
-            {servicesPage.heroDescription}
-          </SectionDescription>
         </div>
       </section>
 
@@ -62,16 +60,16 @@ export default function ServicesPageClient() {
       {/* CTA Section */}
       <section className="section-padding border-t border-white/10 bg-brand-teal py-20 text-white">
         <div className="container-custom text-center">
-          <h2 className="font-display mb-6 text-4xl font-bold md:text-5xl lg:text-6xl">
+          <h2 className="font-display mb-6 text-4xl font-bold text-primary md:text-5xl lg:text-6xl">
             Ready to Start?
           </h2>
-          <p className="mx-auto mb-8 max-w-2xl text-lg md:text-xl">
+          <p className="mx-auto mb-8 max-w-2xl text-lg text-primary md:text-xl">
             Let&apos;s discuss how our services can help your brand achieve its goals.
           </p>
 
           <a
             href="/contact"
-            className="inline-flex items-center border-2 border-white px-8 py-4 font-bold uppercase text-white transition-all duration-300 hover:bg-white hover:text-primary"
+            className="inline-flex items-center border-2 border-primary px-8 py-4 font-bold uppercase text-primary transition-all duration-300 hover:bg-white hover:text-primary"
           >
             Contact Us
           </a>
