@@ -49,7 +49,7 @@ export default function NavBar() {
       <div className="container-custom flex items-center justify-between">
         {/* Logo */}
         <Link href="/" className="flex items-center space-x-2">
-          <div className="relative h-12 w-44 transition-all duration-300 md:h-16 md:w-64">
+          <div className="relative h-16 w-56 transition-all duration-300 md:h-20 md:w-80">
             <Image
               src={
                 isDarkNav
