@@ -82,7 +82,7 @@ export default function HomePage() {
       <section className="section-padding bg-white">
         <div className="container-custom">
           <div className="mb-12 flex items-center justify-between">
-            <SectionHeading>PORTFOLIO</SectionHeading>
+            <SectionHeading>Trusted by these IMPACTFUL brands</SectionHeading>
           </div>
           <WorkGrid works={workShowcase} />
           <div className="mt-8 text-right">
