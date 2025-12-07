@@ -8,14 +8,20 @@ const config = {
   theme: {
     extend: {
       colors: {
-        // Brand palette derived from Serasa Kreatif logo
-        primary: '#04104b', // deep navy (brand background)
-        'primary-dark': '#020522',
-        // Teal/mint accent from the infinity mark
-        'brand-teal': '#00d6b6',
-        'brand-teal-600': '#00b388',
-        'brand-accent': '#00f0c4',
+        // Brand Colors - Serasa Kreatif Identity
+        primary: '#04104b', // Deep navy - main brand color
+        'primary-dark': '#020522', // Darker navy for depth
+        'brand-teal': '#00d6b6', // Signature teal from logo
+        'brand-teal-600': '#00b388', // Darker teal for hover states
+        'brand-accent': '#00f0c4', // Bright accent
         accent: '#00d6b6',
+
+        // Supporting Palette
+        'brand-blue': '#0A1F44', // Alternative dark blue
+        'brand-orange': '#FF6B35', // Energy color for CTAs
+        'brand-purple': '#6C63FF', // Modern tech vibe
+
+        // Neutrals
         danger: '#ff4d4f',
         neutral: {
           50: '#fafafa',

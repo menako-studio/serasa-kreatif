@@ -1,7 +1,7 @@
 export const metadata = {
-  title: 'Pemberitahuan Privasi',
+  title: 'Privacy Notice',
   description:
-    'Pemberitahuan privasi situs web Serasa Kreatif. Pelajari bagaimana kami mengumpulkan, menggunakan, dan melindungi informasi pribadi Anda.',
+    'Serasa Kreatif website privacy notice. Learn how we collect, use, and protect your personal information.',
 }
 
 export default function PrivacyNoticePage() {
@@ -11,9 +11,9 @@ export default function PrivacyNoticePage() {
       <section className="border-b border-gray-200 bg-white pb-8 pt-32">
         <div className="container-custom">
           <h1 className="mb-4 font-sans text-4xl font-black uppercase tracking-tight md:text-5xl lg:text-6xl">
-            PEMBERITAHUAN PRIVASI SITUS WEB SERASA KREATIF
+            SERASA KREATIF WEBSITE PRIVACY NOTICE
           </h1>
-          <p className="text-sm text-gray-600">Terakhir diperbarui: 1 Januari 2025</p>
+          <p className="text-sm text-gray-600">Last updated: January 1, 2025</p>
         </div>
       </section>
 
@@ -26,29 +26,28 @@ export default function PrivacyNoticePage() {
               {/* Introduction */}
               <div className="prose prose-sm mb-12 max-w-none">
                 <h2 className="mb-6 font-sans text-2xl font-black uppercase tracking-tight">
-                  SERASA KREATIF MENGHORMATI PRIVASI ANDA. PEMBERITAHUAN PRIVASI SITUS WEB INI
-                  MENJELASKAN JENIS INFORMASI YANG KAMI KUMPULKAN TENTANG INDIVIDU YANG MENGUNJUNGI
-                  SITUS WEB KAMI, DENGAN SIAPA KAMI MEMBAGIKAN INFORMASI TERSEBUT, DAN PILIHAN YANG
-                  TERSEDIA BAGI ANDA MENGENAI PENGGUNAAN KAMI ATAS INFORMASI TERSEBUT.
+                  SERASA KREATIF RESPECTS YOUR PRIVACY. THIS WEBSITE PRIVACY NOTICE EXPLAINS THE
+                  TYPES OF INFORMATION WE COLLECT ABOUT INDIVIDUALS WHO VISIT OUR WEBSITE, WITH WHOM
+                  WE SHARE THAT INFORMATION, AND THE CHOICES AVAILABLE TO YOU REGARDING OUR USE OF
+                  THAT INFORMATION.
                 </h2>
                 <p className="mb-4 text-sm leading-relaxed text-gray-700">
-                  Pemberitahuan Privasi ini juga menjelaskan langkah-langkah yang kami ambil untuk
-                  mengamankan informasi pribadi, berapa lama kami menyimpannya, dan bagaimana
-                  menghubungi kami tentang praktik privasi kami dan untuk menjalankan hak Anda.
+                  This Privacy Notice also explains the steps we take to secure personal
+                  information, how long we retain it, and how to contact us about our privacy
+                  practices and to exercise your rights.
                 </p>
               </div>
 
               {/* Information We Provide */}
               <div className="mb-12 border-t border-gray-200 pt-8">
                 <h3 className="mb-4 font-sans text-lg font-bold uppercase tracking-tight">
-                  Informasi yang Kami Berikan
+                  Information We Provide
                 </h3>
                 <p className="mb-4 text-sm leading-relaxed text-gray-700">
-                  Kami menyediakan pemberitahuan privasi ini untuk menjelaskan kepada Anda praktik
-                  informasi online kami, termasuk jenis informasi yang dikumpulkan, bagaimana
-                  informasi digunakan, kepada siapa informasi dibagikan, pilihan yang tersedia bagi
-                  Anda, dan bagaimana Anda dapat mengakses dan memperbarui informasi yang kami
-                  simpan tentang Anda.
+                  We provide this privacy notice to explain to you our online information practices,
+                  including the types of information collected, how the information is used, to whom
+                  the information is shared, the choices available to you, and how you can access
+                  and update the information we simpan tentang Anda.
                 </p>
                 <p className="mb-4 text-sm leading-relaxed text-gray-700">
                   Situs web ini disediakan oleh Serasa Kreatif, sebuah agensi kreatif yang berlokasi

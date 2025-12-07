@@ -1,0 +1,27 @@
+# ESLint ignore patterns
+
+# Dependencies
+node_modules/
+.next/
+out/
+
+# Build outputs
+dist/
+build/
+
+# Cache
+.cache/
+.turbo/
+
+# Env files
+.env*
+
+# Config files (if needed)
+# next.config.mjs
+# postcss.config.mjs
+
+# Test coverage
+coverage/
+
+# Logs
+*.log

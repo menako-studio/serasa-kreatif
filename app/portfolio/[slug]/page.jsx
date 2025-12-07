@@ -268,10 +268,10 @@ export default function CaseDetailPage({ params }) {
             digital presence.
           </p>
           <Link
-            href="/kontak"
+            href="/contact"
             className="inline-flex items-center border-2 border-white bg-white px-12 py-4 font-bold uppercase tracking-wider text-black transition-all hover:bg-transparent hover:text-white"
           >
-            MULAI PROYEK
+            START PROJECT
           </Link>
         </div>
       </section>

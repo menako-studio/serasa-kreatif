@@ -1,7 +1,7 @@
 export const metadata = {
-  title: 'Ketentuan Penggunaan',
+  title: 'Terms of Use',
   description:
-    'Ketentuan penggunaan situs web Serasa Kreatif. Baca syarat dan ketentuan kami sebelum menggunakan layanan kami.',
+    'Terms of use for Serasa Kreatif website. Read our terms and conditions before using our services.',
 }
 
 export default function TermsOfUsePage() {
@@ -11,9 +11,9 @@ export default function TermsOfUsePage() {
       <section className="border-b border-gray-200 bg-white pb-8 pt-32">
         <div className="container-custom">
           <h1 className="mb-4 font-sans text-4xl font-black uppercase tracking-tight md:text-5xl lg:text-6xl">
-            KETENTUAN PENGGUNAAN
+            TERMS OF USE
           </h1>
-          <p className="text-sm text-gray-600">Efektif sejak: 1 Januari 2025</p>
+          <p className="text-sm text-gray-600">Effective from: January 1, 2025</p>
         </div>
       </section>
 
@@ -26,23 +26,21 @@ export default function TermsOfUsePage() {
               {/* Introduction */}
               <div className="prose prose-sm mb-12 max-w-none">
                 <h2 className="mb-6 font-sans text-2xl font-black uppercase tracking-tight">
-                  SERASA KREATIF MENYEDIAKAN SITUS WEB INI UNTUK INFORMASI PRIBADI, PENDIDIKAN, DAN
-                  PENGGUNAAN HIBURAN ANDA.
+                  SERASA KREATIF PROVIDES THIS WEBSITE FOR YOUR PERSONAL, EDUCATIONAL, AND
+                  ENTERTAINMENT USE.
                 </h2>
                 <p className="mb-4 text-sm leading-relaxed text-gray-700">
-                  Serasa Kreatif menyediakan akses ke situs web ini (&quot;Situs&quot;) untuk
-                  informasi pribadi, pendidikan, dan hiburan Anda. Berikut adalah syarat dan
-                  ketentuan yang mengatur penggunaan Anda atas Situs kami dan semua konten yang
-                  tersedia melalui Situs ini (baik &quot;Konten&quot; atau &quot;Konten Kami&quot;).
-                  Dengan mengakses dan menggunakan Situs, Anda setuju untuk terikat dengan Ketentuan
-                  Penggunaan ini. Jika Anda tidak setuju dengan ketentuan ini, jangan gunakan Situs
-                  ini.
+                  Serasa Kreatif provides access to this website (&quot;Site&quot;) for your
+                  personal, educational, and entertainment use. The following are the terms and
+                  conditions that govern your use of our Site and all content available through this
+                  Site (either &quot;Content&quot; or &quot;Our Content&quot;). By accessing and
+                  using the Site, you agree to be bound by these Terms of Use. If you do not agree
+                  to these terms, do not use this Site.
                 </p>
                 <p className="mb-4 text-sm leading-relaxed text-gray-700">
-                  Ketika digunakan dalam Ketentuan Penggunaan ini, &quot;kami&quot; atau &quot;milik
-                  kami&quot; atau istilah serupa mengacu pada Serasa Kreatif, dan istilah
-                  &quot;Anda&quot; dan &quot;milik Anda&quot; mengacu kepada setiap orang atau
-                  entitas yang mengakses atau menggunakan Situs ini.
+                  When used in these Terms of Use, &quot;we&quot; or &quot;our&quot; or similar
+                  terms refer to Serasa Kreatif, and the terms &quot;you&quot; and &quot;your&quot;
+                  refer to any person or entity accessing or using this Site.
                 </p>
               </div>
 

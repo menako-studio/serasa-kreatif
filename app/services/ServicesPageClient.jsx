@@ -5,7 +5,7 @@ import SectionHeading from '@/components/SectionHeading'
 import SectionDescription from '@/components/SectionDescription'
 import ServiceAccordionItem from '@/components/ServiceAccordionItem'
 import PrimaryButton from '@/components/PrimaryButton'
-import { servicesPage } from '@/lib/copy-id'
+import { servicesPage } from '@/lib/copy-en'
 
 export default function ServicesPageClient() {
   const [openAccordion, setOpenAccordion] = useState(null)
@@ -15,16 +15,14 @@ export default function ServicesPageClient() {
   }
 
   return (
-    <div className="min-h-screen bg-black">
+    <div className="min-h-screen bg-primary">
       {/* Hero Section */}
       <section className="section-padding pb-20 pt-32 text-white">
         <div className="container-custom">
           <SectionHeading white className="mb-8 text-4xl md:text-5xl lg:text-6xl">
-            {servicesPage.heroHeadline}
+            We blend strategy and storytelling to create digital experiences that drive sales and
+            growth.
           </SectionHeading>
-          <SectionDescription white className="max-w-4xl text-gray-300">
-            {servicesPage.heroDescription}
-          </SectionDescription>
         </div>
       </section>
 
@@ -32,9 +30,9 @@ export default function ServicesPageClient() {
       <section className="section-padding bg-white">
         <div className="container-custom">
           <div className="mb-12">
-            <SectionHeading>APA YANG KAMI LAKUKAN</SectionHeading>
+            <SectionHeading>WHAT WE DO</SectionHeading>
             <SectionDescription>{servicesPage.servicesIntro}</SectionDescription>
-            <p className="mt-4 text-sm text-gray-400">Lihat bagaimana kami dapat membantu.</p>
+            <p className="mt-4 text-sm text-gray-400">See how we can help.</p>
           </div>
 
           <div className="divide-y divide-gray-200 border-t border-gray-200">
@@ -52,8 +50,8 @@ export default function ServicesPageClient() {
           </div>
 
           <div className="mt-8">
-            <PrimaryButton href="/kontak">
-              {servicesPage.ctaLearnMore || 'HUBUNGI KAMI'}
+            <PrimaryButton href="/contact">
+              {servicesPage.ctaLearnMore || 'CONTACT US'}
             </PrimaryButton>
           </div>
         </div>
@@ -62,18 +60,18 @@ export default function ServicesPageClient() {
       {/* CTA Section */}
       <section className="section-padding border-t border-white/10 bg-brand-teal py-20 text-white">
         <div className="container-custom text-center">
-          <h2 className="font-display mb-6 text-4xl font-bold md:text-5xl lg:text-6xl">
-            Siap Memulai?
+          <h2 className="font-display mb-6 text-4xl font-bold text-primary md:text-5xl lg:text-6xl">
+            Ready to Start?
           </h2>
-          <p className="mx-auto mb-8 max-w-2xl text-lg md:text-xl">
-            Mari diskusikan bagaimana layanan kami dapat membantu merek Anda mencapai tujuannya.
+          <p className="mx-auto mb-8 max-w-2xl text-lg text-primary md:text-xl">
+            Let&apos;s discuss how our services can help your brand achieve its goals.
           </p>
 
           <a
-            href="/kontak"
-            className="inline-flex items-center border-2 border-white px-8 py-4 font-bold uppercase text-white transition-all duration-300 hover:bg-white hover:text-primary"
+            href="/contact"
+            className="inline-flex items-center border-2 border-primary px-8 py-4 font-bold uppercase text-primary transition-all duration-300 hover:bg-white hover:text-primary"
           >
-            Hubungi Kami
+            Contact Us
           </a>
         </div>
       </section>
