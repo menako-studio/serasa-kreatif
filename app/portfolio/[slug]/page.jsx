@@ -70,6 +70,7 @@ export default function CaseDetailPage({ params }) {
           fill
           className="object-cover opacity-50"
           priority
+          quality={100}
         />
 
         <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent" />
@@ -180,6 +181,7 @@ export default function CaseDetailPage({ params }) {
           alt={`${caseStudy.title} - Image 1`}
           fill
           className="object-cover"
+          quality={100}
         />
       </section>
 
@@ -204,6 +206,7 @@ export default function CaseDetailPage({ params }) {
               alt={`${caseStudy.title} - Image 2`}
               fill
               className="object-cover"
+              quality={100}
             />
           </div>
           <div className="relative h-[50vh] min-h-[400px] md:h-[70vh]">
@@ -212,6 +215,7 @@ export default function CaseDetailPage({ params }) {
               alt={`${caseStudy.title} - Image 3`}
               fill
               className="object-cover"
+              quality={100}
             />
           </div>
         </section>
@@ -251,6 +255,7 @@ export default function CaseDetailPage({ params }) {
                 alt={`${caseStudy.title} - Image ${index + 4}`}
                 fill
                 className="object-cover"
+                quality={100}
               />
             </section>
           ))}

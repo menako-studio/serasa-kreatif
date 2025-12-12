@@ -55,6 +55,7 @@ export default function ClientLogos() {
                       height={80}
                       className="max-h-[56px] max-w-[140px] object-contain"
                       onError={() => setFailed((s) => ({ ...s, [key]: true }))}
+                      quality={100}
                     />
                   )}
                 </div>
