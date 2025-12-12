@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
+import { caseStudies } from '@/lib/case-data'
 
 export const metadata = {
   title: 'Our Portfolio',
@@ -7,37 +8,14 @@ export const metadata = {
     'Explore our portfolio of successful SME branding and social media campaigns. See how Serasa Kreatif helps local brands grow and attract customers.',
 }
 
-// Featured work data with Unsplash images
-const featuredWork = [
-  {
-    slug: 'japo-fashion-brand',
-    title: 'JAPO',
-    subtitle: 'Brand identity for local fashion brand',
-    image: 'https://images.unsplash.com/photo-1558769132-cb1aea1c4571?w=1200&q=80',
-    category: 'BRAND DESIGN',
-  },
-  {
-    slug: 'pregnansia-spa-social',
-    title: 'PREGNASIA SPA',
-    subtitle: 'Social media strategy for wellness business',
-    image: 'https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=1200&q=80',
-    category: 'SOCIAL MEDIA MANAGEMENT',
-  },
-  {
-    slug: 'fnb-restaurant',
-    title: 'LOCAL F&B',
-    subtitle: 'Brand refresh for SME restaurant',
-    image: 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1200&q=80',
-    category: 'BRAND REFRESH',
-  },
-  {
-    slug: 'tech-startup',
-    title: 'SME TECHNOLOGY',
-    subtitle: 'Digital campaign for tech startup',
-    image: 'https://images.unsplash.com/photo-1551650975-87deedd944c3?w=1200&q=80',
-    category: 'DIGITAL CAMPAIGN',
-  },
-]
+// Featured work data from case studies
+const featuredWork = caseStudies.map((study) => ({
+  slug: study.slug,
+  title: study.client,
+  subtitle: study.title,
+  image: study.image,
+  category: study.category,
+}))
 
 const filterOptions = {
   regions: ['ALL REGIONS', 'JABODETABEK', 'WEST JAVA', 'CENTRAL JAVA'],
@@ -83,6 +61,7 @@ function FeaturedWorkGrid({ works }) {
             fill
             className="object-cover transition-transform duration-700 group-hover:scale-105"
             sizes="(max-width: 768px) 100vw, 50vw"
+            quality={100}
           />
           <div className="absolute inset-0 bg-black/30 transition-colors group-hover:bg-black/10" />
           <div className="absolute bottom-0 left-0 right-0 p-8 md:p-12">

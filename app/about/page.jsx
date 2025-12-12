@@ -37,12 +37,6 @@ const TEAM_MEMBERS = [
     image: '/assets/images/team/hamdara-luthi-video-editor.png',
   },
   {
-    name: 'Aldy Efrianzah',
-    role: 'Advertiser',
-    location: 'Jakarta',
-    image: '/assets/images/team/aldy-efrianzah-advertiser.png',
-  },
-  {
     name: 'Raudhatul Jannah',
     role: 'Team Member',
     location: 'Jakarta',

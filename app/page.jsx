@@ -11,37 +11,17 @@ import PrimaryButton from '@/components/PrimaryButton'
 import TextLink from '@/components/TextLink'
 import { services } from '@/lib/copy-en'
 
-// Work showcase data with Unsplash images
-const workShowcase = [
-  {
-    slug: 'japo-brand-identity',
-    title: 'JAPO',
-    category: 'Branding & Social Media',
-    image: 'https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=800&q=80',
-    description: 'Modern brand identity for local fashion brand',
-  },
-  {
-    slug: 'pregnasia-spa-social',
-    title: 'PREGNASIA SPA',
-    category: 'Social Media Management',
-    image: 'https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=800&q=80',
-    description: 'Wellness & spa content strategy',
-  },
-  {
-    slug: 'local-brand-refresh',
-    title: 'ANDROID',
-    category: 'Digital Campaign',
-    image: 'https://images.unsplash.com/photo-1551650975-87deedd944c3?w=800&q=80',
-    description: 'Digital campaign for tech brand',
-  },
-  {
-    slug: 'fnb-campaign',
-    title: 'F&B BRAND',
-    category: 'Brand Refresh',
-    image: 'https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=800&q=80',
-    description: 'Modern culinary identity refresh',
-  },
-]
+// Import case studies data
+import { caseStudies } from '@/lib/case-data'
+
+// Work showcase data - featured cases
+const workShowcase = caseStudies.slice(0, 4).map((study) => ({
+  slug: study.slug,
+  title: study.client,
+  category: study.category,
+  image: study.image,
+  description: study.description,
+}))
 
 // News data
 const newsData = [
@@ -117,16 +97,16 @@ export default function HomePage() {
       <ClientLogos />
 
       {/* NEWS Section */}
-      <section className="section-padding bg-white">
+      {/* <section className="bg-white section-padding">
         <div className="container-custom">
           <div className="mb-12">
             <SectionHeading>NEWS</SectionHeading>
           </div>
           <NewsGrid news={newsData} />
           <div className="mt-12 text-right">
-            <TextLink href="/blog" className="font-bold uppercase no-underline hover:text-accent">
+            <TextLink href="/blog" className="font-bold no-underline uppercase hover:text-accent">
               SEE MORE
-              <svg className="ml-2 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path
                   strokeLinecap="round"
                   strokeLinejoin="round"
@@ -137,7 +117,7 @@ export default function HomePage() {
             </TextLink>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Join Section */}
       <section className="section-padding bg-brand-teal text-white">

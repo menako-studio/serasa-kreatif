@@ -12,6 +12,7 @@ export default function CaseCard({ slug, title, client, category, image, descrip
             alt={title}
             fill
             className="object-cover transition-transform duration-500 group-hover:scale-110"
+            quality={100}
           />
           {/* Category tag */}
           <div className="absolute left-4 top-4 rounded-full bg-white/90 px-4 py-2 backdrop-blur-sm">

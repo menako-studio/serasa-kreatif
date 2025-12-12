@@ -36,12 +36,13 @@ export default function Hero() {
           <div className="col-span-8 row-span-2 md:col-span-4 md:row-span-2">
             <div className="relative aspect-[4/3] overflow-hidden bg-red-600">
               <Image
-                src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=800&q=80"
+                src="/assets/images/portfolio/pregnasia.webp"
                 alt="karya kreatif"
                 fill
                 className="object-cover"
                 sizes="(max-width: 768px) 100vw, 50vw"
                 priority
+                quality={100}
               />
             </div>
           </div>
@@ -50,11 +51,12 @@ export default function Hero() {
           <div className="col-span-4 md:col-span-2">
             <div className="relative aspect-[4/3] overflow-hidden bg-blue-600">
               <Image
-                src="https://images.unsplash.com/photo-1551650975-87deedd944c3?w=400&q=80"
+                src="/assets/images/portfolio/arkaff.webp"
                 alt="karya kreatif"
                 fill
                 className="object-cover"
                 sizes="(max-width: 768px) 50vw, 25vw"
+                quality={100}
               />
             </div>
           </div>
@@ -68,11 +70,12 @@ export default function Hero() {
           <div className="col-span-4 md:col-span-2">
             <div className="relative aspect-[4/3] overflow-hidden bg-purple-600">
               <Image
-                src="https://images.unsplash.com/photo-1557804506-669a67965ba0?w=400&q=80"
+                src="/assets/images/portfolio/japo.webp"
                 alt="karya kreatif"
                 fill
                 className="object-cover"
                 sizes="(max-width: 768px) 50vw, 25vw"
+                quality={100}
               />
             </div>
           </div>
@@ -92,11 +95,12 @@ export default function Hero() {
           <div className="col-span-4 md:col-span-2">
             <div className="relative aspect-[4/3] overflow-hidden bg-green-600">
               <Image
-                src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=400&q=80"
+                src="/assets/images/portfolio/kotabi.webp"
                 alt="karya kreatif"
                 fill
                 className="object-cover"
                 sizes="(max-width: 768px) 50vw, 25vw"
+                quality={100}
               />
             </div>
           </div>
@@ -108,11 +112,12 @@ export default function Hero() {
           <div className="col-span-4 md:col-span-2">
             <div className="relative aspect-[4/3] overflow-hidden bg-gray-800">
               <Image
-                src="https://images.unsplash.com/photo-1553877522-43269d4ea984?w=400&q=80"
+                src="/assets/images/portfolio/bandarkardus.webp"
                 alt="karya kreatif"
                 fill
                 className="object-cover"
                 sizes="(max-width: 768px) 50vw, 25vw"
+                quality={100}
               />
             </div>
           </div>
@@ -120,11 +125,12 @@ export default function Hero() {
           <div className="col-span-4 md:col-span-2">
             <div className="relative aspect-[4/3] overflow-hidden bg-yellow-500">
               <Image
-                src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=400&q=80"
+                src="/assets/images/portfolio/sr12.webp"
                 alt="karya kreatif"
                 fill
                 className="object-cover"
                 sizes="(max-width: 768px) 50vw, 25vw"
+                quality={100}
               />
             </div>
           </div>
