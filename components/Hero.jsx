@@ -36,7 +36,7 @@ export default function Hero() {
           <div className="col-span-8 row-span-2 md:col-span-4 md:row-span-2">
             <div className="relative aspect-[4/3] overflow-hidden bg-red-600">
               <Image
-                src="/assets/images/portfolio/pregnasia.webp"
+                src="/assets/images/portfolio/jobstreet.webp"
                 alt="karya kreatif"
                 fill
                 className="object-cover"
@@ -51,7 +51,7 @@ export default function Hero() {
           <div className="col-span-4 md:col-span-2">
             <div className="relative aspect-[4/3] overflow-hidden bg-blue-600">
               <Image
-                src="/assets/images/portfolio/arkaff.webp"
+                src="/assets/images/portfolio/lazadafashion.webp"
                 alt="karya kreatif"
                 fill
                 className="object-cover"
@@ -61,16 +61,24 @@ export default function Hero() {
             </div>
           </div>
 
-          {/* Red solid block */}
           <div className="col-span-4 md:col-span-2">
-            <div className="relative aspect-[4/3] bg-accent"></div>
+            <div className="relative aspect-[4/3] overflow-hidden bg-green-600">
+              <Image
+                src="/assets/images/portfolio/sr12-web.webp"
+                alt="karya kreatif"
+                fill
+                className="object-cover"
+                sizes="(max-width: 768px) 50vw, 25vw"
+                quality={100}
+              />
+            </div>
           </div>
 
           {/* Bottom right image */}
           <div className="col-span-4 md:col-span-2">
             <div className="relative aspect-[4/3] overflow-hidden bg-purple-600">
               <Image
-                src="/assets/images/portfolio/japo.webp"
+                src="/assets/images/portfolio/sharp-indonesia.webp"
                 alt="karya kreatif"
                 fill
                 className="object-cover"
@@ -85,53 +93,9 @@ export default function Hero() {
             <div className="relative flex aspect-[4/3] items-center justify-center bg-amber-50 p-6">
               <div className="text-center">
                 <p className="font-sans text-sm font-black uppercase text-black md:text-base">
-                  Proyek Terbaru
+                  New Projects
                 </p>
               </div>
-            </div>
-          </div>
-
-          {/* More work items - additional row */}
-          <div className="col-span-4 md:col-span-2">
-            <div className="relative aspect-[4/3] overflow-hidden bg-green-600">
-              <Image
-                src="/assets/images/portfolio/kotabi.webp"
-                alt="karya kreatif"
-                fill
-                className="object-cover"
-                sizes="(max-width: 768px) 50vw, 25vw"
-                quality={100}
-              />
-            </div>
-          </div>
-
-          <div className="col-span-4 md:col-span-2">
-            <div className="relative aspect-[4/3] bg-white"></div>
-          </div>
-
-          <div className="col-span-4 md:col-span-2">
-            <div className="relative aspect-[4/3] overflow-hidden bg-gray-800">
-              <Image
-                src="/assets/images/portfolio/bandarkardus.webp"
-                alt="karya kreatif"
-                fill
-                className="object-cover"
-                sizes="(max-width: 768px) 50vw, 25vw"
-                quality={100}
-              />
-            </div>
-          </div>
-
-          <div className="col-span-4 md:col-span-2">
-            <div className="relative aspect-[4/3] overflow-hidden bg-yellow-500">
-              <Image
-                src="/assets/images/portfolio/sr12.webp"
-                alt="karya kreatif"
-                fill
-                className="object-cover"
-                sizes="(max-width: 768px) 50vw, 25vw"
-                quality={100}
-              />
             </div>
           </div>
         </motion.div>
