@@ -48,6 +48,28 @@ const newsData = [
   },
 ]
 
+// Contact information data
+const contactInfo = [
+  {
+    label: 'LOCATION',
+    value: 'Bintaro, South Tangerang',
+    href: 'https://maps.app.goo.gl/f3Avw7DGNYniCCST6',
+    isExternal: true,
+  },
+  {
+    label: 'EMAIL',
+    value: 'serasakreatif.id@gmail.com',
+    href: 'mailto:serasakreatif.id@gmail.com',
+    isExternal: false,
+  },
+  {
+    label: 'INSTAGRAM',
+    value: '@serasakreatif.id',
+    href: 'https://www.instagram.com/serasakreatif.id/',
+    isExternal: true,
+  },
+]
+
 export default function HomePage() {
   const [openAccordion, setOpenAccordion] = useState(null)
 
@@ -123,38 +145,9 @@ export default function HomePage() {
           <div className="max-w-4xl">
             <SectionHeading className="mb-12">Join Serasa Kreatif</SectionHeading>
             <div className="mb-16 grid gap-8 md:grid-cols-3">
-              <div>
-                <div className="mb-2 text-xs font-bold uppercase tracking-wider text-primary">
-                  LOCATION
-                </div>
-                <Link
-                  href="https://maps.app.goo.gl/f3Avw7DGNYniCCST6"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-brand-pink text-lg text-primary underline transition-colors"
-                >
-                  Bintaro, South Tangerang
-                </Link>
-              </div>
-              <div>
-                <div className="mb-2 text-xs font-bold uppercase tracking-wider text-primary">
-                  EMAIL
-                </div>
-                <div className="text-lg text-primary">serasakreatif.id@gmail.com</div>
-              </div>
-              <div>
-                <div className="mb-2 text-xs font-bold uppercase tracking-wider text-primary">
-                  INSTAGRAM
-                </div>
-                <Link
-                  href="https://www.instagram.com/serasakreatif.id/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-brand-pink text-lg text-primary underline transition-colors"
-                >
-                  @serasakreatif.id
-                </Link>
-              </div>
+              {contactInfo.map((item) => (
+                <ContactInfoItem key={item.label} {...item} />
+              ))}
             </div>
             <PrimaryButton
               href="/contact"
@@ -187,6 +180,28 @@ function NewsGrid({ news }) {
       {news.map((item, idx) => (
         <NewsCard key={idx} news={item} />
       ))}
+    </div>
+  )
+}
+
+// Helper components (must be outside HomePage)
+
+function ContactInfoItem({ label, value, href, isExternal }) {
+  return (
+    <div>
+      <div className="mb-2 text-xs font-bold uppercase tracking-wider text-primary">{label}</div>
+      {href ? (
+        <Link
+          href={href}
+          target={isExternal ? '_blank' : undefined}
+          rel={isExternal ? 'noopener noreferrer' : undefined}
+          className="hover:text-brand-pink text-lg text-primary underline transition-colors"
+        >
+          {value}
+        </Link>
+      ) : (
+        <div className="text-lg text-primary">{value}</div>
+      )}
     </div>
   )
 }
