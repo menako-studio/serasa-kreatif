@@ -19,10 +19,10 @@ export default function WorkCard({ work }) {
       </div>
 
       <div className="border-t px-4 py-6">
-        <div className="mb-1 text-xs font-bold uppercase tracking-wider text-gray-500">
+        <div className="text-brand-pink mb-1 text-xs font-bold uppercase tracking-wider">
           {work.category}
         </div>
-        <h3 className="font-sans text-lg font-black uppercase text-black">{work.title}</h3>
+        <h3 className="font-sans text-lg font-black uppercase text-primary">{work.title}</h3>
         <p className="mt-2 text-sm text-gray-600">{work.description}</p>
       </div>
     </Link>

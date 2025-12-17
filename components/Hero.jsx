@@ -19,7 +19,7 @@ export default function Hero() {
           </h1>
 
           <div className="mt-8 flex flex-wrap items-center gap-4 md:gap-6">
-            <p className="max-w-md text-sm leading-relaxed text-white/70 md:text-base">
+            <p className="max-w-md text-sm leading-relaxed text-white md:text-base">
               {hero.subhead}
             </p>
           </div>
@@ -92,7 +92,7 @@ export default function Hero() {
           <div className="col-span-4 md:col-span-2">
             <div className="relative flex aspect-[4/3] items-center justify-center bg-amber-50 p-6">
               <div className="text-center">
-                <p className="font-sans text-sm font-black uppercase text-black md:text-base">
+                <p className="font-sans text-sm font-black uppercase text-primary md:text-base">
                   New Projects
                 </p>
               </div>

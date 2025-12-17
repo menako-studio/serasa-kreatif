@@ -9,6 +9,7 @@ import NewsCard from '@/components/NewsCard'
 import ServiceAccordionItem from '@/components/ServiceAccordionItem'
 import PrimaryButton from '@/components/PrimaryButton'
 import TextLink from '@/components/TextLink'
+import Link from 'next/link'
 import { services } from '@/lib/copy-en'
 
 // Import case studies data
@@ -79,7 +80,7 @@ export default function HomePage() {
             <SectionDescription className="text-gray-900">
               {services.sectionIntro || services.sectionSubhead}
             </SectionDescription>
-            <p className="mt-4 text-sm text-gray-900">See how we can help.</p>
+            <p className="text-brand-pink mt-4 text-sm">See how we can help.</p>
           </div>
           <AccordionGrid
             items={services.items}
@@ -87,9 +88,6 @@ export default function HomePage() {
             onToggle={toggleAccordion}
             previewImages={workShowcase.map((w) => w.image)}
           />
-          <div className="mt-8">
-            <TextLink href="/contact">{services.ctaLearnMore}</TextLink>
-          </div>
         </div>
       </section>
 
@@ -129,7 +127,14 @@ export default function HomePage() {
                 <div className="mb-2 text-xs font-bold uppercase tracking-wider text-primary">
                   LOCATION
                 </div>
-                <div className="text-lg text-primary">Bintaro, South Tangerang</div>
+                <Link
+                  href="https://maps.app.goo.gl/f3Avw7DGNYniCCST6"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-brand-pink text-lg text-primary underline transition-colors"
+                >
+                  Bintaro, South Tangerang
+                </Link>
               </div>
               <div>
                 <div className="mb-2 text-xs font-bold uppercase tracking-wider text-primary">
@@ -141,12 +146,19 @@ export default function HomePage() {
                 <div className="mb-2 text-xs font-bold uppercase tracking-wider text-primary">
                   INSTAGRAM
                 </div>
-                <div className="text-lg text-primary">@serasakreatif.id</div>
+                <Link
+                  href="https://www.instagram.com/serasakreatif.id/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-brand-pink text-lg text-primary underline transition-colors"
+                >
+                  @serasakreatif.id
+                </Link>
               </div>
             </div>
             <PrimaryButton
               href="/contact"
-              className="border-white bg-white text-black hover:bg-accent hover:text-white"
+              className="border-white bg-white text-primary hover:bg-accent hover:text-white"
             >
               START PROJECT
             </PrimaryButton>

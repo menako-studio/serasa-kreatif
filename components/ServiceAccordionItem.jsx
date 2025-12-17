@@ -13,10 +13,10 @@ export default function ServiceAccordionItem({
   variant = 'dark',
 }) {
   const isDark = variant === 'dark'
-  const headerText = isDark ? 'text-white' : 'text-black'
+  const headerText = isDark ? 'text-white' : 'text-primary'
   const headerHover = isDark ? 'hover:text-gray-200' : 'hover:text-gray-800'
-  const descText = isDark ? 'text-gray-300' : 'text-black'
-  const detailsText = isDark ? 'text-gray-400' : 'text-black'
+  const descText = isDark ? 'text-gray-300' : 'text-primary'
+  const detailsText = isDark ? 'text-gray-400' : 'text-primary'
   const imageBg = isDark ? 'bg-white/5' : 'bg-gray-100'
 
   return (

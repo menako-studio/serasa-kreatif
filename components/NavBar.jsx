@@ -83,7 +83,7 @@ export default function NavBar() {
                     : 'text-brand-pink underline underline-offset-4'
                   : isDarkNav
                     ? 'text-white hover:text-brand-teal'
-                    : 'hover:text-brand-pink text-gray-600'
+                    : 'hover:text-brand-pink text-primary'
               }`}
             >
               {link.name}
@@ -94,7 +94,7 @@ export default function NavBar() {
             className={`ml-4 rounded border-2 px-6 py-2 text-sm font-bold uppercase transition-colors ${
               isDarkNav
                 ? 'border-white bg-white text-black hover:border-brand-teal hover:bg-brand-teal hover:text-white'
-                : 'border-black bg-black text-white hover:border-brand-teal hover:bg-brand-teal'
+                : 'border-primary bg-primary text-white hover:border-brand-teal hover:bg-brand-teal'
             }`}
           >
             Contact Us
