@@ -5,9 +5,19 @@
 :root {
   --spacing-section: 4rem;
   --spacing-section-mobile: 2rem;
+  --brand-pink: #f002a3;
 }
 
 @layer base {
+  .text-brand-pink {
+    color: var(--brand-pink) !important;
+  }
+  .bg-brand-pink {
+    background-color: var(--brand-pink) !important;
+  }
+  .border-brand-pink {
+    border-color: var(--brand-pink) !important;
+  }
   html {
     scroll-behavior: smooth;
   }

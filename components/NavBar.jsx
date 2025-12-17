@@ -49,7 +49,7 @@ export default function NavBar() {
       className={`fixed left-0 right-0 top-0 z-50 transition-all duration-300 ${
         isWhiteNav || isScrolled
           ? 'bg-white py-4 shadow-sm backdrop-blur-md'
-          : 'bg-primary py-6 backdrop-blur-sm'
+          : 'bg-primary  backdrop-blur-sm'
       }`}
     >
       <div className="container-custom flex items-center justify-between">
@@ -79,11 +79,11 @@ export default function NavBar() {
               className={`rounded px-4 py-2 text-sm font-medium uppercase tracking-wider transition-colors ${
                 pathname === link.href
                   ? isDarkNav
-                    ? 'text-white underline underline-offset-4'
-                    : 'text-black underline underline-offset-4'
+                    ? 'text-brand-teal underline underline-offset-4'
+                    : 'text-brand-pink underline underline-offset-4'
                   : isDarkNav
-                    ? 'text-gray-300 hover:text-white'
-                    : 'text-gray-600 hover:text-black'
+                    ? 'text-white hover:text-brand-teal'
+                    : 'hover:text-brand-pink text-gray-600'
               }`}
             >
               {link.name}
@@ -135,8 +135,8 @@ export default function NavBar() {
                       ? 'text-white'
                       : 'text-black'
                     : isDarkNav
-                      ? 'text-gray-300 hover:text-white'
-                      : 'text-gray-600 hover:text-black'
+                      ? 'text-white hover:text-brand-teal'
+                      : 'hover:text-brand-pink text-gray-600'
                 }`}
                 onClick={() => setIsMobileMenuOpen(false)}
               >
