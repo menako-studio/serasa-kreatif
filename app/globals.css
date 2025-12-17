@@ -6,9 +6,19 @@
   --spacing-section: 4rem;
   --spacing-section-mobile: 2rem;
   --brand-pink: #f002a3;
+  --brand-yellow: #fdcd10;
 }
 
 @layer base {
+  .text-brand-yellow {
+    color: var(--brand-yellow) !important;
+  }
+  .bg-brand-yellow {
+    background-color: var(--brand-yellow) !important;
+  }
+  .border-brand-yellow {
+    border-color: var(--brand-yellow) !important;
+  }
   .text-brand-pink {
     color: var(--brand-pink) !important;
   }

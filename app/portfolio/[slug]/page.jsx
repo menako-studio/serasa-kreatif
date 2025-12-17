@@ -100,7 +100,7 @@ export default function CaseDetailPage({ params }) {
           </div>
 
           {/* Title - Extra Large */}
-          <h1 className="font-display mb-4 text-4xl font-black uppercase leading-[0.95] tracking-tight text-white md:text-5xl lg:text-6xl xl:text-7xl">
+          <h1 className="font-display mb-4 text-4xl font-black uppercase leading-[0.95] tracking-tight text-brand-teal md:text-5xl lg:text-6xl xl:text-7xl">
             {caseStudy.title}
           </h1>
 
@@ -117,26 +117,20 @@ export default function CaseDetailPage({ params }) {
           {/* Meta Info Grid */}
           <div className="mb-12 grid gap-8 border-b border-gray-200 pb-12 md:grid-cols-3 md:gap-10">
             <div>
-              <h4 className="mb-2 text-xs font-bold uppercase tracking-widest text-gray-500">
-                CLIENT
-              </h4>
-              <p className="font-display text-xl font-black uppercase leading-tight md:text-2xl">
+              <h4 className="mb-2 text-xs font-bold uppercase tracking-widest ">CLIENT</h4>
+              <p className="font-display text-xl font-black uppercase leading-tight text-primary md:text-2xl">
                 {caseStudy.client}
               </p>
             </div>
             <div>
-              <h4 className="mb-2 text-xs font-bold uppercase tracking-widest text-gray-500">
-                TIMELINE
-              </h4>
-              <p className="font-display text-xl font-black uppercase leading-tight md:text-2xl">
+              <h4 className="mb-2 text-xs font-bold uppercase tracking-widest">TIMELINE</h4>
+              <p className="font-display text-xl font-black uppercase leading-tight text-primary md:text-2xl">
                 {caseStudy.timeline}
               </p>
             </div>
             <div>
-              <h4 className="mb-2 text-xs font-bold uppercase tracking-widest text-gray-500">
-                OUR ROLE
-              </h4>
-              <p className="font-display text-xl font-black uppercase leading-tight md:text-2xl">
+              <h4 className="mb-2 text-xs font-bold uppercase tracking-widest">OUR ROLE</h4>
+              <p className="font-display text-xl font-black uppercase leading-tight text-primary md:text-2xl">
                 {caseStudy.role}
               </p>
             </div>
@@ -152,20 +146,18 @@ export default function CaseDetailPage({ params }) {
       </section>
 
       {/* Key Results - Black Background */}
-      <section className="bg-black py-16 text-white md:py-24">
+      <section className="bg-primary py-16 text-white md:py-24">
         <div className="container-custom max-w-6xl">
-          <h2 className="font-display mb-12 text-3xl font-black uppercase md:text-4xl lg:text-5xl">
+          <h2 className="font-display text-brand-pink mb-12 text-3xl font-black uppercase md:text-4xl lg:text-5xl">
             KEY RESULTS
           </h2>
           <div className="grid grid-cols-2 gap-6 md:grid-cols-4 md:gap-8">
             {caseStudy.metrics.map((metric, index) => (
               <div key={index}>
-                <div className="font-display mb-2 text-4xl font-black leading-none text-white md:text-5xl lg:text-5xl">
+                <div className="font-display text-brand-yellow mb-2 text-4xl font-black leading-none md:text-5xl lg:text-5xl">
                   {metric.value}
                 </div>
-                <div className="text-xs uppercase tracking-wider text-gray-400 ">
-                  {metric.label}
-                </div>
+                <div className="text-xs uppercase tracking-wider text-white">{metric.label}</div>
               </div>
             ))}
           </div>
@@ -175,10 +167,10 @@ export default function CaseDetailPage({ params }) {
       {/* The Challenge - White */}
       <section className="bg-white py-16 md:py-24">
         <div className="container-custom max-w-4xl">
-          <h2 className="font-display mb-8 text-3xl font-black uppercase md:text-4xl lg:text-5xl">
+          <h2 className="font-display mb-8 text-3xl font-black uppercase text-primary md:text-4xl lg:text-5xl">
             THE CHALLENGE
           </h2>
-          <p className="text-lg leading-relaxed text-gray-700 md:text-xl md:leading-relaxed">
+          <p className="text-lg leading-relaxed text-primary md:text-xl md:leading-relaxed">
             {caseStudy.challenge}
           </p>
         </div>
@@ -198,10 +190,10 @@ export default function CaseDetailPage({ params }) {
       {/* Our Approach - White */}
       <section className="bg-white py-16 md:py-24">
         <div className="container-custom max-w-4xl">
-          <h2 className="font-display mb-8 text-3xl font-black uppercase md:text-4xl lg:text-5xl">
+          <h2 className="font-display mb-8 text-3xl font-black uppercase text-primary md:text-4xl lg:text-5xl">
             OUR APPROACH
           </h2>
-          <p className="text-lg leading-relaxed text-gray-700 md:text-xl md:leading-relaxed">
+          <p className="text-lg leading-relaxed text-primary md:text-xl md:leading-relaxed">
             {caseStudy.approach}
           </p>
         </div>
@@ -232,12 +224,12 @@ export default function CaseDetailPage({ params }) {
       )}
 
       {/* The Results - Black */}
-      <section className="bg-black py-16 text-white md:py-24">
+      <section className="bg-brand-teal py-16 text-white md:py-24">
         <div className="container-custom max-w-4xl">
-          <h2 className="font-display mb-8 text-3xl font-black uppercase md:text-4xl lg:text-5xl">
+          <h2 className="font-display mb-8 text-3xl font-black uppercase text-primary md:text-4xl lg:text-5xl">
             THE RESULTS
           </h2>
-          <p className="mb-10 text-lg leading-relaxed text-gray-300 md:mb-12 md:text-xl md:leading-relaxed">
+          <p className="mb-10 text-lg leading-relaxed text-primary md:mb-12 md:text-xl md:leading-relaxed">
             {caseStudy.results}
           </p>
 
@@ -246,7 +238,7 @@ export default function CaseDetailPage({ params }) {
             {caseStudy.tags.map((tag, index) => (
               <span
                 key={index}
-                className="border border-white/30 px-3 py-1.5 text-xs font-bold uppercase tracking-wider"
+                className="border border-white px-3 py-1.5 text-xs font-bold uppercase tracking-wider"
               >
                 {tag}
               </span>
@@ -273,9 +265,9 @@ export default function CaseDetailPage({ params }) {
       )}
 
       {/* CTA Section - Red Accent */}
-      <section className="bg-brand-teal py-16 text-white md:py-24">
+      <section className="bg-brand-pink py-16 text-white md:py-24">
         <div className="container-custom max-w-3xl text-center">
-          <h2 className="font-display mb-6 text-3xl font-black uppercase leading-tight md:text-4xl lg:text-5xl">
+          <h2 className="text-brand-yellow font-display mb-6 text-3xl font-black uppercase leading-tight md:text-4xl lg:text-5xl">
             WANT SIMILAR RESULTS?
           </h2>
           <p className="mx-auto mb-8 max-w-xl text-base leading-relaxed md:mb-10 md:text-lg">
@@ -284,7 +276,7 @@ export default function CaseDetailPage({ params }) {
           </p>
           <Link
             href="/contact"
-            className="inline-flex items-center border-2 border-white bg-white px-10 py-3 text-sm font-bold uppercase tracking-wider text-black transition-all hover:bg-transparent hover:text-white md:px-12 md:py-4"
+            className="text-brand-yellow inline-flex items-center border-2 border-white bg-white px-10 py-3 text-sm font-bold uppercase tracking-wider transition-all hover:bg-transparent hover:text-white md:px-12 md:py-4"
           >
             START PROJECT
           </Link>
