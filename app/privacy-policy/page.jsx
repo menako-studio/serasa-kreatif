@@ -39,7 +39,7 @@ export default function PrivacyNoticePage() {
               </div>
 
               {/* Information We Provide */}
-              <div className="mb-12 border-t border-gray-200 pt-8">
+              <div id="information" className="mb-12 border-t border-gray-200 pt-8">
                 <h3 className="mb-4 font-sans text-lg font-bold uppercase tracking-tight">
                   Information We Provide
                 </h3>
@@ -47,283 +47,272 @@ export default function PrivacyNoticePage() {
                   We provide this privacy notice to explain to you our online information practices,
                   including the types of information collected, how the information is used, to whom
                   the information is shared, the choices available to you, and how you can access
-                  and update the information we simpan tentang Anda.
+                  and update the information we store about you.
                 </p>
                 <p className="mb-4 text-sm leading-relaxed text-gray-700">
-                  Situs web ini disediakan oleh Serasa Kreatif, sebuah agensi kreatif yang berlokasi
-                  di Bintaro, Tangerang Selatan, Indonesia.
+                  This website is provided by Serasa Kreatif, a creative agency located in Bintaro,
+                  South Tangerang, Indonesia.
                 </p>
               </div>
 
               {/* Information We Receive About You from Sources */}
-              <div className="mb-12 border-t border-gray-200 pt-8">
+              <div id="sources" className="mb-12 border-t border-gray-200 pt-8">
                 <h3 className="mb-4 font-sans text-lg font-bold uppercase tracking-tight">
-                  Informasi yang Kami Terima Tentang Anda dari Berbagai Sumber
+                  Information We Receive About You from Various Sources
                 </h3>
                 <p className="mb-4 text-sm leading-relaxed text-gray-700">
-                  Kami dapat mengumpulkan informasi tentang Anda dari berbagai sumber online dan
-                  offline, termasuk ketika Anda menggunakan situs web kami, menghubungi kami, atau
-                  berinteraksi dengan kami secara lainnya.
+                  We may collect information about you from various online and offline sources,
+                  including when you use our website, contact us, or otherwise interact with us.
                 </p>
               </div>
 
               {/* Automated Collection of Information */}
-              <div className="mb-12 border-t border-gray-200 pt-8">
+              <div id="automated" className="mb-12 border-t border-gray-200 pt-8">
                 <h3 className="mb-4 font-sans text-lg font-bold uppercase tracking-tight">
-                  Pengumpulan Informasi Otomatis
+                  Automated Collection of Information
                 </h3>
                 <p className="mb-4 text-sm leading-relaxed text-gray-700">
-                  Ketika Anda mengunjungi Situs ini, kami dapat mengumpulkan informasi tertentu
-                  secara otomatis dari perangkat Anda. Dalam beberapa yurisdiksi, termasuk negara di
-                  Wilayah Ekonomi Eropa, informasi ini mungkin dianggap sebagai informasi pribadi
-                  berdasarkan undang-undang perlindungan data yang berlaku.
+                  When you visit this Site, we may automatically collect certain information from
+                  your device. In some jurisdictions, including countries in the European Economic
+                  Area, this information may be considered personal information under applicable
+                  data protection laws.
                 </p>
                 <p className="mb-4 text-sm leading-relaxed text-gray-700">
-                  Secara khusus, informasi yang kami kumpulkan secara otomatis dapat mencakup
-                  informasi seperti alamat IP Anda, jenis perangkat, pengenal unik perangkat, jenis
-                  browser, geografi umum (misalnya, negara atau kota), dan informasi teknis lainnya.
-                  Kami juga dapat mengumpulkan informasi tentang bagaimana perangkat Anda
-                  berinteraksi dengan Situs kami, termasuk halaman yang diakses dan tautan yang
-                  diklik.
+                  Specifically, the information we collect automatically may include information
+                  such as your IP address, device type, unique device identifiers, browser type,
+                  general geographic location (e.g., country or city), and other technical
+                  information. We may also collect information about how your device has interacted
+                  with our Site, including the pages accessed and links clicked.
                 </p>
                 <p className="mb-4 text-sm leading-relaxed text-gray-700">
-                  Mengumpulkan informasi ini memungkinkan kami untuk lebih memahami pengunjung yang
-                  datang ke Situs kami, dari mana mereka berasal, dan konten apa yang menarik minat
-                  mereka. Kami menggunakan informasi ini untuk tujuan analitik internal kami dan
-                  untuk meningkatkan kualitas dan relevansi Situs kami kepada pengunjung kami.
+                  Collecting this information enables us to better understand the visitors who come
+                  to our Site, where they come from, and what content is of interest to them. We use
+                  this information for our internal analytics purposes and to improve the quality
+                  and relevance of our Site to our visitors.
                 </p>
                 <p className="mb-4 text-sm leading-relaxed text-gray-700">
-                  Beberapa informasi ini dapat dikumpulkan menggunakan cookie dan teknologi
-                  pelacakan serupa, seperti dijelaskan di bawah ini.
+                  Some of this information may be collected using cookies and similar tracking
+                  technology, as explained below.
                 </p>
               </div>
 
               {/* How We Use Your Information */}
-              <div className="mb-12 border-t border-gray-200 pt-8">
+              <div id="usage" className="mb-12 border-t border-gray-200 pt-8">
                 <h3 className="mb-4 font-sans text-lg font-bold uppercase tracking-tight">
-                  Bagaimana Kami Menggunakan Informasi Anda
+                  How We Use Your Information
                 </h3>
                 <p className="mb-4 text-sm leading-relaxed text-gray-700">
-                  Kami dapat menggunakan informasi yang kami kumpulkan tentang Anda untuk:
+                  We may use the information we collect about you to:
                 </p>
                 <ul className="mb-4 ml-6 list-disc space-y-2 text-sm leading-relaxed text-gray-700">
-                  <li>Menyediakan, mengoperasikan, dan meningkatkan Situs kami</li>
-                  <li>Menanggapi pertanyaan dan permintaan Anda</li>
-                  <li>Mengirimkan informasi administratif kepada Anda</li>
-                  <li>Melakukan analitik data untuk meningkatkan layanan kami</li>
-                  <li>Mematuhi kewajiban hukum dan regulasi</li>
-                  <li>Mencegah penipuan dan meningkatkan keamanan</li>
-                  <li>Tujuan lain dengan persetujuan Anda atau sebagaimana diizinkan oleh hukum</li>
+                  <li>Provide, operate, and improve our Site</li>
+                  <li>Respond to your inquiries and requests</li>
+                  <li>Send you administrative information</li>
+                  <li>Perform data analytics to improve our services</li>
+                  <li>Comply with legal and regulatory obligations</li>
+                  <li>Prevent fraud and enhance security</li>
+                  <li>Other purposes with your consent or as permitted by law</li>
                 </ul>
               </div>
 
               {/* How We Share Personal Information */}
-              <div className="mb-12 border-t border-gray-200 pt-8">
+              <div id="sharing" className="mb-12 border-t border-gray-200 pt-8">
                 <h3 className="mb-4 font-sans text-lg font-bold uppercase tracking-tight">
-                  Bagaimana Kami Membagikan Informasi Pribadi
+                  How We Share Personal Information
                 </h3>
                 <p className="mb-4 text-sm leading-relaxed text-gray-700">
-                  Kami dapat membagikan informasi Anda dalam keadaan berikut:
+                  We may share your information in the following circumstances:
                 </p>
                 <ul className="mb-4 ml-6 list-disc space-y-2 text-sm leading-relaxed text-gray-700">
                   <li>
-                    <strong>Penyedia Layanan:</strong> Kami dapat membagikan informasi Anda dengan
-                    penyedia layanan pihak ketiga yang melakukan layanan atas nama kami, seperti
-                    hosting situs web, analitik data, dukungan pelanggan, dan layanan IT.
+                    <strong>Service Providers:</strong> We may share your information with
+                    third-party service providers who perform services on our behalf, such as
+                    website hosting, data analytics, customer support, and IT services.
                   </li>
                   <li>
-                    <strong>Persyaratan Hukum:</strong> Kami dapat mengungkapkan informasi pribadi
-                    jika diwajibkan oleh hukum atau jika kami dengan itikad baik percaya bahwa
-                    tindakan tersebut diperlukan untuk mematuhi kewajiban hukum.
+                    <strong>Legal Requirements:</strong> We may disclose personal information if
+                    required to do so by law or if we believe in good faith that such action is
+                    necessary to comply with legal obligations.
                   </li>
                   <li>
-                    <strong>Perlindungan Hak:</strong> Kami dapat mengungkapkan informasi untuk
-                    melindungi dan mempertahankan hak, properti, atau keselamatan Serasa Kreatif,
-                    pengguna kami, atau pihak lain.
+                    <strong>Protection of Rights:</strong> We may disclose information to protect
+                    and defend the rights, property, or safety of Serasa Kreatif, our users, or
+                    others.
                   </li>
                   <li>
-                    <strong>Transaksi Bisnis:</strong> Dalam hal merger, akuisisi, atau penjualan
-                    aset, informasi pribadi Anda dapat ditransfer.
+                    <strong>Business Transactions:</strong> In the event of a merger, acquisition,
+                    or sale of assets, your personal information may be transferred.
                   </li>
                 </ul>
               </div>
 
               {/* Cookies and Tracking */}
-              <div className="mb-12 border-t border-gray-200 pt-8">
+              <div id="cookies" className="mb-12 border-t border-gray-200 pt-8">
                 <h3 className="mb-4 font-sans text-lg font-bold uppercase tracking-tight">
-                  Cookie dan Teknologi Pelacakan
+                  Cookies and Tracking Technologies
                 </h3>
                 <p className="mb-4 text-sm leading-relaxed text-gray-700">
-                  Kami menggunakan cookie dan teknologi pelacakan serupa untuk mengumpulkan dan
-                  melacak informasi tentang layanan kami dan untuk meningkatkan serta menganalisis
-                  layanan kami.
+                  We use cookies and similar tracking technologies to collect and track information
+                  about our services and to improve and analyze our services.
                 </p>
                 <p className="mb-4 text-sm leading-relaxed text-gray-700">
-                  Cookie adalah file dengan sejumlah kecil data yang dapat mencakup pengenal unik
-                  anonim. Cookie dikirim ke browser Anda dari situs web dan disimpan di perangkat
-                  Anda. Teknologi pelacakan lain yang juga digunakan adalah beacon, tag, dan skrip
-                  untuk mengumpulkan dan melacak informasi serta untuk meningkatkan dan menganalisis
-                  layanan kami.
+                  Cookies are files with a small amount of data which may include an anonymous
+                  unique identifier. Cookies are sent to your browser from a website and stored on
+                  your device. Other tracking technologies used are beacons, tags, and scripts to
+                  collect and track information and to improve and analyze our services.
                 </p>
                 <p className="mb-4 text-sm leading-relaxed text-gray-700">
-                  Anda dapat menginstruksikan browser Anda untuk menolak semua cookie atau untuk
-                  menunjukkan ketika cookie sedang dikirim. Namun, jika Anda tidak menerima cookie,
-                  Anda mungkin tidak dapat menggunakan beberapa bagian dari layanan kami.
+                  You can instruct your browser to refuse all cookies or to indicate when a cookie
+                  is being sent. However, if you do not accept cookies, you may not be able to use
+                  some parts of our services.
                 </p>
               </div>
 
               {/* Data Security */}
-              <div className="mb-12 border-t border-gray-200 pt-8">
+              <div id="security" className="mb-12 border-t border-gray-200 pt-8">
                 <h3 className="mb-4 font-sans text-lg font-bold uppercase tracking-tight">
-                  Keamanan Data
+                  Data Security
                 </h3>
                 <p className="mb-4 text-sm leading-relaxed text-gray-700">
-                  Keamanan informasi pribadi Anda penting bagi kami. Kami menggunakan
-                  langkah-langkah teknis dan organisasi yang dirancang untuk melindungi informasi
-                  pribadi yang kami kumpulkan dan proses tentang Anda. Langkah-langkah yang kami
-                  gunakan dirancang untuk memberikan tingkat keamanan yang sesuai dengan risiko
-                  pemrosesan informasi pribadi Anda.
+                  The security of your personal information is important to us. We use technical and
+                  organizational measures designed to protect the personal information we collect
+                  and process about you. The measures we use are designed to provide a level of
+                  security appropriate to the risk of processing your personal information.
                 </p>
                 <p className="mb-4 text-sm leading-relaxed text-gray-700">
-                  Namun, tidak ada metode transmisi melalui Internet atau metode penyimpanan
-                  elektronik yang 100% aman. Meskipun kami berusaha menggunakan cara yang dapat
-                  diterima secara komersial untuk melindungi informasi pribadi Anda, kami tidak
-                  dapat menjamin keamanan absolutnya.
+                  However, no method of transmission over the Internet or method of electronic
+                  storage is 100% secure. While we strive to use commercially acceptable means to
+                  protect your personal information, we cannot guarantee its absolute security.
                 </p>
               </div>
 
               {/* Data Retention */}
-              <div className="mb-12 border-t border-gray-200 pt-8">
+              <div id="retention" className="mb-12 border-t border-gray-200 pt-8">
                 <h3 className="mb-4 font-sans text-lg font-bold uppercase tracking-tight">
-                  Penyimpanan Data
+                  Data Retention
                 </h3>
                 <p className="mb-4 text-sm leading-relaxed text-gray-700">
-                  Kami akan menyimpan informasi pribadi Anda hanya selama diperlukan untuk tujuan
-                  yang ditetapkan dalam Pemberitahuan Privasi ini. Kami akan menyimpan dan
-                  menggunakan informasi pribadi Anda sejauh yang diperlukan untuk mematuhi kewajiban
-                  hukum kami, menyelesaikan sengketa, dan menegakkan perjanjian dan kebijakan hukum
-                  kami.
+                  We will retain your personal information only for as long as necessary to fulfill
+                  the purposes outlined in this Privacy Notice. We will retain and use your personal
+                  information as necessary to comply with our legal obligations, resolve disputes,
+                  and enforce our legal agreements and policies.
                 </p>
               </div>
 
               {/* Your Rights and Choices */}
-              <div className="mb-12 border-t border-gray-200 pt-8">
+              <div id="rights" className="mb-12 border-t border-gray-200 pt-8">
                 <h3 className="mb-4 font-sans text-lg font-bold uppercase tracking-tight">
-                  Hak dan Pilihan Anda
+                  Your Rights and Choices
                 </h3>
                 <p className="mb-4 text-sm leading-relaxed text-gray-700">
-                  Tergantung pada lokasi Anda, Anda mungkin memiliki hak-hak tertentu terkait
-                  informasi pribadi Anda, termasuk:
+                  Depending on your location, you may have certain rights regarding your personal
+                  information, including:
                 </p>
                 <ul className="mb-4 ml-6 list-disc space-y-2 text-sm leading-relaxed text-gray-700">
                   <li>
-                    <strong>Hak Akses:</strong> Anda dapat meminta akses ke informasi pribadi yang
-                    kami miliki tentang Anda
+                    <strong>Right of Access:</strong> You may request access to the personal
+                    information we hold about you
                   </li>
                   <li>
-                    <strong>Hak Koreksi:</strong> Anda dapat meminta kami untuk memperbaiki atau
-                    memperbarui informasi pribadi Anda yang tidak akurat
+                    <strong>Right to Rectification:</strong> You may request that we correct or
+                    update your inaccurate personal information
                   </li>
                   <li>
-                    <strong>Hak Penghapusan:</strong> Anda dapat meminta kami untuk menghapus
-                    informasi pribadi Anda dalam keadaan tertentu
+                    <strong>Right to Erasure:</strong> You may request that we delete your personal
+                    information in certain circumstances
                   </li>
                   <li>
-                    <strong>Hak Pembatasan:</strong> Anda dapat meminta kami untuk membatasi
-                    pemrosesan informasi pribadi Anda dalam keadaan tertentu
+                    <strong>Right to Restriction:</strong> You may request that we restrict the
+                    processing of your personal information in certain circumstances
                   </li>
                   <li>
-                    <strong>Hak Portabilitas Data:</strong> Anda dapat meminta salinan informasi
-                    pribadi Anda dalam format yang terstruktur dan dapat dibaca mesin
+                    <strong>Right to Data Portability:</strong> You may request a copy of your
+                    personal information in a structured, machine-readable format
                   </li>
                   <li>
-                    <strong>Hak Menolak:</strong> Anda dapat menolak pemrosesan informasi pribadi
-                    Anda dalam keadaan tertentu
+                    <strong>Right to Object:</strong> You may object to the processing of your
+                    personal information in certain circumstances
                   </li>
                 </ul>
                 <p className="mb-4 text-sm leading-relaxed text-gray-700">
-                  Untuk menjalankan hak-hak ini, silakan hubungi kami menggunakan detail kontak yang
-                  disediakan di bawah ini.
+                  To exercise these rights, please contact us using the contact details provided
+                  below.
                 </p>
               </div>
 
               {/* Children's Privacy */}
-              <div className="mb-12 border-t border-gray-200 pt-8">
+              <div id="children" className="mb-12 border-t border-gray-200 pt-8">
                 <h3 className="mb-4 font-sans text-lg font-bold uppercase tracking-tight">
-                  Privasi Anak-anak
+                  Children&apos;s Privacy
                 </h3>
                 <p className="mb-4 text-sm leading-relaxed text-gray-700">
-                  Situs kami tidak ditujukan kepada siapa pun yang berusia di bawah 18 tahun
-                  (&quot;Anak-anak&quot;). Kami tidak secara sadar mengumpulkan informasi identitas
-                  pribadi dari siapa pun yang berusia di bawah 18 tahun. Jika Anda adalah orang tua
-                  atau wali dan Anda mengetahui bahwa anak Anda telah memberikan kami informasi
-                  pribadi, silakan hubungi kami. Jika kami mengetahui bahwa kami telah mengumpulkan
-                  informasi pribadi dari anak-anak tanpa verifikasi persetujuan orang tua, kami
-                  mengambil langkah-langkah untuk menghapus informasi tersebut dari server kami.
+                  Our Site is not intended for anyone under the age of 18 (&quot;Children&quot;). We
+                  do not knowingly collect personally identifiable information from anyone under the
+                  age of 18. If you are a parent or guardian and you are aware that your child has
+                  provided us with personal information, please contact us. If we become aware that
+                  we have collected personal information from children without verification of
+                  parental consent, we take steps to remove that information from our servers.
                 </p>
               </div>
 
               {/* Changes to Privacy Notice */}
-              <div className="mb-12 border-t border-gray-200 pt-8">
+              <div id="changes" className="mb-12 border-t border-gray-200 pt-8">
                 <h3 className="mb-4 font-sans text-lg font-bold uppercase tracking-tight">
-                  Perubahan pada Pemberitahuan Privasi Ini
+                  Changes to This Privacy Notice
                 </h3>
                 <p className="mb-4 text-sm leading-relaxed text-gray-700">
-                  Kami dapat memperbarui Pemberitahuan Privasi kami dari waktu ke waktu. Kami akan
-                  memberi tahu Anda tentang perubahan apa pun dengan memposting Pemberitahuan
-                  Privasi baru di halaman ini dan memperbarui tanggal &quot;Terakhir
-                  diperbarui&quot; di bagian atas Pemberitahuan Privasi ini.
+                  We may update our Privacy Notice from time to time. We will notify you of any
+                  changes by posting the new Privacy Notice on this page and updating the &quot;Last
+                  updated&quot; date at the top of this Privacy Notice.
                 </p>
                 <p className="mb-4 text-sm leading-relaxed text-gray-700">
-                  Anda disarankan untuk meninjau Pemberitahuan Privasi ini secara berkala untuk
-                  setiap perubahan. Perubahan pada Pemberitahuan Privasi ini efektif ketika mereka
-                  diposting di halaman ini.
+                  You are advised to review this Privacy Notice periodically for any changes.
+                  Changes to this Privacy Notice are effective when they are posted on this page.
                 </p>
               </div>
 
               {/* International Data Transfers */}
-              <div className="mb-12 border-t border-gray-200 pt-8">
+              <div id="transfers" className="mb-12 border-t border-gray-200 pt-8">
                 <h3 className="mb-4 font-sans text-lg font-bold uppercase tracking-tight">
-                  Transfer Data Internasional
+                  International Data Transfers
                 </h3>
                 <p className="mb-4 text-sm leading-relaxed text-gray-700">
-                  Informasi Anda, termasuk informasi pribadi, dapat ditransfer ke — dan dipelihara
-                  di — komputer yang terletak di luar negara bagian, provinsi, negara, atau
-                  yurisdiksi pemerintah lainnya di mana undang-undang perlindungan data mungkin
-                  berbeda dari yang ada di yurisdiksi Anda.
+                  Your information, including personal information, may be transferred to — and
+                  maintained on — computers located outside of your state, province, country, or
+                  other governmental jurisdiction where the data protection laws may differ from
+                  those in your jurisdiction.
                 </p>
                 <p className="mb-4 text-sm leading-relaxed text-gray-700">
-                  Jika Anda berada di luar Indonesia dan memilih untuk memberikan informasi kepada
-                  kami, harap perhatikan bahwa kami mentransfer data, termasuk informasi pribadi, ke
-                  Indonesia dan memprosesnya di sana.
+                  If you are located outside Indonesia and choose to provide information to us,
+                  please note that we transfer the data, including personal information, to
+                  Indonesia and process it there.
                 </p>
               </div>
 
               {/* Third-Party Links */}
-              <div className="mb-12 border-t border-gray-200 pt-8">
+              <div id="links" className="mb-12 border-t border-gray-200 pt-8">
                 <h3 className="mb-4 font-sans text-lg font-bold uppercase tracking-tight">
-                  Tautan ke Situs Web Lain
+                  Links to Other Websites
                 </h3>
                 <p className="mb-4 text-sm leading-relaxed text-gray-700">
-                  Situs kami dapat berisi tautan ke situs web lain yang tidak dioperasikan oleh
-                  kami. Jika Anda mengklik tautan pihak ketiga, Anda akan diarahkan ke situs pihak
-                  ketiga tersebut. Kami sangat menyarankan Anda untuk meninjau Pemberitahuan Privasi
-                  dari setiap situs yang Anda kunjungi.
+                  Our Site may contain links to other websites that are not operated by us. If you
+                  click on a third-party link, you will be directed to that third party&apos;s site.
+                  We strongly advise you to review the Privacy Notice of every site you visit.
                 </p>
                 <p className="mb-4 text-sm leading-relaxed text-gray-700">
-                  Kami tidak memiliki kontrol atas dan tidak bertanggung jawab atas konten,
-                  kebijakan privasi, atau praktik situs atau layanan pihak ketiga mana pun.
+                  We have no control over and assume no responsibility for the content, privacy
+                  policies, or practices of any third-party sites or services.
                 </p>
               </div>
 
               {/* Contact */}
-              <div className="border-t border-gray-200 pt-8">
+              <div id="contact" className="border-t border-gray-200 pt-8">
                 <h3 className="mb-4 font-sans text-lg font-bold uppercase tracking-tight">
-                  Hubungi Kami
+                  Contact Us
                 </h3>
                 <p className="mb-4 text-sm leading-relaxed text-gray-700">
-                  Jika Anda memiliki pertanyaan tentang Pemberitahuan Privasi ini atau ingin
-                  menjalankan hak privasi Anda, silakan hubungi kami di:
+                  If you have any questions about this Privacy Notice or wish to exercise your
+                  privacy rights, please contact us at:
                 </p>
                 <div className="text-sm text-gray-700">
                   <p className="mb-2">
@@ -356,80 +345,80 @@ export default function PrivacyNoticePage() {
             <div className="lg:col-span-4">
               <div className="sticky top-24">
                 <h4 className="mb-6 font-sans text-sm font-bold uppercase tracking-wider text-gray-500">
-                  Pada Halaman Ini
+                  On This Page
                 </h4>
                 <nav className="space-y-3">
                   <a
-                    href="#informasi"
+                    href="#information"
                     className="block text-sm text-gray-700 transition-colors hover:text-primary"
                   >
-                    Informasi yang Kami Berikan
+                    Information We Provide
                   </a>
                   <a
-                    href="#sumber"
+                    href="#sources"
                     className="block text-sm text-gray-700 transition-colors hover:text-primary"
                   >
-                    Informasi dari Sumber
+                    Information from Sources
                   </a>
                   <a
-                    href="#otomatis"
+                    href="#automated"
                     className="block text-sm text-gray-700 transition-colors hover:text-primary"
                   >
-                    Pengumpulan Otomatis
+                    Automated Collection
                   </a>
                   <a
-                    href="#penggunaan"
+                    href="#usage"
                     className="block text-sm text-gray-700 transition-colors hover:text-primary"
                   >
-                    Penggunaan Informasi
+                    Use of Information
                   </a>
                   <a
-                    href="#berbagi"
+                    href="#sharing"
                     className="block text-sm text-gray-700 transition-colors hover:text-primary"
                   >
-                    Berbagi Informasi
+                    Sharing Information
                   </a>
                   <a
-                    href="#cookie"
+                    href="#cookies"
                     className="block text-sm text-gray-700 transition-colors hover:text-primary"
                   >
-                    Cookie dan Pelacakan
+                    Cookies and Tracking
                   </a>
                   <a
-                    href="#keamanan"
+                    href="#security"
                     className="block text-sm text-gray-700 transition-colors hover:text-primary"
                   >
-                    Keamanan Data
+                    Data Security
                   </a>
                   <a
-                    href="#penyimpanan"
+                    href="#retention"
                     className="block text-sm text-gray-700 transition-colors hover:text-primary"
                   >
-                    Penyimpanan Data
+                    Data Retention
                   </a>
                   <a
-                    href="#hak"
+                    href="#rights"
                     className="block text-sm text-gray-700 transition-colors hover:text-primary"
                   >
-                    Hak Anda
+                    Your Rights
                   </a>
                   <a
-                    href="#anak"
+                    href="#children"
                     className="block text-sm text-gray-700 transition-colors hover:text-primary"
                   >
-                    Privasi Anak-anak
+                    Children&apos;s Privacy
                   </a>
                   <a
-                    href="#perubahan"
+                    href="#changes"
                     className="block text-sm text-gray-700 transition-colors hover:text-primary"
                   >
-                    Perubahan
+                    Changes
                   </a>
                   <a
-                    href="#kontak"
+                    href="#contact"
                     className="block text-sm text-gray-700 transition-colors hover:text-primary"
                   >
-                    Hubungi Kami
+                    Contact Us
                   </a>
                 </nav>
               </div>

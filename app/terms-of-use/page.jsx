@@ -47,219 +47,233 @@ export default function TermsOfUsePage() {
               {/* Acceptance of Terms */}
               <div className="mb-12 border-t border-gray-200 pt-8">
                 <h3 className="mb-4 font-sans text-lg font-bold uppercase tracking-tight">
-                  Penerimaan Ketentuan Penggunaan
+                  Acceptance of Terms of Use
                 </h3>
                 <p className="mb-4 text-sm leading-relaxed text-gray-700">
-                  Dengan mengakses dan menggunakan Situs ini, Anda setuju untuk tunduk pada
-                  Ketentuan Penggunaan ini. Jika Anda tidak setuju dengan Ketentuan Penggunaan ini,
-                  jangan gunakan Situs ini. Jika Anda di bawah 18 tahun, Anda harus mendapatkan izin
-                  dari orang tua atau wali Anda sebelum menggunakan Situs ini.
+                  By accessing and using this Site, you agree to be bound by these Terms of Use. If
+                  you do not agree to these Terms of Use, do not use this Site. If you are under 18
+                  years old, you must obtain permission from your parent or guardian before using
+                  this Site.
                 </p>
                 <p className="mb-4 text-sm leading-relaxed text-gray-700">
-                  Serasa Kreatif dapat merevisi Ketentuan Penggunaan ini kapan saja tanpa
-                  pemberitahuan kepada Anda. Ini adalah versi terkini, seperti yang ditunjukkan oleh
-                  tanggal &quot;Efektif sejak&quot; di bagian atas halaman ini. Dengan terus
-                  menggunakan Situs setelah perubahan, Anda setuju bahwa Ketentuan Penggunaan yang
-                  direvisi akan berlaku untuk penggunaan Anda selanjutnya.
+                  Serasa Kreatif may revise these Terms of Use at any time without notice to you.
+                  This is the current version, as indicated by the &quot;Effective from&quot; date
+                  at the top of this page. By continuing to use the Site after changes, you agree
+                  that the revised Terms of Use will apply to your subsequent use.
                 </p>
                 <p className="mb-4 text-sm leading-relaxed text-gray-700">
-                  Serasa Kreatif berhak untuk menolak akses ke Situs kepada siapa pun atau entitas
-                  mana pun, atau untuk mengakhiri akses, kapan saja atas kebijakannya sendiri.
+                  Serasa Kreatif reserves the right to deny access to the Site to any person or
+                  entity, or to terminate access, at any time at its sole discretion.
                 </p>
               </div>
 
               {/* Privacy Notice */}
               <div className="mb-12 border-t border-gray-200 pt-8">
                 <h3 className="mb-4 font-sans text-lg font-bold uppercase tracking-tight">
-                  Pemberitahuan Privasi
+                  Privacy Notice
                 </h3>
                 <p className="mb-4 text-sm leading-relaxed text-gray-700">
-                  Informasi yang disediakan melalui Situs ini dapat diakses tanpa biaya oleh
-                  pengguna, dengan ketentuan bahwa informasi tersebut hanya akan digunakan untuk
-                  tujuan pribadi, non-komersial Anda. Silakan lihat{' '}
+                  Information provided through this Site can be accessed free of charge by users,
+                  provided that such information is used only for your personal, non-commercial
+                  purposes. Please see our{' '}
                   <a
-                    href="/pemberitahuan-privasi"
+                    href="/privacy-policy"
                     className="text-primary underline hover:text-brand-teal"
                   >
-                    Pemberitahuan Privasi
+                    Privacy Notice
                   </a>{' '}
-                  kami untuk informasi tentang bagaimana kami mengumpulkan dan menggunakan informasi
-                  di Situs ini.
+                  for information about how we collect and use information on this Site.
                 </p>
               </div>
 
               {/* General Use Restrictions */}
               <div className="mb-12 border-t border-gray-200 pt-8">
                 <h3 className="mb-4 font-sans text-lg font-bold uppercase tracking-tight">
-                  Batasan Penggunaan Umum dan Merek Dagang
+                  General Use Restrictions and Trademarks
                 </h3>
                 <p className="mb-4 text-sm leading-relaxed text-gray-700">
-                  Anda mungkin mengunduh dan mencetak Konten hanya untuk penggunaan pribadi,
-                  non-komersial Anda sendiri, dan tidak untuk dipublikasikan kembali,
-                  didistribusikan ulang, ditransmisikan ulang, dijual, dilisensikan, atau digunakan
-                  secara komersial dengan cara apa pun. &quot;Serasa Kreatif,&quot; logo, nama,
-                  segel, dan lambang kami adalah merek dagang milik Serasa Kreatif dan tidak boleh
-                  digunakan atau ditampilkan tanpa izin tertulis sebelumnya dari Serasa Kreatif.
+                  You may download and print Content only for your own personal, non-commercial use,
+                  and not for republication, redistribution, retransmission, sale, licensing, or
+                  other commercial use in any way. &quot;Serasa Kreatif,&quot; our logo, name, seal,
+                  and emblem are trademarks owned by Serasa Kreatif and may not be used or displayed
+                  without prior written permission from Serasa Kreatif.
                 </p>
                 <p className="mb-4 text-sm leading-relaxed text-gray-700">
-                  Anda tidak boleh mengunduh atau menyimpan salinan, menampilkan, melakukan,
-                  mendistribusikan, atau memodifikasi konten apa pun di Situs ini, baik seluruhnya
-                  atau sebagian, kecuali dalam keadaan berikut (&quot;Pengecualian&quot;):
+                  You may not download or store copies, display, perform, distribute, or modify any
+                  content on this Site, in whole or in part, except in the following circumstances
+                  (&quot;Exceptions&quot;):
                 </p>
                 <ul className="mb-4 ml-6 list-disc space-y-2 text-sm leading-relaxed text-gray-700">
                   <li>
-                    Anda dapat menyimpan dan menampilkan Konten di layar komputer Anda, mencetak
-                    salinan individual dari bagian diskrit Konten hanya untuk penggunaan pribadi,
-                    non-komersial Anda sendiri, atau untuk tujuan pendidikan internal, dengan
-                    ketentuan bahwa Anda tidak mengubah atau menghapus hak cipta atau pemberitahuan
-                    hak milik lainnya.
+                    You may store and display Content on your computer screen, print individual
+                    copies of discrete portions of Content only for your own personal,
+                    non-commercial use, or for internal educational purposes, provided that you do
+                    not alter or remove any copyright or proprietary notices.
                   </li>
                   <li>
-                    Jika Anda adalah pendidik di institusi pendidikan atau lembaga nirlaba, Anda
-                    dapat mengirimkan URL dan mencetak salinan Konten untuk tujuan instruksi
-                    langsung, bukan untuk tujuan komersial. Penggunaan ini juga terbatas pada
-                    penggandaan tidak lebih dari 30 salinan dari halaman diskrit Konten.
+                    If you are an educator at an educational institution or nonprofit organization,
+                    you may distribute URLs and print copies of Content for direct instructional
+                    purposes, not for commercial purposes. This use is also limited to making no
+                    more than 30 copies of discrete pages of Content.
                   </li>
                 </ul>
                 <p className="mb-4 text-sm leading-relaxed text-gray-700">
-                  Kecuali sebagaimana diizinkan secara tegas dalam Pengecualian atau sebagaimana
-                  ditetapkan di tempat lain di Situs ini, Anda tidak diizinkan untuk menyalin,
-                  mereproduksi, mengunduh, mengunggah ulang, mengirim, menampilkan, mengirimkan,
-                  menjual, melisensikan, atau mengeksploitasi Konten apa pun untuk tujuan apa pun
-                  tanpa izin tertulis sebelumnya dari kami atau pemilik hak cipta lainnya yang
-                  diidentifikasi di Situs ini.
+                  Except as expressly permitted in the Exceptions or as otherwise set forth on this
+                  Site, you are not permitted to copy, reproduce, download, re-upload, transmit,
+                  display, transmit, sell, license, or exploit any Content for any purpose without
+                  prior written permission from us or any other copyright owner identified on this
+                  Site.
                 </p>
               </div>
 
               {/* Links to Third-Party Sites */}
               <div className="mb-12 border-t border-gray-200 pt-8">
-                <h3 className="mb-4 font-sans text-lg font-bold uppercase tracking-tight">
-                  Tautan ke Situs Web Pihak Ketiga
+                <h3
+                  className="mb-4 font-sans text-lg font-bold uppercase tracking-tight"
+                  id="third-party-links"
+                >
+                  Links to Third-Party Websites
                 </h3>
                 <p className="mb-4 text-sm leading-relaxed text-gray-700">
-                  Tautan dari dan ke situs pihak ketiga disediakan hanya sebagai kenyamanan bagi
-                  Anda. Jika Anda menggunakan tautan ini, Anda akan meninggalkan Situs ini. Kami
-                  belum meninjau semua situs pihak ketiga ini dan tidak mengendalikan dan tidak
-                  bertanggung jawab atas situs web atau kontennya. Oleh karena itu, kami tidak
-                  mendukung atau membuat pernyataan apa pun tentang mereka, atau informasi,
-                  perangkat lunak, atau produk lain yang ditemukan di sana, atau hasil apa pun yang
-                  mungkin diperoleh dari menggunakannya.
+                  Links to and from third-party websites are provided solely for your convenience.
+                  If you use these links, you will leave this Site. We have not reviewed all of
+                  these third-party sites and do not control and are not responsible for these
+                  websites or their content. Therefore, we do not endorse or make any
+                  representations about them, or any information, software, or other products found
+                  there, or any results that may be obtained from using them.
                 </p>
                 <p className="mb-4 text-sm leading-relaxed text-gray-700">
-                  Jika Anda memutuskan untuk mengakses situs web pihak ketiga yang ditautkan dari
-                  Situs ini, Anda melakukannya sepenuhnya atas risiko Anda sendiri dan tunduk pada
-                  syarat dan ketentuan penggunaan untuk situs tersebut.
+                  If you decide to access any of the third-party websites linked from this Site, you
+                  do so entirely at your own risk and subject to the terms and conditions of use for
+                  such websites.
                 </p>
               </div>
 
               {/* Disclaimer of Warranties */}
               <div className="mb-12 border-t border-gray-200 pt-8">
-                <h3 className="mb-4 font-sans text-lg font-bold uppercase tracking-tight">
-                  Penafian Jaminan
+                <h3
+                  className="mb-4 font-sans text-lg font-bold uppercase tracking-tight"
+                  id="disclaimer"
+                >
+                  Disclaimer of Warranties
                 </h3>
                 <p className="mb-4 text-sm leading-relaxed text-gray-700">
-                  Serasa Kreatif tidak membuat pernyataan apa pun tentang kesesuaian, keandalan,
-                  ketersediaan, ketepatan waktu, dan akurasi dari informasi, perangkat lunak,
-                  produk, layanan, dan grafik terkait yang terdapat di Situs ini untuk tujuan apa
-                  pun. Sejauh diizinkan oleh hukum yang berlaku, semua informasi, perangkat lunak,
-                  produk, layanan, dan grafik terkait disediakan &quot;apa adanya&quot; tanpa
-                  jaminan atau ketentuan apa pun.
+                  Serasa Kreatif makes no representations about the suitability, reliability,
+                  availability, timeliness, and accuracy of the information, software, products,
+                  services, and related graphics contained on this Site for any purpose. To the
+                  maximum extent permitted by applicable law, all such information, software,
+                  products, services, and related graphics are provided &quot;as is&quot; without
+                  warranty or condition of any kind.
                 </p>
                 <p className="mb-4 text-sm leading-relaxed text-gray-700">
-                  SEJAUH DIIZINKAN OLEH HUKUM YANG BERLAKU, SERASA KREATIF DAN/ATAU PEMASOKNYA
-                  DENGAN INI MENOLAK SEMUA JAMINAN DAN KETENTUAN SEHUBUNGAN DENGAN INFORMASI,
-                  PERANGKAT LUNAK, PRODUK, LAYANAN, DAN GRAFIK TERKAIT INI, TERMASUK SEMUA JAMINAN
-                  ATAU KETENTUAN TERSIRAT TENTANG DAPAT DIPERJUALBELIKAN, KESESUAIAN UNTUK TUJUAN
-                  TERTENTU, KEPEMILIKAN, DAN NON-PELANGGARAN.
+                  TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, SERASA KREATIF AND/OR ITS
+                  SUPPLIERS HEREBY DISCLAIM ALL WARRANTIES AND CONDITIONS WITH REGARD TO THIS
+                  INFORMATION, SOFTWARE, PRODUCTS, SERVICES, AND RELATED GRAPHICS, INCLUDING ALL
+                  IMPLIED WARRANTIES OR CONDITIONS OF MERCHANTABILITY, FITNESS FOR A PARTICULAR
+                  PURPOSE, TITLE, AND NON-INFRINGEMENT.
                 </p>
               </div>
 
               {/* Limitation of Liability */}
               <div className="mb-12 border-t border-gray-200 pt-8">
-                <h3 className="mb-4 font-sans text-lg font-bold uppercase tracking-tight">
-                  Batasan Tanggung Jawab
+                <h3
+                  className="mb-4 font-sans text-lg font-bold uppercase tracking-tight"
+                  id="limitation-of-liability"
+                >
+                  Limitation of Liability
                 </h3>
                 <p className="mb-4 text-sm leading-relaxed text-gray-700">
-                  SEJAUH DIIZINKAN OLEH HUKUM YANG BERLAKU, DALAM KEADAAN APA PUN SERASA KREATIF
-                  DAN/ATAU PEMASOKNYA TIDAK AKAN BERTANGGUNG JAWAB ATAS KERUSAKAN APA PUN (TERMASUK,
-                  TANPA BATASAN, KERUSAKAN ATAS KEHILANGAN DATA ATAU KEUNTUNGAN, ATAU KARENA
-                  GANGGUAN BISNIS) YANG TIMBUL DARI PENGGUNAAN ATAU KETIDAKMAMPUAN UNTUK MENGGUNAKAN
-                  BAHAN-BAHAN DI SITUS WEB INI, BAHKAN JIKA SERASA KREATIF ATAU PERWAKILAN YANG SAH
-                  SERASA KREATIF TELAH DIBERI TAHU SECARA LISAN ATAU TERTULIS TENTANG KEMUNGKINAN
-                  KERUSAKAN TERSEBUT.
+                  TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, IN NO EVENT SHALL SERASA
+                  KREATIF AND/OR ITS SUPPLIERS BE LIABLE FOR ANY DAMAGES WHATSOEVER (INCLUDING,
+                  WITHOUT LIMITATION, DAMAGES FOR LOSS of DATA OR PROFITS, OR DUE TO BUSINESS
+                  INTERRUPTION) ARISING OUT OF THE USE OR INABILITY TO USE THE MATERIALS ON THIS
+                  WEBSITE, EVEN IF SERASA KREATIF OR AN AUTHORIZED REPRESENTATIVE OF SERASA KREATIF
+                  HAS BEEN ADVISED ORALLY OR IN WRITING OF THE POSSIBILITY OF SUCH DAMAGE.
                 </p>
                 <p className="mb-4 text-sm leading-relaxed text-gray-700">
-                  Jika penggunaan Anda atas materi dari Situs ini mengharuskan servis atau
-                  penggantian peralatan atau data, Serasa Kreatif tidak bertanggung jawab atas biaya
-                  tersebut.
+                  If your use of materials from this Site results in the need for servicing, repair,
+                  or correction of equipment or data, Serasa Kreatif is not responsible for those
+                  costs.
                 </p>
               </div>
 
               {/* Unlawful or Prohibited Activity */}
               <div className="mb-12 border-t border-gray-200 pt-8">
-                <h3 className="mb-4 font-sans text-lg font-bold uppercase tracking-tight">
-                  Aktivitas yang Melanggar Hukum atau Dilarang
+                <h3
+                  className="mb-4 font-sans text-lg font-bold uppercase tracking-tight"
+                  id="unlawful-activity"
+                >
+                  Unlawful or Prohibited Activity
                 </h3>
                 <p className="mb-4 text-sm leading-relaxed text-gray-700">
-                  Sebagai syarat penggunaan Situs ini, Anda setuju bahwa Anda tidak akan menggunakan
-                  Situs ini untuk tujuan apa pun yang melanggar hukum atau dilarang oleh syarat,
-                  ketentuan, pemberitahuan, atau pernyataan ini. Anda dapat menggunakan layanan kami
-                  hanya untuk tujuan yang sah. Anda tidak boleh menggunakan layanan kami dengan cara
-                  yang dapat merusak, melumpuhkan, membebani, atau mengganggu layanan kami atau
-                  mengganggu pihak lain untuk menggunakan layanan kami.
+                  As a condition of your use of this Site, you agree that you will not use this Site
+                  for any purpose that is unlawful or prohibited by these terms, conditions,
+                  notices, or statements. You may use our services only for lawful purposes. You
+                  must not use our services in any way that could damage, disable, overburden, or
+                  impair our services or interfere with any other party&apos;s use of our services.
                 </p>
               </div>
 
               {/* Governing Law and Dispute Resolution */}
               <div className="mb-12 border-t border-gray-200 pt-8">
-                <h3 className="mb-4 font-sans text-lg font-bold uppercase tracking-tight">
-                  Hukum yang Berlaku dan Penyelesaian Sengketa
+                <h3
+                  className="mb-4 font-sans text-lg font-bold uppercase tracking-tight"
+                  id="governing-law"
+                >
+                  Governing Law and Dispute Resolution
                 </h3>
                 <p className="mb-4 text-sm leading-relaxed text-gray-700">
-                  Ketentuan Penggunaan ini dan penggunaan Anda atas Situs ini akan diatur oleh dan
-                  ditafsirkan sesuai dengan hukum Republik Indonesia, tanpa memperhatikan ketentuan
-                  konflik hukumnya. Setiap sengketa yang timbul dari atau berkaitan dengan Ketentuan
-                  Penggunaan ini akan diselesaikan melalui arbitrase di Jakarta, Indonesia.
+                  These Terms of Use and your use of this Site shall be governed by and construed in
+                  accordance with the laws of the Republic of Indonesia, without regard to its
+                  conflict of law provisions. Any dispute arising out of or relating to these Terms
+                  of Use shall be resolved by arbitration in Jakarta, Indonesia.
                 </p>
               </div>
 
               {/* Security */}
               <div className="mb-12 border-t border-gray-200 pt-8">
-                <h3 className="mb-4 font-sans text-lg font-bold uppercase tracking-tight">
-                  Keamanan
+                <h3
+                  className="mb-4 font-sans text-lg font-bold uppercase tracking-tight"
+                  id="security"
+                >
+                  Security
                 </h3>
                 <p className="mb-4 text-sm leading-relaxed text-gray-700">
-                  Jika Anda mengakses Situs ini, Anda bertanggung jawab untuk menjaga kerahasiaan
-                  akun dan kata sandi Anda (jika ada) dan untuk membatasi akses ke komputer Anda.
-                  Anda setuju untuk menerima tanggung jawab atas semua aktivitas yang terjadi di
-                  bawah akun atau kata sandi Anda. Serasa Kreatif berhak untuk menolak layanan,
-                  menghentikan akun, menghapus atau mengedit konten, atau membatalkan pesanan
-                  menurut kebijakannya sendiri.
+                  If you access this Site, you are responsible for maintaining the confidentiality
+                  of your account and password (if any) and for restricting access to your computer.
+                  You agree to accept responsibility for all activities that occur under your
+                  account or password. Serasa Kreatif reserves the right to refuse service,
+                  terminate accounts, remove or edit content, or cancel orders at its sole
+                  discretion.
                 </p>
               </div>
 
               {/* No Waiver */}
               <div className="mb-12 border-t border-gray-200 pt-8">
-                <h3 className="mb-4 font-sans text-lg font-bold uppercase tracking-tight">
-                  Tidak Ada Pengabaian
+                <h3
+                  className="mb-4 font-sans text-lg font-bold uppercase tracking-tight"
+                  id="no-waiver"
+                >
+                  No Waiver
                 </h3>
                 <p className="mb-4 text-sm leading-relaxed text-gray-700">
-                  Kegagalan Serasa Kreatif untuk menegakkan ketentuan apa pun dari Ketentuan
-                  Penggunaan ini tidak akan dianggap sebagai pengabaian atas ketentuan tersebut atau
-                  hak apa pun. Jika ketentuan apa pun dari Ketentuan Penggunaan ini dianggap tidak
-                  berlaku atau tidak dapat dilaksanakan oleh pengadilan, ketentuan lainnya tetap
-                  berlaku dan dapat dilaksanakan.
+                  The failure of Serasa Kreatif to enforce any provision of these Terms of Use shall
+                  not be deemed a waiver of such provision or any right. If any provision of these
+                  Terms of Use is held by a court to be invalid or unenforceable, the remaining
+                  provisions shall remain in full force and effect.
                 </p>
               </div>
 
               {/* Contact */}
               <div className="border-t border-gray-200 pt-8">
-                <h3 className="mb-4 font-sans text-lg font-bold uppercase tracking-tight">
-                  Hubungi Kami
+                <h3
+                  className="mb-4 font-sans text-lg font-bold uppercase tracking-tight"
+                  id="contact"
+                >
+                  Contact Us
                 </h3>
                 <p className="mb-4 text-sm leading-relaxed text-gray-700">
-                  Jika Anda memiliki pertanyaan tentang Ketentuan Penggunaan ini, silakan hubungi
-                  kami di:
+                  If you have any questions about these Terms of Use, please contact us at:
                 </p>
                 <div className="text-sm text-gray-700">
                   <p className="mb-2">
@@ -276,7 +290,7 @@ export default function TermsOfUsePage() {
                     </a>
                   </p>
                   <p>
-                    Telepon:{' '}
+                    Phone:{' '}
                     <a
                       href="tel:+6281288971453"
                       className="text-primary underline hover:text-brand-teal"
@@ -292,56 +306,56 @@ export default function TermsOfUsePage() {
             <div className="lg:col-span-4">
               <div className="sticky top-24">
                 <h4 className="mb-6 font-sans text-sm font-bold uppercase tracking-wider text-gray-500">
-                  Pada Halaman Ini
+                  On This Page
                 </h4>
                 <nav className="space-y-3">
                   <a
-                    href="#penerimaan"
+                    href="#acceptance"
                     className="block text-sm text-gray-700 transition-colors hover:text-primary"
                   >
-                    Penerimaan Ketentuan
+                    Acceptance of Terms
                   </a>
                   <a
-                    href="#privasi"
+                    href="#privacy"
                     className="block text-sm text-gray-700 transition-colors hover:text-primary"
                   >
-                    Pemberitahuan Privasi
+                    Privacy Notice
                   </a>
                   <a
-                    href="#batasan"
+                    href="#general-use"
                     className="block text-sm text-gray-700 transition-colors hover:text-primary"
                   >
-                    Batasan Penggunaan
+                    General Use Restrictions
                   </a>
                   <a
-                    href="#tautan"
+                    href="#third-party-links"
                     className="block text-sm text-gray-700 transition-colors hover:text-primary"
                   >
-                    Tautan Pihak Ketiga
+                    Links to Third-Party Websites
                   </a>
                   <a
-                    href="#penafian"
+                    href="#disclaimer"
                     className="block text-sm text-gray-700 transition-colors hover:text-primary"
                   >
-                    Penafian Jaminan
+                    Disclaimer of Warranties
                   </a>
                   <a
-                    href="#tanggung-jawab"
+                    href="#limitation-of-liability"
                     className="block text-sm text-gray-700 transition-colors hover:text-primary"
                   >
-                    Batasan Tanggung Jawab
+                    Limitation of Liability
                   </a>
                   <a
-                    href="#hukum"
+                    href="#governing-law"
                     className="block text-sm text-gray-700 transition-colors hover:text-primary"
                   >
-                    Hukum yang Berlaku
+                    Governing Law
                   </a>
                   <a
-                    href="#kontak"
+                    href="#contact"
                     className="block text-sm text-gray-700 transition-colors hover:text-primary"
                   >
-                    Hubungi Kami
+                    Contact Us
                   </a>
                 </nav>
               </div>
