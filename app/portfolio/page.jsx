@@ -83,7 +83,7 @@ export default function WorkPage() {
   return (
     <div className="min-h-screen text-white">
       {/* Hero Section */}
-      <section className="bg-black pb-20 pt-32">
+      <section className="bg-black pb-20 pt-32 md:pt-40 lg:pt-44">
         <div className="container-custom">
           <h1 className="font-display mb-16 font-black uppercase text-white">PORTFOLIO</h1>
 

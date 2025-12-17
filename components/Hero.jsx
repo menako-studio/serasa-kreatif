@@ -5,7 +5,7 @@ import { hero } from '@/lib/copy-en'
 
 export default function Hero() {
   return (
-    <section className="relative bg-primary pb-12 pt-24 text-white md:pb-16 md:pt-32">
+    <section className="relative bg-primary pb-12 pt-32 text-white md:pb-20 md:pt-40 lg:pt-44">
       <div className="container-custom">
         {/* Hero headline - R/GA style: massive, tight, uppercase */}
         <motion.div

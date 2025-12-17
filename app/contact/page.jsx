@@ -9,7 +9,7 @@ export const metadata = {
 
 export default function ContactPage() {
   return (
-    <div className="min-h-screen bg-black pt-24 text-white">
+    <div className="min-h-screen bg-black pt-32 text-white">
       {/* Hero Section - R/GA Style */}
       <section className="section-padding border-b border-gray-800">
         <div className="container-custom">

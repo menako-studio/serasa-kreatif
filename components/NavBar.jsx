@@ -33,7 +33,14 @@ export default function NavBar() {
   }, [])
 
   // Pages that always use white navbar
-  const forceWhiteNav = ['/contact', '/about', '/blog', '/portfolio']
+  const forceWhiteNav = [
+    '/contact',
+    '/about',
+    '/blog',
+    '/portfolio',
+    '/terms-of-use',
+    '/privacy-policy',
+  ]
   const isWhiteNav = forceWhiteNav.some((slug) => pathname.startsWith(slug))
   const isDarkNav = !isWhiteNav && !isScrolled
 
@@ -48,7 +55,7 @@ export default function NavBar() {
       <div className="container-custom flex items-center justify-between">
         {/* Logo */}
         <Link href="/" className="flex items-center space-x-2">
-          <div className="relative h-16 w-56 transition-all duration-300 md:h-20 md:w-80">
+          <div className="relative h-20 w-64 transition-all duration-300 md:h-28 md:w-[420px] lg:h-32 lg:w-[500px]">
             <Image
               src={
                 isDarkNav

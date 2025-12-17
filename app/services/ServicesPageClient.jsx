@@ -17,7 +17,7 @@ export default function ServicesPageClient() {
   return (
     <div className="min-h-screen bg-primary">
       {/* Hero Section */}
-      <section className="section-padding pb-20 pt-32 text-white">
+      <section className="section-padding pb-20 pt-32 text-white md:pt-40 lg:pt-44">
         <div className="container-custom">
           <SectionHeading white className="mb-8 text-4xl md:text-5xl lg:text-6xl">
             We blend strategy and storytelling to create digital experiences that drive sales and

@@ -66,35 +66,45 @@ const newsData = [
   },
 ]
 
-const categories = ['Semua', 'Brand Identity', 'Digital Strategy', 'Awards', 'Insights', 'Company News', 'Case Study', 'Events', 'Technology']
+const categories = [
+  'Semua',
+  'Brand Identity',
+  'Digital Strategy',
+  'Awards',
+  'Insights',
+  'Company News',
+  'Case Study',
+  'Events',
+  'Technology',
+]
 const years = ['2025', '2024', '2023']
 
 export default function NewsPage() {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero */}
-      <section className="pt-32 pb-12 bg-white border-b border-gray-200">
+      <section className="border-b border-gray-200 bg-white pb-12 pt-32 md:pt-40 lg:pt-44">
         <div className="container-custom">
-          <h1 className="font-sans text-6xl font-black tracking-tight uppercase md:text-7xl lg:text-8xl">
-            BERITA
+          <h1 className="font-sans text-6xl font-black uppercase tracking-tight md:text-7xl lg:text-8xl">
+            BLOG
           </h1>
         </div>
       </section>
 
       {/* Main Content */}
-      <section className="bg-white section-padding">
+      <section className="section-padding bg-white">
         <div className="container-custom">
           <div className="grid gap-12 lg:grid-cols-12">
             {/* Sidebar Filters */}
             <aside className="lg:col-span-3">
-              <div className="sticky space-y-8 top-24">
+              <div className="sticky top-24 space-y-8">
                 {/* Sort By */}
                 <div>
-                  <h3 className="mb-4 font-sans text-xs font-bold tracking-wider text-gray-500 uppercase">
+                  <h3 className="mb-4 font-sans text-xs font-bold uppercase tracking-wider text-gray-500">
                     Urutkan Berdasarkan
                   </h3>
                   <div className="space-y-2">
-                    <button className="block w-full text-sm text-left text-gray-900 transition-colors hover:text-primary">
+                    <button className="block w-full text-left text-sm text-gray-900 transition-colors hover:text-primary">
                       Semua
                     </button>
                   </div>
@@ -102,14 +112,14 @@ export default function NewsPage() {
 
                 {/* Categories */}
                 <div>
-                  <h3 className="mb-4 font-sans text-xs font-bold tracking-wider text-gray-500 uppercase">
+                  <h3 className="mb-4 font-sans text-xs font-bold uppercase tracking-wider text-gray-500">
                     Kategori
                   </h3>
                   <div className="space-y-2">
                     {categories.map((category) => (
                       <button
                         key={category}
-                        className="block w-full text-sm text-left text-gray-700 transition-colors hover:text-primary"
+                        className="block w-full text-left text-sm text-gray-700 transition-colors hover:text-primary"
                       >
                         {category}
                       </button>
@@ -119,14 +129,14 @@ export default function NewsPage() {
 
                 {/* Years */}
                 <div>
-                  <h3 className="mb-4 font-sans text-xs font-bold tracking-wider text-gray-500 uppercase">
+                  <h3 className="mb-4 font-sans text-xs font-bold uppercase tracking-wider text-gray-500">
                     Tahun
                   </h3>
                   <div className="space-y-2">
                     {years.map((year) => (
                       <button
                         key={year}
-                        className="block w-full text-sm text-left text-gray-700 transition-colors hover:text-primary"
+                        className="block w-full text-left text-sm text-gray-700 transition-colors hover:text-primary"
                       >
                         {year}
                       </button>
@@ -151,11 +161,11 @@ export default function NewsPage() {
                           className="object-cover transition-transform duration-500 group-hover:scale-105"
                         />
                         {/* Red accent corner */}
-                        <div className="absolute top-0 right-0 z-10 w-12 h-12 bg-red-600"></div>
+                        <div className="absolute right-0 top-0 z-10 h-12 w-12 bg-red-600"></div>
                       </div>
 
                       {/* Date */}
-                      <p className="mb-2 text-xs tracking-wider text-gray-500 uppercase">
+                      <p className="mb-2 text-xs uppercase tracking-wider text-gray-500">
                         {news.date}
                       </p>
 
@@ -172,11 +182,11 @@ export default function NewsPage() {
               </div>
 
               {/* Load More Button */}
-              <div className="flex justify-center pt-8 mt-16 border-t border-gray-200">
-                <button className="flex items-center gap-2 font-sans text-sm font-bold tracking-wider uppercase transition-colors group hover:text-primary">
+              <div className="mt-16 flex justify-center border-t border-gray-200 pt-8">
+                <button className="group flex items-center gap-2 font-sans text-sm font-bold uppercase tracking-wider transition-colors hover:text-primary">
                   <span>Tampilkan Lebih Banyak</span>
                   <svg
-                    className="w-4 h-4 transition-transform group-hover:translate-y-1"
+                    className="h-4 w-4 transition-transform group-hover:translate-y-1"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"

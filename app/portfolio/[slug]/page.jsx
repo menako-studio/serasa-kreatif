@@ -63,7 +63,7 @@ export default function CaseDetailPage({ params }) {
   return (
     <div className="bg-black">
       {/* Hero Section - Full Screen */}
-      <section className="relative flex min-h-screen items-end bg-black">
+      <section className="relative flex min-h-screen items-end bg-black pt-32 ">
         <Image
           src={caseStudy.image}
           alt={caseStudy.title}

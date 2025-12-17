@@ -77,7 +77,7 @@ export default function AboutPage() {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero */}
-      <PageSection bgColor="bg-white" paddingSize="xlarge">
+      <PageSection bgColor="bg-white" paddingSize="xlarge" className="pt-32 md:pt-40 lg:pt-44">
         <div className="container-custom">
           <h1 className="mb-12 font-sans text-5xl font-black uppercase leading-none tracking-tight md:text-6xl lg:text-7xl">
             ABOUT US

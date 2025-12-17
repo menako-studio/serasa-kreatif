@@ -8,7 +8,7 @@ export default function PrivacyNoticePage() {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero */}
-      <section className="border-b border-gray-200 bg-white pb-8 pt-32">
+      <section className="border-b border-gray-200 bg-white pb-8 pt-32 md:pt-40 lg:pt-44">
         <div className="container-custom">
           <h1 className="mb-4 font-sans text-4xl font-black uppercase tracking-tight md:text-5xl lg:text-6xl">
             SERASA KREATIF WEBSITE PRIVACY NOTICE
@@ -24,7 +24,7 @@ export default function PrivacyNoticePage() {
             {/* Main Content */}
             <div className="lg:col-span-8">
               {/* Introduction */}
-              <div className="prose prose-sm mb-12 max-w-none">
+              <div className="prose-sm prose mb-12 max-w-none">
                 <h2 className="mb-6 font-sans text-2xl font-black uppercase tracking-tight">
                   SERASA KREATIF RESPECTS YOUR PRIVACY. THIS WEBSITE PRIVACY NOTICE EXPLAINS THE
                   TYPES OF INFORMATION WE COLLECT ABOUT INDIVIDUALS WHO VISIT OUR WEBSITE, WITH WHOM
