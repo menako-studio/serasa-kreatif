@@ -32,7 +32,7 @@ const filterOptions = {
 function FilterSelect({ options }) {
   return (
     <div className="relative">
-      <select className="w-full cursor-pointer appearance-none border border-gray-700 bg-black px-4 py-3 text-sm uppercase tracking-wider text-white transition-colors hover:border-gray-500">
+      <select className="w-full cursor-pointer appearance-none border border-white bg-brand-teal px-4 py-3 text-sm uppercase tracking-wider text-white transition-colors hover:border-gray-500">
         {options.map((opt) => (
           <option key={opt}>{opt}</option>
         ))}
@@ -65,13 +65,11 @@ function FeaturedWorkGrid({ works }) {
           />
           <div className="absolute inset-0 bg-black/30 transition-colors group-hover:bg-black/10" />
           <div className="absolute bottom-0 left-0 right-0 p-8 md:p-12">
-            <div className="mb-2 text-xs uppercase tracking-widest text-gray-300">
-              {work.category}
-            </div>
+            <div className="mb-2 text-xs uppercase tracking-widest text-white">{work.category}</div>
             <h3 className="font-display mb-2 text-3xl font-black uppercase text-white md:text-4xl lg:text-5xl">
               {work.title}
             </h3>
-            <p className="text-sm text-gray-200 md:text-base">{work.subtitle}</p>
+            <p className="text-sm text-white md:text-base">{work.subtitle}</p>
           </div>
         </Link>
       ))}
@@ -81,11 +79,11 @@ function FeaturedWorkGrid({ works }) {
 
 export default function WorkPage() {
   return (
-    <div className="min-h-screen text-white">
+    <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="bg-black pb-20 pt-32 md:pt-40 lg:pt-44">
+      <section className="bg-white pb-20 pt-32 md:pt-40 lg:pt-44">
         <div className="container-custom">
-          <h1 className="font-display mb-16 font-black uppercase text-white">PORTFOLIO</h1>
+          <h1 className="font-display mb-16 font-black uppercase text-primary">PORTFOLIO</h1>
 
           {/* Filter */}
           <div className="mb-12 grid max-w-2xl grid-cols-1 gap-4 md:grid-cols-3">
@@ -96,9 +94,9 @@ export default function WorkPage() {
 
           {/* Description */}
           <div className="max-w-xl">
-            <p className="text-lg leading-relaxed text-gray-300">
+            <p className="text-lg leading-relaxed text-primary">
               See our best work from various services, regions, and SME clients.{' '}
-              <Link href="/contact" className="underline transition-colors hover:text-white">
+              <Link href="/contact" className="hover:text-brand-pink underline transition-colors">
                 Contact
               </Link>{' '}
               Serasa Kreatif team for a free consultation.
@@ -108,16 +106,18 @@ export default function WorkPage() {
       </section>
 
       {/* Featured Work Section */}
-      <section className="bg-black py-12">
+      <section className="bg-brand-pink py-12">
         <div className="container-custom">
-          <h2 className="font-display mb-12 text-2xl font-bold uppercase">FEATURED WORK</h2>
+          <h2 className="font-display mb-12 text-2xl font-bold uppercase text-white">
+            FEATURED WORK
+          </h2>
 
           {/* Grid - 2 columns */}
           <FeaturedWorkGrid works={featuredWork} />
 
           {/* Load More Button */}
           <div className="mt-16 text-center">
-            <button className="group inline-flex items-center gap-2 text-white transition-colors hover:text-gray-300">
+            <button className="group inline-flex items-center gap-2 text-white transition-colors hover:text-brand-teal">
               <span className="text-sm uppercase tracking-wider">Load More</span>
               <svg
                 className="h-5 w-5 transform transition-transform group-hover:translate-y-1"
@@ -138,10 +138,10 @@ export default function WorkPage() {
       </section>
 
       {/* Bottom CTA Section */}
-      <section className="section-padding border-t border-gray-900 bg-black">
+      <section className="section-padding border-t border-gray-900 ">
         <div className="container-custom">
           <div className="max-w-2xl">
-            <p className="mb-8 text-xl leading-relaxed text-gray-300 md:text-2xl">
+            <p className="text-brand-pink mb-8 text-xl leading-relaxed md:text-2xl">
               Punya ide untuk bisnis, merek, atau UMKM Anda? Kami siap mendengarkan dan
               berkolaborasi. Bersama Serasa Kreatif, kita bisa membangun masa depan yang lebih baik
               untuk UMKM Indonesia.
