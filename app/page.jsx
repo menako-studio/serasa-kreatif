@@ -9,6 +9,8 @@ import NewsCard from '@/components/NewsCard'
 import ServiceAccordionItem from '@/components/ServiceAccordionItem'
 import PrimaryButton from '@/components/PrimaryButton'
 import TextLink from '@/components/TextLink'
+import CreativeReels from '@/components/CreativeReels'
+import CaseStudiesShowcase from '@/components/CaseStudiesShowcase'
 import Link from 'next/link'
 import { services } from '@/lib/copy-en'
 
@@ -70,6 +72,17 @@ const contactInfo = [
   },
 ]
 
+// Creative Reels data - extracted from case studies
+const creativeReels = caseStudies
+  .filter((study) => study.instagramLinks && study.instagramLinks.length > 0)
+  .flatMap((study) =>
+    study.instagramLinks.map((url) => ({
+      url,
+      client: study.client,
+      title: study.title,
+    }))
+  )
+
 export default function HomePage() {
   const [openAccordion, setOpenAccordion] = useState(null)
 
@@ -94,6 +107,9 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* Creative Reels Section */}
+      <CreativeReels reels={creativeReels} />
+
       {/* WHAT WE DO Section */}
       <section className="section-padding bg-white">
         <div className="container-custom">
@@ -112,6 +128,9 @@ export default function HomePage() {
           />
         </div>
       </section>
+
+      {/* Case Studies Section */}
+      <CaseStudiesShowcase studies={caseStudies} />
 
       {/* Client Logos */}
       <ClientLogos />
