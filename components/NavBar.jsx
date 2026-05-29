@@ -48,7 +48,7 @@ export default function NavBar() {
     <nav
       className={`fixed left-0 right-0 top-0 z-50 transition-all duration-300 ${
         isWhiteNav || isScrolled
-          ? 'bg-white py-4 shadow-sm backdrop-blur-md'
+          ? 'bg-white shadow-sm backdrop-blur-md'
           : 'bg-primary  backdrop-blur-sm'
       }`}
     >
@@ -65,14 +65,14 @@ export default function NavBar() {
               alt="Serasa Kreatif"
               fill={true}
               quality={100}
-              style={{ objectFit: 'contain' }}
+              style={{ objectFit: 'contain', objectPosition: 'left' }}
               priority
             />
           </div>
         </Link>
         {/* Desktop Navigation */}
         <div className="hidden items-center space-x-8 lg:flex">
-          {navLinks.map((link) => (
+          {navLinks?.map((link) => (
             <Link
               key={link.href}
               href={link.href}
@@ -125,7 +125,7 @@ export default function NavBar() {
           className={`mt-4 animate-fade-in border-t border-gray-200 py-6 lg:hidden ${isDarkNav ? 'bg-primary' : 'bg-white'}`}
         >
           <div className="container-custom flex flex-col space-y-4">
-            {navLinks.map((link) => (
+            {navLinks?.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
@@ -160,5 +160,3 @@ export default function NavBar() {
     </nav>
   )
 }
-// ...existing code...
-// ...existing code...

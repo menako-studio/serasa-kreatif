@@ -2,9 +2,9 @@ import './globals.css'
 import NavBar from '@/components/NavBar'
 import Footer from '@/components/Footer'
 import StickyWhatsApp from '@/components/StickyWhatsApp'
-import { Inter } from 'next/font/google'
+import { Open_Sans } from 'next/font/google'
 
-const inter = Inter({
+const openSans = Open_Sans({
   subsets: ['latin'],
   variable: '--font-sans',
   display: 'swap',
@@ -77,7 +77,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="id" className={inter.variable}>
+    <html lang="id" className={openSans.variable}>
       <body className="font-sans antialiased">
         <NavBar />
         <main>{children}</main>
