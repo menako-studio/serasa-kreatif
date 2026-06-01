@@ -108,7 +108,7 @@ export default function HomePage() {
       </section>
 
       {/* Creative Reels Section */}
-      <CreativeReels reels={creativeReels} />
+      {/* <CreativeReels reels={creativeReels} /> */}
 
       {/* WHAT WE DO Section */}
       <section className="section-padding bg-white">
@@ -130,7 +130,7 @@ export default function HomePage() {
       </section>
 
       {/* Case Studies Section */}
-      <CaseStudiesShowcase studies={caseStudies} />
+      {/* <CaseStudiesShowcase studies={caseStudies} /> */}
 
       {/* Client Logos */}
       <ClientLogos />
@@ -162,7 +162,10 @@ export default function HomePage() {
       <section className="section-padding bg-brand-teal text-white">
         <div className="container-custom">
           <div className="max-w-4xl">
-            <SectionHeading className="mb-12">Join Serasa Kreatif</SectionHeading>
+            <SectionHeading>Looking for a Creative Partner?</SectionHeading>
+            <SectionDescription className="mb-8 text-white">
+              Let&apos;s Elevate Your Brand.
+            </SectionDescription>
             <div className="mb-16 grid gap-8 md:grid-cols-3">
               {contactInfo.map((item) => (
                 <ContactInfoItem key={item.label} {...item} />
@@ -170,9 +173,9 @@ export default function HomePage() {
             </div>
             <PrimaryButton
               href="/contact"
-              className="border-white bg-white text-primary hover:bg-accent hover:text-white"
+              className="border-white bg-white text-primary hover:text-white"
             >
-              START PROJECT
+              LET&apos;S TALK
             </PrimaryButton>
           </div>
         </div>

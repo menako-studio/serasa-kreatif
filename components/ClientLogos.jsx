@@ -11,9 +11,15 @@ const clients = [
   { name: 'BNI', logo: '/assets/images/logo-partner/logo-bni.png' },
   { name: 'BSI', logo: '/assets/images/logo-partner/logo-bsi.png' },
   { name: 'JAPO', logo: '/assets/images/logo-partner/logo-japo.png' },
-  { name: 'JobStreet Express', logo: '/assets/images/logo-partner/logo-jobstreet-express.png' },
+  {
+    name: 'JobStreet Express',
+    logo: '/assets/images/logo-partner/logo-jobstreet-express.png',
+  },
   { name: 'Lazada', logo: '/assets/images/logo-partner/logo-lazada.png' },
-  { name: 'Primaya Hospital', logo: '/assets/images/logo-partner/logo-primaya-hospital.png' },
+  {
+    name: 'Primaya Hospital',
+    logo: '/assets/images/logo-partner/logo-primaya-hospital.png',
+  },
   { name: 'PUPR', logo: '/assets/images/logo-partner/logo-pupr.png' },
   { name: 'Roposo', logo: '/assets/images/logo-partner/logo-roposo.png' },
   { name: 'SR12', logo: '/assets/images/logo-partner/logo-sr12.png' },
@@ -24,9 +30,74 @@ export default function ClientLogos() {
   const [failed, setFailed] = useState({})
 
   return (
-    <section className="section-padding bg-gray-50">
+    <section className="section-padding">
+      <style>{`
+        @keyframes scrollLogos {
+          0% {
+            transform: translateX(0);
+          }
+          100% {
+            transform: translateX(calc(-50%));
+          }
+        }
+
+        .logos-marquee {
+          overflow: hidden;
+          border-radius: 0.5rem;
+          padding: 2rem 0;
+            mask-image: linear-gradient(
+            to right,
+            transparent 0%,
+            black 12%,
+            black 88%,
+            transparent 100%
+          );
+          -webkit-mask-image: linear-gradient(
+            to right,
+            transparent 0%,
+            black 12%,
+            black 88%,
+            transparent 100%
+          );
+        }
+
+        .logos-track {
+          display: flex;
+          gap: 2rem;
+          animation: scrollLogos 12s linear infinite;
+          will-change: transform;
+          padding-left: 0;
+        }
+
+        .logos-marquee:hover .logos-track {
+          animation-play-state: paused;
+        }
+
+        .logo-item {
+          flex: 0 0 auto;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          min-width: 140px;
+          height: 90px;
+          padding: 1rem;
+        }
+
+        @media (max-width: 768px) {
+          .logo-item {
+            min-width: 110px;
+            height: 70px;
+            padding: 0.75rem;
+          }
+
+          .logos-track {
+            gap: 1.5rem;
+          }
+        }
+      `}</style>
+
       <div className="container-custom">
-        <div className="mb-12 ">
+        <div className="mb-12">
           <SectionHeading>Trusted by these IMPACTFUL brands</SectionHeading>
           <SectionDescription>
             Kami telah bekerja sama dengan berbagai brand lokal untuk mentransformasi identitas dan
@@ -34,34 +105,65 @@ export default function ClientLogos() {
           </SectionDescription>
         </div>
 
-        <div className="grid grid-cols-2 items-center gap-8 md:grid-cols-3 lg:grid-cols-6">
-          {clients.map((client, index) => {
-            const key = client.logo || String(index)
-            const isFailed = !!failed[key]
+        <div className="logos-marquee">
+          <div className="logos-track">
+            {/* First set of logos */}
+            {clients.map((client, index) => {
+              const key = `${client.logo}-0-${index}`
+              const isFailed = !!failed[key]
 
-            return (
-              <div
-                key={index}
-                className="flex items-center justify-center rounded-lg bg-white p-6 grayscale transition-shadow hover:shadow-lg hover:grayscale-0"
-              >
-                <div className="relative flex h-16 w-full max-w-[160px] items-center justify-center px-2">
-                  {isFailed ? (
-                    <span className="font-medium text-gray-400">{client.name}</span>
-                  ) : (
-                    <Image
-                      src={client.logo || '/assets/clients/placeholder.svg'}
-                      alt={client.name}
-                      width={200}
-                      height={80}
-                      className="max-h-[56px] max-w-[140px] object-contain"
-                      onError={() => setFailed((s) => ({ ...s, [key]: true }))}
-                      quality={100}
-                    />
-                  )}
+              return (
+                <div key={key} className="logo-item">
+                  <div className="flex h-14 w-full max-w-[130px] items-center justify-center grayscale transition-all duration-300 hover:grayscale-0">
+                    {isFailed ? (
+                      <span className="text-center text-xs font-medium text-gray-400">
+                        {client.name}
+                      </span>
+                    ) : (
+                      <Image
+                        src={client.logo || '/assets/clients/placeholder.svg'}
+                        alt={client.name}
+                        width={140}
+                        height={60}
+                        className="max-h-14 max-w-[120px] object-contain"
+                        onError={() => setFailed((s) => ({ ...s, [key]: true }))}
+                        quality={95}
+                        loading="lazy"
+                      />
+                    )}
+                  </div>
                 </div>
-              </div>
-            )
-          })}
+              )
+            })}
+            {/* Duplicate set for seamless loop */}
+            {clients.map((client, index) => {
+              const key = `${client.logo}-1-${index}`
+              const isFailed = !!failed[key]
+
+              return (
+                <div key={key} className="logo-item">
+                  <div className="flex h-14 w-full max-w-[130px] items-center justify-center grayscale transition-all duration-300 hover:grayscale-0">
+                    {isFailed ? (
+                      <span className="text-center text-xs font-medium text-gray-400">
+                        {client.name}
+                      </span>
+                    ) : (
+                      <Image
+                        src={client.logo || '/assets/clients/placeholder.svg'}
+                        alt={client.name}
+                        width={140}
+                        height={60}
+                        className="max-h-14 max-w-[120px] object-contain"
+                        onError={() => setFailed((s) => ({ ...s, [key]: true }))}
+                        quality={95}
+                        loading="lazy"
+                      />
+                    )}
+                  </div>
+                </div>
+              )
+            })}
+          </div>
         </div>
       </div>
     </section>
