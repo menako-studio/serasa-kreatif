@@ -26,7 +26,7 @@ export default function CaseStudiesShowcase({ studies = [] }) {
           </p>
           <a
             href="/contact"
-            className="inline-flex items-center gap-2 border-2 border-black px-8 py-3 font-bold uppercase text-black transition-all duration-300 hover:bg-black hover:text-white active:scale-95"
+            className="inline-flex items-center gap-2 rounded-lg border-2 border-black px-8 py-3 font-bold uppercase text-black transition-all duration-300 hover:bg-black hover:text-white active:scale-95"
           >
             Start Your Project
             <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">

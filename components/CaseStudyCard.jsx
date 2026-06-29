@@ -11,7 +11,7 @@ export default function CaseStudyCard({ study }) {
 
   return (
     <motion.div
-      className="border border-gray-200 transition-all duration-300 hover:border-black hover:shadow-lg"
+      className="overflow-hidden rounded-xl border border-gray-200 transition-all duration-300 hover:border-black hover:shadow-lg"
       whileHover={{ y: -4 }}
       onClick={() => setIsExpanded(!isExpanded)}
     >
@@ -26,7 +26,7 @@ export default function CaseStudyCard({ study }) {
               {services.map((service, idx) => (
                 <span
                   key={idx}
-                  className="border border-gray-300 px-3 py-1 text-xs font-medium uppercase tracking-widest text-gray-700"
+                  className="rounded-md border border-gray-300 px-3 py-1 text-xs font-medium uppercase tracking-widest text-gray-700"
                 >
                   {service}
                 </span>

@@ -6,7 +6,7 @@ import Image from 'next/image'
 export default function NewsCard({ news }) {
   return (
     <div className="group cursor-pointer">
-      <div className="relative mb-4 aspect-[3/4] overflow-hidden bg-gray-900">
+      <div className="relative mb-4 aspect-[3/4] overflow-hidden rounded-xl bg-gray-900">
         <Image
           src={news.image}
           alt={news.title}
