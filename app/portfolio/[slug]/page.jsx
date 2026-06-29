@@ -63,9 +63,9 @@ export default function CaseDetailPage({ params }) {
   return (
     <div className="bg-black">
       {/* Hero Section - Full Screen */}
-      <section className="relative flex min-h-screen items-end bg-black pt-32 ">
+      <section className="relative flex min-h-screen items-end bg-black pt-32">
         <Image
-          src={caseStudy.image}
+          src={caseStudy.imageBanner || caseStudy.image}
           alt={caseStudy.title}
           fill
           className="object-cover opacity-50"
@@ -117,7 +117,7 @@ export default function CaseDetailPage({ params }) {
           {/* Meta Info Grid */}
           <div className="mb-12 grid gap-8 border-b border-gray-200 pb-12 md:grid-cols-3 md:gap-10">
             <div>
-              <h4 className="mb-2 text-xs font-bold uppercase tracking-widest ">CLIENT</h4>
+              <h4 className="mb-2 text-xs font-bold uppercase tracking-widest">CLIENT</h4>
               <p className="font-display text-xl font-black uppercase leading-tight text-primary md:text-2xl">
                 {caseStudy.client}
               </p>
