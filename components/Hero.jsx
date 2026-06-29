@@ -164,7 +164,7 @@ export default function Hero() {
             <div className="mt-8 flex flex-wrap gap-4">
               <Link
                 href={slide.ctaLink}
-                className="inline-flex items-center justify-center rounded-none bg-neutral-900 px-8 py-4 text-xs font-bold uppercase tracking-widest text-white transition duration-300 hover:bg-emerald-700"
+                className="inline-flex items-center justify-center rounded-lg bg-neutral-900 px-8 py-4 text-xs font-bold uppercase tracking-widest text-white transition duration-300 hover:bg-emerald-700"
               >
                 {slide.ctaText}
                 <svg
@@ -179,7 +179,7 @@ export default function Hero() {
               </Link>
               <Link
                 href="/portfolio"
-                className="inline-flex items-center justify-center rounded-none border border-neutral-300 px-8 py-4 text-xs font-bold uppercase tracking-widest text-neutral-800 transition duration-300 hover:bg-neutral-100"
+                className="inline-flex items-center justify-center rounded-lg border border-neutral-300 px-8 py-4 text-xs font-bold uppercase tracking-widest text-neutral-800 transition duration-300 hover:bg-neutral-100"
               >
                 See Full Portfolio
               </Link>
