@@ -6,6 +6,9 @@ export const metadata = {
   title: 'Our Portfolio',
   description:
     'Explore our portfolio of successful SME branding and social media campaigns. See how Serasa Kreatif helps local brands grow and attract customers.',
+  alternates: {
+    canonical: '/portfolio',
+  },
 }
 
 // Featured work data from case studies

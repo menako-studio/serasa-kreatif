@@ -4,6 +4,9 @@ export const metadata = {
   title: 'Berita',
   description:
     'Berita terbaru, artikel, dan pembaruan dari Serasa Kreatif. Ikuti perkembangan terbaru dari agensi kreatif kami.',
+  alternates: {
+    canonical: '/blog',
+  },
 }
 
 // Sample news data - replace with actual CMS data

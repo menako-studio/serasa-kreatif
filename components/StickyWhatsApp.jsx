@@ -18,11 +18,11 @@ export default function StickyWhatsApp() {
   const whatsappUrl = `https://api.whatsapp.com/send?phone=6281288971453&text=${whatsappMessage}`
 
   return (
-    <div className="fixed z-40 flex items-end gap-2 bottom-20 right-8">
+    <div className="fixed bottom-20 right-8 z-40 flex items-end gap-2">
       {/* Dismiss button */}
       <button
         onClick={() => setIsDismissed(true)}
-        className="flex items-center justify-center w-8 h-8 text-white transition-all bg-gray-800 rounded-full opacity-0 hover:bg-gray-700 hover:opacity-100 group-hover:opacity-100"
+        className="flex h-8 w-8 items-center justify-center rounded-full bg-gray-800 text-white opacity-0 transition-all hover:bg-gray-700 hover:opacity-100 group-hover:opacity-100"
         aria-label="Dismiss WhatsApp button"
       >
         ×
@@ -33,11 +33,19 @@ export default function StickyWhatsApp() {
         href={whatsappUrl}
         target="_blank"
         rel="noopener noreferrer"
-        className="group flex items-center gap-3 bg-[#25D366] hover:bg-[#20BA5A] text-white px-5 py-3 rounded-full shadow-lg hover:shadow-xl transition-all hover:scale-105"
+        onClick={() => {
+          if (typeof window !== 'undefined' && window.dataLayer) {
+            window.dataLayer.push({
+              event: 'whatsapp_click',
+              page_path: pathname,
+            })
+          }
+        }}
+        className="group flex items-center gap-3 rounded-full bg-[#25D366] px-5 py-3 text-white shadow-lg transition-all hover:scale-105 hover:bg-[#20BA5A] hover:shadow-xl"
         aria-label="Chat on WhatsApp"
       >
         <svg
-          className="w-6 h-6"
+          className="h-6 w-6"
           fill="currentColor"
           viewBox="0 0 24 24"
           xmlns="http://www.w3.org/2000/svg"

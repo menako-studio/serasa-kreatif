@@ -12,6 +12,10 @@ const openSans = Open_Sans({
 })
 
 export const metadata = {
+  metadataBase: new URL('https://serasakreatif.id'),
+  alternates: {
+    canonical: '/',
+  },
   title: {
     default: 'Serasa Kreatif — Creative Agency Indonesia',
     template: '%s | Serasa Kreatif',

@@ -409,6 +409,30 @@ Follow [Conventional Commits](https://www.conventionalcommits.org/):
 
 For issues or questions, please open an issue in this repository or contact us through our website.
 
+## ✨ Recent Updates & Customizations
+
+### 1. Dynamic Japo Hero Section
+
+- Transformed the static Hero banner into a dynamically reconstructed layout based on the `japo.webp` design.
+- Features separate DOM elements for crisp rendering, tilted cards representing social media creatives, a realistic custom smartphone mockup, and an anchored key metrics banner (views, comments, ROAS, and sales) with custom SVG icons.
+- Styled typography using the default brand Open Sans theme, utilizing a clean serif italic font weight style to display the script handwritten "Into" accent.
+
+### 2. SEO Canonical Optimization
+
+- Set `metadataBase` in `app/layout.jsx` to dynamically resolve canonical URLs relative to `https://serasakreatif.id`.
+- Added absolute/relative canonical tags (`alternates.canonical`) to core landing routes (`/`, `/about`, `/services`, `/portfolio`, `/blog`, `/contact`) to prevent missing canonical errors in production.
+
+### 3. Custom Event Tracking (GTM / GA4)
+
+- Programmed GTM-compatible `window.dataLayer.push` events on critical user interaction channels:
+  - `whatsapp_click`: Fired on clicking the sticky WhatsApp chat widget (includes the source path).
+  - `contact_form_success`: Fired on successful submission of the primary business contact form.
+  - `printing_contact_success`: Fired on successful completion of the B2B printing quote inquiry.
+
+### 4. Dynamic Case Study Hero Banners
+
+- Configured dynamic fallback inside the case details page to use `imageBanner` if defined, defaulting back to the `image` thumbnail.
+
 ## 📄 License
 
 Copyright © 2024 Serasa Kreatif. All rights reserved.

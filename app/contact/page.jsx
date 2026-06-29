@@ -5,6 +5,9 @@ export const metadata = {
   title: 'Contact - Serasa Kreatif',
   description:
     'Contact Serasa Kreatif. We are ready to transform your brand. Located in Bintaro, serving Jakarta and Jabodetabek.',
+  alternates: {
+    canonical: '/contact',
+  },
 }
 
 export default function ContactPage() {

@@ -9,6 +9,9 @@ export const metadata = {
   title: 'About Us',
   description:
     'Learn more about Serasa Kreatif, a digital branding agency and social media management based in Bintaro, Jakarta.',
+  alternates: {
+    canonical: '/about',
+  },
 }
 
 const TEAM_MEMBERS = [

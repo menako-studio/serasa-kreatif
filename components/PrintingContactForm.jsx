@@ -49,6 +49,13 @@ Additional Notes: ${formData.notes || 'None'}
 
       if (response.ok) {
         setSubmitStatus('success')
+        if (typeof window !== 'undefined' && window.dataLayer) {
+          window.dataLayer.push({
+            event: 'printing_contact_success',
+            category: formData.category,
+            quantity: formData.quantity,
+          })
+        }
         setFormData({
           name: '',
           company: '',

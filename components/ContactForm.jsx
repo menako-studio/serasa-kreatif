@@ -30,6 +30,13 @@ export default function ContactForm() {
 
       if (response.ok) {
         setSubmitStatus('success')
+        if (typeof window !== 'undefined' && window.dataLayer) {
+          window.dataLayer.push({
+            event: 'contact_form_success',
+            company: formData.company,
+            budget: formData.budget,
+          })
+        }
         setFormData({
           name: '',
           company: '',
