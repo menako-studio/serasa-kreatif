@@ -48,7 +48,7 @@ function FilterSelect({ options }) {
 
 function FeaturedWorkGrid({ works }) {
   return (
-    <div className="grid gap-1 md:grid-cols-2">
+    <div className="grid gap-8 md:grid-cols-2 md:gap-12">
       {works.map((work) => (
         <Link
           key={work.slug}
@@ -138,13 +138,12 @@ export default function WorkPage() {
       </section>
 
       {/* Bottom CTA Section */}
-      <section className="section-padding border-t border-gray-900 ">
+      <section className="section-padding border-t border-gray-900">
         <div className="container-custom">
           <div className="max-w-2xl">
             <p className="text-brand-pink mb-8 text-xl leading-relaxed md:text-2xl">
-              Punya ide untuk bisnis, merek, atau UMKM Anda? Kami siap mendengarkan dan
-              berkolaborasi. Bersama Serasa Kreatif, kita bisa membangun masa depan yang lebih baik
-              untuk UMKM Indonesia.
+              Have an idea for your business, brand, or SME? We are ready to listen and collaborate.
+              Together with Serasa Kreatif, let&apos;s shape a brighter future for Indonesian SMEs.
             </p>
           </div>
         </div>

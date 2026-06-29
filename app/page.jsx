@@ -188,7 +188,7 @@ export default function HomePage() {
 
 function WorkGrid({ works }) {
   return (
-    <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-2">
+    <div className="grid grid-cols-1 gap-8 md:grid-cols-2 md:gap-12">
       {works.map((work) => (
         <WorkCard key={work.slug} work={work} />
       ))}
