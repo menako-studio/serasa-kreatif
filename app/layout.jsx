@@ -3,6 +3,7 @@ import NavBar from '@/components/NavBar'
 import Footer from '@/components/Footer'
 import StickyWhatsApp from '@/components/StickyWhatsApp'
 import { Open_Sans } from 'next/font/google'
+import { GoogleAnalytics, GoogleTagManager } from '@next/third-parties/google'
 
 const openSans = Open_Sans({
   subsets: ['latin'],
@@ -84,6 +85,12 @@ export default function RootLayout({ children }) {
         <Footer />
         <StickyWhatsApp />
       </body>
+      {process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID && (
+        <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID} />
+      )}
+      {process.env.NEXT_PUBLIC_GTM_ID && (
+        <GoogleTagManager gtmId={process.env.NEXT_PUBLIC_GTM_ID} />
+      )}
     </html>
   )
 }
