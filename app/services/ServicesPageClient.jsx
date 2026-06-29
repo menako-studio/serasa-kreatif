@@ -48,12 +48,6 @@ export default function ServicesPageClient() {
               />
             ))}
           </div>
-
-          <div className="mt-8">
-            <PrimaryButton href="/contact">
-              {servicesPage.ctaLearnMore || 'CONTACT US'}
-            </PrimaryButton>
-          </div>
         </div>
       </section>
 
