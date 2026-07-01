@@ -1,8 +1,5 @@
 import './globals.css'
-import NavBar from '@/components/NavBar'
-import Footer from '@/components/Footer'
-import StickyWhatsApp from '@/components/StickyWhatsApp'
-import CommandPalette from '@/components/CommandPalette'
+import LayoutContent from '@/components/LayoutContent'
 import { Open_Sans } from 'next/font/google'
 import { GoogleAnalytics, GoogleTagManager } from '@next/third-parties/google'
 
@@ -85,11 +82,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="id" className={openSans.variable}>
       <body className="font-sans antialiased">
-        <NavBar />
-        <main>{children}</main>
-        <Footer />
-        <StickyWhatsApp />
-        <CommandPalette />
+        <LayoutContent>{children}</LayoutContent>
       </body>
       {process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID && (
         <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID} />
