@@ -1,6 +1,9 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { caseStudies } from '@/lib/case-data'
+import PortfolioFilters from '@/components/PortfolioFilters'
+import { sanityClient } from '@/lib/sanity'
+import { allCaseStudiesQuery } from '@/lib/sanity-queries'
 
 export const metadata = {
   title: 'Our Portfolio',
@@ -10,15 +13,6 @@ export const metadata = {
     canonical: '/portfolio',
   },
 }
-
-// Featured work data from case studies
-const featuredWork = caseStudies.map((study) => ({
-  slug: study.slug,
-  title: study.client,
-  subtitle: study.title,
-  image: study.image,
-  category: study.category,
-}))
 
 const filterOptions = {
   regions: ['ALL REGIONS', 'JABODETABEK', 'WEST JAVA', 'CENTRAL JAVA'],
@@ -32,24 +26,43 @@ const filterOptions = {
   industries: ['ALL INDUSTRIES', 'FASHION', 'F&B', 'WELLNESS', 'TECHNOLOGY'],
 }
 
-function FilterSelect({ options }) {
-  return (
-    <div className="relative">
-      <select className="w-full cursor-pointer appearance-none border border-white bg-brand-teal px-4 py-3 text-sm uppercase tracking-wider text-white transition-colors hover:border-gray-500">
-        {options.map((opt) => (
-          <option key={opt}>{opt}</option>
-        ))}
-      </select>
-      <div className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2">
-        <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-        </svg>
-      </div>
-    </div>
-  )
+// Map slug to metadata for precise filtering matching the options
+const clientRegions = {
+  pregnansia: 'JABODETABEK',
+  sr12: 'JABODETABEK',
+  arkaff: 'WEST JAVA',
+  kotabi: 'CENTRAL JAVA',
+  japo: 'JABODETABEK',
+  'bandar-kardus': 'JABODETABEK',
+}
+
+const clientIndustries = {
+  pregnansia: 'WELLNESS',
+  sr12: 'WELLNESS',
+  arkaff: 'FASHION',
+  kotabi: 'FASHION',
+  japo: 'F&B',
+  'bandar-kardus': 'TECHNOLOGY',
+}
+
+const clientServices = {
+  pregnansia: 'DIGITAL CAMPAIGN',
+  sr12: 'CREATIVE CONTENT',
+  arkaff: 'BRAND DESIGN',
+  kotabi: 'SOCIAL MEDIA MANAGEMENT',
+  japo: 'DIGITAL CAMPAIGN',
+  'bandar-kardus': 'SOCIAL MEDIA MANAGEMENT',
 }
 
 function FeaturedWorkGrid({ works }) {
+  if (works.length === 0) {
+    return (
+      <div className="py-12 text-center text-white">
+        <p className="text-lg">No case studies matched the selected filters.</p>
+      </div>
+    )
+  }
+
   return (
     <div className="grid gap-8 md:grid-cols-2 md:gap-12">
       {works.map((work) => (
@@ -80,7 +93,72 @@ function FeaturedWorkGrid({ works }) {
   )
 }
 
-export default function WorkPage() {
+export default async function WorkPage({ searchParams }) {
+  const { q, region, service, industry } = searchParams || {}
+
+  // Fetch from CMS if Sanity is configured
+  let data = caseStudies
+  if (process.env.NEXT_PUBLIC_SANITY_PROJECT_ID) {
+    try {
+      const cmsStudies = await sanityClient.fetch(allCaseStudiesQuery)
+      if (cmsStudies && cmsStudies.length > 0) {
+        data = cmsStudies
+      }
+    } catch (err) {
+      console.warn('Failed to load data from Sanity CMS, falling back to local files:', err.message)
+    }
+  }
+
+  // Filter case studies based on query parameters
+  const filteredStudies = data.filter((study) => {
+    // Search query match
+    if (q) {
+      const query = q.toLowerCase()
+      const matchClient = study.client.toLowerCase().includes(query)
+      const matchTitle = study.title.toLowerCase().includes(query)
+      const matchCategory = study.category.toLowerCase().includes(query)
+      const matchTags = study.tags.some((tag) => tag.toLowerCase().includes(query))
+      if (!matchClient && !matchTitle && !matchCategory && !matchTags) {
+        return false
+      }
+    }
+
+    // Region match
+    if (region && region.toLowerCase() !== 'all regions') {
+      const clientReg = clientRegions[study.slug]?.toLowerCase()
+      if (clientReg !== region.toLowerCase()) {
+        return false
+      }
+    }
+
+    // Service match
+    if (service && service.toLowerCase() !== 'all services') {
+      const clientSer = clientServices[study.slug]?.toLowerCase()
+      if (clientSer !== service.toLowerCase()) {
+        return false
+      }
+    }
+
+    // Industry match
+    if (industry && industry.toLowerCase() !== 'all industries') {
+      const clientInd = clientIndustries[study.slug]?.toLowerCase()
+      if (clientInd !== industry.toLowerCase()) {
+        return false
+      }
+    }
+
+    return true
+  })
+
+  // Format work data
+  const featuredWork = filteredStudies.map((study) => ({
+    slug: study.slug,
+    title: study.client,
+    subtitle: study.title,
+    image: study.image,
+    category: study.category,
+  }))
+
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
@@ -88,12 +166,11 @@ export default function WorkPage() {
         <div className="container-custom">
           <h1 className="font-display mb-16 font-black uppercase text-primary">PORTFOLIO</h1>
 
-          {/* Filter */}
-          <div className="mb-12 grid max-w-2xl grid-cols-1 gap-4 md:grid-cols-3">
-            <FilterSelect options={filterOptions.regions} />
-            <FilterSelect options={filterOptions.services} />
-            <FilterSelect options={filterOptions.industries} />
-          </div>
+          {/* Filter Component */}
+          <PortfolioFilters
+            filterOptions={filterOptions}
+            currentFilters={{ q, region, service, industry }}
+          />
 
           {/* Description */}
           <div className="max-w-xl">
@@ -117,26 +194,6 @@ export default function WorkPage() {
 
           {/* Grid - 2 columns */}
           <FeaturedWorkGrid works={featuredWork} />
-
-          {/* Load More Button */}
-          <div className="mt-16 text-center">
-            <button className="group inline-flex items-center gap-2 text-white transition-colors hover:text-brand-teal">
-              <span className="text-sm uppercase tracking-wider">Load More</span>
-              <svg
-                className="h-5 w-5 transform transition-transform group-hover:translate-y-1"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M19 14l-7 7m0 0l-7-7m7 7V3"
-                />
-              </svg>
-            </button>
-          </div>
         </div>
       </section>
 
