@@ -2,6 +2,14 @@
 
 Modern, high-performance website for Serasa Kreatif — a digital branding and social media agency based in Bintaro, Jakarta.
 
+## ✨ Key Features (New & Optimized)
+
+- 🛍️ **Interactive Service Pricing Estimator**: A dynamic quote calculator for branding, social media, ads, and video production packages, generating WhatsApp-ready messages for instant booking.
+- 🔍 **Universal Command Palette**: Accessible globally via `Cmd + K` or `Ctrl + K` to easily search across pages, case studies, and services.
+- 🎛️ **Server-side Portfolio Filter & Search**: Advanced filters synced with URL search parameters for shares, bookmarks, and SEO friendliness.
+- 📬 **Resend Email API & Rate Limiting**: Secure, fast contact form submissions powered by Resend with a built-in token-bucket rate limiter.
+- 📝 **Sanity CMS Studio Integration**: Fully embedded headless CMS admin panel (`/studio`) to manage blog articles and case studies natively.
+
 ## 🚀 Tech Stack
 
 - **Framework:** Next.js 14 (App Router)
@@ -42,23 +50,17 @@ yarn install
 Create a `.env.local` file in the root directory:
 
 ```env
-# Optional: Sanity CMS (if using)
+# Sanity CMS Configuration
 NEXT_PUBLIC_SANITY_PROJECT_ID=your_project_id
 NEXT_PUBLIC_SANITY_DATASET=production
 SANITY_API_TOKEN=your_api_token
 
-# Optional: Analytics
+# Resend Email Integration
+RESEND_API_KEY=re_xxxxxxxxx
+CONTACT_EMAIL=recipient@example.com
+
+# Analytics
 NEXT_PUBLIC_GA_MEASUREMENT_ID=G-XXXXXXXXXX
-
-# Optional: Email/Contact form
-CONTACT_EMAIL=your_email@example.com
-SMTP_HOST=smtp.example.com
-SMTP_PORT=587
-SMTP_USER=your_email
-SMTP_PASS=your_password
-
-# Optional: WhatsApp API (for form webhook)
-WHATSAPP_WEBHOOK_URL=https://your-webhook-url
 ```
 
 ### 4. Run development server
