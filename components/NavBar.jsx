@@ -8,6 +8,7 @@ import Image from 'next/image'
 const navLinks = [
   { name: 'Portfolio', href: '/portfolio' },
   { name: 'Services', href: '/services' },
+  { name: 'Estimator', href: '/estimator' },
   { name: 'About', href: '/about' },
 ]
 
@@ -89,6 +90,23 @@ export default function NavBar() {
               {link.name}
             </Link>
           ))}
+          <button
+            onClick={() => window.dispatchEvent(new CustomEvent('open-search'))}
+            className={`flex items-center gap-1.5 rounded px-3 py-2 text-sm font-medium uppercase tracking-wider transition-colors ${
+              isDarkNav ? 'text-white hover:text-brand-teal' : 'hover:text-brand-pink text-primary'
+            }`}
+            aria-label="Search"
+          >
+            <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2.5}
+                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+              />
+            </svg>
+            <span>Search</span>
+          </button>
           <Link
             href="/contact"
             className={`ml-4 rounded border-2 px-6 py-2 text-sm font-bold uppercase transition-colors ${
@@ -143,6 +161,27 @@ export default function NavBar() {
                 {link.name}
               </Link>
             ))}
+            <button
+              onClick={() => {
+                setIsMobileMenuOpen(false)
+                window.dispatchEvent(new CustomEvent('open-search'))
+              }}
+              className={`flex items-center justify-center gap-2 border px-6 py-3 text-center font-bold uppercase transition-colors ${
+                isDarkNav
+                  ? 'border-white text-white hover:bg-white hover:text-black'
+                  : 'border-black text-black hover:bg-black hover:text-white'
+              }`}
+            >
+              <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2.5}
+                  d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                />
+              </svg>
+              <span>Search</span>
+            </button>
             <Link
               href="/contact"
               className={`px-6 py-3 text-center font-bold uppercase transition-colors ${
