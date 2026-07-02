@@ -11,10 +11,10 @@ test.describe('Homepage', () => {
     await expect(heading).toContainText(/revenue/i)
 
     // Check navigation links are attached to the document
-    await expect(page.getByRole('link', { name: /portfolio/i }).first()).toBeAttached()
-    await expect(page.getByRole('link', { name: /services/i }).first()).toBeAttached()
-    await expect(page.getByRole('link', { name: /about/i }).first()).toBeAttached()
-    await expect(page.getByRole('link', { name: /contact/i }).first()).toBeAttached()
+    await expect(page.locator('a[href="/portfolio"]').first()).toBeAttached()
+    await expect(page.locator('a[href="/services"]').first()).toBeAttached()
+    await expect(page.locator('a[href="/about"]').first()).toBeAttached()
+    await expect(page.locator('a[href="/contact"]').first()).toBeAttached()
   })
 
   test('should navigate to work page', async ({ page }) => {

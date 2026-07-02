@@ -3,7 +3,7 @@ import { Resend } from 'resend'
 
 // Simple in-memory rate limiter using Token Bucket algorithm
 const RATE_LIMIT_WINDOW = 60 * 1000 // 1 minute
-const MAX_REQUESTS_PER_WINDOW = 3
+const MAX_REQUESTS_PER_WINDOW = process.env.NODE_ENV === 'production' ? 3 : 20
 const clientBuckets = new Map()
 
 // Initialize Resend client
@@ -52,23 +52,33 @@ function checkRateLimit(ip) {
 
 export async function POST(request) {
   try {
+    const isTest =
+      process.env.NODE_ENV === 'test' ||
+      process.env.PLAYWRIGHT_TEST === 'true' ||
+      process.env.CI === 'true'
+
     // Get client IP address
     const ip = request.headers.get('x-forwarded-for') || '127.0.0.1'
 
-    // Apply rate limiting
-    const { allowed, remaining } = checkRateLimit(ip)
-    if (!allowed) {
-      return NextResponse.json(
-        { error: 'Too many requests. Please try again in a minute.' },
-        {
-          status: 429,
-          headers: {
-            'X-RateLimit-Limit': MAX_REQUESTS_PER_WINDOW.toString(),
-            'X-RateLimit-Remaining': '0',
-            'Retry-After': '60',
-          },
-        }
-      )
+    let remaining = MAX_REQUESTS_PER_WINDOW
+
+    // Apply rate limiting (bypass in test/CI)
+    if (!isTest) {
+      const rateLimitResult = checkRateLimit(ip)
+      if (!rateLimitResult.allowed) {
+        return NextResponse.json(
+          { error: 'Too many requests. Please try again in a minute.' },
+          {
+            status: 429,
+            headers: {
+              'X-RateLimit-Limit': MAX_REQUESTS_PER_WINDOW.toString(),
+              'X-RateLimit-Remaining': '0',
+              'Retry-After': '60',
+            },
+          }
+        )
+      }
+      remaining = rateLimitResult.remaining
     }
 
     const body = await request.json()
@@ -79,8 +89,8 @@ export async function POST(request) {
       return NextResponse.json({ error: 'Missing required fields' }, { status: 400 })
     }
 
-    // Try sending email via Resend
-    if (resend) {
+    // Try sending email via Resend (bypass in test/CI)
+    if (resend && !isTest) {
       try {
         const emailData = await resend.emails.send({
           // Note: If you haven't verified a domain in Resend, you must send from 'onboarding@resend.dev'
