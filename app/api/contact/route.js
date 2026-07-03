@@ -6,24 +6,28 @@ const RATE_LIMIT_WINDOW = 60 * 1000 // 1 minute
 const MAX_REQUESTS_PER_WINDOW = process.env.NODE_ENV === 'production' ? 3 : 20
 const clientBuckets = new Map()
 
-// Initialize Resend client
-const resend = process.env.RESEND_API_KEY ? new Resend(process.env.RESEND_API_KEY) : null
-const destEmail = process.env.CONTACT_EMAIL || 'serasakreatif.id@gmail.com'
-
-// Clean up expired buckets periodically to prevent memory leaks
-if (typeof global !== 'undefined' && !global.rateLimitInterval) {
-  global.rateLimitInterval = setInterval(() => {
-    const now = Date.now()
-    for (const [ip, bucket] of clientBuckets.entries()) {
-      if (now - bucket.lastRefill > RATE_LIMIT_WINDOW) {
-        clientBuckets.delete(ip)
-      }
-    }
-  }, RATE_LIMIT_WINDOW)
+// Safe initialization of Resend client
+let resend = null
+if (process.env.RESEND_API_KEY && process.env.RESEND_API_KEY.trim() !== '') {
+  try {
+    resend = new Resend(process.env.RESEND_API_KEY)
+  } catch (err) {
+    console.error('Failed to initialize Resend client:', err)
+  }
 }
+
+const destEmail = process.env.CONTACT_EMAIL || 'serasakreatif.id@gmail.com'
 
 function checkRateLimit(ip) {
   const now = Date.now()
+
+  // Lazy cleanup of expired client buckets to prevent memory leaks in serverless warm containers
+  for (const [key, bucket] of clientBuckets.entries()) {
+    if (now - bucket.lastRefill > RATE_LIMIT_WINDOW) {
+      clientBuckets.delete(key)
+    }
+  }
+
   if (!clientBuckets.has(ip)) {
     clientBuckets.set(ip, {
       tokens: MAX_REQUESTS_PER_WINDOW - 1,
