@@ -65,7 +65,7 @@ function FeaturedWorkGrid({ works }) {
         <Link
           key={work.slug}
           href={`/portfolio/${work.slug}`}
-          className="group relative aspect-[4/3] overflow-hidden bg-gray-900"
+          className="group relative aspect-[4/3] overflow-hidden rounded-2xl bg-gray-900 shadow-md transition-shadow duration-300 hover:shadow-xl"
         >
           <Image
             src={work.image}
