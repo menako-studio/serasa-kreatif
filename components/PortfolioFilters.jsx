@@ -50,7 +50,7 @@ export default function PortfolioFilters({ filterOptions, currentFilters }) {
             placeholder="Search client, industry, or service..."
             value={currentFilters.q || ''}
             onChange={handleSearchChange}
-            className="w-full border border-gray-300 bg-white px-4 py-3 text-sm text-primary placeholder-gray-400 focus:border-brand-teal focus:outline-none"
+            className="w-full rounded-lg border border-gray-300 bg-white px-4 py-3 text-sm text-primary placeholder-gray-400 focus:border-brand-teal focus:outline-none"
           />
           {isPending && (
             <div className="absolute right-4 top-1/2 -translate-y-1/2">
@@ -68,7 +68,7 @@ export default function PortfolioFilters({ filterOptions, currentFilters }) {
             aria-label="Filter Service"
             value={currentFilters.service?.toUpperCase() || 'ALL SERVICES'}
             onChange={(e) => handleFilterChange('service', e.target.value)}
-            className="w-full cursor-pointer appearance-none border border-white bg-brand-teal px-4 py-3 text-sm uppercase tracking-wider text-white transition-colors hover:border-gray-500"
+            className="w-full cursor-pointer appearance-none rounded-lg border border-white bg-brand-teal px-4 py-3 text-sm uppercase tracking-wider text-white transition-colors hover:border-gray-500"
           >
             {filterOptions.services.map((opt) => (
               <option key={opt} value={opt} className="bg-brand-teal text-white">
@@ -94,7 +94,7 @@ export default function PortfolioFilters({ filterOptions, currentFilters }) {
             aria-label="Filter Industry"
             value={currentFilters.industry?.toUpperCase() || 'ALL INDUSTRIES'}
             onChange={(e) => handleFilterChange('industry', e.target.value)}
-            className="w-full cursor-pointer appearance-none border border-white bg-brand-teal px-4 py-3 text-sm uppercase tracking-wider text-white transition-colors hover:border-gray-500"
+            className="w-full cursor-pointer appearance-none rounded-lg border border-white bg-brand-teal px-4 py-3 text-sm uppercase tracking-wider text-white transition-colors hover:border-gray-500"
           >
             {filterOptions.industries.map((opt) => (
               <option key={opt} value={opt} className="bg-brand-teal text-white">
