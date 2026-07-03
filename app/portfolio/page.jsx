@@ -15,7 +15,6 @@ export const metadata = {
 }
 
 const filterOptions = {
-  regions: ['ALL REGIONS', 'JABODETABEK', 'WEST JAVA', 'CENTRAL JAVA'],
   services: [
     'ALL SERVICES',
     'BRAND DESIGN',
@@ -24,16 +23,6 @@ const filterOptions = {
     'CREATIVE CONTENT',
   ],
   industries: ['ALL INDUSTRIES', 'FASHION', 'F&B', 'WELLNESS', 'TECHNOLOGY'],
-}
-
-// Map slug to metadata for precise filtering matching the options
-const clientRegions = {
-  pregnansia: 'JABODETABEK',
-  sr12: 'JABODETABEK',
-  arkaff: 'WEST JAVA',
-  kotabi: 'CENTRAL JAVA',
-  japo: 'JABODETABEK',
-  'bandar-kardus': 'JABODETABEK',
 }
 
 const clientIndustries = {
@@ -47,7 +36,7 @@ const clientIndustries = {
 
 const clientServices = {
   pregnansia: 'DIGITAL CAMPAIGN',
-  sr12: 'CREATIVE CONTENT',
+  sr12: 'SOCIAL MEDIA MANAGEMENT',
   arkaff: 'BRAND DESIGN',
   kotabi: 'SOCIAL MEDIA MANAGEMENT',
   japo: 'DIGITAL CAMPAIGN',
@@ -94,7 +83,7 @@ function FeaturedWorkGrid({ works }) {
 }
 
 export default async function WorkPage({ searchParams }) {
-  const { q, region, service, industry } = searchParams || {}
+  const { q, service, industry } = searchParams || {}
 
   // Fetch from CMS if Sanity is configured
   let data = caseStudies
@@ -119,14 +108,6 @@ export default async function WorkPage({ searchParams }) {
       const matchCategory = study.category.toLowerCase().includes(query)
       const matchTags = study.tags.some((tag) => tag.toLowerCase().includes(query))
       if (!matchClient && !matchTitle && !matchCategory && !matchTags) {
-        return false
-      }
-    }
-
-    // Region match
-    if (region && region.toLowerCase() !== 'all regions') {
-      const clientReg = clientRegions[study.slug]?.toLowerCase()
-      if (clientReg !== region.toLowerCase()) {
         return false
       }
     }
@@ -169,13 +150,13 @@ export default async function WorkPage({ searchParams }) {
           {/* Filter Component */}
           <PortfolioFilters
             filterOptions={filterOptions}
-            currentFilters={{ q, region, service, industry }}
+            currentFilters={{ q, service, industry }}
           />
 
           {/* Description */}
           <div className="max-w-xl">
             <p className="text-lg leading-relaxed text-primary">
-              See our best work from various services, regions, and SME clients.{' '}
+              See our best work from various services and SME clients.{' '}
               <Link href="/contact" className="hover:text-brand-pink underline transition-colors">
                 Contact
               </Link>{' '}

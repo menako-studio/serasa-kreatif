@@ -11,12 +11,7 @@ export default function PortfolioFilters({ filterOptions, currentFilters }) {
 
   function handleFilterChange(key, value) {
     const params = new URLSearchParams(searchParams)
-    if (
-      value &&
-      value !== 'ALL REGIONS' &&
-      value !== 'ALL SERVICES' &&
-      value !== 'ALL INDUSTRIES'
-    ) {
+    if (value && value !== 'ALL SERVICES' && value !== 'ALL INDUSTRIES') {
       params.set(key, value.toLowerCase())
     } else {
       params.delete(key)
@@ -66,33 +61,7 @@ export default function PortfolioFilters({ filterOptions, currentFilters }) {
       </div>
 
       {/* Select Filters */}
-      <div className="grid max-w-2xl grid-cols-1 gap-4 md:grid-cols-3">
-        {/* Region */}
-        <div className="relative">
-          <select
-            aria-label="Filter Region"
-            value={currentFilters.region?.toUpperCase() || 'ALL REGIONS'}
-            onChange={(e) => handleFilterChange('region', e.target.value)}
-            className="w-full cursor-pointer appearance-none border border-white bg-brand-teal px-4 py-3 text-sm uppercase tracking-wider text-white transition-colors hover:border-gray-500"
-          >
-            {filterOptions.regions.map((opt) => (
-              <option key={opt} value={opt} className="bg-brand-teal text-white">
-                {opt}
-              </option>
-            ))}
-          </select>
-          <div className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-white">
-            <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M19 9l-7 7-7-7"
-              />
-            </svg>
-          </div>
-        </div>
-
+      <div className="grid max-w-2xl grid-cols-1 gap-4 md:grid-cols-2">
         {/* Services */}
         <div className="relative">
           <select
