@@ -178,15 +178,17 @@ export default function CaseDetailPage({ params }) {
       </section>
 
       {/* First Gallery Image - Full Width */}
-      <section className="relative h-[60vh] min-h-[500px] md:h-[80vh]">
-        <Image
-          src={caseStudy.gallery[0]}
-          alt={`${caseStudy.title} - Image 1`}
-          fill
-          className="object-cover"
-          quality={100}
-        />
-      </section>
+      {caseStudy.gallery && caseStudy.gallery.length > 0 && (
+        <section className="relative h-[60vh] min-h-[500px] md:h-[80vh]">
+          <Image
+            src={caseStudy.gallery[0]}
+            alt={`${caseStudy.title} - Image 1`}
+            fill
+            className="object-cover"
+            quality={100}
+          />
+        </section>
+      )}
 
       {/* Our Approach - White */}
       <section className="bg-white py-16 md:py-24">
