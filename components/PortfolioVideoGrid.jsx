@@ -27,8 +27,31 @@ export default function PortfolioVideoGrid({ videos = [] }) {
         {videos.map((src, index) => (
           <div
             key={src + index}
-            className="group relative mx-auto aspect-[9/16] w-full overflow-hidden rounded-2xl border border-gray-100 bg-black shadow-xl transition-all duration-300 hover:shadow-2xl"
+            className="group relative mx-auto aspect-[9/16] w-full overflow-hidden rounded-[38px] border-[8px] border-neutral-900 bg-black shadow-2xl transition-all duration-300 hover:shadow-2xl"
           >
+            {/* Minimalist iOS Status Bar */}
+            <div className="pointer-events-none absolute left-0 right-0 top-1.5 z-20 flex items-center justify-between px-6 text-[9px] font-semibold tracking-tight text-white/80">
+              <span>9:41</span>
+              <div className="flex items-center gap-1.5">
+                {/* Signal strength indicator dots */}
+                <span className="flex h-2 items-end gap-[1.5px]">
+                  <span className="h-0.5 w-[1.5px] rounded-full bg-white/80" />
+                  <span className="h-1 w-[1.5px] rounded-full bg-white/80" />
+                  <span className="h-1.5 w-[1.5px] rounded-full bg-white/80" />
+                  <span className="h-2 w-[1.5px] rounded-full bg-white/80" />
+                </span>
+                {/* Battery icon */}
+                <div className="flex h-2 w-4 items-center rounded-[3px] border border-white/60 p-[0.5px]">
+                  <div className="h-full w-full rounded-[1.5px] bg-white" />
+                </div>
+              </div>
+            </div>
+
+            {/* Dynamic Island */}
+            <div className="pointer-events-none absolute left-1/2 top-1.5 z-30 flex h-3.5 w-16 -translate-x-1/2 items-center justify-end rounded-full bg-black px-2">
+              <div className="h-1 w-1 rounded-full border border-neutral-800/40 bg-neutral-900" />
+            </div>
+
             {/* Video element */}
             <video
               src={src}
