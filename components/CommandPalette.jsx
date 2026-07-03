@@ -9,7 +9,6 @@ const PAGES = [
   { title: 'Home', url: '/', category: 'Page' },
   { title: 'Portfolio & Case Studies', url: '/portfolio', category: 'Page' },
   { title: 'Services', url: '/services', category: 'Page' },
-  { title: 'Services Estimator (WhatsApp)', url: '/estimator', category: 'Page' },
   { title: 'About Us', url: '/about', category: 'Page' },
   { title: 'Contact Us', url: '/contact', category: 'Page' },
 ]
