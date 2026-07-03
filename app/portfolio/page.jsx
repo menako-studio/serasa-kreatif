@@ -15,14 +15,8 @@ export const metadata = {
 }
 
 const filterOptions = {
-  services: [
-    'ALL SERVICES',
-    'BRAND DESIGN',
-    'SOCIAL MEDIA MANAGEMENT',
-    'DIGITAL CAMPAIGN',
-    'CREATIVE CONTENT',
-  ],
-  industries: ['ALL INDUSTRIES', 'FASHION', 'F&B', 'WELLNESS', 'TECHNOLOGY'],
+  services: ['ALL SERVICES', 'BRAND DESIGN', 'SOCIAL MEDIA MANAGEMENT'],
+  industries: ['ALL INDUSTRIES', 'FASHION', 'F&B', 'WELLNESS', 'MANUFACTURING'],
 }
 
 const clientIndustries = {
@@ -31,15 +25,15 @@ const clientIndustries = {
   arkaff: 'FASHION',
   kotabi: 'FASHION',
   japo: 'F&B',
-  'bandar-kardus': 'TECHNOLOGY',
+  'bandar-kardus': 'MANUFACTURING',
 }
 
 const clientServices = {
-  pregnansia: 'DIGITAL CAMPAIGN',
+  pregnansia: 'SOCIAL MEDIA MANAGEMENT',
   sr12: 'SOCIAL MEDIA MANAGEMENT',
   arkaff: 'BRAND DESIGN',
   kotabi: 'SOCIAL MEDIA MANAGEMENT',
-  japo: 'DIGITAL CAMPAIGN',
+  japo: 'SOCIAL MEDIA MANAGEMENT',
   'bandar-kardus': 'SOCIAL MEDIA MANAGEMENT',
 }
 
