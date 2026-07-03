@@ -2,6 +2,7 @@ import { notFound } from 'next/navigation'
 import Image from 'next/image'
 import Link from 'next/link'
 import { caseStudies } from '@/lib/case-data'
+import PortfolioVideoGrid from '@/components/PortfolioVideoGrid'
 
 export async function generateStaticParams() {
   return caseStudies.map((study) => ({
@@ -199,28 +200,32 @@ export default function CaseDetailPage({ params }) {
         </div>
       </section>
 
-      {/* Gallery Grid - 2 Images Side by Side */}
-      {caseStudy.gallery.length > 2 && (
-        <section className="grid md:grid-cols-2">
-          <div className="relative h-[50vh] min-h-[400px] md:h-[70vh]">
-            <Image
-              src={caseStudy.gallery[1]}
-              alt={`${caseStudy.title} - Image 2`}
-              fill
-              className="object-cover"
-              quality={100}
-            />
-          </div>
-          <div className="relative h-[50vh] min-h-[400px] md:h-[70vh]">
-            <Image
-              src={caseStudy.gallery[2]}
-              alt={`${caseStudy.title} - Image 3`}
-              fill
-              className="object-cover"
-              quality={100}
-            />
-          </div>
-        </section>
+      {/* Video Content / Gallery Grid */}
+      {caseStudy.instagramLinks && caseStudy.instagramLinks.length > 0 ? (
+        <PortfolioVideoGrid videos={caseStudy.instagramLinks} />
+      ) : (
+        caseStudy.gallery.length > 2 && (
+          <section className="grid md:grid-cols-2">
+            <div className="relative h-[50vh] min-h-[400px] md:h-[70vh]">
+              <Image
+                src={caseStudy.gallery[1]}
+                alt={`${caseStudy.title} - Image 2`}
+                fill
+                className="object-cover"
+                quality={100}
+              />
+            </div>
+            <div className="relative h-[50vh] min-h-[400px] md:h-[70vh]">
+              <Image
+                src={caseStudy.gallery[2]}
+                alt={`${caseStudy.title} - Image 3`}
+                fill
+                className="object-cover"
+                quality={100}
+              />
+            </div>
+          </section>
+        )
       )}
 
       {/* The Results - Black */}
