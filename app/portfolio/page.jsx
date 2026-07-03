@@ -15,7 +15,14 @@ export const metadata = {
 }
 
 const filterOptions = {
-  services: ['ALL SERVICES', 'BRAND DESIGN', 'SOCIAL MEDIA MANAGEMENT'],
+  services: [
+    'ALL SERVICES',
+    'BRANDING STRATEGY',
+    'WEBSITE DEVELOPMENT',
+    'SOCIAL MEDIA MANAGEMENT',
+    'DIGITAL MARKETING',
+    'KOL MANAGEMENT',
+  ],
   industries: ['ALL INDUSTRIES', 'FASHION', 'F&B', 'WELLNESS', 'MANUFACTURING'],
 }
 
@@ -29,12 +36,18 @@ const clientIndustries = {
 }
 
 const clientServices = {
-  pregnansia: 'SOCIAL MEDIA MANAGEMENT',
-  sr12: 'SOCIAL MEDIA MANAGEMENT',
-  arkaff: 'BRAND DESIGN',
-  kotabi: 'SOCIAL MEDIA MANAGEMENT',
-  japo: 'SOCIAL MEDIA MANAGEMENT',
-  'bandar-kardus': 'SOCIAL MEDIA MANAGEMENT',
+  pregnansia: ['DIGITAL MARKETING', 'SOCIAL MEDIA MANAGEMENT', 'BRANDING STRATEGY'],
+  sr12: ['SOCIAL MEDIA MANAGEMENT'],
+  arkaff: [
+    'BRANDING STRATEGY',
+    'WEBSITE DEVELOPMENT',
+    'SOCIAL MEDIA MANAGEMENT',
+    'DIGITAL MARKETING',
+    'KOL MANAGEMENT',
+  ],
+  kotabi: ['SOCIAL MEDIA MANAGEMENT', 'DIGITAL MARKETING'],
+  japo: ['DIGITAL MARKETING', 'SOCIAL MEDIA MANAGEMENT', 'BRANDING STRATEGY'],
+  'bandar-kardus': ['SOCIAL MEDIA MANAGEMENT'],
 }
 
 function FeaturedWorkGrid({ works }) {
@@ -108,8 +121,11 @@ export default async function WorkPage({ searchParams }) {
 
     // Service match
     if (service && service.toLowerCase() !== 'all services') {
-      const clientSer = clientServices[study.slug]?.toLowerCase()
-      if (clientSer !== service.toLowerCase()) {
+      const clientSer = clientServices[study.slug]
+      if (Array.isArray(clientSer)) {
+        const matches = clientSer.some((s) => s.toLowerCase() === service.toLowerCase())
+        if (!matches) return false
+      } else if (clientSer?.toLowerCase() !== service.toLowerCase()) {
         return false
       }
     }
