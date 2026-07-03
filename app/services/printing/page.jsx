@@ -19,7 +19,7 @@ export const metadata = {
     'serasa kreatif printing',
   ],
   alternates: {
-    canonical: 'https://serasakreatif.id/serasa-printing',
+    canonical: 'https://serasakreatif.id/services/printing',
   },
 }
 
