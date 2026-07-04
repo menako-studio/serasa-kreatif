@@ -17,7 +17,7 @@ export default function Hero() {
   }, [])
 
   return (
-    <section className="relative h-[95vh] min-h-[680px] w-full overflow-hidden bg-primary text-white md:h-screen md:min-h-[800px]">
+    <section className="relative h-auto min-h-[95vh] w-full overflow-hidden bg-primary text-white md:h-screen md:min-h-[800px]">
       <AnimatePresence mode="wait">
         {currentSlide === 0 ? (
           <motion.div
@@ -26,7 +26,7 @@ export default function Hero() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.8 }}
-            className="absolute inset-0 flex h-full w-full items-center pt-20 md:pt-16"
+            className="relative flex h-auto w-full items-center pb-12 pt-28 lg:absolute lg:inset-0 lg:h-full lg:py-0 lg:pt-16"
           >
             <div className="container-custom w-full">
               {/* Headline */}
