@@ -1,5 +1,6 @@
 import './globals.css'
 import LayoutContent from '@/components/LayoutContent'
+import StructuredData from '@/components/StructuredData'
 import { Open_Sans } from 'next/font/google'
 import { GoogleAnalytics, GoogleTagManager } from '@next/third-parties/google'
 
@@ -12,41 +13,43 @@ const openSans = Open_Sans({
 export const metadata = {
   metadataBase: new URL('https://serasakreatif.id'),
   alternates: {
-    canonical: '/',
+    canonical: 'https://serasakreatif.id',
   },
   title: {
-    default: 'Serasa Kreatif — Creative Agency Indonesia',
+    default: 'Creative Agency Jakarta, Indonesia — Serasa Kreatif',
     template: '%s | Serasa Kreatif',
   },
   description:
-    'Studio kreatif yang menggabungkan strategi dan estetika untuk hasil yang nyata. Brand design, digital campaign, dan social media untuk bisnis Indonesia.',
+    'Serasa Kreatif is a creative studio in Bintaro, Jakarta combining brand strategy and aesthetics for real results. Branding, social media management, digital campaigns, and B2B printing for Indonesian businesses.',
   keywords: [
+    'creative agency jakarta',
     'creative agency indonesia',
-    'brand design',
-    'social media management',
-    'digital marketing',
-    'creative studio jakarta',
-    'branding agency',
-    'Bintaro',
-    'Tangerang Selatan',
+    'branding agency jakarta',
+    'social media management jakarta',
+    'digital marketing indonesia',
+    'creative studio bintaro',
+    'brand design jakarta',
+    'b2b printing jakarta',
+    'serasa kreatif',
+    'tangerang selatan creative agency',
   ],
   authors: [{ name: 'Serasa Kreatif' }],
   creator: 'Serasa Kreatif',
   publisher: 'Serasa Kreatif',
   openGraph: {
     type: 'website',
-    locale: 'id_ID',
+    locale: 'en_US',
     url: 'https://serasakreatif.id',
     siteName: 'Serasa Kreatif',
-    title: 'Serasa Kreatif | Digital Branding & Social Media Agency',
+    title: 'Creative Agency Jakarta, Indonesia — Serasa Kreatif',
     description:
-      'Transform your brand with creative campaigns and data-driven insights. From thinking to creating.',
+      'Transform your brand with creative campaigns and data-driven insights. Branding, social media, digital ads, and B2B printing from Bintaro, Jakarta.',
     images: [
       {
         url: '/og-image.jpg',
         width: 1200,
         height: 630,
-        alt: 'Serasa Kreatif',
+        alt: 'Serasa Kreatif — Creative Agency Jakarta',
       },
     ],
   },
@@ -57,7 +60,7 @@ export const metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Serasa Kreatif | Digital Branding & Social Media Agency',
+    title: 'Creative Agency Jakarta, Indonesia — Serasa Kreatif',
     description:
       'Transform your brand with creative campaigns and data-driven insights. From thinking to creating.',
     images: ['/og-image.jpg'],
@@ -80,7 +83,14 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="id" className={openSans.variable}>
+    <html lang="en" className={openSans.variable}>
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link rel="dns-prefetch" href="https://www.google.com" />
+        <link rel="dns-prefetch" href="https://maps.googleapis.com" />
+        <StructuredData />
+      </head>
       <body className="font-sans antialiased">
         <LayoutContent>{children}</LayoutContent>
       </body>

@@ -73,7 +73,7 @@ export default function Hero() {
                   <div className="relative aspect-[4/3] overflow-hidden rounded-xl bg-red-600">
                     <Image
                       src="/assets/images/portfolio/jobstreet.webp"
-                      alt="karya kreatif"
+                      alt="Jobstreet Express 2nd Anniversary campaign by Serasa Kreatif"
                       fill
                       className="object-cover"
                       sizes="(max-width: 768px) 100vw, 50vw"
@@ -88,7 +88,7 @@ export default function Hero() {
                   <div className="relative aspect-[4/3] overflow-hidden rounded-xl bg-blue-600">
                     <Image
                       src="/assets/images/portfolio/lazadafashion.webp"
-                      alt="karya kreatif"
+                      alt="Lazada fashion creative campaign by Serasa Kreatif"
                       fill
                       className="object-cover"
                       sizes="(max-width: 768px) 50vw, 25vw"
@@ -101,7 +101,7 @@ export default function Hero() {
                   <div className="relative aspect-[4/3] overflow-hidden rounded-xl bg-green-600">
                     <Image
                       src="/assets/images/portfolio/sr12-web.webp"
-                      alt="karya kreatif"
+                      alt="SR12 skincare product video production by Serasa Kreatif"
                       fill
                       className="object-cover"
                       sizes="(max-width: 768px) 50vw, 25vw"
@@ -115,7 +115,7 @@ export default function Hero() {
                   <div className="relative aspect-[4/3] overflow-hidden rounded-xl bg-purple-600">
                     <Image
                       src="/assets/images/portfolio/sharp-indonesia.webp"
-                      alt="karya kreatif"
+                      alt="Sharp Indonesia brand campaign by Serasa Kreatif"
                       fill
                       className="object-cover"
                       sizes="(max-width: 768px) 50vw, 25vw"

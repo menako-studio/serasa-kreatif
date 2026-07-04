@@ -2,11 +2,11 @@ import ContactForm from '@/components/ContactForm'
 import SectionHeading from '@/components/SectionHeading'
 
 export const metadata = {
-  title: 'Contact - Serasa Kreatif',
+  title: 'Contact Us — Serasa Kreatif',
   description:
-    'Contact Serasa Kreatif. We are ready to transform your brand. Located in Bintaro, serving Jakarta and Jabodetabek.',
+    'Contact Serasa Kreatif. We are ready to transform your brand. Located in Bintaro, serving Jakarta and Jabodetabek. Get a free consultation today.',
   alternates: {
-    canonical: '/contact',
+    canonical: 'https://serasakreatif.id/contact',
   },
 }
 
@@ -110,19 +110,19 @@ export default function ContactPage() {
         <div className="container-custom">
           <div className="mb-8">
             <h3 className="font-sans text-2xl font-black uppercase tracking-tight text-primary">
-              Kunjungi Studio Kami
+              Visit Our Studio
             </h3>
-            <p className="mt-2 text-teal-100">Berlokasi di Bintaro, Tangerang Selatan</p>
+            <p className="mt-2 text-teal-100">Located in Bintaro, South Tangerang</p>
           </div>
           <div className="overflow-hidden">
             <iframe
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.034922619612!2d106.7072774775167!3d-6.259130293729463!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69fb0014bc1b3b%3A0xe8270de58c702a2c!2sKlinik%20Kreatif%20Serasa!5e0!3m2!1sen!2sid!4v1761229643021!5m2!1sen!2sid"
-              width="600"
-              height="450"
-              style={{ border: 0, width: '100%', height: '500px', filter: 'grayscale(100%)' }}
+              className="h-[400px] w-full border-0"
+              style={{ filter: 'grayscale(100%)' }}
               allowFullScreen
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
+              title="Serasa Kreatif Studio Location"
             />
           </div>
         </div>

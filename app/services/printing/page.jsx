@@ -6,18 +6,19 @@ import PrintingContactForm from '@/components/PrintingContactForm'
 import PrintingReels from '@/components/PrintingReels'
 
 export const metadata = {
-  title: 'B2B Printing Specialist — Serasa Printing',
+  title: 'B2B Printing Specialist — Offset Printing Jakarta | Serasa Printing',
   description:
-    'Solusi cetak offset berkualitas tinggi dan terjangkau untuk bisnis & korporat. Cetak kemasan custom, stationery kantor, brosur, katalog, dan majalah dari Serasa Printing (Serasa Kreatif).',
+    'High-quality, affordable B2B offset printing for businesses and corporates. Custom packaging, corporate stationery, brochures, catalogs, and company profiles from Serasa Printing (Serasa Kreatif), Jakarta.',
   keywords: [
     'serasa printing',
-    'cetak offset jakarta',
-    'b2b printing specialist',
-    'cetak kemasan custom',
-    'corporate packaging',
-    'stationery kantor',
-    'cetak katalog brosur',
+    'b2b printing specialist jakarta',
+    'offset printing jakarta',
+    'custom packaging printing',
+    'corporate packaging indonesia',
+    'corporate stationery printing',
+    'catalog brochure printing jakarta',
     'serasa kreatif printing',
+    'cetak offset jakarta',
   ],
   alternates: {
     canonical: 'https://serasakreatif.id/services/printing',
@@ -113,7 +114,8 @@ export default function SerasaPrintingPage() {
                         CMYK
                       </h3>
                       <p className="mt-1 text-xs font-medium leading-snug">
-                        Presisi warna berstandar internasional untuk kepuasan klien B2B.
+                        International color precision standards for consistent B2B client
+                        satisfaction.
                       </p>
                     </div>
                   </div>
@@ -136,9 +138,9 @@ export default function SerasaPrintingPage() {
             </span>
             <SectionHeading>CORE B2B ADVANTAGES</SectionHeading>
             <SectionDescription>
-              Kami memahami kebutuhan korporat akan kualitas yang konsisten, kepastian waktu, dan
-              harga yang masuk akal. Serasa Printing hadir sebagai kepanjangan tangan dari tim
-              kreatif Anda.
+              We understand corporate needs for consistent quality, reliable timelines, and
+              reasonable pricing. Serasa Printing operates as a seamless extension of your creative
+              team.
             </SectionDescription>
           </div>
 
@@ -160,9 +162,9 @@ export default function SerasaPrintingPage() {
                   Industrial Precision
                 </h3>
                 <p className="text-sm leading-relaxed text-neutral-600">
-                  Didukung mesin offset Heidelberg berkapasitas besar untuk ketajaman detail,
-                  konsistensi warna (CMYK berstandar tinggi), serta pengerjaan pasca-cetak yang
-                  presisi.
+                  Powered by a large-capacity Heidelberg offset press for sharp detail,
+                  high-standard CMYK color consistency, and precise post-print finishing on every
+                  job.
                 </p>
               </div>
             </div>
@@ -184,8 +186,8 @@ export default function SerasaPrintingPage() {
                   Wholesale Affordability
                 </h3>
                 <p className="text-sm leading-relaxed text-neutral-600">
-                  Skema harga grosir progresif yang menguntungkan bisnis. Semakin besar volume cetak
-                  perusahaan Anda, semakin murah biaya produksi per unit dengan transparansi penuh.
+                  Progressive wholesale pricing that benefits your business. The larger the print
+                  volume, the lower the per-unit production cost — with full pricing transparency.
                 </p>
               </div>
             </div>
@@ -207,9 +209,8 @@ export default function SerasaPrintingPage() {
                   Dedicated Account Manager
                 </h3>
                 <p className="text-sm leading-relaxed text-neutral-600">
-                  Layanan komunikasi satu pintu (Single Point of Contact) yang memastikan
-                  spesifikasi cetak, koordinasi approval sampel fisik, hingga timeline pengiriman
-                  berjalan tanpa hambatan.
+                  A single point of contact for all communications — ensuring print specifications,
+                  physical sample approvals, and delivery timelines run without friction.
                 </p>
               </div>
             </div>
@@ -226,8 +227,8 @@ export default function SerasaPrintingPage() {
             </span>
             <SectionHeading>SERVICES CATALOG</SectionHeading>
             <SectionDescription>
-              Menyediakan beragam produk cetak offset dengan spesifikasi bahan yang bervariasi serta
-              finishing premium untuk menaikkan nilai estetika brand Anda.
+              A wide range of offset print products with variable material specifications and
+              premium finishing options to elevate your brand&apos;s aesthetic value.
             </SectionDescription>
           </div>
 
@@ -253,8 +254,8 @@ export default function SerasaPrintingPage() {
                   </p>
                 </div>
                 <p className="text-sm text-neutral-600">
-                  Kartu nama premium, letterheads, amplop resmi perusahaan, map folder, dan notepad
-                  kantor berperekat.
+                  Premium business cards, letterheads, official company envelopes, folder maps, and
+                  self-adhesive office notepads.
                 </p>
               </div>
             </div>
@@ -280,8 +281,8 @@ export default function SerasaPrintingPage() {
                   </p>
                 </div>
                 <p className="text-sm text-neutral-600">
-                  Corrugated boxes, corrugated packaging, produk sleeves, box kosmetik, hardbox
-                  souvenir, dan paper bag custom.
+                  Corrugated boxes, corrugated packaging, product sleeves, cosmetic boxes, souvenir
+                  hardboxes, and custom paper bags.
                 </p>
               </div>
             </div>
@@ -307,8 +308,8 @@ export default function SerasaPrintingPage() {
                   </p>
                 </div>
                 <p className="text-sm text-neutral-600">
-                  Brosur lipat, flyers promosi, katalog produk, company profile korporat, poster
-                  promosi, dan kalender meja.
+                  Folded brochures, promotional flyers, product catalogs, corporate company
+                  profiles, promotional posters, and desk calendars.
                 </p>
               </div>
             </div>
@@ -334,8 +335,8 @@ export default function SerasaPrintingPage() {
                   </p>
                 </div>
                 <p className="text-sm text-neutral-600">
-                  Laporan tahunan (Annual Reports), majalah korporat, buku panduan produk, serta
-                  cetak hardcover/softcover.
+                  Annual reports, corporate magazines, product manuals, and hardcover or softcover
+                  book printing.
                 </p>
               </div>
             </div>
@@ -355,8 +356,8 @@ export default function SerasaPrintingPage() {
             </span>
             <SectionHeading white={true}>B2B WORKFLOW TIMELINE</SectionHeading>
             <p className="mt-4 text-sm text-gray-400">
-              Bagaimana kami mendampingi dan melayani klien korporat secara sistematis dari awal
-              hingga pengiriman.
+              How we systematically guide and serve corporate clients from initial inquiry through
+              to final delivery.
             </p>
           </div>
 
@@ -372,8 +373,8 @@ export default function SerasaPrintingPage() {
                   Inquiry & Specs
                 </h4>
                 <p className="text-xs leading-relaxed text-gray-400 md:px-4">
-                  Klien memberikan spesifikasi detail (bahan, gramasi kertas, finishing, ukuran, &
-                  kuantitas cetak).
+                  Client provides detailed specifications: material, paper weight, finishing, size,
+                  and print quantity.
                 </p>
               </div>
             </div>
@@ -388,8 +389,8 @@ export default function SerasaPrintingPage() {
                   Quick Quotation
                 </h4>
                 <p className="text-xs leading-relaxed text-gray-400 md:px-4">
-                  Kami menerbitkan penawaran harga resmi (Quotation) yang transparan dan kompetitif
-                  dalam waktu 24 jam.
+                  We issue a transparent and competitive official quotation within 24 hours of
+                  receiving your specifications.
                 </p>
               </div>
             </div>
@@ -404,8 +405,8 @@ export default function SerasaPrintingPage() {
                   Sample Proofing
                 </h4>
                 <p className="text-xs leading-relaxed text-gray-400 md:px-4">
-                  Pembuatan sampel cetak (dummy digital/offset fisik) untuk persetujuan warna dan
-                  layout sebelum massal.
+                  Production of print samples (digital dummy or physical offset proof) for color and
+                  layout approval before mass run.
                 </p>
               </div>
             </div>
@@ -420,8 +421,8 @@ export default function SerasaPrintingPage() {
                   Mass Production
                 </h4>
                 <p className="text-xs leading-relaxed text-gray-400 md:px-4">
-                  Proses cetak offset massal berkecepatan tinggi dengan pengawasan mutu konstan
-                  selama produksi.
+                  High-speed mass offset printing run with constant quality monitoring throughout
+                  the entire production process.
                 </p>
               </div>
             </div>
@@ -436,8 +437,8 @@ export default function SerasaPrintingPage() {
                   QC & Delivery
                 </h4>
                 <p className="text-xs leading-relaxed text-gray-400 md:px-4">
-                  Quality control akhir tiap lembar cetakan, dilanjutkan pengemasan rapi, dan
-                  pengiriman langsung ke kantor/gudang.
+                  Final quality control on every printed sheet, followed by neat packaging and
+                  direct delivery to your office or warehouse.
                 </p>
               </div>
             </div>
@@ -457,9 +458,9 @@ export default function SerasaPrintingPage() {
                 </span>
                 <SectionHeading>REQUEST A QUOTE</SectionHeading>
                 <SectionDescription>
-                  Hubungi kami sekarang untuk mendiskusikan kebutuhan cetak perusahaan Anda. Tim
-                  ahli kami siap membantu mencarikan alternatif bahan serta finishing yang paling
-                  efisien untuk budget korporat Anda.
+                  Contact us now to discuss your company&apos;s printing needs. Our specialist team
+                  is ready to help find the most efficient materials and finishing options for your
+                  corporate budget.
                 </SectionDescription>
               </div>
 
@@ -469,10 +470,10 @@ export default function SerasaPrintingPage() {
                     Ecosystem Partnership
                   </h4>
                   <p className="text-sm text-neutral-600">
-                    Serasa Printing adalah bagian dari{' '}
-                    <span className="font-bold text-primary">Serasa Kreatif</span>, studio branding
-                    dan digital agency di Jabodetabek. Kami melayani korporat secara legal (bisa
-                    menerbitkan faktur pajak/SPK).
+                    Serasa Printing is part of{' '}
+                    <span className="font-bold text-primary">Serasa Kreatif</span>, a branding
+                    studio and digital agency in Jabodetabek. We serve corporates formally and can
+                    issue official tax invoices (Faktur Pajak / SPK).
                   </p>
                 </div>
 

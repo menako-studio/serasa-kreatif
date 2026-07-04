@@ -100,8 +100,8 @@ export default function ClientLogos() {
         <div className="mb-12">
           <SectionHeading>Trusted by these IMPACTFUL brands</SectionHeading>
           <SectionDescription>
-            Kami telah bekerja sama dengan berbagai brand lokal untuk mentransformasi identitas dan
-            kehadiran digital mereka.
+            We have partnered with diverse local brands to transform their identity and elevate
+            their digital presence.
           </SectionDescription>
         </div>
 
