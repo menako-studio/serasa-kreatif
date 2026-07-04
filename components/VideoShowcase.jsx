@@ -106,7 +106,7 @@ export default function VideoShowcase() {
                         className="h-full w-full"
                       >
                         <iframe
-                          src={`https://www.youtube.com/embed/${video.id}?autoplay=1`}
+                          src={`https://www.youtube.com/embed/${video.id}?autoplay=1&mute=0&rel=0`}
                           title={video.title}
                           className="h-full w-full border-0"
                           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
