@@ -13,6 +13,7 @@ import CreativeReels from '@/components/CreativeReels'
 import CaseStudiesShowcase from '@/components/CaseStudiesShowcase'
 import Link from 'next/link'
 import { services } from '@/lib/copy-en'
+import VideoShowcase from '@/components/VideoShowcase'
 
 // Import case studies data
 import { caseStudies } from '@/lib/case-data'
@@ -106,6 +107,9 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      {/* Video Showcase Section */}
+      <VideoShowcase />
 
       {/* Creative Reels Section */}
       {/* <CreativeReels reels={creativeReels} /> */}
