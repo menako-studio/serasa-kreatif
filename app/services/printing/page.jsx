@@ -3,6 +3,7 @@ import Link from 'next/link'
 import SectionHeading from '@/components/SectionHeading'
 import SectionDescription from '@/components/SectionDescription'
 import PrintingContactForm from '@/components/PrintingContactForm'
+import PrintingReels from '@/components/PrintingReels'
 
 export const metadata = {
   title: 'B2B Printing Specialist — Serasa Printing',
@@ -72,7 +73,7 @@ export default function SerasaPrintingPage() {
               <div className="grid grid-cols-2 gap-3">
                 <div className="relative aspect-[4/5] overflow-hidden border border-brand-teal/20 bg-brand-blue">
                   <Image
-                    src="/assets/printing/hero-banner.jpg"
+                    src="/assets/images/serasa-printing/serasa_b2b_mesin-offset-kualitas_1x1_v1.jpg"
                     alt="Serasa Printing Offset Press"
                     fill
                     className="object-cover transition-transform duration-700 hover:scale-105"
@@ -90,7 +91,7 @@ export default function SerasaPrintingPage() {
                 <div className="flex flex-col gap-3">
                   <div className="border-brand-pink/20 relative aspect-[4/3] overflow-hidden border bg-brand-blue">
                     <Image
-                      src="/assets/printing/packaging-box.jpg"
+                      src="/assets/images/serasa-printing/serasa_b2b_hook-takut-hasil-zonk_1x1_v1.jpg"
                       alt="Custom Corrugated Packaging Boxes"
                       fill
                       className="object-cover transition-transform duration-700 hover:scale-105"
@@ -235,7 +236,7 @@ export default function SerasaPrintingPage() {
             <div className="group overflow-hidden border border-neutral-200 bg-white transition-all duration-300 hover:shadow-xl">
               <div className="relative aspect-[4/3] overflow-hidden bg-neutral-200">
                 <Image
-                  src="/assets/printing/stationery.jpg"
+                  src="/assets/images/serasa-printing/serasa_b2b_layanan-cetak-offset_1x1_v1.jpg"
                   alt="Corporate Stationery Printing"
                   fill
                   className="object-cover transition-transform duration-500 group-hover:scale-105"
@@ -262,7 +263,7 @@ export default function SerasaPrintingPage() {
             <div className="group overflow-hidden border border-neutral-200 bg-white transition-all duration-300 hover:shadow-xl">
               <div className="relative aspect-[4/3] overflow-hidden bg-neutral-200">
                 <Image
-                  src="/assets/printing/packaging-box.jpg"
+                  src="/assets/images/serasa-printing/serasa_b2b_hook-takut-hasil-zonk_1x1_v1.jpg"
                   alt="Custom Packaging Box Printing"
                   fill
                   className="object-cover transition-transform duration-500 group-hover:scale-105"
@@ -289,7 +290,7 @@ export default function SerasaPrintingPage() {
             <div className="group overflow-hidden border border-neutral-200 bg-white transition-all duration-300 hover:shadow-xl">
               <div className="relative aspect-[4/3] overflow-hidden bg-neutral-200">
                 <Image
-                  src="/assets/printing/marketing.jpg"
+                  src="/assets/images/serasa-printing/serasa_b2b_pain-point-vendor-molor_1x1_v1.jpg"
                   alt="Marketing Collaterals Printing"
                   fill
                   className="object-cover transition-transform duration-500 group-hover:scale-105"
@@ -316,7 +317,7 @@ export default function SerasaPrintingPage() {
             <div className="group overflow-hidden border border-neutral-200 bg-white transition-all duration-300 hover:shadow-xl">
               <div className="relative aspect-[4/3] overflow-hidden bg-neutral-200">
                 <Image
-                  src="/assets/printing/editorial.jpg"
+                  src="/assets/images/serasa-printing/serasa_b2b_cta-pria-tunjuk_1x1_v1.jpg"
                   alt="Books and Corporate Magazines Printing"
                   fill
                   className="object-cover transition-transform duration-500 group-hover:scale-105"
@@ -341,6 +342,9 @@ export default function SerasaPrintingPage() {
           </div>
         </div>
       </section>
+
+      {/* Showcase Video Reels Section */}
+      <PrintingReels />
 
       {/* 4. STEP-BY-STEP B2B WORKFLOW TIMELINE - Dark Navy Background */}
       <section className="section-padding relative bg-primary-dark text-white">
