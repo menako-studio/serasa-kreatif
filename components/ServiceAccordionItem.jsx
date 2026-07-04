@@ -59,20 +59,38 @@ export default function ServiceAccordionItem({
                       key={d + i}
                       className="flex items-start gap-3 transition-transform duration-200 hover:translate-x-1"
                     >
-                      <span className="text-accent-cyan mt-1">•</span>
+                      <span className="mt-1 text-brand-teal">•</span>
                       <span>{d}</span>
                     </li>
                   ))}
                 </ul>
+              )}
+              {service.link && (
+                <div className="pt-4">
+                  <a
+                    href={service.link}
+                    className="inline-flex items-center gap-2 bg-brand-teal px-6 py-3 text-xs font-bold uppercase tracking-wider text-primary transition-all duration-300 hover:scale-105 hover:bg-brand-accent"
+                  >
+                    <span>Explore {service.brandName || service.title}</span>
+                    <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2.5}
+                        d="M9 5l7 7-7 7"
+                      />
+                    </svg>
+                  </a>
+                </div>
               )}
             </div>
 
             <div
               className={`relative aspect-video w-full overflow-hidden rounded ${imageBg} transition-all duration-300 group-hover:shadow-lg`}
             >
-              {previewImage && (
+              {(service.preview || previewImage) && (
                 <Image
-                  src={previewImage}
+                  src={service.preview || previewImage}
                   alt={service.title}
                   fill
                   className="object-cover transition-transform duration-500 group-hover:scale-105"
