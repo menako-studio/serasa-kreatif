@@ -29,9 +29,15 @@ export const metadata = {
   },
   alternates: {
     canonical: 'https://serasakreatif.id',
+    languages: {
+      'en-US': 'https://serasakreatif.id',
+      'id-ID': 'https://serasakreatif.id?lang=id',
+      'x-default': 'https://serasakreatif.id',
+    },
   },
 }
 
-export default function HomePage() {
-  return <HomePageClient />
+export default function HomePage({ searchParams }) {
+  const lang = searchParams?.lang === 'id' ? 'id' : 'en'
+  return <HomePageClient lang={lang} />
 }

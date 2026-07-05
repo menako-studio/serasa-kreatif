@@ -12,6 +12,11 @@ export const metadata = {
     'Explore our portfolio of successful SME branding & social media campaigns. See how Serasa Kreatif helps local brands grow and scale.',
   alternates: {
     canonical: 'https://serasakreatif.id/portfolio',
+    languages: {
+      'en-US': 'https://serasakreatif.id/portfolio',
+      'id-ID': 'https://serasakreatif.id/portfolio?lang=id',
+      'x-default': 'https://serasakreatif.id/portfolio',
+    },
   },
 }
 
@@ -142,6 +147,9 @@ export default async function WorkPage({ searchParams }) {
     return true
   })
 
+  const lang = searchParams?.lang === 'id' ? 'id' : 'en'
+  const isIndo = lang === 'id'
+
   // Format work data
   const featuredWork = filteredStudies.map((study) => ({
     slug: study.slug,
@@ -156,7 +164,9 @@ export default async function WorkPage({ searchParams }) {
       {/* Hero Section */}
       <section className="bg-white pb-20 pt-32 md:pt-40 lg:pt-44">
         <div className="container-custom">
-          <h1 className="font-display mb-16 font-black uppercase text-primary">PORTFOLIO</h1>
+          <h1 className="font-display mb-16 font-black uppercase text-primary">
+            {isIndo ? 'PORTOFOLIO' : 'PORTFOLIO'}
+          </h1>
 
           {/* Filter Component */}
           <PortfolioFilters
@@ -167,11 +177,29 @@ export default async function WorkPage({ searchParams }) {
           {/* Description */}
           <div className="max-w-xl">
             <p className="text-lg leading-relaxed text-primary">
-              See our best work from various services and SME clients.{' '}
-              <Link href="/contact" className="hover:text-brand-pink underline transition-colors">
-                Contact
-              </Link>{' '}
-              Serasa Kreatif team for a free consultation.
+              {isIndo ? (
+                <>
+                  Lihat karya terbaik kami dari berbagai layanan dan klien UMKM.{' '}
+                  <Link
+                    href="/contact"
+                    className="hover:text-brand-pink underline transition-colors"
+                  >
+                    Hubungi
+                  </Link>{' '}
+                  tim Serasa Kreatif untuk konsultasi gratis.
+                </>
+              ) : (
+                <>
+                  See our best work from various services and SME clients.{' '}
+                  <Link
+                    href="/contact"
+                    className="hover:text-brand-pink underline transition-colors"
+                  >
+                    Contact
+                  </Link>{' '}
+                  Serasa Kreatif team for a free consultation.
+                </>
+              )}
             </p>
           </div>
         </div>
@@ -181,7 +209,7 @@ export default async function WorkPage({ searchParams }) {
       <section className="bg-brand-pink py-12">
         <div className="container-custom">
           <h2 className="font-display mb-12 text-2xl font-bold uppercase text-white">
-            FEATURED WORK
+            {isIndo ? 'KARYA PILIHAN' : 'FEATURED WORK'}
           </h2>
 
           {/* Grid - 2 columns */}
@@ -193,11 +221,12 @@ export default async function WorkPage({ searchParams }) {
       <section className="border-t border-gray-200 bg-white py-16">
         <div className="container-custom">
           <h2 className="font-display mb-4 text-3xl font-black uppercase text-primary">
-            CREATIVE DIRECTING & REELS
+            {isIndo ? 'ARAHAN KREATIF & REELS' : 'CREATIVE DIRECTING & REELS'}
           </h2>
           <p className="mb-8 max-w-2xl text-lg text-neutral-600">
-            Take a look at some of our short-form content, social media campaigns, and brand stories
-            created for our clients.
+            {isIndo
+              ? 'Intip beberapa konten pendek, kampanye media sosial, dan kisah merek yang kami buat untuk klien kami.'
+              : 'Take a look at some of our short-form content, social media campaigns, and brand stories created for our clients.'}
           </p>
           <PortfolioVideoGrid
             videos={[
@@ -214,8 +243,9 @@ export default async function WorkPage({ searchParams }) {
         <div className="container-custom">
           <div className="max-w-2xl">
             <p className="text-brand-pink mb-8 text-xl leading-relaxed md:text-2xl">
-              Have an idea for your business, brand, or SME? We are ready to listen and collaborate.
-              Together with Serasa Kreatif, let&apos;s shape a brighter future for Indonesian SMEs.
+              {isIndo
+                ? 'Punya ide untuk bisnis, merek, atau UMKM Anda? Kami siap mendengarkan dan berkolaborasi. Bersama Serasa Kreatif, mari kita bentuk masa depan cerah bagi UMKM Indonesia.'
+                : "Have an idea for your business, brand, or SME? We are ready to listen and collaborate. Together with Serasa Kreatif, let's shape a brighter future for Indonesian SMEs."}
             </p>
           </div>
         </div>

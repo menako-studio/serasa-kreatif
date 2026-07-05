@@ -8,20 +8,31 @@ export const metadata = {
     'Contact Serasa Kreatif. We are ready to transform your brand. Located in Bintaro, serving Jakarta and Jabodetabek. Get a free consultation today.',
   alternates: {
     canonical: 'https://serasakreatif.id/contact',
+    languages: {
+      'en-US': 'https://serasakreatif.id/contact',
+      'id-ID': 'https://serasakreatif.id/contact?lang=id',
+      'x-default': 'https://serasakreatif.id/contact',
+    },
   },
 }
 
-export default function ContactPage() {
+export default function ContactPage({ searchParams }) {
+  const lang = searchParams?.lang === 'id' ? 'id' : 'en'
+  const isIndo = lang === 'id'
+
   return (
     <div className="min-h-screen bg-brand-teal pt-32 text-primary">
       {/* Hero Section - R/GA Style */}
       <section className="section-padding border-b border-teal-900">
         <div className="container-custom">
           <div className="mb-16">
-            <SectionHeading className="mb-8 text-primary">CONTACT US</SectionHeading>
+            <SectionHeading className="mb-8 text-primary">
+              {isIndo ? 'HUBUNGI KAMI' : 'CONTACT US'}
+            </SectionHeading>
             <p className="max-w-3xl text-xl leading-relaxed text-white md:text-2xl">
-              Ready to unlock your brand&apos;s potential? Let&apos;s discuss how we can help your
-              business grow.
+              {isIndo
+                ? 'Siap membuka potensi terbaik brand Anda? Mari diskusikan bagaimana kami dapat membantu bisnis Anda tumbuh.'
+                : "Ready to unlock your brand's potential? Let's discuss how we can help your business grow."}
             </p>
           </div>
         </div>
@@ -55,7 +66,7 @@ export default function ContactPage() {
               <div className="space-y-8">
                 <div>
                   <h4 className="text-brand-pink mb-3 text-xs font-bold uppercase tracking-wider">
-                    PHONE
+                    {isIndo ? 'TELEPON' : 'PHONE'}
                   </h4>
                   <TrackedLink
                     href="tel:+6281288971453"
@@ -107,7 +118,7 @@ export default function ContactPage() {
             {/* Right: Contact Form */}
             <div>
               <h3 className="mb-8 font-sans text-2xl font-black uppercase tracking-tight">
-                Send Message
+                {isIndo ? 'Kirim Pesan' : 'Send Message'}
               </h3>
               <ContactForm />
             </div>
@@ -120,9 +131,13 @@ export default function ContactPage() {
         <div className="container-custom">
           <div className="mb-8">
             <h3 className="font-sans text-2xl font-black uppercase tracking-tight text-primary">
-              Visit Our Studio
+              {isIndo ? 'Kunjungi Studio Kami' : 'Visit Our Studio'}
             </h3>
-            <p className="mt-2 text-teal-100">Located in Bintaro, South Tangerang</p>
+            <p className="mt-2 text-teal-100">
+              {isIndo
+                ? 'Berlokasi di Bintaro, Tangerang Selatan'
+                : 'Located in Bintaro, South Tangerang'}
+            </p>
           </div>
           <div className="overflow-hidden">
             <iframe

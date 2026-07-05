@@ -4,9 +4,11 @@ import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import Image from 'next/image'
 import Link from 'next/link'
-import { hero } from '@/lib/copy-en'
+import { useLanguage } from '@/components/LanguageContext'
 
 export default function Hero() {
+  const { language, dict } = useLanguage()
+  const hero = dict?.hero || {}
   const [currentSlide, setCurrentSlide] = useState(0)
 
   useEffect(() => {
@@ -26,7 +28,7 @@ export default function Hero() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.8 }}
-            className="relative flex h-auto w-full items-center pb-12 pt-28 lg:absolute lg:inset-0 lg:h-full lg:py-0 lg:pt-16"
+            className="relative flex h-auto w-full items-center pb-12 pt-28 lg:absolute lg:inset-0 lg:h-full lg:py-0 lg:pt-40"
           >
             <div className="container-custom w-full">
               {/* Headline */}
@@ -129,7 +131,7 @@ export default function Hero() {
                   <div className="relative flex aspect-[4/3] items-center justify-center rounded-xl bg-amber-50 p-6">
                     <div className="text-center">
                       <p className="font-sans text-xs font-black uppercase tracking-wider text-primary md:text-sm">
-                        New Projects
+                        {language === 'id' ? 'Proyek Baru' : 'New Projects'}
                       </p>
                     </div>
                   </div>
@@ -178,7 +180,7 @@ export default function Hero() {
               <Link href="/portfolio/japo" className="group inline-block">
                 <div className="flex items-center gap-2">
                   <span className="text-brand-pink text-xs font-bold uppercase tracking-widest">
-                    Featured Project
+                    {language === 'id' ? 'Proyek Pilihan' : 'Featured Project'}
                   </span>
                   <span className="bg-brand-pink h-[2px] w-6 rounded-full transition-all duration-300 group-hover:w-10" />
                 </div>

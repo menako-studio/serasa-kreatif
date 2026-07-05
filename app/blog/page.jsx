@@ -6,6 +6,11 @@ export const metadata = {
     'Latest insights, articles, and brand updates from Serasa Kreatif. Stay ahead with digital branding and content strategies.',
   alternates: {
     canonical: 'https://serasakreatif.id/blog',
+    languages: {
+      'en-US': 'https://serasakreatif.id/blog',
+      'id-ID': 'https://serasakreatif.id/blog?lang=id',
+      'x-default': 'https://serasakreatif.id/blog',
+    },
   },
 }
 
@@ -82,14 +87,17 @@ const categories = [
 ]
 const years = ['2025', '2024', '2023']
 
-export default function NewsPage() {
+export default function NewsPage({ searchParams }) {
+  const lang = searchParams?.lang === 'id' ? 'id' : 'en'
+  const isIndo = lang === 'id'
+
   return (
     <div className="bg-white text-neutral-900 antialiased">
       {/* Hero */}
       <section className="bg-primary pb-16 pt-32 text-white md:pb-24 md:pt-40 lg:pt-44">
         <div className="container-custom">
           <h1 className="font-sans text-5xl font-black uppercase tracking-tight md:text-7xl lg:text-8xl">
-            BLOG & INSIGHTS
+            {isIndo ? 'BLOG & WAWASAN' : 'BLOG & INSIGHTS'}
           </h1>
         </div>
       </section>
@@ -104,11 +112,11 @@ export default function NewsPage() {
                 {/* Sort By */}
                 <div>
                   <h3 className="mb-4 font-sans text-xs font-bold uppercase tracking-wider text-gray-500">
-                    Sort By
+                    {isIndo ? 'Urutkan' : 'Sort By'}
                   </h3>
                   <div className="space-y-2">
                     <button className="hover:text-brand-pink block w-full text-left text-sm text-gray-900 transition-colors">
-                      All
+                      {isIndo ? 'Semua' : 'All'}
                     </button>
                   </div>
                 </div>
@@ -116,7 +124,7 @@ export default function NewsPage() {
                 {/* Categories */}
                 <div>
                   <h3 className="mb-4 font-sans text-xs font-bold uppercase tracking-wider text-gray-500">
-                    Categories
+                    {isIndo ? 'Kategori' : 'Categories'}
                   </h3>
                   <div className="space-y-2">
                     {categories.map((category) => (
@@ -133,7 +141,7 @@ export default function NewsPage() {
                 {/* Years */}
                 <div>
                   <h3 className="mb-4 font-sans text-xs font-bold uppercase tracking-wider text-gray-500">
-                    Year
+                    {isIndo ? 'Tahun' : 'Year'}
                   </h3>
                   <div className="space-y-2">
                     {years.map((year) => (
@@ -154,7 +162,7 @@ export default function NewsPage() {
               <div className="grid gap-12 md:grid-cols-2">
                 {newsData.map((news) => (
                   <article key={news.id} className="group">
-                    <a href={`/blog/${news.id}`} className="block">
+                    <a href={`/blog/${news.id}${isIndo ? '?lang=id' : ''}`} className="block">
                       {/* Image */}
                       <div className="relative mb-4 aspect-[4/3] overflow-hidden bg-gray-900">
                         <Image
@@ -187,7 +195,7 @@ export default function NewsPage() {
               {/* Load More Button */}
               <div className="mt-16 flex justify-center border-t border-gray-200 pt-8">
                 <button className="hover:text-brand-pink group flex items-center gap-2 font-sans text-sm font-bold uppercase tracking-wider transition-colors">
-                  <span>Show More</span>
+                  <span>{isIndo ? 'Tampilkan Lebih Banyak' : 'Show More'}</span>
                   <svg
                     className="h-4 w-4 transition-transform group-hover:translate-y-1"
                     fill="none"

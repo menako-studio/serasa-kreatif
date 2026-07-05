@@ -8,9 +8,9 @@ import WorkCard from '@/components/WorkCard'
 import ServiceAccordionItem from '@/components/ServiceAccordionItem'
 import PrimaryButton from '@/components/PrimaryButton'
 import Link from 'next/link'
-import { services } from '@/lib/copy-en'
 import VideoShowcase from '@/components/VideoShowcase'
 import { caseStudies } from '@/lib/case-data'
+import { useLanguage } from '@/components/LanguageContext'
 
 // Work showcase data - featured cases
 const workShowcase = caseStudies.slice(0, 4).map((study) => ({
@@ -21,34 +21,43 @@ const workShowcase = caseStudies.slice(0, 4).map((study) => ({
   description: study.description,
 }))
 
-// Contact information data
-const contactInfo = [
-  {
-    label: 'LOCATION',
-    value: 'Bintaro, South Tangerang',
-    href: 'https://maps.app.goo.gl/f3Avw7DGNYniCCST6',
-    isExternal: true,
-  },
-  {
-    label: 'EMAIL',
-    value: 'serasakreatif.id@gmail.com',
-    href: 'mailto:serasakreatif.id@gmail.com',
-    isExternal: false,
-  },
-  {
-    label: 'INSTAGRAM',
-    value: '@serasakreatif.id',
-    href: 'https://www.instagram.com/serasakreatif.id/',
-    isExternal: true,
-  },
-]
-
-export default function HomePageClient() {
+export default function HomePageClient({ lang }) {
+  const { language, dict } = useLanguage()
   const [openAccordion, setOpenAccordion] = useState(null)
+
+  const activeLang = lang || language
+  const isIndo = activeLang === 'id'
+
+  const currentDict = dict || {}
+  const servicesData = currentDict.services || {}
+  const portfolioData = currentDict.portfolio || {}
+  const contactData = currentDict.contact || {}
 
   const toggleAccordion = (index) => {
     setOpenAccordion(openAccordion === index ? null : index)
   }
+
+  // Contact information data localized
+  const contactInfo = [
+    {
+      label: contactData.locationLabel || 'LOCATION',
+      value: contactData.locationValue || 'Bintaro, South Tangerang',
+      href: 'https://maps.app.goo.gl/f3Avw7DGNYniCCST6',
+      isExternal: true,
+    },
+    {
+      label: contactData.emailLabel || 'EMAIL',
+      value: contactData.emailValue || 'serasakreatif.id@gmail.com',
+      href: 'mailto:serasakreatif.id@gmail.com',
+      isExternal: false,
+    },
+    {
+      label: isIndo ? 'INSTAGRAM' : 'INSTAGRAM',
+      value: '@serasakreatif.id',
+      href: 'https://www.instagram.com/serasakreatif.id/',
+      isExternal: true,
+    },
+  ]
 
   return (
     <>
@@ -58,11 +67,13 @@ export default function HomePageClient() {
       <section className="section-padding bg-white">
         <div className="container-custom">
           <div className="mb-12 flex items-center justify-between">
-            <SectionHeading>Selected Work</SectionHeading>
+            <SectionHeading>{portfolioData.sectionHeadline || 'Selected Work'}</SectionHeading>
           </div>
           <WorkGrid works={workShowcase} />
           <div className="mt-8 text-right">
-            <PrimaryButton href="/portfolio">VIEW ALL WORK</PrimaryButton>
+            <PrimaryButton href="/portfolio">
+              {portfolioData.ctaViewAll || 'VIEW ALL WORK'}
+            </PrimaryButton>
           </div>
         </div>
       </section>
@@ -74,14 +85,16 @@ export default function HomePageClient() {
       <section className="section-padding bg-white">
         <div className="container-custom">
           <div className="mb-12">
-            <SectionHeading>WHAT WE DO</SectionHeading>
+            <SectionHeading>{servicesData.sectionHeadline || 'WHAT WE DO'}</SectionHeading>
             <SectionDescription className="text-gray-900">
-              {services.sectionIntro || services.sectionSubhead}
+              {servicesData.sectionIntro || servicesData.sectionSubhead}
             </SectionDescription>
-            <p className="text-brand-pink mt-4 text-sm">See how we can help.</p>
+            <p className="text-brand-pink mt-4 text-sm">
+              {isIndo ? 'Lihat bagaimana kami dapat membantu.' : 'See how we can help.'}
+            </p>
           </div>
           <AccordionGrid
-            items={services.items}
+            items={servicesData.items || []}
             openIndex={openAccordion}
             onToggle={toggleAccordion}
             previewImages={workShowcase.map((w) => w.image)}
@@ -96,9 +109,11 @@ export default function HomePageClient() {
       <section className="section-padding bg-brand-teal text-white">
         <div className="container-custom">
           <div className="max-w-4xl">
-            <SectionHeading>Looking for a Creative Partner?</SectionHeading>
+            <SectionHeading>
+              {isIndo ? 'Mencari Partner Kreatif?' : 'Looking for a Creative Partner?'}
+            </SectionHeading>
             <SectionDescription className="mb-8 text-white">
-              Let&apos;s Elevate Your Brand.
+              {isIndo ? 'Mari Tingkatkan Brand Anda.' : "Let's Elevate Your Brand."}
             </SectionDescription>
             <div className="mb-16 grid gap-8 md:grid-cols-3">
               {contactInfo.map((item) => (
@@ -109,7 +124,7 @@ export default function HomePageClient() {
               href="/contact"
               className="border-white bg-white text-primary hover:text-white"
             >
-              LET&apos;S TALK
+              {contactData.ctaStartProject || "LET'S TALK"}
             </PrimaryButton>
           </div>
         </div>

@@ -22,9 +22,15 @@ export const metadata = {
   },
   alternates: {
     canonical: 'https://serasakreatif.id/services',
+    languages: {
+      'en-US': 'https://serasakreatif.id/services',
+      'id-ID': 'https://serasakreatif.id/services?lang=id',
+      'x-default': 'https://serasakreatif.id/services',
+    },
   },
 }
 
-export default function ServicesPage() {
-  return <ServicesPageClient />
+export default function ServicesPage({ searchParams }) {
+  const lang = searchParams?.lang === 'id' ? 'id' : 'en'
+  return <ServicesPageClient lang={lang} />
 }
