@@ -1,10 +1,12 @@
 'use client'
 
 import { usePathname } from 'next/navigation'
+import { Suspense } from 'react'
 import NavBar from '@/components/NavBar'
 import Footer from '@/components/Footer'
 import StickyWhatsApp from '@/components/StickyWhatsApp'
 import CommandPalette from '@/components/CommandPalette'
+import { LanguageProvider } from '@/components/LanguageContext'
 
 export default function LayoutContent({ children }) {
   const pathname = usePathname()
@@ -15,12 +17,14 @@ export default function LayoutContent({ children }) {
   }
 
   return (
-    <>
-      <NavBar />
-      <main>{children}</main>
-      <Footer />
-      <StickyWhatsApp />
-      <CommandPalette />
-    </>
+    <Suspense fallback={<div className="min-h-screen bg-primary" />}>
+      <LanguageProvider>
+        <NavBar />
+        <main>{children}</main>
+        <Footer />
+        <StickyWhatsApp />
+        <CommandPalette />
+      </LanguageProvider>
+    </Suspense>
   )
 }
