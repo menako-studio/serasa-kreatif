@@ -1,4 +1,3 @@
-import Image from 'next/image'
 import PageSection from '@/components/PageSection'
 import SectionHeading from '@/components/SectionHeading'
 import TeamMemberCard from '@/components/TeamMemberCard'
