@@ -7,11 +7,11 @@ import { sanityClient } from '@/lib/sanity'
 import { allCaseStudiesQuery } from '@/lib/sanity-queries'
 
 export const metadata = {
-  title: 'Our Portfolio',
+  title: 'Our Portfolio & Case Studies — Serasa Kreatif',
   description:
-    'Explore our portfolio of successful SME branding and social media campaigns. See how Serasa Kreatif helps local brands grow and attract customers.',
+    'Explore our portfolio of successful SME branding & social media campaigns. See how Serasa Kreatif helps local brands grow and scale.',
   alternates: {
-    canonical: '/portfolio',
+    canonical: 'https://serasakreatif.id/portfolio',
   },
 }
 

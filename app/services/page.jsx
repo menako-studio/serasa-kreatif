@@ -3,7 +3,7 @@ import ServicesPageClient from './ServicesPageClient'
 export const metadata = {
   title: 'Branding, Social Media & Digital Services for Indonesian SMEs',
   description:
-    'Complete branding, social media management, digital campaigns, video production, and B2B printing services for Indonesian SMEs. Measurable results and free consultation.',
+    'Branding, social media management, digital campaigns, video production, and offset printing services for Indonesian SMEs with measurable results.',
   keywords: [
     'sme branding services jakarta',
     'social media management indonesia',
@@ -17,7 +17,7 @@ export const metadata = {
   openGraph: {
     title: 'Branding, Social Media & Digital Services for SMEs | Serasa Kreatif',
     description:
-      'Increase sales up to 240% with professional branding and social media services for SMEs. Free consultation, measurable results.',
+      'Branding, social media management, digital campaigns, video production, and offset printing services for Indonesian SMEs with measurable results.',
     images: ['/og-image.jpg'],
   },
   alternates: {

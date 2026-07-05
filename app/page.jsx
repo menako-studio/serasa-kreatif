@@ -3,7 +3,7 @@ import HomePageClient from '@/components/HomePageClient'
 export const metadata = {
   title: 'Creative Agency Jakarta — Branding, Social Media & Digital Campaigns',
   description:
-    'Serasa Kreatif is a creative agency in Bintaro, Jakarta. We help Indonesian SMEs grow through branding, social media management, digital ads, video production, and B2B printing. Free consultation.',
+    'Creative agency in Bintaro, Jakarta helping brands scale. Services: branding, social media management, digital ads, video production & offset printing.',
   keywords: [
     'creative agency jakarta',
     'branding agency indonesia',
@@ -17,7 +17,7 @@ export const metadata = {
   openGraph: {
     title: 'Creative Agency Jakarta — Branding, Social Media & Digital Campaigns | Serasa Kreatif',
     description:
-      'Serasa Kreatif helps Indonesian businesses grow through branding, social media management, digital ads, and video production. Located in Bintaro, Jakarta.',
+      'Creative agency in Bintaro, Jakarta helping brands scale. Services: branding, social media management, digital ads, video production & offset printing.',
     images: [
       {
         url: '/og-image.jpg',

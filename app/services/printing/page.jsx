@@ -8,7 +8,7 @@ import PrintingReels from '@/components/PrintingReels'
 export const metadata = {
   title: 'B2B Printing Specialist — Offset Printing Jakarta | Serasa Printing',
   description:
-    'High-quality, affordable B2B offset printing for businesses and corporates. Custom packaging, corporate stationery, brochures, catalogs, and company profiles from Serasa Printing (Serasa Kreatif), Jakarta.',
+    'B2B offset printing in Jakarta by Serasa Printing. Premium custom packaging, corporate stationery, brochures, catalogs, and company profiles.',
   keywords: [
     'serasa printing',
     'b2b printing specialist jakarta',

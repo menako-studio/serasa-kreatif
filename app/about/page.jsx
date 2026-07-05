@@ -8,7 +8,7 @@ import ContactInfoItem from '@/components/ContactInfoItem'
 export const metadata = {
   title: 'About Us — Serasa Kreatif',
   description:
-    'Learn more about Serasa Kreatif, a digital branding agency and social media management studio based in Bintaro, Jakarta. Meet our team and our creative framework.',
+    'Discover Serasa Kreatif, a branding agency & social media management studio in Bintaro, Jakarta. Meet our creative team and explore our framework.',
   alternates: {
     canonical: 'https://serasakreatif.id/about',
   },
