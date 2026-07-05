@@ -7,8 +7,8 @@ test.describe('Homepage', () => {
     // Check hero section
     const heading = page.getByRole('heading', { level: 1 })
     await expect(heading).toBeVisible()
-    await expect(heading).toContainText(/turning content/i)
-    await expect(heading).toContainText(/revenue/i)
+    await expect(heading).toContainText(/connecting/i)
+    await expect(heading).toContainText(/growth/i)
 
     // Check navigation links are attached to the document
     await expect(page.locator('a[href="/portfolio"]').first()).toBeAttached()
@@ -20,8 +20,15 @@ test.describe('Homepage', () => {
   test('should navigate to work page', async ({ page }) => {
     await page.goto('http://localhost:3000')
 
+    // Toggle mobile menu if visible
+    const mobileMenuBtn = page.getByRole('button', { name: /toggle mobile menu/i })
+    if (await mobileMenuBtn.isVisible()) {
+      await mobileMenuBtn.click()
+    }
+
     await page
       .getByRole('link', { name: /portfolio/i })
+      .filter({ visible: true })
       .first()
       .click()
     await expect(page).toHaveURL(/.*portfolio/)
