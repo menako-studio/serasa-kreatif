@@ -2,8 +2,10 @@
 
 import { useState } from 'react'
 import { trackForm } from '@/lib/analytics'
+import { useLanguage } from '@/components/LanguageContext'
 
 export default function ContactForm() {
+  const { language, dict } = useLanguage()
   const [formData, setFormData] = useState({
     name: '',
     company: '',
@@ -14,6 +16,9 @@ export default function ContactForm() {
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitStatus, setSubmitStatus] = useState('idle')
+
+  const isIndo = language === 'id'
+  const cDict = dict?.contact || {}
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -80,7 +85,7 @@ export default function ContactForm() {
       <div className="grid gap-6 md:grid-cols-2">
         <div>
           <label htmlFor="name" className="mb-2 block text-sm font-medium text-gray-700">
-            Full Name *
+            {cDict.formContactName || 'Full Name'} *
           </label>
           <input
             type="text"
@@ -90,13 +95,13 @@ export default function ContactForm() {
             value={formData.name}
             onChange={handleChange}
             className="focus:ring-accent-cyan w-full rounded-lg border border-gray-300 px-4 py-3 transition-all focus:border-transparent focus:ring-2"
-            placeholder="Your Name"
+            placeholder={isIndo ? 'Nama Anda' : 'Your Name'}
           />
         </div>
 
         <div>
           <label htmlFor="company" className="mb-2 block text-sm font-medium text-gray-700">
-            Company
+            {cDict.formCompanyName || 'Company'}
           </label>
           <input
             type="text"
@@ -105,7 +110,7 @@ export default function ContactForm() {
             value={formData.company}
             onChange={handleChange}
             className="focus:ring-accent-cyan w-full rounded-lg border border-gray-300 px-4 py-3 transition-all focus:border-transparent focus:ring-2"
-            placeholder="Your company name"
+            placeholder={isIndo ? 'Nama perusahaan Anda' : 'Your company name'}
           />
         </div>
       </div>
@@ -113,7 +118,7 @@ export default function ContactForm() {
       <div className="grid gap-6 md:grid-cols-2">
         <div>
           <label htmlFor="email" className="mb-2 block text-sm font-medium text-gray-700">
-            Email *
+            {cDict.formEmail || 'Email'} *
           </label>
           <input
             type="email"
@@ -129,7 +134,7 @@ export default function ContactForm() {
 
         <div>
           <label htmlFor="phone" className="mb-2 block text-sm font-medium text-gray-700">
-            Phone Number *
+            {cDict.formPhone || 'Phone Number'} *
           </label>
           <input
             type="tel"
@@ -146,7 +151,7 @@ export default function ContactForm() {
 
       <div>
         <label htmlFor="budget" className="mb-2 block text-sm font-medium text-gray-700">
-          Budget Range (optional)
+          {isIndo ? 'Kisaran Anggaran (opsional)' : 'Budget Range (optional)'}
         </label>
         <select
           id="budget"
@@ -155,18 +160,18 @@ export default function ContactForm() {
           onChange={handleChange}
           className="focus:ring-accent-cyan w-full rounded-lg border border-gray-300 px-4 py-3 transition-all focus:border-transparent focus:ring-2"
         >
-          <option value="">Select range</option>
-          <option value="< 10M">Under 10 Million</option>
+          <option value="">{isIndo ? 'Pilih kisaran' : 'Select range'}</option>
+          <option value="< 10M">{isIndo ? 'Di bawah 10 Juta' : 'Under 10 Million'}</option>
           <option value="10M - 25M">10 - 25 Million</option>
           <option value="25M - 50M">25 - 50 Million</option>
           <option value="50M - 100M">50 - 100 Million</option>
-          <option value="> 100M">Over 100 Million</option>
+          <option value="> 100M">{isIndo ? 'Di atas 100 Juta' : 'Over 100 Million'}</option>
         </select>
       </div>
 
       <div>
         <label htmlFor="message" className="mb-2 block text-sm font-medium text-gray-700">
-          Project Summary *
+          {isIndo ? 'Ringkasan Proyek *' : 'Project Summary *'}
         </label>
         <textarea
           id="message"
@@ -176,19 +181,27 @@ export default function ContactForm() {
           value={formData.message}
           onChange={handleChange}
           className="focus:ring-accent-cyan w-full resize-none rounded-lg border border-gray-300 px-4 py-3 transition-all focus:border-transparent focus:ring-2"
-          placeholder="Tell us about your project, goals, and timeline..."
+          placeholder={
+            isIndo
+              ? 'Jelaskan proyek, tujuan, dan linimasa Anda...'
+              : 'Tell us about your project, goals, and timeline...'
+          }
         />
       </div>
 
       {submitStatus === 'success' && (
         <div className="rounded-lg border border-green-200 bg-green-50 px-4 py-3 text-green-800">
-          Thank you! We will contact you within 24 hours.
+          {isIndo
+            ? 'Terima kasih! Kami akan menghubungi Anda dalam waktu 24 jam.'
+            : 'Thank you! We will contact you within 24 hours.'}
         </div>
       )}
 
       {submitStatus === 'error' && (
         <div className="rounded-lg border border-red-200 bg-red-50 px-4 py-3 text-red-800">
-          An error occurred. Please try again or contact us via WhatsApp.
+          {isIndo
+            ? 'Terjadi kesalahan. Silakan coba lagi atau hubungi kami lewat WhatsApp.'
+            : 'An error occurred. Please try again or contact us via WhatsApp.'}
         </div>
       )}
 
@@ -197,11 +210,17 @@ export default function ContactForm() {
         disabled={isSubmitting}
         className="btn-primary w-full disabled:cursor-not-allowed disabled:opacity-50"
       >
-        {isSubmitting ? 'Sending...' : 'Send Message'}
+        {isSubmitting
+          ? isIndo
+            ? 'Mengirim...'
+            : 'Sending...'
+          : cDict.formSubmit || 'Send Message'}
       </button>
 
       <p className="text-center text-sm text-gray-500">
-        By submitting this form, you agree to our privacy policy.
+        {isIndo
+          ? 'Dengan mengirimkan formulir ini, Anda menyetujui kebijakan privasi kami.'
+          : 'By submitting this form, you agree to our privacy policy.'}
       </p>
     </form>
   )

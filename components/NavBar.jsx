@@ -4,17 +4,19 @@ import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import Image from 'next/image'
-
-const navLinks = [
-  { name: 'Portfolio', href: '/portfolio' },
-  { name: 'Services', href: '/services' },
-  { name: 'About', href: '/about' },
-]
+import { useLanguage } from '@/components/LanguageContext'
 
 export default function NavBar() {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const pathname = usePathname()
+  const { language, toggleLanguage, dict } = useLanguage()
+
+  const navLinks = [
+    { name: dict?.nav?.portfolio || 'Portfolio', href: '/portfolio' },
+    { name: dict?.nav?.services || 'Services', href: '/services' },
+    { name: dict?.nav?.about || 'About', href: '/about' },
+  ]
 
   useEffect(() => {
     // Find hero section and calculate its bottom position
@@ -106,6 +108,42 @@ export default function NavBar() {
             </svg>
             <span>Search</span>
           </button>
+
+          {/* Language Toggle Component (Premium glassmorphic pill) */}
+          <button
+            onClick={toggleLanguage}
+            className={`flex items-center gap-1 rounded-full border px-3 py-1.5 text-xs font-bold uppercase tracking-wider transition-all duration-300 ${
+              isDarkNav
+                ? 'border-white/20 text-white hover:border-brand-teal'
+                : 'hover:border-brand-pink border-primary/10 text-primary'
+            }`}
+            aria-label="Switch language"
+          >
+            <span
+              className={
+                language === 'en'
+                  ? isDarkNav
+                    ? 'text-brand-teal'
+                    : 'text-brand-pink'
+                  : 'opacity-40'
+              }
+            >
+              EN
+            </span>
+            <span className="opacity-20">|</span>
+            <span
+              className={
+                language === 'id'
+                  ? isDarkNav
+                    ? 'text-brand-teal'
+                    : 'text-brand-pink'
+                  : 'opacity-40'
+              }
+            >
+              ID
+            </span>
+          </button>
+
           <Link
             href="/contact"
             className={`ml-4 rounded border-2 px-6 py-2 text-sm font-bold uppercase transition-colors ${
@@ -114,7 +152,7 @@ export default function NavBar() {
                 : 'border-primary bg-primary text-white hover:border-brand-teal hover:bg-brand-teal'
             }`}
           >
-            Contact Us
+            {dict?.nav?.contact || 'Contact Us'}
           </Link>
         </div>
         {/* Mobile Menu Button */}
@@ -181,6 +219,39 @@ export default function NavBar() {
               </svg>
               <span>Search</span>
             </button>
+
+            {/* Mobile Language Toggle */}
+            <div className="flex justify-center py-2">
+              <button
+                onClick={() => {
+                  toggleLanguage()
+                  setIsMobileMenuOpen(false)
+                }}
+                className={`flex items-center gap-2 rounded-full border px-6 py-3 font-bold uppercase tracking-wider transition-all ${
+                  isDarkNav
+                    ? 'border-white text-white hover:bg-white hover:text-black'
+                    : 'border-black text-black hover:bg-black hover:text-white'
+                }`}
+              >
+                <span>Language:</span>
+                <span
+                  className={
+                    language === 'en' ? 'text-brand-pink font-extrabold underline' : 'opacity-60'
+                  }
+                >
+                  EN
+                </span>
+                <span className="opacity-30">|</span>
+                <span
+                  className={
+                    language === 'id' ? 'text-brand-pink font-extrabold underline' : 'opacity-60'
+                  }
+                >
+                  ID
+                </span>
+              </button>
+            </div>
+
             <Link
               href="/contact"
               className={`px-6 py-3 text-center font-bold uppercase transition-colors ${
@@ -190,7 +261,7 @@ export default function NavBar() {
               }`}
               onClick={() => setIsMobileMenuOpen(false)}
             >
-              Contact
+              {dict?.nav?.contact || 'Contact'}
             </Link>
           </div>
         </div>
