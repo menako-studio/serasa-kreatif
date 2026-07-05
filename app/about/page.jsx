@@ -176,6 +176,7 @@ export default function AboutPage() {
                 that resonate with your audience.
               </p>
               <div className="space-y-6 pt-8 ">
+                <ContactInfoItem label="Company">PT Selaras Makmur Perkasa</ContactInfoItem>
                 <ContactInfoItem label="Address">
                   Bintaro, South Tangerang, Indonesia
                 </ContactInfoItem>

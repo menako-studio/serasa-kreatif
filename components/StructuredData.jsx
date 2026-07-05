@@ -5,6 +5,7 @@ export default function StructuredData() {
     '@id': 'https://serasakreatif.id/#organization',
     name: 'Serasa Kreatif',
     alternateName: 'Serasa Creative Studio',
+    legalName: 'PT Selaras Makmur Perkasa',
     description:
       'Creative agency specializing in branding, social media management, digital campaigns, video production, and B2B offset printing for Indonesian SMEs and corporates.',
     url: 'https://serasakreatif.id',
@@ -104,6 +105,7 @@ export default function StructuredData() {
     '@type': 'Organization',
     '@id': 'https://serasakreatif.id/#organization',
     name: 'Serasa Kreatif',
+    legalName: 'PT Selaras Makmur Perkasa',
     url: 'https://serasakreatif.id',
     logo: {
       '@type': 'ImageObject',

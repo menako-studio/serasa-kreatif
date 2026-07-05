@@ -114,7 +114,7 @@ export default function ClientLogos() {
 
               return (
                 <div key={key} className="logo-item">
-                  <div className="flex h-14 w-full max-w-[130px] items-center justify-center grayscale transition-all duration-300 hover:grayscale-0">
+                  <div className="flex h-14 w-full max-w-[130px] items-center justify-center transition-all duration-300">
                     {isFailed ? (
                       <span className="text-center text-xs font-medium text-gray-400">
                         {client.name}
@@ -142,7 +142,7 @@ export default function ClientLogos() {
 
               return (
                 <div key={key} className="logo-item">
-                  <div className="flex h-14 w-full max-w-[130px] items-center justify-center grayscale transition-all duration-300 hover:grayscale-0">
+                  <div className="flex h-14 w-full max-w-[130px] items-center justify-center transition-all duration-300">
                     {isFailed ? (
                       <span className="text-center text-xs font-medium text-gray-400">
                         {client.name}

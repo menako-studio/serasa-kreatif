@@ -69,7 +69,7 @@ export default function Footer() {
 
         {/* Bottom Bar */}
         <div className="flex flex-col items-center justify-between gap-4 border-t border-primary-dark pt-8 text-xs text-white md:flex-row">
-          <p>© {new Date().getFullYear()} SERASA KREATIF. ALL RIGHTS RESERVED.</p>
+          <p>© {new Date().getFullYear()} PT SELARAS MAKMUR PERKASA. ALL RIGHTS RESERVED.</p>
           <div className="flex gap-6">
             {footerLinks.legal.map((link) => (
               <Link
