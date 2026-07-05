@@ -43,6 +43,14 @@ export default function Footer() {
                 TikTok
               </a>
               <a
+                href="https://youtube.com/@serasakreatif?si=MVVhcvW_ys2wXHCe"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block text-white transition-colors hover:text-accent"
+              >
+                YouTube
+              </a>
+              <a
                 href="https://www.linkedin.com/company/serasa-kreatif/"
                 target="_blank"
                 rel="noopener noreferrer"

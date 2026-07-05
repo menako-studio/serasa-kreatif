@@ -2,6 +2,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { caseStudies } from '@/lib/case-data'
 import PortfolioFilters from '@/components/PortfolioFilters'
+import PortfolioVideoGrid from '@/components/PortfolioVideoGrid'
 import { sanityClient } from '@/lib/sanity'
 import { allCaseStudiesQuery } from '@/lib/sanity-queries'
 
@@ -185,6 +186,26 @@ export default async function WorkPage({ searchParams }) {
 
           {/* Grid - 2 columns */}
           <FeaturedWorkGrid works={featuredWork} />
+        </div>
+      </section>
+
+      {/* Creative Reels Section */}
+      <section className="border-t border-gray-200 bg-white py-16">
+        <div className="container-custom">
+          <h2 className="font-display mb-4 text-3xl font-black uppercase text-primary">
+            CREATIVE DIRECTING & REELS
+          </h2>
+          <p className="mb-8 max-w-2xl text-lg text-neutral-600">
+            Take a look at some of our short-form content, social media campaigns, and brand stories
+            created for our clients.
+          </p>
+          <PortfolioVideoGrid
+            videos={[
+              'https://youtube.com/shorts/lDkOli2oh4w', // Latifa Spa Academy
+              'https://youtube.com/shorts/OpZvybA_hLw', // Coreside
+              'https://youtube.com/shorts/Yr1szFvZe9M', // Charita Spa
+            ]}
+          />
         </div>
       </section>
 
