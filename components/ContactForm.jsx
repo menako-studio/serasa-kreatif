@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import { trackForm } from '@/lib/analytics'
 
 export default function ContactForm() {
   const [formData, setFormData] = useState({
@@ -19,6 +20,11 @@ export default function ContactForm() {
     setIsSubmitting(true)
     setSubmitStatus('idle')
 
+    trackForm('contact_form', 'attempt', {
+      company: formData.company,
+      budget: formData.budget,
+    })
+
     try {
       const response = await fetch('/api/contact', {
         method: 'POST',
@@ -30,13 +36,10 @@ export default function ContactForm() {
 
       if (response.ok) {
         setSubmitStatus('success')
-        if (typeof window !== 'undefined' && window.dataLayer) {
-          window.dataLayer.push({
-            event: 'contact_form_success',
-            company: formData.company,
-            budget: formData.budget,
-          })
-        }
+        trackForm('contact_form', 'success', {
+          company: formData.company,
+          budget: formData.budget,
+        })
         setFormData({
           name: '',
           company: '',
@@ -47,9 +50,19 @@ export default function ContactForm() {
         })
       } else {
         setSubmitStatus('error')
+        trackForm('contact_form', 'error', {
+          company: formData.company,
+          budget: formData.budget,
+          error_type: 'bad_response',
+        })
       }
     } catch (error) {
       setSubmitStatus('error')
+      trackForm('contact_form', 'error', {
+        company: formData.company,
+        budget: formData.budget,
+        error_type: error?.message || 'network_error',
+      })
     } finally {
       setIsSubmitting(false)
     }

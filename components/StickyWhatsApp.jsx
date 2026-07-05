@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import { usePathname } from 'next/navigation'
+import { trackForm, trackEngagement } from '@/lib/analytics'
 
 export default function StickyWhatsApp() {
   const [isOpen, setIsOpen] = useState(false)
@@ -39,6 +40,10 @@ export default function StickyWhatsApp() {
   const handleSubmit = (e) => {
     e.preventDefault()
 
+    trackForm('whatsapp_lead_capture', 'attempt', {
+      page_path: pathname,
+    })
+
     // Construct the WhatsApp API message
     const line1 = `Hello Serasa Kreatif! 👋`
     const line2 = `Name: ${formData.name}`
@@ -50,15 +55,12 @@ export default function StickyWhatsApp() {
     const whatsappMessage = encodeURIComponent(combinedMessage)
     const whatsappUrl = `https://api.whatsapp.com/send?phone=6281288971453&text=${whatsappMessage}`
 
-    // Push events to dataLayer if available
-    if (typeof window !== 'undefined' && window.dataLayer) {
-      window.dataLayer.push({
-        event: 'whatsapp_lead_capture_success',
-        name: formData.name,
-        company: formData.company,
-        page_path: pathname,
-      })
-    }
+    // Push events using centralized utility
+    trackForm('whatsapp_lead_capture', 'success', {
+      name: formData.name,
+      company: formData.company,
+      page_path: pathname,
+    })
 
     // Reset and close
     setFormData({ name: '', company: '', message: '' })
@@ -209,8 +211,13 @@ export default function StickyWhatsApp() {
 
         <button
           onClick={() => {
-            setIsOpen(!isOpen)
+            const nextState = !isOpen
+            setIsOpen(nextState)
             setShowTooltip(false)
+            trackEngagement('whatsapp_widget_toggle', {
+              action: nextState ? 'open' : 'close',
+              page_path: pathname,
+            })
           }}
           className="flex items-center justify-center rounded-full bg-[#25D366] p-4 text-white shadow-xl transition-all hover:scale-105 hover:bg-[#20BA5A] hover:shadow-2xl"
           aria-label="Toggle WhatsApp Chat Box"

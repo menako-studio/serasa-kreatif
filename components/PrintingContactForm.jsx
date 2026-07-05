@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import { trackForm } from '@/lib/analytics'
 
 export default function PrintingContactForm() {
   const [formData, setFormData] = useState({
@@ -20,6 +21,11 @@ export default function PrintingContactForm() {
     e.preventDefault()
     setIsSubmitting(true)
     setSubmitStatus('idle')
+
+    trackForm('printing_contact_form', 'attempt', {
+      category: formData.category,
+      quantity: formData.quantity,
+    })
 
     // Package the printing-specific fields into the message field expected by /api/contact
     const combinedMessage = `
@@ -49,13 +55,10 @@ Additional Notes: ${formData.notes || 'None'}
 
       if (response.ok) {
         setSubmitStatus('success')
-        if (typeof window !== 'undefined' && window.dataLayer) {
-          window.dataLayer.push({
-            event: 'printing_contact_success',
-            category: formData.category,
-            quantity: formData.quantity,
-          })
-        }
+        trackForm('printing_contact_form', 'success', {
+          category: formData.category,
+          quantity: formData.quantity,
+        })
         setFormData({
           name: '',
           company: '',
@@ -68,9 +71,19 @@ Additional Notes: ${formData.notes || 'None'}
         })
       } else {
         setSubmitStatus('error')
+        trackForm('printing_contact_form', 'error', {
+          category: formData.category,
+          quantity: formData.quantity,
+          error_type: 'bad_response',
+        })
       }
     } catch (error) {
       setSubmitStatus('error')
+      trackForm('printing_contact_form', 'error', {
+        category: formData.category,
+        quantity: formData.quantity,
+        error_type: error?.message || 'network_error',
+      })
     } finally {
       setIsSubmitting(false)
     }

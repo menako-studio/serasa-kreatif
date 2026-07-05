@@ -3,6 +3,7 @@
 import { useEffect, useState, useRef } from 'react'
 import { useRouter } from 'next/navigation'
 import { caseStudies } from '@/lib/case-data'
+import { trackEngagement } from '@/lib/analytics'
 
 // Static page definitions
 const PAGES = [
@@ -20,6 +21,17 @@ export default function CommandPalette() {
   const router = useRouter()
   const inputRef = useRef(null)
   const listRef = useRef(null)
+
+  // Track search queries using debounce
+  useEffect(() => {
+    if (!query) return
+    const timer = setTimeout(() => {
+      trackEngagement('command_palette_search', {
+        search_query: query,
+      })
+    }, 1000)
+    return () => clearTimeout(timer)
+  }, [query])
 
   // Combined search items
   const searchItems = [
@@ -86,12 +98,17 @@ export default function CommandPalette() {
     } else if (e.key === 'Enter') {
       e.preventDefault()
       if (filteredItems[selectedIndex]) {
-        navigate(filteredItems[selectedIndex].url)
+        navigate(filteredItems[selectedIndex].url, filteredItems[selectedIndex].title)
       }
     }
   }
 
-  function navigate(url) {
+  function navigate(url, itemTitle) {
+    trackEngagement('command_palette_select', {
+      selected_item: itemTitle || url,
+      target_url: url,
+      search_query: query,
+    })
     router.push(url)
     setIsOpen(false)
   }
@@ -189,7 +206,7 @@ export default function CommandPalette() {
                 return (
                   <button
                     key={item.url}
-                    onClick={() => navigate(item.url)}
+                    onClick={() => navigate(item.url, item.title)}
                     onMouseEnter={() => setSelectedIndex(idx)}
                     className={`flex w-full items-center justify-between rounded-lg px-4 py-3 text-left transition-colors ${
                       isSelected ? 'bg-brand-teal text-white' : 'text-gray-300 hover:bg-gray-800/30'

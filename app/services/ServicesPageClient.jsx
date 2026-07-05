@@ -4,13 +4,19 @@ import { useState } from 'react'
 import SectionHeading from '@/components/SectionHeading'
 import SectionDescription from '@/components/SectionDescription'
 import ServiceAccordionItem from '@/components/ServiceAccordionItem'
-import PrimaryButton from '@/components/PrimaryButton'
 import { servicesPage } from '@/lib/copy-en'
+import { trackEngagement } from '@/lib/analytics'
 
 export default function ServicesPageClient() {
   const [openAccordion, setOpenAccordion] = useState(null)
 
   const toggleAccordion = (index) => {
+    const isOpening = openAccordion !== index
+    const serviceTitle = servicesPage.items[index]?.title || `Service ${index}`
+    trackEngagement('service_accordion', {
+      service_title: serviceTitle,
+      action: isOpening ? 'open' : 'close',
+    })
     setOpenAccordion(openAccordion === index ? null : index)
   }
 

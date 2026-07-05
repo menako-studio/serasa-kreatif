@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import SectionHeading from './SectionHeading'
 import SectionDescription from './SectionDescription'
 import Image from 'next/image'
+import { trackVideo } from '@/lib/analytics'
 
 const showcaseVideos = [
   {
@@ -72,7 +73,10 @@ export default function VideoShowcase() {
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
-                        onClick={() => setActiveVideoId(video.id)}
+                        onClick={() => {
+                          setActiveVideoId(video.id)
+                          trackVideo(video.title, 'play', 'showcase')
+                        }}
                         className="group/btn absolute inset-0 h-full w-full focus:outline-none"
                       >
                         <Image
