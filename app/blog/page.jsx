@@ -1,68 +1,68 @@
 import Image from 'next/image'
 
 export const metadata = {
-  title: 'Berita',
+  title: 'Blog & Insights',
   description:
-    'Berita terbaru, artikel, dan pembaruan dari Serasa Kreatif. Ikuti perkembangan terbaru dari agensi kreatif kami.',
+    'Latest insights, articles, and brand updates from Serasa Kreatif. Stay ahead with digital branding and content strategies.',
   alternates: {
-    canonical: '/blog',
+    canonical: 'https://serasakreatif.id/blog',
   },
 }
 
-// Sample news data - replace with actual CMS data
+// Sample news data - fully translated to English
 const newsData = [
   {
     id: 1,
-    title: 'Serasa Kreatif Luncurkan Kampanye Brand Identity untuk Klien Lokal',
+    title: 'Serasa Kreatif Launches Brand Identity Campaign for Local Clients',
     date: '12.08.25',
     category: 'Brand Identity',
     image: 'https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=800&h=600&fit=crop',
   },
   {
     id: 2,
-    title: 'Strategi Konten Kreatif di Era Digital',
+    title: 'Creative Content Strategies in the Digital Era',
     date: '11.28.25',
     category: 'Digital Strategy',
     image: 'https://images.unsplash.com/photo-1553877522-43269d4ea984?w=800&h=600&fit=crop',
   },
   {
     id: 3,
-    title: 'Tim Serasa Kreatif Raih Penghargaan Best Creative Agency 2025',
+    title: 'Serasa Kreatif Wins Best Creative Agency Award 2025',
     date: '11.15.25',
     category: 'Awards',
     image: 'https://images.unsplash.com/photo-1557804506-669a67965ba0?w=800&h=600&fit=crop',
   },
   {
     id: 4,
-    title: 'Masa Depan Desain Brand: Tren dan Prediksi',
+    title: 'The Future of Brand Design: Trends and Predictions',
     date: '10.30.25',
     category: 'Insights',
     image: 'https://images.unsplash.com/photo-1561070791-2526d30994b5?w=800&h=600&fit=crop',
   },
   {
     id: 5,
-    title: 'Serasa Kreatif Membuka Kantor Baru di Jakarta',
+    title: 'Serasa Kreatif Opens New Office in Jakarta',
     date: '10.18.25',
     category: 'Company News',
     image: 'https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&h=600&fit=crop',
   },
   {
     id: 6,
-    title: 'Ketika Brand Menjadi Nyata: Studi Kasus Kampanye Digital',
+    title: 'When Brands Become Real: Digital Campaign Case Study',
     date: '10.05.25',
     category: 'Case Study',
     image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop',
   },
   {
     id: 7,
-    title: 'Workshop: Membangun Brand Identity yang Kuat',
+    title: 'Workshop: Building a Strong Brand Identity',
     date: '09.22.25',
     category: 'Events',
     image: 'https://images.unsplash.com/photo-1475721027785-f74eccf877e2?w=800&h=600&fit=crop',
   },
   {
     id: 8,
-    title: 'Bagaimana Serasa Kreatif Menggunakan AI untuk Kampanye yang Lebih Baik',
+    title: 'How Serasa Kreatif Leverages AI for Better Campaigns',
     date: '09.08.25',
     category: 'Technology',
     image: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&h=600&fit=crop',
@@ -70,7 +70,7 @@ const newsData = [
 ]
 
 const categories = [
-  'Semua',
+  'All',
   'Brand Identity',
   'Digital Strategy',
   'Awards',
@@ -84,12 +84,12 @@ const years = ['2025', '2024', '2023']
 
 export default function NewsPage() {
   return (
-    <div className="min-h-screen bg-white">
+    <div className="bg-white text-neutral-900 antialiased">
       {/* Hero */}
-      <section className="border-b border-gray-200 bg-white pb-12 pt-32 md:pt-40 lg:pt-44">
+      <section className="bg-primary pb-16 pt-32 text-white md:pb-24 md:pt-40 lg:pt-44">
         <div className="container-custom">
-          <h1 className="font-sans text-6xl font-black uppercase tracking-tight md:text-7xl lg:text-8xl">
-            BLOG
+          <h1 className="font-sans text-5xl font-black uppercase tracking-tight md:text-7xl lg:text-8xl">
+            BLOG & INSIGHTS
           </h1>
         </div>
       </section>
@@ -104,11 +104,11 @@ export default function NewsPage() {
                 {/* Sort By */}
                 <div>
                   <h3 className="mb-4 font-sans text-xs font-bold uppercase tracking-wider text-gray-500">
-                    Urutkan Berdasarkan
+                    Sort By
                   </h3>
                   <div className="space-y-2">
-                    <button className="block w-full text-left text-sm text-gray-900 transition-colors hover:text-primary">
-                      Semua
+                    <button className="hover:text-brand-pink block w-full text-left text-sm text-gray-900 transition-colors">
+                      All
                     </button>
                   </div>
                 </div>
@@ -116,13 +116,13 @@ export default function NewsPage() {
                 {/* Categories */}
                 <div>
                   <h3 className="mb-4 font-sans text-xs font-bold uppercase tracking-wider text-gray-500">
-                    Kategori
+                    Categories
                   </h3>
                   <div className="space-y-2">
                     {categories.map((category) => (
                       <button
                         key={category}
-                        className="block w-full text-left text-sm text-gray-700 transition-colors hover:text-primary"
+                        className="hover:text-brand-pink block w-full text-left text-sm text-gray-700 transition-colors"
                       >
                         {category}
                       </button>
@@ -133,13 +133,13 @@ export default function NewsPage() {
                 {/* Years */}
                 <div>
                   <h3 className="mb-4 font-sans text-xs font-bold uppercase tracking-wider text-gray-500">
-                    Tahun
+                    Year
                   </h3>
                   <div className="space-y-2">
                     {years.map((year) => (
                       <button
                         key={year}
-                        className="block w-full text-left text-sm text-gray-700 transition-colors hover:text-primary"
+                        className="hover:text-brand-pink block w-full text-left text-sm text-gray-700 transition-colors"
                       >
                         {year}
                       </button>
@@ -163,8 +163,8 @@ export default function NewsPage() {
                           fill
                           className="object-cover transition-transform duration-500 group-hover:scale-105"
                         />
-                        {/* Red accent corner */}
-                        <div className="absolute right-0 top-0 z-10 h-12 w-12 bg-red-600"></div>
+                        {/* Pink accent corner to match Serasa Kreatif style */}
+                        <div className="bg-brand-pink absolute right-0 top-0 z-10 h-12 w-12"></div>
                       </div>
 
                       {/* Date */}
@@ -173,7 +173,7 @@ export default function NewsPage() {
                       </p>
 
                       {/* Title */}
-                      <h2 className="mb-2 font-sans text-xl font-bold leading-tight tracking-tight transition-colors group-hover:text-primary">
+                      <h2 className="group-hover:text-brand-pink mb-2 font-sans text-xl font-bold leading-tight tracking-tight transition-colors">
                         {news.title}
                       </h2>
 
@@ -186,8 +186,8 @@ export default function NewsPage() {
 
               {/* Load More Button */}
               <div className="mt-16 flex justify-center border-t border-gray-200 pt-8">
-                <button className="group flex items-center gap-2 font-sans text-sm font-bold uppercase tracking-wider transition-colors hover:text-primary">
-                  <span>Tampilkan Lebih Banyak</span>
+                <button className="hover:text-brand-pink group flex items-center gap-2 font-sans text-sm font-bold uppercase tracking-wider transition-colors">
+                  <span>Show More</span>
                   <svg
                     className="h-4 w-4 transition-transform group-hover:translate-y-1"
                     fill="none"
