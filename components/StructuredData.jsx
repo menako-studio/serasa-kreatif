@@ -36,6 +36,7 @@ export default function StructuredData() {
     ],
     sameAs: [
       'https://www.instagram.com/serasakreatif.id/',
+      'https://www.instagram.com/serasaprinting/',
       'https://www.tiktok.com/@serasakreatif.id',
       'https://www.linkedin.com/company/serasa-kreatif/',
     ],

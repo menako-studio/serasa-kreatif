@@ -4,11 +4,12 @@ import SectionHeading from '@/components/SectionHeading'
 import SectionDescription from '@/components/SectionDescription'
 import PrintingContactForm from '@/components/PrintingContactForm'
 import PrintingReels from '@/components/PrintingReels'
+import TrackedLink from '@/components/TrackedLink'
 
 export const metadata = {
-  title: 'B2B Printing Specialist — Offset Printing Jakarta | Serasa Printing',
+  title: 'B2B Offset Printing Specialist Jakarta',
   description:
-    'B2B offset printing in Jakarta by Serasa Printing. Premium custom packaging, corporate stationery, brochures, catalogs, and company profiles.',
+    'Premium B2B offset printing by Serasa Printing in Jakarta. Specializing in custom packaging, corporate stationery, catalogs, and marketing collaterals.',
   keywords: [
     'serasa printing',
     'b2b printing specialist jakarta',
@@ -22,6 +23,21 @@ export const metadata = {
   ],
   alternates: {
     canonical: 'https://serasakreatif.id/services/printing',
+  },
+  openGraph: {
+    title: 'B2B Offset Printing Specialist Jakarta | Serasa Printing',
+    description:
+      'Premium B2B offset printing by Serasa Printing in Jakarta. Specializing in custom packaging, corporate stationery, catalogs, and marketing collaterals.',
+    url: 'https://serasakreatif.id/services/printing',
+    siteName: 'Serasa Kreatif',
+    images: [
+      {
+        url: '/assets/images/serasa-printing/serasa_b2b_layanan-cetak-offset_1x1_v1.jpg',
+        width: 800,
+        height: 800,
+        alt: 'Serasa Printing Offset Production',
+      },
+    ],
   },
 }
 
@@ -58,14 +74,26 @@ export default function SerasaPrintingPage() {
                 >
                   Get Corporate Quotation
                 </Link>
-                <a
-                  href="https://api.whatsapp.com/send?phone=6281288971453&text=Halo%20Serasa%20Printing,%20saya%20ingin%20berkonsultasi%20mengenai%20kebutuhan%20cetak%20B2B%20perusahaan%20kami."
+                <TrackedLink
+                  href="https://api.whatsapp.com/send?phone=6281288971453&text=Hello%20Serasa%20Printing%2C%20I%20would%20like%20to%20consult%20about%20our%20company%27s%20B2B%20printing%20needs."
+                  type="whatsapp"
+                  label="printing_hero_whatsapp"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center border-2 border-white px-8 py-4 font-bold uppercase text-white transition-all duration-300 hover:bg-white hover:text-primary"
                 >
                   Consult with Specialist
-                </a>
+                </TrackedLink>
+                <TrackedLink
+                  href="https://www.instagram.com/serasaprinting/"
+                  type="instagram"
+                  label="printing_hero_instagram"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center border-2 border-brand-teal px-8 py-4 font-bold uppercase text-brand-teal transition-all duration-300 hover:bg-brand-teal hover:text-white"
+                >
+                  @serasaprinting
+                </TrackedLink>
               </div>
             </div>
 
@@ -473,7 +501,7 @@ export default function SerasaPrintingPage() {
                     Serasa Printing is part of{' '}
                     <span className="font-bold text-primary">Serasa Kreatif</span>, a branding
                     studio and digital agency in Jabodetabek. We serve corporates formally and can
-                    issue official tax invoices (Faktur Pajak / SPK).
+                    issue official tax invoices (Faktur Pajak) and service agreements (SPK).
                   </p>
                 </div>
 
@@ -481,12 +509,26 @@ export default function SerasaPrintingPage() {
                   <h4 className="text-brand-pink mb-2 text-xs font-bold uppercase tracking-wider">
                     Direct Support
                   </h4>
-                  <a
-                    href="https://api.whatsapp.com/send?phone=6281288971453&text=Halo%20Serasa%20Printing,%20saya%20ingin%20meminta%20price%20list%20cetak."
-                    className="flex items-center gap-2 text-lg font-black text-primary underline underline-offset-4 transition-colors hover:text-brand-teal"
-                  >
-                    +62 812-8897-1453 (WhatsApp)
-                  </a>
+                  <div className="space-y-4">
+                    <TrackedLink
+                      href="https://api.whatsapp.com/send?phone=6281288971453&text=Hello%20Serasa%20Printing%2C%20I%20would%20like%20to%20request%20a%20printing%20price%20list."
+                      type="whatsapp"
+                      label="printing_direct_support_whatsapp"
+                      className="flex items-center gap-2 text-lg font-black text-primary underline underline-offset-4 transition-colors hover:text-brand-teal"
+                    >
+                      +62 812-8897-1453 (WhatsApp)
+                    </TrackedLink>
+                    <TrackedLink
+                      href="https://www.instagram.com/serasaprinting/"
+                      type="instagram"
+                      label="printing_direct_support_instagram"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-2 text-lg font-black text-primary underline underline-offset-4 transition-colors hover:text-brand-teal"
+                    >
+                      @serasaprinting (Instagram)
+                    </TrackedLink>
+                  </div>
                 </div>
               </div>
             </div>

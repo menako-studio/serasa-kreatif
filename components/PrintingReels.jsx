@@ -3,32 +3,33 @@
 import { useState } from 'react'
 import SectionHeading from './SectionHeading'
 import SectionDescription from './SectionDescription'
+import { trackVideo } from '@/lib/analytics'
 
 const printingReels = [
   {
     src: '/assets/videos/serasa-printing/serasa-printing.mp4',
-    title: 'Hasil Cetak Presisi & Tepat Waktu',
-    copy: 'Hasil cetak sering kurang rapi atau deadline molor? Padahal kualitas print mencerminkan profesionalitas brand Anda.\n\nSerasa Printing siap jadi partner percetakan offset terpercaya untuk kebutuhan:\n✅ Brosur\n✅ Katalog\n✅ Company Profile\n✅ Kalender Perusahaan\n\nHasil lebih rapi, warna presisi, dan pengerjaan tepat waktu.',
+    title: 'Precise & On-Time Printing Results',
+    copy: "Are your print results often messy or deadlines delayed? When print quality reflects your brand's professionalism.\n\nSerasa Printing is ready to be your trusted offset printing partner for:\n✅ Brochures\n✅ Catalogs\n✅ Company Profiles\n✅ Corporate Calendars\n\nNeater results, precise colors, and on-time execution.",
   },
   {
     src: '/assets/videos/serasa-printing/serasa-printing-1.mp4',
-    title: 'Cetak Banyak Nggak Harus Mahal',
-    copy: 'Cetak banyak nggak harus mahal ✨\n\nDengan offset printing, hasil tetap tajam, rapi, dan warna konsisten walaupun dalam jumlah besar 👀\nDi Serasa Printing, kamu bisa cetak lebih hemat tanpa ngorbanin kualitas.\n\nCocok untuk katalog, brosur, sampai kebutuhan promosi bisnis kamu 🚀',
+    title: "High Volume Print Doesn't Have to Be Expensive",
+    copy: "High volume print doesn't have to be expensive ✨\n\nWith offset printing, results remain sharp, neat, and color-consistent even in large quantities 👀\nAt Serasa Printing, you can print more cost-effectively without sacrificing quality.\n\nPerfect for catalogs, brochures, to your business promotional needs 🚀",
   },
   {
     src: '/assets/videos/serasa-printing/serasa-printing-2.mp4',
-    title: 'Solusi Cetak Tanpa Khawatir',
-    copy: 'Udah pernah cetak brosur, tapi hasilnya nggak sesuai ekspektasi?\n\nWarna meleset, bahan tipis, atau jumlah kurang 😓\nMakanya, jangan asal pilih percetakan. Di Serasa Printing, kamu nggak cuma cetak, kamu juga dapet solusi:\n✔ Free konsultasi sebelum cetak\n✔ Bisa bantu desain (cukup kasih referensi)\n✔ Bahan berkualitas\n✔ Bahkan cetak 500, kita bantu jadi 700 pcs',
+    title: 'Worry-Free Printing Solutions',
+    copy: "Have you ever printed brochures, but the results didn't meet expectations?\n\nOff colors, thin materials, or insufficient quantity 😓\nTherefore, don't just choose any printing service. At Serasa Printing, you don't just print, you also get solutions:\n✔ Free pre-print consultation\n✔ Design assistance (just provide references)\n✔ Quality materials\n✔ Even for a 500 print run, we help bump it to 700 pcs",
   },
   {
     src: '/assets/videos/serasa-printing/serasa-printing-4.mp4',
-    title: 'Presisi & Efisiensi Pon Desain',
-    copy: 'Ketika nge-Pon 700 lebih desain yang berbeda dan meminimalisir hasil yang rusak 💪☺️\n\nYang semangat dong yang semangat dong 🤗🤗',
+    title: 'Precision & Efficiency in Die-Cutting',
+    copy: "Die-cutting over 700 different designs while minimizing defective results 💪☺️\n\nLet's stay enthusiastic! 🤗🤗",
   },
   {
     src: '/assets/videos/serasa-printing/serasa-printing-3.mp4',
-    title: 'Tips Sampel Packaging Custom',
-    copy: 'Tips & trick sepele untuk kalian yang lagi bikin sampel packaging sebelum produksi banyak.\n\nKalo sudah produksi massal tentunya pakai REL MESIN 😄👍',
+    title: 'Custom Packaging Sample Tips',
+    copy: 'Simple tips & tricks for those making packaging samples before mass production.\n\nFor mass production, we use automated creasing machines 😄👍',
   },
 ]
 
@@ -36,6 +37,12 @@ export default function PrintingReels() {
   const [mutedStates, setMutedStates] = useState(new Array(printingReels.length).fill(true))
 
   const toggleMute = (index) => {
+    const willBeMuted = !mutedStates[index]
+    trackVideo(
+      printingReels[index]?.title || `Reel ${index}`,
+      willBeMuted ? 'mute' : 'unmute',
+      'printing_reels'
+    )
     setMutedStates((prev) => {
       const next = [...prev]
       next[index] = !next[index]
@@ -56,8 +63,9 @@ export default function PrintingReels() {
           </span>
           <SectionHeading>OUR PRINTING SHOWCASE</SectionHeading>
           <SectionDescription className="text-neutral-600">
-            Intip proses produksi offset, tips & trik cetak sampel packaging, serta komitmen
-            kualitas Serasa Printing langsung lewat rangkuman video reels kami di bawah ini.
+            Take a peek at our offset production process, custom packaging sample tips & tricks, and
+            Serasa Printing&apos;s quality commitment directly through our video reels showcase
+            below.
           </SectionDescription>
         </div>
 
