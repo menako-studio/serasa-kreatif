@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { trackForm } from '@/lib/analytics'
 import { useLanguage } from '@/components/LanguageContext'
 
@@ -16,9 +16,58 @@ export default function ContactForm() {
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitStatus, setSubmitStatus] = useState('idle')
+  const [turnstileToken, setTurnstileToken] = useState('')
 
   const isIndo = language === 'id'
   const cDict = dict?.contact || {}
+  const siteKey = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY
+
+  useEffect(() => {
+    if (!siteKey) return
+
+    let widgetId = null
+
+    const renderTurnstile = () => {
+      if (window.turnstile) {
+        widgetId = window.turnstile.render('#turnstile-container', {
+          sitekey: siteKey,
+          callback: (token) => {
+            setTurnstileToken(token)
+          },
+          'expired-callback': () => {
+            setTurnstileToken('')
+          },
+          'error-callback': () => {
+            setTurnstileToken('')
+          },
+        })
+      }
+    }
+
+    if (!window.turnstile) {
+      let script = document.querySelector('script[src*="challenges.cloudflare.com"]')
+      if (!script) {
+        script = document.createElement('script')
+        script.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit'
+        script.async = true
+        script.defer = true
+        document.head.appendChild(script)
+      }
+      script.addEventListener('load', renderTurnstile)
+    } else {
+      renderTurnstile()
+    }
+
+    return () => {
+      if (widgetId !== null && window.turnstile) {
+        try {
+          window.turnstile.remove(widgetId)
+        } catch (e) {
+          console.warn('Failed to clean up Turnstile widget:', e)
+        }
+      }
+    }
+  }, [siteKey])
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -35,6 +84,7 @@ export default function ContactForm() {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          ...(turnstileToken ? { 'X-Turnstile-Token': turnstileToken } : {}),
         },
         body: JSON.stringify(formData),
       })
@@ -53,6 +103,10 @@ export default function ContactForm() {
           budget: '',
           message: '',
         })
+        setTurnstileToken('')
+        if (window.turnstile) {
+          window.turnstile.reset('#turnstile-container')
+        }
       } else {
         setSubmitStatus('error')
         trackForm('contact_form', 'error', {
@@ -60,6 +114,9 @@ export default function ContactForm() {
           budget: formData.budget,
           error_type: 'bad_response',
         })
+        if (window.turnstile) {
+          window.turnstile.reset('#turnstile-container')
+        }
       }
     } catch (error) {
       setSubmitStatus('error')
@@ -68,6 +125,9 @@ export default function ContactForm() {
         budget: formData.budget,
         error_type: error?.message || 'network_error',
       })
+      if (window.turnstile) {
+        window.turnstile.reset('#turnstile-container')
+      }
     } finally {
       setIsSubmitting(false)
     }
@@ -79,6 +139,8 @@ export default function ContactForm() {
       [e.target.name]: e.target.value,
     }))
   }
+
+  const isSubmitDisabled = isSubmitting || (!!siteKey && !turnstileToken)
 
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
@@ -189,6 +251,13 @@ export default function ContactForm() {
         />
       </div>
 
+      {/* Cloudflare Turnstile Captcha */}
+      {siteKey && (
+        <div className="flex justify-center py-2">
+          <div id="turnstile-container" />
+        </div>
+      )}
+
       {submitStatus === 'success' && (
         <div className="rounded-lg border border-green-200 bg-green-50 px-4 py-3 text-green-800">
           {isIndo
@@ -207,7 +276,7 @@ export default function ContactForm() {
 
       <button
         type="submit"
-        disabled={isSubmitting}
+        disabled={isSubmitDisabled}
         className="btn-primary w-full disabled:cursor-not-allowed disabled:opacity-50"
       >
         {isSubmitting

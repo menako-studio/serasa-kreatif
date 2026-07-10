@@ -88,6 +88,37 @@ export async function POST(request) {
     const body = await request.json()
     const { name, company, email, phone, budget, message } = body
 
+    // Verify Cloudflare Turnstile Captcha if secret key is configured
+    const turnstileSecret = process.env.TURNSTILE_SECRET_KEY
+    if (turnstileSecret && !isTest) {
+      const turnstileToken = request.headers.get('x-turnstile-token') || body.turnstileToken
+      if (!turnstileToken) {
+        return NextResponse.json({ error: 'Verification token is missing' }, { status: 400 })
+      }
+
+      try {
+        const verifyResponse = await fetch(
+          'https://challenges.cloudflare.com/turnstile/v0/siteverify',
+          {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: `secret=${encodeURIComponent(turnstileSecret)}&response=${encodeURIComponent(
+              turnstileToken
+            )}&remoteip=${encodeURIComponent(ip)}`,
+          }
+        )
+        const verifyData = await verifyResponse.json()
+        if (!verifyData.success) {
+          return NextResponse.json({ error: 'Failed captcha verification' }, { status: 400 })
+        }
+      } catch (err) {
+        console.error('Turnstile verification error:', err)
+        return NextResponse.json({ error: 'Verification system error' }, { status: 500 })
+      }
+    }
+
     // Validate required fields
     if (!name || !email || !phone || !message) {
       return NextResponse.json({ error: 'Missing required fields' }, { status: 400 })
