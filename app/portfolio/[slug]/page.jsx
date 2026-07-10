@@ -19,8 +19,15 @@ export async function generateMetadata({ params }) {
     }
   }
 
+  // Capitalize each word of category for aesthetic titles
+  const formattedCategory = caseStudy.category
+    .toLowerCase()
+    .split(' ')
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(' ')
+
   return {
-    title: `${caseStudy.client} - ${caseStudy.category}`,
+    title: `${caseStudy.client} — ${formattedCategory} Case Study`,
     description: caseStudy.description,
     keywords: [
       `case study ${caseStudy.client.toLowerCase()}`,
@@ -30,21 +37,21 @@ export async function generateMetadata({ params }) {
       ...caseStudy.tags.map((tag) => tag.toLowerCase()),
     ],
     openGraph: {
-      title: `${caseStudy.client} - ${caseStudy.title}`,
+      title: `${caseStudy.client} — ${caseStudy.title}`,
       description: caseStudy.description,
       images: [
         {
           url: caseStudy.image,
           width: 1200,
           height: 630,
-          alt: `${caseStudy.client} - ${caseStudy.title}`,
+          alt: `${caseStudy.client} — ${caseStudy.title}`,
         },
       ],
       type: 'article',
     },
     twitter: {
       card: 'summary_large_image',
-      title: `${caseStudy.client} - ${caseStudy.title}`,
+      title: `${caseStudy.client} — ${caseStudy.title}`,
       description: caseStudy.description,
       images: [caseStudy.image],
     },
