@@ -30,6 +30,7 @@ export default function Hero() {
       imageMobile: '/assets/images/hero-banner/hero-serasa-bandarkardus-organic-growth-mobile.webp',
       link: '/portfolio/bandar-kardus',
       alt: 'Bandar Kardus Organic Growth Banner',
+      bgColor: 'bg-[#f1b315]', // Yellow background matching the banner
     },
     {
       type: 'banner',
@@ -44,28 +45,13 @@ export default function Hero() {
       imageMobile: '/assets/images/hero-banner/hero-serasa-japo-powderdrink-revenue-mobile.webp',
       link: '/portfolio/japo',
       alt: 'Japo B2B Revenue Growth Banner',
-    },
-    {
-      type: 'banner',
-      client: 'JAPO (ALT)',
-      titleId: 'OPTIMALISASI ADS & AKTIVASI BOOTH PENJUALAN',
-      titleEn: 'ADS OPTIMIZATION & BOOTH SALES ACTIVATION',
-      tagId: 'Skala Pendapatan',
-      tagEn: 'Revenue Scaling',
-      categoryId: 'STRATEGI PEMASARAN DIGITAL',
-      categoryEn: 'DIGITAL MARKETING STRATEGY',
-      imageDesktop:
-        '/assets/images/hero-banner/hero-serasa-japo-powderdrink-revenue-desktop-alt.webp',
-      imageMobile:
-        '/assets/images/hero-banner/hero-serasa-japo-powderdrink-revenue-mobile-alt.webp',
-      link: '/portfolio/japo',
-      alt: 'Japo Creative Revenue Banner',
+      bgColor: 'bg-[#f5f5f5]', // Light gray background matching the banner
     },
     {
       type: 'banner',
       client: 'PREGNANSIA',
       titleId: 'TINGKAT PENUTUPAN 50% MELALUI KAMPANYE HYPERLOCAL',
-      titleEn: '50% CLOSING RATE VIA HYPERLOCAL ADS',
+      titleEn: '50% CLOSING RATE VIA HIGHERLOCAL ADS',
       tagId: 'Pemasaran Hyperlocal',
       tagEn: 'Hyperlocal Marketing',
       categoryId: 'PEMASARAN DIGITAL & MEDIA SOSIAL',
@@ -76,6 +62,7 @@ export default function Hero() {
         '/assets/images/hero-banner/hero-serasa-pregnansia-babywellness-hyperlocal-mobile.webp',
       link: '/portfolio/pregnansia',
       alt: 'Pregnansia Hyperlocal Ads Banner',
+      bgColor: 'bg-[#8f0f63]', // Magenta background matching the banner
     },
   ]
 
@@ -92,7 +79,7 @@ export default function Hero() {
   // Mosaic hook items mapping to respective banner slide indices
   const mosaicItems = [
     {
-      slideIndex: 4,
+      slideIndex: 3, // Pregnansia is Slide 04 (index 3)
       image: '/assets/images/thumbnail/Thumbnail-Pregnansia.webp',
       alt: 'Pregnansia - Hyperlocal Wellness Campaign',
       client: 'PREGNANSIA',
@@ -103,7 +90,7 @@ export default function Hero() {
       priority: true,
     },
     {
-      slideIndex: 1,
+      slideIndex: 1, // Bandar Kardus is Slide 02 (index 1)
       image: '/assets/images/thumbnail/Thumbnail-Bandar-Kardus.webp',
       alt: 'Bandar Kardus - Organic Growth Campaign',
       client: 'BANDAR KARDUS',
@@ -114,7 +101,7 @@ export default function Hero() {
       priority: false,
     },
     {
-      slideIndex: 2,
+      slideIndex: 2, // Japo is Slide 03 (index 2)
       image: '/assets/images/thumbnail/Thumbnail-JAPO.webp',
       alt: 'JAPO - B2B Digital Transformation',
       client: 'JAPO',
@@ -125,7 +112,7 @@ export default function Hero() {
       priority: false,
     },
     {
-      slideIndex: 3,
+      slideIndex: 2, // Japo Alt is not in slides config, so link Japo Alt mosaic item to Slide 2 (Japo) as a fallback
       image: '/assets/images/hero-banner/hero-serasa-japo-powderdrink-revenue-desktop-alt.webp',
       alt: 'JAPO - Revenue Scaling Campaign',
       client: 'JAPO (ALT)',
@@ -267,37 +254,43 @@ export default function Hero() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.8 }}
-            className="absolute inset-0 h-full w-full"
+            className={`absolute inset-0 h-full w-full ${activeSlide.bgColor || 'bg-primary'}`}
           >
+            {/* Top dark gradient overlay for header navigation readability */}
+            <div className="pointer-events-none absolute inset-x-0 top-0 z-10 h-32 bg-gradient-to-b from-black/50 to-transparent" />
+
             {/* Background image Mobile */}
-            <div className="absolute inset-0 block md:hidden">
+            <div className="absolute inset-x-0 bottom-0 top-20 block md:hidden">
               <Image
                 src={activeSlide.imageMobile}
                 alt={activeSlide.alt}
                 fill
-                className="animate-fade-in object-cover"
+                style={{ objectFit: 'contain' }}
+                className="animate-fade-in"
                 priority
                 quality={100}
               />
             </div>
             {/* Background image Desktop */}
-            <div className="absolute inset-0 hidden md:block">
+            <div className="absolute inset-x-0 bottom-0 top-24 hidden md:block">
               <Image
                 src={activeSlide.imageDesktop}
                 alt={activeSlide.alt}
                 fill
-                className="animate-fade-in object-cover"
+                style={{ objectFit: 'contain' }}
+                className="animate-fade-in"
                 priority
                 quality={100}
               />
             </div>
-            {/* Subtle Gradient Overlay at the bottom */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
 
-            {/* Bottom-left overlay text */}
-            <div className="absolute bottom-12 left-6 z-20 max-w-2xl md:bottom-16 md:left-12 lg:left-16">
-              {/* Slide Indicator in natural flow */}
-              <div className="scrollbar-none mb-4 flex flex-nowrap items-center gap-3 overflow-x-auto whitespace-nowrap pb-1 font-mono text-xs font-semibold tracking-wider md:text-sm">
+            {/* Subtle Gradient Overlay at the bottom */}
+            <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
+
+            {/* Bottom-left overlay badge & indicators */}
+            <div className="absolute bottom-12 left-6 z-20 flex flex-col gap-4 md:bottom-16 md:left-12 lg:left-16">
+              {/* Slide Indicator */}
+              <div className="scrollbar-none flex flex-nowrap items-center gap-3 overflow-x-auto whitespace-nowrap pb-1 font-mono text-xs font-semibold tracking-wider md:text-sm">
                 {slides.map((_, index) => (
                   <button
                     key={index}
@@ -328,20 +321,17 @@ export default function Hero() {
                 ))}
               </div>
 
+              {/* Sleek Project Badge (replacing the large overlapping text headers) */}
               <Link href={activeSlide.link} className="group inline-block">
-                <div className="flex items-center gap-2">
-                  <span className="text-brand-pink text-xs font-bold uppercase tracking-widest">
-                    {language === 'id' ? activeSlide.tagId : activeSlide.tagEn} —{' '}
-                    {language === 'id' ? activeSlide.categoryId : activeSlide.categoryEn}
+                <div className="hover:bg-brand-pink hover:border-brand-pink flex items-center gap-3 rounded-full border border-white/10 bg-black/40 px-4 py-2.5 shadow-lg backdrop-blur-md transition-all duration-300">
+                  <span className="text-xs font-black uppercase tracking-wider text-white">
+                    {activeSlide.client}
                   </span>
-                  <span className="bg-brand-pink h-[2px] w-6 rounded-full transition-all duration-300 group-hover:w-10" />
+                  <span className="h-3 w-[1px] bg-white/25" />
+                  <span className="text-[10px] font-bold uppercase tracking-widest text-white/85 transition-colors group-hover:text-white">
+                    {language === 'id' ? 'Lihat Proyek →' : 'View Project →'}
+                  </span>
                 </div>
-                <h2 className="hover:text-brand-pink mt-3 text-2xl font-black uppercase leading-none tracking-tight text-white transition-colors duration-300 md:text-4xl lg:text-5xl">
-                  {activeSlide.client} <br />
-                  <span className="mt-2 block text-lg font-semibold normal-case text-white/85 md:text-2xl">
-                    {language === 'id' ? activeSlide.titleId : activeSlide.titleEn}
-                  </span>
-                </h2>
               </Link>
             </div>
           </motion.div>
