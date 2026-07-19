@@ -1,5 +1,10 @@
 # Serasa Kreatif Website
 
+[![CI/CD Pipeline](https://github.com/menako-studio/serasa-kreatif/actions/workflows/ci.yml/badge.svg)](https://github.com/menako-studio/serasa-kreatif/actions/workflows/ci.yml)
+[![codecov](https://codecov.io/gh/menako-studio/serasa-kreatif/branch/main/graph/badge.svg)](https://codecov.io/gh/menako-studio/serasa-kreatif)
+[![Lighthouse CI](https://img.shields.io/badge/Lighthouse-CI-orange?logo=lighthouse)](https://github.com/menako-studio/serasa-kreatif/actions)
+[![Docker](https://img.shields.io/badge/Docker-ready-2496ED?logo=docker&logoColor=white)](./Dockerfile)
+
 Modern, high-performance website for Serasa Kreatif — a digital branding and social media agency based in Bintaro, Jakarta.
 
 ## ✨ Key Features (New & Optimized)

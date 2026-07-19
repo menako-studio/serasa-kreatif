@@ -7,7 +7,11 @@ on:
     branches: [main, develop]
 
 jobs:
+  # ============================================================
+  # Job 1: Lint, Unit Tests, Coverage, Build, E2E Tests
+  # ============================================================
   build-and-test:
+    name: 🧪 Build & Test
     runs-on: ubuntu-latest
 
     strategy:
@@ -29,14 +33,41 @@ jobs:
       - name: Run linter
         run: npm run lint
 
-      - name: Run unit tests
-        run: npm run test:unit
+      # ── Unit Tests + Coverage ──────────────────────────────
+      - name: Run unit tests with coverage
+        run: npm run test:coverage
+        env:
+          # Ensure no real API calls are made during unit tests
+          NODE_ENV: test
 
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v4
+        with:
+          # No token needed for public repos
+          # For private repos: add CODECOV_TOKEN to GitHub Secrets
+          files: ./coverage/coverage-final.json
+          fail_ci_if_error: false
+          verbose: false
+
+      - name: Upload coverage HTML report
+        uses: actions/upload-artifact@v4
+        with:
+          name: coverage-report-node-${{ matrix.node-version }}
+          path: coverage/
+          retention-days: 14
+
+      # ── Build ──────────────────────────────────────────────
       - name: Build project
         run: npm run build
         env:
           NODE_ENV: production
+          # Pass Sanity config from GitHub Secrets for build-time data fetching
+          # Add these as repository secrets: Settings → Secrets → Actions
+          NEXT_PUBLIC_SANITY_PROJECT_ID: ${{ secrets.NEXT_PUBLIC_SANITY_PROJECT_ID }}
+          NEXT_PUBLIC_SANITY_DATASET: ${{ secrets.NEXT_PUBLIC_SANITY_DATASET || 'production' }}
+          NEXT_PUBLIC_SENTRY_DSN: ${{ secrets.NEXT_PUBLIC_SENTRY_DSN }}
 
+      # ── E2E Tests ──────────────────────────────────────────
       - name: Install Playwright browsers
         run: npx playwright install --with-deps
         if: matrix.node-version == '20.x'
@@ -53,6 +84,80 @@ jobs:
           path: playwright-report/
           retention-days: 30
 
+      # ── Security ───────────────────────────────────────────
       - name: Run security audit
         run: npm audit --audit-level=moderate
         continue-on-error: true
+
+  # ============================================================
+  # Job 2: Lighthouse CI — Performance Budget Enforcement
+  # Runs independently so it doesn't slow down the main test job
+  # ============================================================
+  lighthouse:
+    name: 🔦 Lighthouse CI
+    runs-on: ubuntu-latest
+    # Run Lighthouse on every push to main, and on PRs
+    if: github.event_name == 'push' || github.event_name == 'pull_request'
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20.x'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build for Lighthouse
+        run: npm run build
+        env:
+          NODE_ENV: production
+          NEXT_PUBLIC_SANITY_PROJECT_ID: ${{ secrets.NEXT_PUBLIC_SANITY_PROJECT_ID }}
+          NEXT_PUBLIC_SANITY_DATASET: ${{ secrets.NEXT_PUBLIC_SANITY_DATASET || 'production' }}
+
+      - name: Start production server
+        run: npm start &
+
+      - name: Wait for server to be ready
+        run: |
+          echo "Waiting for Next.js server to start..."
+          timeout 60 bash -c 'until curl -sf http://localhost:3000 > /dev/null; do sleep 2; done'
+          echo "Server is ready!"
+
+      - name: Run Lighthouse CI
+        uses: treosh/lighthouse-ci-action@v11
+        with:
+          configPath: '.lighthouserc.json'
+          uploadArtifacts: true
+          temporaryPublicStorage: true
+
+  # ============================================================
+  # Job 3: Docker Build Validation
+  # Verifies the Dockerfile builds successfully (no push to registry)
+  # ============================================================
+  docker-build:
+    name: 🐳 Docker Build
+    runs-on: ubuntu-latest
+    # Only run on pushes to main to save CI minutes
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Build Docker image (validation only)
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          push: false
+          tags: serasa-kreatif:ci
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+          build-args: |
+            NEXT_PUBLIC_SANITY_PROJECT_ID=${{ secrets.NEXT_PUBLIC_SANITY_PROJECT_ID || 'placeholder' }}
+            NEXT_PUBLIC_SANITY_DATASET=${{ secrets.NEXT_PUBLIC_SANITY_DATASET || 'production' }}
