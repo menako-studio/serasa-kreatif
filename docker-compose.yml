@@ -1,0 +1,30 @@
+# docker-compose.yml
+# Used for running the containerized app locally during development/testing
+#
+# Usage:
+#   docker compose up --build         # Build and start
+#   docker compose up -d              # Run in background
+#   docker compose down               # Stop and remove containers
+#   docker compose logs -f app        # Follow logs
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: runner   # Build to the production runner stage
+    container_name: serasa-kreatif
+    ports:
+      - '3000:3000'
+    # Load environment variables from .env.local (never commit real secrets)
+    env_file:
+      - .env.local
+    environment:
+      - NODE_ENV=production
+    restart: unless-stopped
+    healthcheck:
+      test: ['CMD', 'wget', '-qO-', 'http://localhost:3000']
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 15s

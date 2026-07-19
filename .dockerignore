@@ -1,0 +1,52 @@
+# .dockerignore — Files/folders excluded from Docker build context
+# Smaller build context = faster builds
+
+# Dependencies (will be reinstalled in container)
+node_modules
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Next.js build output (will be built fresh in container)
+.next
+out
+
+# Environment files — NEVER include these in Docker images
+.env
+.env.*
+.env.local
+.env.development
+.env.production
+
+# Testing files
+/coverage
+/playwright-report
+/test-results
+tests/
+
+# Version control
+.git
+.gitignore
+
+# Development tools
+.husky
+.eslintignore
+
+# Documentation
+README.md
+CHANGELOG*.md
+*.md
+
+# IDE files
+.vscode
+.idea
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Company files
+*.pdf
+analytics/
