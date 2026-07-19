@@ -6,35 +6,28 @@
 # Run:    docker run -p 3000:3000 --env-file .env.local serasa-kreatif
 # ============================================================
 
-# Stage 1: Install dependencies only
+# Stage 1: Install dependencies
 FROM node:20-alpine AS deps
-# libc6-compat is needed for some native Node.js modules on Alpine
 RUN apk add --no-cache libc6-compat
 WORKDIR /app
 
-# Copy package files first (Docker layer caching — only reinstalls if package.json changes)
+# Copy package files first for layer caching
 COPY package.json package-lock.json* ./
-RUN npm ci --only=production --ignore-scripts
+RUN npm ci --ignore-scripts
 
 # ============================================================
 # Stage 2: Build the application
 FROM node:20-alpine AS builder
 WORKDIR /app
 
-# Copy all deps from the deps stage
+# Reuse installed dependencies
 COPY --from=deps /app/node_modules ./node_modules
-
-# Copy source code
 COPY . .
 
 # Disable Next.js telemetry during build
 ENV NEXT_TELEMETRY_DISABLED=1
 
-# Install all deps (including devDeps needed for build)
-RUN npm ci --ignore-scripts
-
-# Build the Next.js app
-# next.config.mjs must have `output: 'standalone'` for this to work
+# Build the Next.js app (standalone mode)
 RUN npm run build
 
 # ============================================================
