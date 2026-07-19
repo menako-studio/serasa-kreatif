@@ -26,6 +26,24 @@ export default function Footer() {
               <p className="text-white">Bintaro, Tangerang Selatan</p>
               <p className="text-white">+62 812-8897-1453</p>
               <p className="text-white">serasakreatif.id@gmail.com</p>
+              <div className="flex flex-col gap-1 pt-1 text-xs">
+                <a
+                  href="https://maps.app.goo.gl/R9YvwZzhmrfFNoDM9"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-gray-300 underline transition-colors hover:text-accent"
+                >
+                  📍 Google Maps Location
+                </a>
+                <a
+                  href="https://share.google/13159QdwsmxTI0F4g"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-gray-300 underline transition-colors hover:text-accent"
+                >
+                  ⭐ Google Business Profile
+                </a>
+              </div>
             </div>
           </div>
 

@@ -112,6 +112,25 @@ export default function ContactPage({ searchParams }) {
                     Chat on WhatsApp
                   </TrackedLink>
                 </div>
+
+                <div className="flex flex-wrap gap-4 pt-2">
+                  <a
+                    href="https://maps.app.goo.gl/R9YvwZzhmrfFNoDM9"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 border border-white/30 bg-white/10 px-4 py-2.5 text-xs font-bold uppercase tracking-wider text-white transition-colors hover:bg-white hover:text-primary"
+                  >
+                    📍 {isIndo ? 'Buka di Google Maps' : 'Open on Google Maps'}
+                  </a>
+                  <a
+                    href="https://share.google/13159QdwsmxTI0F4g"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 border border-white/30 bg-white/10 px-4 py-2.5 text-xs font-bold uppercase tracking-wider text-white transition-colors hover:bg-white hover:text-primary"
+                  >
+                    ⭐ {isIndo ? 'Ulas di Google Business' : 'Review on Google Business'}
+                  </a>
+                </div>
               </div>
             </div>
 
