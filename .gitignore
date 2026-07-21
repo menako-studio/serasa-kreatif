@@ -42,10 +42,11 @@ next-env.d.ts
 *.swo
 *~
 
-# Playwright
+# Playwright & Lighthouse
 /test-results/
 /playwright-report/
 /playwright/.cache/
+/.lighthouseci/
 
 # Company Profile & Large Documents
 *.pdf
