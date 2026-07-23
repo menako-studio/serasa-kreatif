@@ -85,7 +85,7 @@ export default function Hero() {
       client: 'PREGNANSIA',
       tag: language === 'id' ? 'Kampanye Hyperlocal' : 'Hyperlocal Campaign',
       className: 'col-span-8 row-span-2 md:col-span-4 md:row-span-2',
-      aspect: 'aspect-[4/3]',
+      aspect: 'aspect-[4/3] lg:aspect-auto lg:h-full',
       sizes: '(max-width: 768px) 100vw, 50vw',
       priority: true,
     },
@@ -96,7 +96,7 @@ export default function Hero() {
       client: 'BANDAR KARDUS',
       tag: language === 'id' ? 'Pertumbuhan Organik' : 'Organic Growth',
       className: 'col-span-4 md:col-span-2',
-      aspect: 'aspect-[4/3]',
+      aspect: 'aspect-[4/3] lg:aspect-[16/10]',
       sizes: '(max-width: 768px) 50vw, 25vw',
       priority: false,
     },
@@ -107,7 +107,7 @@ export default function Hero() {
       client: 'JAPO',
       tag: language === 'id' ? 'Transformasi Digital B2B' : 'B2B Digital Transformation',
       className: 'col-span-4 md:col-span-2',
-      aspect: 'aspect-[4/3]',
+      aspect: 'aspect-[4/3] lg:aspect-[16/10]',
       sizes: '(max-width: 768px) 50vw, 25vw',
       priority: false,
     },
@@ -118,7 +118,7 @@ export default function Hero() {
       client: 'JAPO (ALT)',
       tag: language === 'id' ? 'Skala Pendapatan' : 'Revenue Scaling',
       className: 'col-span-4 md:col-span-2',
-      aspect: 'aspect-[4/3]',
+      aspect: 'aspect-[4/3] lg:aspect-[16/10]',
       sizes: '(max-width: 768px) 50vw, 25vw',
       priority: false,
     },
@@ -127,7 +127,7 @@ export default function Hero() {
   const activeSlide = slides[currentSlide]
 
   return (
-    <section className="relative h-auto min-h-[95vh] w-full overflow-hidden bg-primary text-white md:h-screen md:min-h-[800px]">
+    <section className="relative h-auto min-h-[90vh] w-full overflow-hidden bg-primary text-white md:min-h-screen lg:h-auto lg:min-h-screen">
       <AnimatePresence mode="wait">
         {currentSlide === 0 ? (
           <motion.div
@@ -136,7 +136,7 @@ export default function Hero() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.8 }}
-            className="relative flex h-auto w-full items-center pb-12 pt-28 lg:absolute lg:inset-0 lg:h-full lg:py-0 lg:pt-40"
+            className="relative flex min-h-screen w-full items-center pb-10 pt-28 lg:min-h-screen lg:pb-12 lg:pt-32 xl:pt-32"
           >
             <div className="container-custom w-full">
               {/* Headline */}
@@ -144,10 +144,10 @@ export default function Hero() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6 }}
-                className="mb-8 md:mb-12"
+                className="mb-6 md:mb-8 lg:mb-8 xl:mb-10"
               >
                 {/* Slide Indicator in natural flow */}
-                <div className="scrollbar-none mb-6 flex flex-nowrap items-center gap-3 overflow-x-auto whitespace-nowrap pb-1 font-mono text-xs font-semibold tracking-wider md:text-sm">
+                <div className="scrollbar-none mb-4 flex flex-nowrap items-center gap-3 overflow-x-auto whitespace-nowrap pb-1 font-mono text-xs font-semibold tracking-wider md:text-sm lg:mb-5">
                   {slides.map((_, index) => (
                     <button
                       key={index}
@@ -178,11 +178,11 @@ export default function Hero() {
                   ))}
                 </div>
 
-                <h1 className="font-sans text-[2.5rem] font-black uppercase leading-[0.9] tracking-tighter md:text-[4rem] lg:text-[5.5rem] xl:text-[7rem]">
+                <h1 className="font-sans text-[2.5rem] font-black uppercase leading-[0.9] tracking-tighter md:text-[3.75rem] lg:text-[4.75rem] xl:text-[5.5rem] 2xl:text-[6.5rem]">
                   {hero.headline}
                 </h1>
-                <div className="mt-6">
-                  <p className="max-w-md text-sm leading-relaxed text-white/80 md:text-base">
+                <div className="mt-4 lg:mt-5">
+                  <p className="max-w-md text-xs leading-relaxed text-white/80 sm:text-sm lg:text-base">
                     {hero.subhead}
                   </p>
                 </div>
@@ -232,7 +232,7 @@ export default function Hero() {
                 {/* Beige text block linking to Portfolio */}
                 <div className="col-span-4 md:col-span-2">
                   <Link href="/portfolio" className="group block h-full">
-                    <div className="hover:bg-brand-pink group-hover:bg-brand-pink relative flex aspect-[4/3] h-full items-center justify-center rounded-xl bg-amber-50 p-6 transition-all duration-300">
+                    <div className="hover:bg-brand-pink group-hover:bg-brand-pink relative flex aspect-[4/3] h-full items-center justify-center rounded-xl bg-amber-50 p-6 transition-all duration-300 lg:aspect-[16/10]">
                       <div className="text-center">
                         <p className="font-sans text-xs font-black uppercase tracking-wider text-primary transition-colors duration-300 group-hover:text-white md:text-sm">
                           {language === 'id' ? 'Semua Proyek' : 'All Projects'}
