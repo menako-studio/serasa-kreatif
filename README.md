@@ -66,6 +66,7 @@ CONTACT_EMAIL=recipient@example.com
 
 # Analytics
 NEXT_PUBLIC_GA_MEASUREMENT_ID=G-XXXXXXXXXX
+NEXT_PUBLIC_GTM_ID=GTM-NKKPT23S
 ```
 
 ### 4. Run development server

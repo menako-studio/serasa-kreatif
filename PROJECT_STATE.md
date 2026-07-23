@@ -1,7 +1,7 @@
 # PROJECT STATE — SERASA KREATIF
 
 > **Single Source of Truth (SSOT) for AI Coding Agents**  
-> **Last Updated:** 2026-07-22  
+> **Last Updated:** 2026-07-23  
 > **Repository:** `menako-studio/serasa-kreatif`  
 > **Root Directory:** `/Users/adibwafi/Documents/Menako Studio/serasa-kreatif`
 
@@ -15,19 +15,19 @@
 
 ### Tech Stack & Core Dependencies
 
-| Category                   | Technology                  | Version / Configuration                                                                 |
-| :------------------------- | :-------------------------- | :-------------------------------------------------------------------------------------- |
-| **Framework**              | Next.js (App Router)        | `^14.2.0` (`output: 'standalone'` in `next.config.mjs`)                                 |
-| **Runtime & React**        | React / React DOM           | `^18.3.0`, Node.js `>=18.0.0`, npm `>=9.0.0`                                            |
-| **Language**               | JavaScript (ES6+ / JSX)     | Native JS project (`react-compiler-runtime` `^1.0.0`)                                   |
-| **Styling**                | Tailwind CSS + Autoprefixer | `tailwindcss` `^3.4.0`, `styled-components` `^6.4.3`, `clsx` `^2.1.0`                   |
-| **Animations**             | Framer Motion               | `framer-motion` `^11.0.0` (optimized package imports enabled)                           |
-| **CMS**                    | Sanity CMS (Headless)       | `sanity` `^3.99.0`, `next-sanity` `^9.12.3`, `@sanity/client` `^6.15.0`                 |
-| **State Management**       | React Context + URL State   | `LanguageContext` for i18n, URL `SearchParams` for filters & language                   |
-| **Email & Security**       | Resend API + Rate Limiter   | `resend` `^6.16.0`, Cloudflare Turnstile token verification                             |
-| **Analytics & Monitoring** | GA4 + Sentry                | `@next/third-parties` (`NEXT_PUBLIC_GA_MEASUREMENT_ID`), `@sentry/nextjs` `^8.55.2`     |
-| **Testing**                | Vitest + Playwright         | `vitest` `^1.6.1` (jsdom, v8 coverage), `@playwright/test` `^1.42.0` (E2E)              |
-| **Code Quality & CI/CD**   | ESLint + Prettier + Husky   | `eslint-config-next` `^14.2.0`, `lint-staged`, `husky` `^9.1.7`, `commitlint` `^20.1.0` |
+| Category                   | Technology                  | Version / Configuration                                                                                                   |
+| :------------------------- | :-------------------------- | :------------------------------------------------------------------------------------------------------------------------ |
+| **Framework**              | Next.js (App Router)        | `^14.2.0` (`output: 'standalone'` in `next.config.mjs`)                                                                   |
+| **Runtime & React**        | React / React DOM           | `^18.3.0`, Node.js `>=18.0.0`, npm `>=9.0.0`                                                                              |
+| **Language**               | JavaScript (ES6+ / JSX)     | Native JS project (`react-compiler-runtime` `^1.0.0`)                                                                     |
+| **Styling**                | Tailwind CSS + Autoprefixer | `tailwindcss` `^3.4.0`, `styled-components` `^6.4.3`, `clsx` `^2.1.0`                                                     |
+| **Animations**             | Framer Motion               | `framer-motion` `^11.0.0` (optimized package imports enabled)                                                             |
+| **CMS**                    | Sanity CMS (Headless)       | `sanity` `^3.99.0`, `next-sanity` `^9.12.3`, `@sanity/client` `^6.15.0`                                                   |
+| **State Management**       | React Context + URL State   | `LanguageContext` for i18n, URL `SearchParams` for filters & language                                                     |
+| **Email & Security**       | Resend API + Rate Limiter   | `resend` `^6.16.0`, Cloudflare Turnstile token verification                                                               |
+| **Analytics & Monitoring** | GA4 + GTM + Sentry          | `@next/third-parties` (`NEXT_PUBLIC_GA_MEASUREMENT_ID`, `NEXT_PUBLIC_GTM_ID`: `GTM-NKKPT23S`), `@sentry/nextjs` `^8.55.2` |
+| **Testing**                | Vitest + Playwright         | `vitest` `^1.6.1` (jsdom, v8 coverage), `@playwright/test` `^1.42.0` (E2E)                                                |
+| **Code Quality & CI/CD**   | ESLint + Prettier + Husky   | `eslint-config-next` `^14.2.0`, `lint-staged`, `husky` `^9.1.7`, `commitlint` `^20.1.0`                                   |
 
 ---
 
