@@ -63,6 +63,9 @@ export default function HomePageClient({ lang }) {
     <>
       <Hero />
 
+      {/* Client Logos */}
+      <ClientLogos />
+
       {/* PORTFOLIO Section */}
       <section className="section-padding bg-white">
         <div className="container-custom">
@@ -101,9 +104,6 @@ export default function HomePageClient({ lang }) {
           />
         </div>
       </section>
-
-      {/* Client Logos */}
-      <ClientLogos />
 
       {/* Join Section */}
       <section className="section-padding bg-brand-teal text-white">
