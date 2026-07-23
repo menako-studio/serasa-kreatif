@@ -1,9 +1,17 @@
 import Image from 'next/image'
+import BreadcrumbSchema from '@/components/BreadcrumbSchema'
 
 export const metadata = {
-  title: 'Blog & Insights',
+  title: 'Blog & Tips Social Media — Serasa Kreatif',
   description:
-    'Latest insights, articles, and brand updates from Serasa Kreatif. Stay ahead with digital branding and content strategies.',
+    'Artikel, tips, dan insight dari Serasa Kreatif tentang social media management, branding, dan digital marketing untuk bisnis Indonesia. Belajar dari agensi kreatif Bintaro.',
+  keywords: [
+    'tips social media management indonesia',
+    'blog agensi kreatif jakarta',
+    'artikel branding umkm',
+    'digital marketing insights indonesia',
+    'panduan social media bisnis',
+  ],
   alternates: {
     canonical: 'https://serasakreatif.id/blog',
     languages: {
@@ -93,6 +101,12 @@ export default function NewsPage({ searchParams }) {
 
   return (
     <div className="bg-white text-neutral-900 antialiased">
+      <BreadcrumbSchema
+        items={[
+          { name: 'Beranda', url: 'https://serasakreatif.id' },
+          { name: 'Blog', url: 'https://serasakreatif.id/blog' },
+        ]}
+      />
       {/* Hero */}
       <section className="bg-primary pb-16 pt-32 text-white md:pb-24 md:pt-40 lg:pt-44">
         <div className="container-custom">

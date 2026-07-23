@@ -3,11 +3,20 @@ import SectionHeading from '@/components/SectionHeading'
 import TeamMemberCard from '@/components/TeamMemberCard'
 import ProcessStep from '@/components/ProcessStep'
 import ContactInfoItem from '@/components/ContactInfoItem'
+import BreadcrumbSchema from '@/components/BreadcrumbSchema'
 
 export const metadata = {
-  title: 'About Us — Serasa Kreatif',
+  title: 'Tentang Kami — Agensi Kreatif Bintaro | Serasa Kreatif',
   description:
-    'Discover Serasa Kreatif, a branding agency & social media management studio in Bintaro, Jakarta. Meet our creative team and explore our framework.',
+    'Kenali Serasa Kreatif, agensi kreatif & social media management di Bintaro, Tangerang Selatan. Tim profesional dengan pengalaman membantu UMKM & korporat tumbuh di era digital.',
+  keywords: [
+    'agensi kreatif bintaro',
+    'studio kreatif tangerang selatan',
+    'tim kreatif jakarta',
+    'about serasa kreatif',
+    'branding agency bintaro',
+    'creative agency south tangerang',
+  ],
   alternates: {
     canonical: 'https://serasakreatif.id/about',
     languages: {
@@ -118,6 +127,12 @@ export default function AboutPage({ searchParams }) {
 
   return (
     <div className="min-h-screen bg-white">
+      <BreadcrumbSchema
+        items={[
+          { name: 'Beranda', url: 'https://serasakreatif.id' },
+          { name: isIndo ? 'Tentang Kami' : 'About Us', url: 'https://serasakreatif.id/about' },
+        ]}
+      />
       {/* Hero */}
       <PageSection bgColor="bg-white" paddingSize="xlarge" className="pt-32 md:pt-40 lg:pt-44">
         <div className="container-custom">

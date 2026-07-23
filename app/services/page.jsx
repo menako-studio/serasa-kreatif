@@ -1,23 +1,26 @@
 import ServicesPageClient from './ServicesPageClient'
+import BreadcrumbSchema from '@/components/BreadcrumbSchema'
 
 export const metadata = {
-  title: 'Branding, Social Media & Digital Services for Indonesian SMEs',
+  title: 'Jasa Social Media & Branding Jakarta — Serasa Kreatif',
   description:
-    'Branding, social media management, digital campaigns, video production, and offset printing services for Indonesian SMEs with measurable results.',
+    'Layanan agensi kreatif Serasa Kreatif: social media management, branding, kampanye digital, produksi video, dan cetak offset B2B. Hasil terukur untuk UMKM & korporat di Jakarta dan Jabodetabek.',
   keywords: [
+    'jasa social media management jakarta',
+    'jasa branding jakarta',
+    'agensi sosial media bintaro',
+    'paket social media management',
+    'jasa instagram management jakarta',
+    'jasa iklan digital indonesia',
+    'layanan branding umkm jakarta',
     'sme branding services jakarta',
     'social media management indonesia',
-    'sme social media packages',
-    'business instagram services jakarta',
-    'sme digital campaigns indonesia',
-    'sme brand identity jakarta',
-    'business creative content',
     'social media management pricing',
   ],
   openGraph: {
-    title: 'Branding, Social Media & Digital Services for SMEs | Serasa Kreatif',
+    title: 'Jasa Social Media & Branding Jakarta | Serasa Kreatif',
     description:
-      'Branding, social media management, digital campaigns, video production, and offset printing services for Indonesian SMEs with measurable results.',
+      'Social media management, branding, iklan digital & cetak offset untuk UMKM dan korporat Indonesia. Hasil terukur dari agensi kreatif Bintaro.',
     images: ['/og-image.jpg'],
   },
   alternates: {
@@ -32,5 +35,18 @@ export const metadata = {
 
 export default function ServicesPage({ searchParams }) {
   const lang = searchParams?.lang === 'id' ? 'id' : 'en'
-  return <ServicesPageClient lang={lang} />
+  return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: 'Beranda', url: 'https://serasakreatif.id' },
+          {
+            name: lang === 'id' ? 'Layanan' : 'Services',
+            url: 'https://serasakreatif.id/services',
+          },
+        ]}
+      />
+      <ServicesPageClient lang={lang} />
+    </>
+  )
 }

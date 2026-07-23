@@ -5,11 +5,19 @@ import PortfolioFilters from '@/components/PortfolioFilters'
 import PortfolioVideoGrid from '@/components/PortfolioVideoGrid'
 import { sanityClient } from '@/lib/sanity'
 import { allCaseStudiesQuery } from '@/lib/sanity-queries'
+import BreadcrumbSchema from '@/components/BreadcrumbSchema'
 
 export const metadata = {
-  title: 'Our Portfolio & Case Studies — Serasa Kreatif',
+  title: 'Portofolio — Hasil Kerja Agensi Kreatif | Serasa Kreatif',
   description:
-    'Explore our portfolio of successful SME branding & social media campaigns. See how Serasa Kreatif helps local brands grow and scale.',
+    'Lihat portofolio Serasa Kreatif: hasil kampanye social media, branding, dan iklan digital yang sukses untuk UMKM & korporat. Studi kasus nyata dari agensi kreatif Bintaro, Jakarta.',
+  keywords: [
+    'portofolio agensi kreatif jakarta',
+    'contoh hasil social media management',
+    'studi kasus branding indonesia',
+    'portfolio creative agency bintaro',
+    'hasil kerja social media agency',
+  ],
   alternates: {
     canonical: 'https://serasakreatif.id/portfolio',
     languages: {
@@ -161,6 +169,15 @@ export default async function WorkPage({ searchParams }) {
 
   return (
     <div className="min-h-screen">
+      <BreadcrumbSchema
+        items={[
+          { name: 'Beranda', url: 'https://serasakreatif.id' },
+          {
+            name: isIndo ? 'Portofolio' : 'Portfolio',
+            url: 'https://serasakreatif.id/portfolio',
+          },
+        ]}
+      />
       {/* Hero Section */}
       <section className="bg-white pb-20 pt-32 md:pt-40 lg:pt-44">
         <div className="container-custom">

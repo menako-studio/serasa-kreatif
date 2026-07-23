@@ -1,11 +1,18 @@
 import ContactForm from '@/components/ContactForm'
 import SectionHeading from '@/components/SectionHeading'
 import TrackedLink from '@/components/TrackedLink'
+import BreadcrumbSchema from '@/components/BreadcrumbSchema'
 
 export const metadata = {
-  title: 'Contact Us — Serasa Kreatif',
+  title: 'Konsultasi Gratis — Agensi Kreatif Jakarta | Serasa Kreatif',
   description:
-    'Contact Serasa Kreatif. We are ready to transform your brand. Located in Bintaro, serving Jakarta and Jabodetabek. Get a free consultation today.',
+    'Hubungi Serasa Kreatif untuk konsultasi gratis. Agensi kreatif di Bintaro, Tangerang Selatan, melayani Jakarta & Jabodetabek. Mulai proyek branding dan social media Anda hari ini.',
+  keywords: [
+    'konsultasi gratis agensi kreatif jakarta',
+    'hubungi agensi kreatif bintaro',
+    'kontak serasa kreatif',
+    'contact creative agency jakarta',
+  ],
   alternates: {
     canonical: 'https://serasakreatif.id/contact',
     languages: {
@@ -22,6 +29,12 @@ export default function ContactPage({ searchParams }) {
 
   return (
     <div className="min-h-screen bg-brand-teal pt-32 text-primary">
+      <BreadcrumbSchema
+        items={[
+          { name: 'Beranda', url: 'https://serasakreatif.id' },
+          { name: isIndo ? 'Kontak' : 'Contact', url: 'https://serasakreatif.id/contact' },
+        ]}
+      />
       {/* Hero Section - R/GA Style */}
       <section className="section-padding border-b border-teal-900">
         <div className="container-custom">

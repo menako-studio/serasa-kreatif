@@ -5,13 +5,20 @@ import SectionDescription from '@/components/SectionDescription'
 import PrintingContactForm from '@/components/PrintingContactForm'
 import PrintingReels from '@/components/PrintingReels'
 import TrackedLink from '@/components/TrackedLink'
+import BreadcrumbSchema from '@/components/BreadcrumbSchema'
 
 export const metadata = {
-  title: 'B2B Offset Printing Specialist Jakarta',
+  title: 'Cetak Offset B2B Jakarta — Serasa Printing | Serasa Kreatif',
   description:
-    'Premium B2B offset printing by Serasa Printing in Jakarta. Specializing in custom packaging, corporate stationery, catalogs, and marketing collaterals.',
+    'Jasa cetak offset B2B premium oleh Serasa Printing di Jakarta. Spesialis kemasan custom, alat tulis perusahaan, katalog, dan materi marketing. Percetakan offset berpengalaman di Bintaro, Jabodetabek.',
   keywords: [
     'serasa printing',
+    'cetak offset jakarta',
+    'percetakan bintaro',
+    'cetak kemasan custom jakarta',
+    'percetakan b2b jakarta',
+    'cetak packaging perusahaan',
+    'percetakan tangerang selatan',
     'b2b printing specialist jakarta',
     'offset printing jakarta',
     'custom packaging printing',
@@ -19,15 +26,14 @@ export const metadata = {
     'corporate stationery printing',
     'catalog brochure printing jakarta',
     'serasa kreatif printing',
-    'cetak offset jakarta',
   ],
   alternates: {
     canonical: 'https://serasakreatif.id/services/printing',
   },
   openGraph: {
-    title: 'B2B Offset Printing Specialist Jakarta | Serasa Printing',
+    title: 'Cetak Offset B2B Jakarta | Serasa Printing',
     description:
-      'Premium B2B offset printing by Serasa Printing in Jakarta. Specializing in custom packaging, corporate stationery, catalogs, and marketing collaterals.',
+      'Jasa cetak offset B2B premium di Jakarta. Spesialis kemasan custom, alat tulis perusahaan, dan materi marketing. Presisi CMYK industri.',
     url: 'https://serasakreatif.id/services/printing',
     siteName: 'Serasa Kreatif',
     images: [
@@ -35,7 +41,7 @@ export const metadata = {
         url: '/assets/images/serasa-printing/serasa_b2b_layanan-cetak-offset_1x1_v1.jpg',
         width: 800,
         height: 800,
-        alt: 'Serasa Printing Offset Production',
+        alt: 'Serasa Printing — Cetak Offset B2B Jakarta',
       },
     ],
   },
@@ -44,6 +50,13 @@ export const metadata = {
 export default function SerasaPrintingPage() {
   return (
     <div className="bg-white text-neutral-900 antialiased">
+      <BreadcrumbSchema
+        items={[
+          { name: 'Beranda', url: 'https://serasakreatif.id' },
+          { name: 'Layanan', url: 'https://serasakreatif.id/services' },
+          { name: 'Cetak Offset B2B', url: 'https://serasakreatif.id/services/printing' },
+        ]}
+      />
       {/* 1. HERO SECTION - R/GA Style with Dark Navy Background */}
       <section className="relative overflow-hidden bg-primary pb-16 pt-32 text-white md:pb-24 md:pt-40 lg:pt-44">
         <div className="container-custom relative z-10">
