@@ -1,22 +1,29 @@
 export default function StructuredData() {
   const localBusiness = {
     '@context': 'https://schema.org',
-    '@type': 'LocalBusiness',
-    '@id': 'https://serasakreatif.id/#organization',
+    '@type': ['LocalBusiness', 'ProfessionalService'],
+    '@id': 'https://serasakreatif.id/#localbusiness',
     name: 'Serasa Kreatif',
-    alternateName: 'Serasa Creative Studio',
+    // alternateName links to Google Business Profile name "Klinik Kreatif Serasa"
+    // so Google understands these two entities are the same business.
+    alternateName: ['Klinik Kreatif Serasa', 'Serasa Creative Studio'],
     legalName: 'PT Selaras Makmur Perkasa',
     description:
-      'Creative agency specializing in branding, social media management, digital campaigns, video production, and B2B offset printing for Indonesian SMEs and corporates.',
+      'Agensi kreatif & social media management di Bintaro, Tangerang Selatan. Layanan: branding, manajemen media sosial, kampanye digital, produksi video, dan cetak offset B2B untuk bisnis Indonesia.',
     url: 'https://serasakreatif.id',
-    logo: 'https://serasakreatif.id/assets/images/logo-serasa.png',
+    logo: {
+      '@type': 'ImageObject',
+      url: 'https://serasakreatif.id/assets/images/logo-serasa.png',
+      width: 200,
+      height: 200,
+    },
     image: 'https://serasakreatif.id/og-image.jpg',
     telephone: '+6281288971453',
     email: 'serasakreatif.id@gmail.com',
     address: {
       '@type': 'PostalAddress',
       streetAddress: 'Bintaro',
-      addressLocality: 'South Tangerang',
+      addressLocality: 'Tangerang Selatan',
       addressRegion: 'Banten',
       postalCode: '15220',
       addressCountry: 'ID',
@@ -26,6 +33,22 @@ export default function StructuredData() {
       latitude: -6.25913,
       longitude: 106.707277,
     },
+    // Expanded to cover full Jabodetabek service area
+    areaServed: [
+      { '@type': 'City', name: 'Jakarta' },
+      { '@type': 'City', name: 'Jakarta Selatan' },
+      { '@type': 'City', name: 'Jakarta Barat' },
+      { '@type': 'City', name: 'Jakarta Pusat' },
+      { '@type': 'City', name: 'Jakarta Timur' },
+      { '@type': 'City', name: 'Jakarta Utara' },
+      { '@type': 'City', name: 'Tangerang Selatan' },
+      { '@type': 'City', name: 'Tangerang' },
+      { '@type': 'City', name: 'Bogor' },
+      { '@type': 'City', name: 'Depok' },
+      { '@type': 'City', name: 'Bekasi' },
+      { '@type': 'State', name: 'Banten' },
+      { '@type': 'State', name: 'Jawa Barat' },
+    ],
     openingHoursSpecification: [
       {
         '@type': 'OpeningHoursSpecification',
@@ -53,14 +76,21 @@ export default function StructuredData() {
     priceRange: '$$',
     currenciesAccepted: 'IDR',
     paymentAccepted: 'Bank Transfer, Cash',
-    areaServed: [
-      { '@type': 'City', name: 'Jakarta' },
-      { '@type': 'City', name: 'South Tangerang' },
-      { '@type': 'State', name: 'Banten' },
+    knowsAbout: [
+      'Social Media Management',
+      'Brand Strategy',
+      'Digital Marketing',
+      'Content Creation',
+      'Video Production',
+      'Offset Printing',
+      'Branding Agency',
+      'Creative Agency',
+      'Instagram Marketing',
+      'TikTok Marketing',
     ],
     hasOfferCatalog: {
       '@type': 'OfferCatalog',
-      name: 'Creative Services',
+      name: 'Layanan Agensi Kreatif',
       itemListElement: [
         {
           '@type': 'Offer',
@@ -68,25 +98,25 @@ export default function StructuredData() {
             '@type': 'Service',
             name: 'Social Media Management',
             description:
-              'Daily content production, community building, and viral campaigns to keep your brand engaging and relevant.',
+              'Manajemen media sosial harian: pembuatan konten, community building, dan kampanye viral untuk menjaga brand tetap relevan dan engaging.',
           },
         },
         {
           '@type': 'Offer',
           itemOffered: {
             '@type': 'Service',
-            name: 'Digital Marketing & Ads',
+            name: 'Digital Marketing & Iklan',
             description:
-              'Data-driven advertising campaigns with strategic targeting to turn social media views into real business revenue.',
+              'Kampanye iklan berbasis data dengan targeting strategis untuk mengubah tayangan media sosial menjadi pendapatan bisnis nyata.',
           },
         },
         {
           '@type': 'Offer',
           itemOffered: {
             '@type': 'Service',
-            name: 'Commercial Visual Production',
+            name: 'Produksi Visual Komersial',
             description:
-              'End-to-end video production, corporate storytelling, and social media reels.',
+              'Produksi video end-to-end, corporate storytelling, dan social media reels.',
           },
         },
         {
@@ -95,16 +125,16 @@ export default function StructuredData() {
             '@type': 'Service',
             name: 'Brand Building & Positioning',
             description:
-              'Brand strategy, visual identity, packaging design, and landing page development.',
+              'Strategi merek, identitas visual, desain kemasan, dan pengembangan landing page.',
           },
         },
         {
           '@type': 'Offer',
           itemOffered: {
             '@type': 'Service',
-            name: 'B2B Offset & Packaging Printing',
+            name: 'Cetak Offset & Packaging B2B',
             description:
-              'Premium offset printing for custom packaging boxes, corporate stationery, and marketing collateral.',
+              'Cetak offset premium untuk kotak kemasan custom, alat tulis perusahaan, dan materi marketing.',
           },
         },
       ],
@@ -129,7 +159,82 @@ export default function StructuredData() {
       telephone: '+6281288971453',
       contactType: 'customer service',
       availableLanguage: ['Indonesian', 'English'],
+      areaServed: 'ID',
     },
+    sameAs: [
+      'https://www.instagram.com/serasakreatif.id/',
+      'https://www.tiktok.com/@serasakreatif.id',
+      'https://www.linkedin.com/company/serasa-kreatif/',
+    ],
+  }
+
+  // WebSite schema enables Google Sitelinks Searchbox in SERP
+  const website = {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    '@id': 'https://serasakreatif.id/#website',
+    name: 'Serasa Kreatif',
+    url: 'https://serasakreatif.id',
+    publisher: {
+      '@id': 'https://serasakreatif.id/#organization',
+    },
+    inLanguage: ['id-ID', 'en-US'],
+    potentialAction: {
+      '@type': 'SearchAction',
+      target: {
+        '@type': 'EntryPoint',
+        urlTemplate: 'https://serasakreatif.id/portfolio?q={search_term_string}',
+      },
+      'query-input': 'required name=search_term_string',
+    },
+  }
+
+  // FAQPage schema targeting high-value Indonesian local search queries
+  const faq = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: [
+      {
+        '@type': 'Question',
+        name: 'Apa itu agensi kreatif dan apa bedanya dengan advertising agency biasa?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Agensi kreatif adalah perusahaan yang menggabungkan strategi merek, desain visual, dan eksekusi konten dalam satu layanan terintegrasi. Berbeda dengan advertising agency yang fokus pada pemasangan iklan, agensi kreatif seperti Serasa Kreatif membantu bisnis membangun identitas merek yang kuat, mengelola media sosial secara konsisten, dan menciptakan konten yang relevan untuk audiens target mereka.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: 'Berapa biaya jasa social media management di Jakarta?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Biaya jasa social media management di Jakarta bervariasi tergantung lingkup pekerjaan, jumlah platform, dan frekuensi posting. Di Serasa Kreatif, kami menawarkan paket manajemen media sosial yang disesuaikan dengan kebutuhan dan anggaran bisnis Anda — mulai dari UMKM hingga korporat. Hubungi kami untuk konsultasi gratis dan penawaran yang transparan.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: 'Apakah Serasa Kreatif melayani klien di luar Jakarta?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Ya, Serasa Kreatif melayani klien di seluruh area Jabodetabek (Jakarta, Bogor, Depok, Tangerang, Bekasi) dan Indonesia. Berbasis di Bintaro, Tangerang Selatan, kami telah berhasil bermitra dengan brand dari berbagai kota di Indonesia secara remote maupun langsung.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: 'Apa saja layanan agensi sosial media yang ditawarkan Serasa Kreatif?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Serasa Kreatif menawarkan layanan lengkap agensi sosial media: manajemen akun Instagram & TikTok, pembuatan konten foto & video, copywriting, iklan berbayar (Meta Ads, Google Ads), laporan performa bulanan, dan strategi konten. Kami juga menyediakan layanan branding, produksi video komersial, dan cetak offset B2B.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: 'Bagaimana cara memulai proyek dengan Serasa Kreatif?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Mudah! Anda bisa menghubungi kami melalui WhatsApp di +62 812-8897-1453, email serasakreatif.id@gmail.com, atau mengisi formulir di halaman Kontak kami. Tim kami akan merespons dalam 1x24 jam untuk menjadwalkan sesi konsultasi gratis dan mendiskusikan kebutuhan bisnis Anda.',
+        },
+      },
+    ],
   }
 
   return (
@@ -141,6 +246,14 @@ export default function StructuredData() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(organization) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(website) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faq) }}
       />
     </>
   )
