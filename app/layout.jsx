@@ -14,14 +14,32 @@ export const metadata = {
   metadataBase: new URL('https://serasakreatif.id'),
   alternates: {
     canonical: 'https://serasakreatif.id',
+    languages: {
+      'en-US': 'https://serasakreatif.id',
+      'id-ID': 'https://serasakreatif.id/?lang=id',
+      'x-default': 'https://serasakreatif.id',
+    },
   },
   title: {
-    default: 'Creative Agency Jakarta, Indonesia — Serasa Kreatif',
+    default: 'Serasa Kreatif — Agensi Kreatif & Social Media Jakarta',
     template: '%s | Serasa Kreatif',
   },
+  applicationName: 'Serasa Kreatif',
   description:
-    'Serasa Kreatif is a creative studio in Bintaro, Jakarta combining brand strategy and aesthetics for real results. Branding, social media management, digital campaigns, and B2B printing for Indonesian businesses.',
+    'Serasa Kreatif adalah agensi kreatif & social media management terpercaya di Bintaro, Tangerang Selatan. Layanan: branding, manajemen sosial media, iklan digital, produksi video, dan cetak offset B2B untuk bisnis Indonesia. Creative agency Jakarta trusted by local brands.',
   keywords: [
+    // Bahasa Indonesia — primary local SEO targets
+    'agensi kreatif jakarta',
+    'agensi kreatif bintaro',
+    'agensi kreatif tangerang selatan',
+    'agensi sosial media jakarta',
+    'jasa social media management jakarta',
+    'jasa branding jakarta',
+    'agensi digital marketing indonesia',
+    'agensi kreatif jabodetabek',
+    'jasa iklan digital jakarta',
+    'studio kreatif bintaro',
+    // English — secondary
     'creative agency jakarta',
     'creative agency indonesia',
     'branding agency jakarta',
@@ -33,23 +51,25 @@ export const metadata = {
     'serasa kreatif',
     'tangerang selatan creative agency',
   ],
-  authors: [{ name: 'Serasa Kreatif' }],
+  authors: [{ name: 'Serasa Kreatif', url: 'https://serasakreatif.id' }],
   creator: 'Serasa Kreatif',
   publisher: 'Serasa Kreatif',
+  category: 'Creative Agency, Social Media Management, Digital Marketing',
   openGraph: {
     type: 'website',
-    locale: 'en_US',
+    locale: 'id_ID',
+    alternateLocale: ['en_US'],
     url: 'https://serasakreatif.id',
     siteName: 'Serasa Kreatif',
-    title: 'Creative Agency Jakarta, Indonesia — Serasa Kreatif',
+    title: 'Serasa Kreatif — Agensi Kreatif & Social Media Jakarta',
     description:
-      'Transform your brand with creative campaigns and data-driven insights. Branding, social media, digital ads, and B2B printing from Bintaro, Jakarta.',
+      'Agensi kreatif di Bintaro, Jakarta Selatan. Branding, social media management, iklan digital, produksi video & cetak B2B untuk bisnis Indonesia.',
     images: [
       {
         url: '/og-image.jpg',
         width: 1200,
         height: 630,
-        alt: 'Serasa Kreatif — Creative Agency Jakarta',
+        alt: 'Serasa Kreatif — Agensi Kreatif Jakarta',
       },
     ],
   },
@@ -60,9 +80,9 @@ export const metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Creative Agency Jakarta, Indonesia — Serasa Kreatif',
+    title: 'Serasa Kreatif — Agensi Kreatif & Social Media Jakarta',
     description:
-      'Transform your brand with creative campaigns and data-driven insights. From thinking to creating.',
+      'Agensi kreatif di Bintaro, Jakarta. Branding, social media, iklan digital & video produksi untuk bisnis Indonesia.',
     images: ['/og-image.jpg'],
   },
   robots: {
