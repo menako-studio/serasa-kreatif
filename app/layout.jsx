@@ -97,7 +97,9 @@ export default function RootLayout({ children }) {
       {process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID && (
         <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID} />
       )}
-      <GoogleTagManager gtmId={process.env.NEXT_PUBLIC_GTM_ID || 'GTM-NKKPT23S'} />
+      {process.env.NEXT_PUBLIC_GTM_ID && (
+        <GoogleTagManager gtmId={process.env.NEXT_PUBLIC_GTM_ID} />
+      )}
     </html>
   )
 }
