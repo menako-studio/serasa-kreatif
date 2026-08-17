@@ -281,169 +281,46 @@ Refer to [Next.js deployment docs](https://nextjs.org/docs/deployment) for detai
 
 4. Update `lib/sanity.ts` with your client config
 
-### Adding Analytics
+### 3. Analytics & Conversion Tracking (GA4 & GTM)
 
-Update `lib/analytics.ts` with Google Analytics 4 setup:
+The application uses `@next/third-parties/google` in `app/layout.jsx` alongside a centralized analytics engine in `lib/analytics.js` and an automated SPA route tracker `components/AnalyticsTracker.jsx`.
 
-```typescript
-export const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID
+#### Event Tracking Matrix
 
-export const pageview = (url: string) => {
-  window.gtag('config', GA_MEASUREMENT_ID, {
-    page_path: url,
-  })
-}
-```
+| Event Name                                            | Type / Category         | Triggers & Parameters                                                                                                |
+| :---------------------------------------------------- | :---------------------- | :------------------------------------------------------------------------------------------------------------------- |
+| `page_view`                                           | Standard GA4 / GTM      | Automatic on initial load & every SPA client navigation (`page_path`, `page_title`, `page_location`, `language`).    |
+| `generate_lead`                                       | Standard GA4 Conversion | Triggered upon successful submission of `contact_form`, `printing_contact_form`, or `whatsapp_lead_capture`.         |
+| `contact_form_attempt` / `success` / `error`          | Lead Form Tracking      | Primary contact inquiry form interactions with `company`, `budget`, and `error_type`.                                |
+| `printing_contact_form_attempt` / `success` / `error` | B2B Printing Form       | Printing quotation form interactions with `category` and `quantity`.                                                 |
+| `whatsapp_lead_capture_attempt` / `success`           | WhatsApp Widget Form    | Interactive chat popup lead submission before redirecting to WhatsApp.                                               |
+| `whatsapp_click`                                      | Conversion Outbound     | Fired on clicking direct WhatsApp CTA buttons across Hero, Contact, Printing, Bintaro, and Footer.                   |
+| `phone_call_click`                                    | Conversion Outbound     | Fired on clicking `tel:+62...` telephone links.                                                                      |
+| `email_inquiry_click`                                 | Conversion Outbound     | Fired on clicking `mailto:...` email links.                                                                          |
+| `outbound_click`                                      | Outbound Link           | External links to Instagram (`@serasakreatif.id`, `@serasaprinting`), TikTok, LinkedIn, Google Maps, Google Reviews. |
+| `video_interaction`                                   | Video Engagement        | Video reel modal previews, play, pause, mute, and unmute actions in Reels and Showcase components.                   |
+| `search`                                              | Standard GA4 Search     | Global Command Palette (`Cmd+K`) and portfolio keyword searches with `search_term` and `results_count`.              |
+| `language_change`                                     | Localization            | User toggling between English (`en`) and Indonesian (`id`) language modes.                                           |
+| `user_engagement`                                     | UI Interactions         | Portfolio category/industry filter changes, accordion item expansions, mobile menu toggles.                          |
 
-Add script to `app/layout.tsx`.
+#### Google Search Console & Schema.org Structured Data
 
-### Contact Form Integration
-
-The contact form uses `/api/contact/route.ts`. Integrate with:
-
-- **Email:** Use Resend, SendGrid, or Nodemailer
-- **CRM:** Add leads to HubSpot, Airtable, etc.
-- **Notifications:** Post to Slack or WhatsApp webhook
-
-Example with Resend:
-
-```typescript
-import { Resend } from 'resend'
-
-const resend = new Resend(process.env.RESEND_API_KEY)
-
-await resend.emails.send({
-  from: 'noreply@yourdomain.com',
-  to: ['contact@yourdomain.com'],
-  subject: `New Contact: ${name}`,
-  html: `<p>${message}</p>`,
-})
-```
-
-## 🎯 Performance Optimization
-
-- Images use Next.js `<Image>` with automatic WebP/AVIF
-- Critical CSS inlined automatically
-- Fonts loaded with `next/font` (self-hosted)
-- API routes for serverless functions
-- Static generation where possible
-
-Target Lighthouse scores:
-
-- Performance: 90+
-- Accessibility: 95+
-- Best Practices: 95+
-- SEO: 100
-
-## 🔒 Security
-
-- No sensitive data in client-side code
-- Environment variables for secrets
-- Input validation on contact form
-- Rate limiting on API routes (recommended)
-- CSRF protection via Next.js defaults
-
-## 📝 Content Management
-
-### Option 1: Hardcoded (Current)
-
-Case studies and content are in `lib/case-data.ts`. Update directly in code.
-
-### Option 2: Sanity CMS (Recommended)
-
-- Visual editor for non-technical users
-- Real-time preview
-- Asset management (CDN)
-- Collaborative editing
-
-### Option 3: Other Headless CMS
-
-- Contentful
-- Strapi
-- Prismic
-- Directus
-
-Update `lib/` client and data fetching as needed.
-
-## 🐛 Troubleshooting
-
-### Build errors
-
-```bash
-rm -rf .next node_modules package-lock.json
-npm install
-npm run build
-```
-
-### Type errors
-
-```bash
-npm run type-check
-```
-
-### Port already in use
-
-```bash
-lsof -ti:3000 | xargs kill -9
-# or use a different port
-npm run dev -- -p 3001
-```
-
-### Images not loading
-
-- Check `next.config.mjs` for allowed domains
-- Ensure images exist in `public/` or external CDN is configured
-
-## 🤝 Contributing
-
-1. Create a feature branch: `git checkout -b feature/your-feature`
-2. Commit changes: `git commit -m 'feat: add new feature'`
-3. Push to branch: `git push origin feature/your-feature`
-4. Open a Pull Request
-
-### Commit Convention
-
-Follow [Conventional Commits](https://www.conventionalcommits.org/):
-
-- `feat:` new feature
-- `fix:` bug fix
-- `docs:` documentation changes
-- `style:` formatting, missing semicolons, etc.
-- `refactor:` code restructuring
-- `test:` adding tests
-- `chore:` maintenance tasks
-
-## 📞 Support
-
-For issues or questions, please open an issue in this repository or contact us through our website.
-
-## ✨ Recent Updates & Customizations
-
-### 1. Dynamic Japo Hero Section
-
-- Transformed the static Hero banner into a dynamically reconstructed layout based on the `japo.webp` design.
-- Features separate DOM elements for crisp rendering, tilted cards representing social media creatives, a realistic custom smartphone mockup, and an anchored key metrics banner (views, comments, ROAS, and sales) with custom SVG icons.
-- Styled typography using the default brand Open Sans theme, utilizing a clean serif italic font weight style to display the script handwritten "Into" accent.
-
-### 2. SEO Canonical Optimization
-
-- Set `metadataBase` in `app/layout.jsx` to dynamically resolve canonical URLs relative to `https://serasakreatif.id`.
-- Added absolute/relative canonical tags (`alternates.canonical`) to core landing routes (`/`, `/about`, `/services`, `/portfolio`, `/blog`, `/contact`) to prevent missing canonical errors in production.
-
-### 3. Custom Event Tracking (GTM / GA4)
-
-- Programmed GTM-compatible `window.dataLayer.push` events on critical user interaction channels:
-  - `whatsapp_click`: Fired on clicking the sticky WhatsApp chat widget (includes the source path).
-  - `contact_form_success`: Fired on successful submission of the primary business contact form.
-  - `printing_contact_success`: Fired on successful completion of the B2B printing quote inquiry.
-
-### 4. Dynamic Case Study Hero Banners
-
-- Configured dynamic fallback inside the case details page to use `imageBanner` if defined, defaulting back to the `image` thumbnail.
+- **Google Search Console Verification:** Configured via meta tag verification `lfIU-Zm4oh9gQVqO8U4ZaJm1pumqC6FKlZ_lNMsZDUM` in `app/layout.jsx`.
+- **Dynamic XML Sitemap:** Automatically generated at `/sitemap.xml` with priority weighting across all core services, portfolio case studies, and blog articles.
+- **Search Engine Crawling (`robots.txt`):** Allows public indexing while excluding internal API routes and CMS studio admin endpoints (`/studio/`, `/api/`).
+- **Schema.org Rich Snippets:**
+  - `LocalBusiness` & `ProfessionalService`: Agency details, address, geo coordinates, operating hours, accepted payments, rating.
+  - `Organization` & `WebSite`: Sitelinks Searchbox integration pointing to `/portfolio?q={search_term_string}`.
+  - `FAQPage`: Rich FAQ accordion snippets targeting local Indonesian queries.
+  - `Service`: Service catalog on `/services` and B2B printing specification on `/services/printing`.
+  - `BreadcrumbList`: Injected across all subpages (`/about`, `/services`, `/portfolio`, `/blog`, `/contact`, `/privacy-policy`, etc.).
+  - `BlogPosting`: Injected on dynamic and dedicated blog article pages.
+  - `CreativeWork` / `CaseStudy`: Injected on dynamic case study pages (`/portfolio/[slug]`).
+  - `AboutPage` & `ContactPage`: Structured data on dedicated company overview and contact landing routes.
 
 ## 📄 License
 
-Copyright © 2024 Serasa Kreatif. All rights reserved.
+Copyright © 2024–2026 Serasa Kreatif. All rights reserved.
 
 ---
 
