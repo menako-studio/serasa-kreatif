@@ -3,14 +3,14 @@
 import Link from 'next/link'
 import { trackOutboundClick } from '@/lib/analytics'
 
-export default function TrackedLink({ href, type, label, children, onClick, ...props }) {
+export default function TrackedLink({ href, type, label, location, children, onClick, ...props }) {
   const handleClick = (e) => {
     // Run original onClick handler if present
     if (onClick) {
       onClick(e)
     }
 
-    trackOutboundClick(type || 'link', label || 'generic_link', href)
+    trackOutboundClick(type || 'link', label || 'generic_link', href, location || '')
 
     const target = props.target || '_self'
     const isExternal =
