@@ -3,15 +3,37 @@
 import { useEffect, useState, useRef } from 'react'
 import { useRouter } from 'next/navigation'
 import { caseStudies } from '@/lib/case-data'
-import { trackEngagement } from '@/lib/analytics'
+import { trackEngagement, trackSearch } from '@/lib/analytics'
 
 // Static page definitions
 const PAGES = [
   { title: 'Home', url: '/', category: 'Page' },
   { title: 'Portfolio & Case Studies', url: '/portfolio', category: 'Page' },
-  { title: 'Services', url: '/services', category: 'Page' },
-  { title: 'About Us', url: '/about', category: 'Page' },
-  { title: 'Contact Us', url: '/contact', category: 'Page' },
+  { title: 'Services & Solusi Kreatif', url: '/services', category: 'Page' },
+  {
+    title: 'Cetak Offset B2B Jakarta (Serasa Printing)',
+    url: '/services/printing',
+    category: 'Service',
+  },
+  { title: 'Tentang Kami (About Us)', url: '/about', category: 'Page' },
+  { title: 'Hubungi Kami (Contact Us)', url: '/contact', category: 'Page' },
+  { title: 'Blog & Insight', url: '/blog', category: 'Page' },
+  { title: 'Agensi Kreatif Bintaro & Tangsel', url: '/agensi-kreatif-bintaro', category: 'Page' },
+  {
+    title: 'Apa Itu Agensi Kreatif? (Artikel)',
+    url: '/blog/apa-itu-agensi-kreatif',
+    category: 'Article',
+  },
+  {
+    title: 'Jasa Social Media Management Jakarta (Artikel)',
+    url: '/blog/jasa-social-media-management-jakarta',
+    category: 'Article',
+  },
+  {
+    title: 'Cara Memilih Agensi Sosial Media (Artikel)',
+    url: '/blog/cara-memilih-agensi-sosial-media',
+    category: 'Article',
+  },
 ]
 
 export default function CommandPalette() {
@@ -21,17 +43,6 @@ export default function CommandPalette() {
   const router = useRouter()
   const inputRef = useRef(null)
   const listRef = useRef(null)
-
-  // Track search queries using debounce
-  useEffect(() => {
-    if (!query) return
-    const timer = setTimeout(() => {
-      trackEngagement('command_palette_search', {
-        search_query: query,
-      })
-    }, 1000)
-    return () => clearTimeout(timer)
-  }, [query])
 
   // Combined search items
   const searchItems = [
@@ -49,6 +60,15 @@ export default function CommandPalette() {
       item.title.toLowerCase().includes(query.toLowerCase()) ||
       item.category.toLowerCase().includes(query.toLowerCase())
   )
+
+  // Track search queries using debounce
+  useEffect(() => {
+    if (!query || query.trim().length === 0) return
+    const timer = setTimeout(() => {
+      trackSearch(query.trim(), 'command_palette', filteredItems.length)
+    }, 800)
+    return () => clearTimeout(timer)
+  }, [query, filteredItems.length])
 
   // Listen to Cmd+K / Ctrl+K and custom 'open-search' event
   useEffect(() => {

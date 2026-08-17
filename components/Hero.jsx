@@ -5,11 +5,20 @@ import { motion, AnimatePresence } from 'framer-motion'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useLanguage } from '@/components/LanguageContext'
+import { trackEngagement } from '@/lib/analytics'
 
 export default function Hero() {
   const { language, dict } = useLanguage()
   const hero = dict?.hero || {}
   const [currentSlide, setCurrentSlide] = useState(0)
+
+  const handleSlideChange = (index) => {
+    trackEngagement('hero_slide_change', {
+      slide_index: index,
+      slide_client: slides[index]?.client || 'Mosaic Overview',
+    })
+    setCurrentSlide(index)
+  }
 
   // Slides configuration
   const slides = [
@@ -151,7 +160,7 @@ export default function Hero() {
                   {slides.map((_, index) => (
                     <button
                       key={index}
-                      onClick={() => setCurrentSlide(index)}
+                      onClick={() => handleSlideChange(index)}
                       className="group flex items-center gap-2 focus:outline-none"
                     >
                       <span
@@ -199,7 +208,7 @@ export default function Hero() {
                   <div
                     key={item.slideIndex}
                     className={`${item.className} group cursor-pointer`}
-                    onClick={() => setCurrentSlide(item.slideIndex)}
+                    onClick={() => handleSlideChange(item.slideIndex)}
                   >
                     <div
                       className={`relative ${item.aspect} overflow-hidden rounded-xl border border-white/5 bg-neutral-900`}
@@ -294,7 +303,7 @@ export default function Hero() {
                 {slides.map((_, index) => (
                   <button
                     key={index}
-                    onClick={() => setCurrentSlide(index)}
+                    onClick={() => handleSlideChange(index)}
                     className="group flex items-center gap-2 focus:outline-none"
                   >
                     <span

@@ -1,5 +1,8 @@
+'use client'
+
 import Image from 'next/image'
 import Link from 'next/link'
+import { trackEngagement } from '@/lib/analytics'
 
 /**
  * WorkCard - Komponen kartu portfolio/work yang reusable
@@ -8,6 +11,13 @@ export default function WorkCard({ work }) {
   return (
     <Link
       href={`/portfolio/${work.slug}`}
+      onClick={() => {
+        trackEngagement('portfolio_card_click', {
+          slug: work.slug,
+          client: work.title,
+          category: work.category,
+        })
+      }}
       className="shadow-xs group overflow-hidden rounded-xl border border-gray-100 bg-white transition hover:shadow-md"
     >
       <div className="relative aspect-[16/10] w-full overflow-hidden rounded-t-xl bg-gray-100">

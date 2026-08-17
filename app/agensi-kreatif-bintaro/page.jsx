@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import BreadcrumbSchema from '@/components/BreadcrumbSchema'
+import TrackedLink from '@/components/TrackedLink'
 
 export const metadata = {
   title: 'Agensi Kreatif Bintaro & Tangerang Selatan — Serasa Kreatif',
@@ -140,14 +141,17 @@ export default function AgencyBintaroPage() {
               produksi konten — semuanya dalam satu tim yang berpengalaman.
             </p>
             <div className="flex flex-wrap gap-4">
-              <a
+              <TrackedLink
                 href="https://api.whatsapp.com/send?phone=6281288971453&text=Halo%20Serasa%20Kreatif%2C%20saya%20ingin%20konsultasi%20gratis%20untuk%20bisnis%20saya."
+                type="whatsapp"
+                label="bintaro_hero_whatsapp"
+                location="bintaro_hero"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 bg-brand-teal px-8 py-4 font-bold uppercase text-primary transition-colors hover:bg-brand-accent"
               >
                 💬 Konsultasi Gratis via WhatsApp
-              </a>
+              </TrackedLink>
               <Link
                 href="/services"
                 className="inline-flex items-center border-2 border-white px-8 py-4 font-bold uppercase text-white transition-colors hover:bg-white hover:text-primary"
@@ -231,18 +235,27 @@ export default function AgencyBintaroPage() {
                 </p>
                 <p>
                   <strong className="text-primary">Telepon / WhatsApp:</strong>{' '}
-                  <a href="tel:+6281288971453" className="underline hover:text-brand-teal">
+                  <TrackedLink
+                    href="tel:+6281288971453"
+                    type="tel"
+                    label="bintaro_phone"
+                    location="bintaro_contact_info"
+                    className="underline hover:text-brand-teal"
+                  >
                     +62 812-8897-1453
-                  </a>
+                  </TrackedLink>
                 </p>
                 <p>
                   <strong className="text-primary">Email:</strong>{' '}
-                  <a
+                  <TrackedLink
                     href="mailto:serasakreatif.id@gmail.com"
+                    type="email"
+                    label="bintaro_email"
+                    location="bintaro_contact_info"
                     className="underline hover:text-brand-teal"
                   >
                     serasakreatif.id@gmail.com
-                  </a>
+                  </TrackedLink>
                 </p>
                 <p>
                   <strong className="text-primary">Jam Operasional:</strong> Senin–Jumat,
@@ -250,22 +263,28 @@ export default function AgencyBintaroPage() {
                 </p>
               </div>
               <div className="flex flex-col gap-3 sm:flex-row">
-                <a
+                <TrackedLink
                   href="https://maps.app.goo.gl/R9YvwZzhmrfFNoDM9"
+                  type="maps"
+                  label="bintaro_google_maps"
+                  location="bintaro_location_section"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 bg-primary px-6 py-3 text-sm font-bold uppercase text-white transition-colors hover:bg-primary/90"
                 >
                   📍 Buka di Google Maps
-                </a>
-                <a
+                </TrackedLink>
+                <TrackedLink
                   href="https://share.google/13159QdwsmxTI0F4g"
+                  type="review"
+                  label="bintaro_google_reviews"
+                  location="bintaro_location_section"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 border-2 border-primary px-6 py-3 text-sm font-bold uppercase text-primary transition-colors hover:bg-primary hover:text-white"
                 >
                   ⭐ Ulas di Google Business
-                </a>
+                </TrackedLink>
               </div>
             </div>
             <div className="overflow-hidden rounded-lg shadow-lg">
@@ -329,14 +348,17 @@ export default function AgencyBintaroPage() {
             Agensi kreatif Bintaro siap membantu bisnis Anda tumbuh.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
-            <a
+            <TrackedLink
               href="https://api.whatsapp.com/send?phone=6281288971453&text=Halo%20Serasa%20Kreatif%2C%20saya%20ingin%20konsultasi%20gratis."
+              type="whatsapp"
+              label="bintaro_bottom_cta_whatsapp"
+              location="bintaro_bottom_cta"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 bg-primary px-10 py-5 font-bold uppercase text-white transition-colors hover:bg-primary/90"
             >
               💬 Chat WhatsApp
-            </a>
+            </TrackedLink>
             <Link
               href="/contact"
               className="inline-flex items-center border-2 border-primary px-10 py-5 font-bold uppercase text-primary transition-colors hover:bg-primary hover:text-white"

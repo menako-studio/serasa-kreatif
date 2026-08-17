@@ -3,9 +3,21 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import Link from 'next/link'
+import { trackEngagement } from '@/lib/analytics'
 
 export default function CaseStudyCard({ study }) {
   const [isExpanded, setIsExpanded] = useState(false)
+
+  const handleToggle = () => {
+    const nextState = !isExpanded
+    trackEngagement('case_study_card_toggle', {
+      client: study.client,
+      slug: study.slug,
+      category: study.category,
+      action: nextState ? 'expand' : 'collapse',
+    })
+    setIsExpanded(nextState)
+  }
 
   const services = Array.isArray(study.tags) ? study.tags.slice(0, 3) : []
 
@@ -13,7 +25,7 @@ export default function CaseStudyCard({ study }) {
     <motion.div
       className="overflow-hidden rounded-xl border border-gray-200 transition-all duration-300 hover:border-black hover:shadow-lg"
       whileHover={{ y: -4 }}
-      onClick={() => setIsExpanded(!isExpanded)}
+      onClick={handleToggle}
     >
       {/* Header */}
       <div className="cursor-pointer border-b border-gray-200 p-8">

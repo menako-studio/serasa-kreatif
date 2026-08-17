@@ -2,7 +2,7 @@
 
 import { useRouter, usePathname, useSearchParams } from 'next/navigation'
 import { useTransition } from 'react'
-import { trackEngagement } from '@/lib/analytics'
+import { trackEngagement, trackSearch } from '@/lib/analytics'
 
 export default function PortfolioFilters({ filterOptions, currentFilters }) {
   const router = useRouter()
@@ -33,13 +33,10 @@ export default function PortfolioFilters({ filterOptions, currentFilters }) {
     const params = new URLSearchParams(searchParams)
     if (value) {
       params.set('q', value)
+      trackSearch(value, 'portfolio_search')
     } else {
       params.delete('q')
     }
-
-    trackEngagement('portfolio_search', {
-      search_query: value,
-    })
 
     startTransition(() => {
       router.push(`${pathname}?${params.toString()}`, { scroll: false })

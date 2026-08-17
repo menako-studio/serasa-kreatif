@@ -1,11 +1,19 @@
+import TrackedLink from '@/components/TrackedLink'
+
 /**
  * ContactInfoItem - Reusable component for displaying contact information
  */
 export default function ContactInfoItem({ label, children, href }) {
+  const type = href?.startsWith('tel:') ? 'tel' : href?.startsWith('mailto:') ? 'email' : 'link'
   const content = href ? (
-    <a href={href} className="text-sm text-gray-900 transition-colors hover:text-brand-teal">
+    <TrackedLink
+      href={href}
+      type={type}
+      label={`contact_info_${label.toLowerCase().replace(/\s+/g, '_')}`}
+      className="text-sm text-gray-900 transition-colors hover:text-brand-teal"
+    >
       {children}
-    </a>
+    </TrackedLink>
   ) : (
     <p className="text-sm text-gray-900">{children}</p>
   )

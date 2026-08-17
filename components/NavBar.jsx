@@ -5,12 +5,29 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import Image from 'next/image'
 import { useLanguage } from '@/components/LanguageContext'
+import { trackEngagement, trackLanguageChange } from '@/lib/analytics'
 
 export default function NavBar() {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const pathname = usePathname()
   const { language, toggleLanguage, dict } = useLanguage()
+
+  const handleLanguageToggle = (source = 'navbar_desktop') => {
+    const nextLang = language === 'en' ? 'id' : 'en'
+    trackLanguageChange(nextLang, source)
+    toggleLanguage()
+  }
+
+  const handleNavClick = (linkName, href) => {
+    trackEngagement('nav_click', { link_name: linkName, href })
+  }
+
+  const handleMobileMenuToggle = () => {
+    const nextState = !isMobileMenuOpen
+    trackEngagement('mobile_menu_toggle', { action: nextState ? 'open' : 'close' })
+    setIsMobileMenuOpen(nextState)
+  }
 
   const navLinks = [
     { name: dict?.nav?.portfolio || 'Portfolio', href: '/portfolio' },
@@ -56,7 +73,11 @@ export default function NavBar() {
     >
       <div className="container-custom flex items-center justify-between">
         {/* Logo */}
-        <Link href="/" className="flex items-center space-x-2">
+        <Link
+          href="/"
+          className="flex items-center space-x-2"
+          onClick={() => handleNavClick('Logo Home', '/')}
+        >
           <div className="relative h-20 w-64 transition-all duration-300 md:h-28 md:w-[420px] lg:h-32 lg:w-[500px]">
             <Image
               src={
@@ -78,6 +99,7 @@ export default function NavBar() {
             <Link
               key={link.href}
               href={link.href}
+              onClick={() => handleNavClick(link.name, link.href)}
               className={`rounded px-4 py-2 text-sm font-medium uppercase tracking-wider transition-colors ${
                 pathname === link.href
                   ? isDarkNav
@@ -92,7 +114,10 @@ export default function NavBar() {
             </Link>
           ))}
           <button
-            onClick={() => window.dispatchEvent(new CustomEvent('open-search'))}
+            onClick={() => {
+              trackEngagement('command_palette_open', { trigger: 'navbar_search_button' })
+              window.dispatchEvent(new CustomEvent('open-search'))
+            }}
             className={`flex items-center gap-1.5 rounded px-3 py-2 text-sm font-medium uppercase tracking-wider transition-colors ${
               isDarkNav ? 'text-white hover:text-brand-teal' : 'hover:text-brand-pink text-primary'
             }`}
@@ -111,7 +136,7 @@ export default function NavBar() {
 
           {/* Language Toggle Component (Premium glassmorphic pill) */}
           <button
-            onClick={toggleLanguage}
+            onClick={() => handleLanguageToggle('navbar_desktop')}
             className={`flex items-center gap-1 rounded-full border px-3 py-1.5 text-xs font-bold uppercase tracking-wider transition-all duration-300 ${
               isDarkNav
                 ? 'border-white/20 text-white hover:border-brand-teal'
@@ -146,6 +171,7 @@ export default function NavBar() {
 
           <Link
             href="/contact"
+            onClick={() => handleNavClick('Contact CTA Button', '/contact')}
             className={`ml-4 rounded border-2 px-6 py-2 text-sm font-bold uppercase transition-colors ${
               isDarkNav
                 ? 'border-white bg-white text-black hover:border-brand-teal hover:bg-brand-teal hover:text-white'
@@ -158,7 +184,7 @@ export default function NavBar() {
         {/* Mobile Menu Button */}
         <button
           className="p-2 lg:hidden"
-          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          onClick={handleMobileMenuToggle}
           aria-label="Toggle mobile menu"
         >
           <div className="flex h-5 w-6 flex-col justify-between">
@@ -193,7 +219,10 @@ export default function NavBar() {
                       ? 'text-white hover:text-brand-teal'
                       : 'hover:text-brand-pink text-gray-600'
                 }`}
-                onClick={() => setIsMobileMenuOpen(false)}
+                onClick={() => {
+                  handleNavClick(link.name, link.href)
+                  setIsMobileMenuOpen(false)
+                }}
               >
                 {link.name}
               </Link>
@@ -201,6 +230,7 @@ export default function NavBar() {
             <button
               onClick={() => {
                 setIsMobileMenuOpen(false)
+                trackEngagement('command_palette_open', { trigger: 'navbar_mobile_search_button' })
                 window.dispatchEvent(new CustomEvent('open-search'))
               }}
               className={`flex items-center justify-center gap-2 border px-6 py-3 text-center font-bold uppercase transition-colors ${
@@ -224,7 +254,7 @@ export default function NavBar() {
             <div className="flex justify-center py-2">
               <button
                 onClick={() => {
-                  toggleLanguage()
+                  handleLanguageToggle('navbar_mobile')
                   setIsMobileMenuOpen(false)
                 }}
                 className={`flex items-center gap-2 rounded-full border px-6 py-3 font-bold uppercase tracking-wider transition-all ${
@@ -259,7 +289,10 @@ export default function NavBar() {
                   ? 'bg-white text-black hover:bg-red-600 hover:text-white'
                   : 'bg-black text-white hover:bg-red-600 hover:text-white'
               }`}
-              onClick={() => setIsMobileMenuOpen(false)}
+              onClick={() => {
+                handleNavClick('Mobile Contact CTA', '/contact')
+                setIsMobileMenuOpen(false)
+              }}
             >
               {dict?.nav?.contact || 'Contact'}
             </Link>
