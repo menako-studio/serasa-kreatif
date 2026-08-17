@@ -1,12 +1,34 @@
+import BreadcrumbSchema from '@/components/BreadcrumbSchema'
+
 export const metadata = {
-  title: 'Privacy Notice',
+  title: 'Kebijakan Privasi (Privacy Policy) — Serasa Kreatif',
   description:
-    'Serasa Kreatif website privacy notice. Learn how we collect, use, and protect your personal information.',
+    'Kebijakan privasi Serasa Kreatif. Pelajari bagaimana kami mengumpulkan, menggunakan, dan melindungi data pribadi pengunjung website kami.',
+  alternates: {
+    canonical: 'https://serasakreatif.id/privacy-policy',
+  },
+  openGraph: {
+    title: 'Kebijakan Privasi — Serasa Kreatif',
+    description:
+      'Pelajari bagaimana kami mengumpulkan, menggunakan, dan melindungi data pribadi Anda.',
+    url: 'https://serasakreatif.id/privacy-policy',
+    images: ['/og-image.jpg'],
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 }
 
 export default function PrivacyNoticePage() {
   return (
     <div className="min-h-screen bg-white">
+      <BreadcrumbSchema
+        items={[
+          { name: 'Beranda', url: 'https://serasakreatif.id' },
+          { name: 'Kebijakan Privasi', url: 'https://serasakreatif.id/privacy-policy' },
+        ]}
+      />
       {/* Hero */}
       <section className="border-b border-gray-200 bg-white pb-8 pt-32 md:pt-40 lg:pt-44">
         <div className="container-custom">

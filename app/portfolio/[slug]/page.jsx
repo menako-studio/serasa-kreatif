@@ -3,6 +3,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { caseStudies } from '@/lib/case-data'
 import PortfolioVideoGrid from '@/components/PortfolioVideoGrid'
+import BreadcrumbSchema from '@/components/BreadcrumbSchema'
 
 export async function generateStaticParams() {
   return caseStudies.map((study) => ({
@@ -61,6 +62,42 @@ export async function generateMetadata({ params }) {
   }
 }
 
+function CaseStudySchema({ caseStudy }) {
+  const schema = {
+    '@context': 'https://schema.org',
+    '@type': 'CreativeWork',
+    headline: `${caseStudy.client} — ${caseStudy.title}`,
+    name: `${caseStudy.client} Case Study`,
+    description: caseStudy.description,
+    image: caseStudy.image,
+    creator: {
+      '@type': 'Organization',
+      name: 'Serasa Kreatif',
+      url: 'https://serasakreatif.id',
+    },
+    publisher: {
+      '@type': 'Organization',
+      name: 'Serasa Kreatif',
+      logo: {
+        '@type': 'ImageObject',
+        url: 'https://serasakreatif.id/assets/images/logo-serasa.png',
+      },
+    },
+    about: {
+      '@type': 'Thing',
+      name: caseStudy.category,
+    },
+    mainEntityOfPage: `https://serasakreatif.id/portfolio/${caseStudy.slug}`,
+  }
+
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+    />
+  )
+}
+
 export default function CaseDetailPage({ params }) {
   const caseStudy = caseStudies.find((study) => study.slug === params.slug)
 
@@ -70,6 +107,14 @@ export default function CaseDetailPage({ params }) {
 
   return (
     <div className="bg-black">
+      <CaseStudySchema caseStudy={caseStudy} />
+      <BreadcrumbSchema
+        items={[
+          { name: 'Beranda', url: 'https://serasakreatif.id' },
+          { name: 'Portofolio', url: 'https://serasakreatif.id/portfolio' },
+          { name: caseStudy.client, url: `https://serasakreatif.id/portfolio/${caseStudy.slug}` },
+        ]}
+      />
       {/* Hero Section - Full Screen */}
       <section className="relative flex min-h-screen items-end bg-black pt-32">
         <Image

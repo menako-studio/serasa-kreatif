@@ -120,6 +120,39 @@ const WORK_PROCESS_ID = [
   },
 ]
 
+function AboutPageSchema() {
+  const schema = {
+    '@context': 'https://schema.org',
+    '@type': 'AboutPage',
+    name: 'Tentang Serasa Kreatif',
+    url: 'https://serasakreatif.id/about',
+    mainEntity: {
+      '@type': 'Organization',
+      name: 'Serasa Kreatif',
+      legalName: 'PT Selaras Makmur Perkasa',
+      url: 'https://serasakreatif.id',
+      logo: 'https://serasakreatif.id/assets/images/logo-serasa.png',
+      description:
+        'Agensi kreatif & social media management di Bintaro, Tangerang Selatan. Tim profesional dengan pengalaman membantu UMKM & korporat tumbuh di era digital.',
+      address: {
+        '@type': 'PostalAddress',
+        streetAddress: 'Bintaro',
+        addressLocality: 'Tangerang Selatan',
+        addressRegion: 'Banten',
+        postalCode: '15220',
+        addressCountry: 'ID',
+      },
+    },
+  }
+
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+    />
+  )
+}
+
 export default function AboutPage({ searchParams }) {
   const lang = searchParams?.lang === 'id' ? 'id' : 'en'
   const isIndo = lang === 'id'
@@ -127,6 +160,7 @@ export default function AboutPage({ searchParams }) {
 
   return (
     <div className="min-h-screen bg-white">
+      <AboutPageSchema />
       <BreadcrumbSchema
         items={[
           { name: 'Beranda', url: 'https://serasakreatif.id' },

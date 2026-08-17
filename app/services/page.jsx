@@ -33,6 +33,78 @@ export const metadata = {
   },
 }
 
+function ServiceCatalogSchema() {
+  const schema = {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    serviceType: 'Creative Agency & Social Media Management',
+    provider: {
+      '@type': 'LocalBusiness',
+      name: 'Serasa Kreatif',
+      url: 'https://serasakreatif.id',
+    },
+    areaServed: {
+      '@type': 'Country',
+      name: 'Indonesia',
+    },
+    hasOfferCatalog: {
+      '@type': 'OfferCatalog',
+      name: 'Layanan Agensi Kreatif Serasa',
+      itemListElement: [
+        {
+          '@type': 'Offer',
+          itemOffered: {
+            '@type': 'Service',
+            name: 'Social Media Management',
+            description:
+              'Manajemen akun Instagram & TikTok harian, konten kreatif, dan evaluasi bulanan.',
+          },
+        },
+        {
+          '@type': 'Offer',
+          itemOffered: {
+            '@type': 'Service',
+            name: 'Brand Strategy & Visual Identity',
+            description: 'Pengembangan identitas merek, pedoman visual, dan positioning bisnis.',
+          },
+        },
+        {
+          '@type': 'Offer',
+          itemOffered: {
+            '@type': 'Service',
+            name: 'Digital Advertising & Performance Marketing',
+            description:
+              'Kampanye iklan Meta Ads & Google Ads berbasis data untuk meningkatkan konversi.',
+          },
+        },
+        {
+          '@type': 'Offer',
+          itemOffered: {
+            '@type': 'Service',
+            name: 'Commercial Video Production & Reels',
+            description: 'Produksi video komersial, reels kreatif, dan company profile.',
+          },
+        },
+        {
+          '@type': 'Offer',
+          itemOffered: {
+            '@type': 'Service',
+            name: 'B2B Offset Printing & Packaging',
+            description: 'Cetak offset kemasan custom, stationery perusahaan, dan katalog promosi.',
+          },
+        },
+      ],
+    },
+  }
+
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+    />
+  )
+}
+
 export default function ServicesPage({ searchParams }) {
   const lang = searchParams?.lang === 'id' ? 'id' : 'en'
   return (
@@ -46,6 +118,7 @@ export default function ServicesPage({ searchParams }) {
           },
         ]}
       />
+      <ServiceCatalogSchema />
       <ServicesPageClient lang={lang} />
     </>
   )

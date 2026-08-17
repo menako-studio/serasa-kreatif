@@ -1,6 +1,15 @@
 import Link from 'next/link'
 import NavBar from '@/components/NavBar'
 
+export const metadata = {
+  title: '404 — Halaman Tidak Ditemukan | Serasa Kreatif',
+  description: 'Halaman yang Anda cari tidak ditemukan. Kembali ke beranda Serasa Kreatif.',
+  robots: {
+    index: false,
+    follow: false,
+  },
+}
+
 export default function NotFound() {
   return (
     <div className="flex min-h-screen flex-col bg-white text-gray-900">

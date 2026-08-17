@@ -1,12 +1,33 @@
+import BreadcrumbSchema from '@/components/BreadcrumbSchema'
+
 export const metadata = {
-  title: 'Terms of Use',
+  title: 'Syarat & Ketentuan Penggunaan (Terms of Use) — Serasa Kreatif',
   description:
-    'Terms of use for Serasa Kreatif website. Read our terms and conditions before using our services.',
+    'Syarat dan ketentuan penggunaan website Serasa Kreatif. Baca ketentuan layanan kami sebelum menggunakan layanan dan platform kami.',
+  alternates: {
+    canonical: 'https://serasakreatif.id/terms-of-use',
+  },
+  openGraph: {
+    title: 'Syarat & Ketentuan Penggunaan — Serasa Kreatif',
+    description: 'Syarat dan ketentuan penggunaan website dan layanan Serasa Kreatif.',
+    url: 'https://serasakreatif.id/terms-of-use',
+    images: ['/og-image.jpg'],
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 }
 
 export default function TermsOfUsePage() {
   return (
     <div className="min-h-screen bg-white">
+      <BreadcrumbSchema
+        items={[
+          { name: 'Beranda', url: 'https://serasakreatif.id' },
+          { name: 'Syarat & Ketentuan', url: 'https://serasakreatif.id/terms-of-use' },
+        ]}
+      />
       {/* Hero */}
       <section className="border-b border-gray-200 bg-white pb-8 pt-32 md:pt-40 lg:pt-44">
         <div className="container-custom">

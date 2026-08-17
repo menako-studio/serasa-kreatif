@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
+import BreadcrumbSchema from '@/components/BreadcrumbSchema'
 
 // This would fetch from API in production
 async function getBlogPost(slug, lang = 'en') {
@@ -60,51 +61,77 @@ async function getBlogPost(slug, lang = 'en') {
   return {
     id: 1,
     slug: slug,
-    title: 'The Future of Loyalty is Personal',
+    title: 'The Future of Customer Loyalty is Personal',
     date: 'May 14, 2025',
     category: 'Insights',
     author: 'Serasa Kreatif Team',
     readTime: '8 min read',
     image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=1200&h=800&fit=crop',
     content: `
-      <p>In the continuously evolving business landscape, the concept of customer loyalty has undergone a significant transformation. It is no longer enough to just offer points or generic discount programs. Modern customers demand personalized, relevant, and meaningful experiences.</p>
+      <p>In an increasingly crowded digital landscape, the concept of customer loyalty is undergoing a fundamental transformation. It's no longer enough to offer points, discounts, or generic perks. Today's consumers expect personalization that feels genuinely relevant, valuable, and seamless.</p>
 
-      <h2>From Touchpoint to System: Rethinking Personalization</h2>
+      <h2>From Touchpoints to Systems: Rethinking Personalization</h2>
       
-      <p>For years, personalization has been viewed as a tactic—something applied to specific touchpoints to make customers feel special. However, this approach is too narrow and inconsistent. Customers do not interact with your brand in a vacuum; they have complex journeys across multiple channels, devices, and contexts.</p>
-
-      <p>Effective personalization is not just about adding a customer's name to an email or recommending products based on prior purchases. It is about understanding the broader context of the customer's life—their current needs, future preferences, and core values.</p>
-
-      <h2>The Power of Contextual Relevance</h2>
-
-      <p>Consumer behavior changes constantly. What is relevant today may be obsolete tomorrow. Winning brands are those that can anticipate these shifts and adapt their experiences accordingly.</p>
-
-      <p>This is not just about gathering more data—it is about how you use that data to create truly meaningful experiences. Brands must pivot from "what can we sell to this customer?" to "how can we add value to this customer's life?"</p>
-
-      <h2>From Transactional to Emotional Loyalty</h2>
-
-      <p>Traditional loyalty programs focus on transactions. However, true loyalty is built on emotional connections. Customers are not loyal to brands for reward points—they are loyal because the brand understands them, shares their values, and consistently delivers experiences that exceed expectations.</p>
-
-      <p>This requires a fundamental shift in how brands think about customer relationships. Rather than seeing every interaction as an opportunity to sell, brands should view it as an opportunity to build trust and deepen connection.</p>
-
-      <h2>Measuring Loyalty Beyond Transactions</h2>
-
-      <p>Traditional metrics like purchase frequency and customer lifetime value are still important, but they do not provide the full picture. Brands need to measure deeper indicators of loyalty:</p>
-
-      <ul>
-        <li><strong>Emotional engagement:</strong> How connected are customers to your brand outside of transactions?</li>
-        <li><strong>Advocacy:</strong> Do customers recommend your brand to others?</li>
-        <li><strong>Trust:</strong> Do customers share personal data and provide honest feedback?</li>
-        <li><strong>Community involvement:</strong> Do customers participate in your brand community?</li>
-      </ul>
-
-      <h2>The Future is Personal</h2>
-
-      <p>As we move forward, successful brands will be those that can create truly personal experiences—not just personalized based on demographic data or purchase history, but understood within the broader context of the customer's life.</p>
-
-      <p>This requires investment in technology, data, and most importantly, in understanding what truly matters to your customers. However, the results are worth it: deeper loyalty, higher lifetime value, and more meaningful relationships between the brand and the customer.</p>
+      <p>For years, personalization has been treated as a tactic—something applied to a specific touchpoint to make a customer feel recognized. But this approach is fractured and inconsistent. Customers don't experience your brand in silos; they experience it across a complex journey that spans devices, platforms, and contexts.</p>
     `,
   }
+}
+
+export async function generateMetadata({ params, searchParams }) {
+  const lang = searchParams?.lang === 'id' ? 'id' : 'en'
+  const post = await getBlogPost(params.slug, lang)
+
+  return {
+    title: `${post.title} — Serasa Kreatif`,
+    description: `Baca artikel: ${post.title}. Insight dan strategi pemasaran digital dari Serasa Kreatif.`,
+    alternates: {
+      canonical: `https://serasakreatif.id/blog/${post.slug}`,
+    },
+    openGraph: {
+      title: `${post.title} — Serasa Kreatif`,
+      description: `Baca artikel: ${post.title}. Insight dan strategi pemasaran digital dari Serasa Kreatif.`,
+      url: `https://serasakreatif.id/blog/${post.slug}`,
+      images: [{ url: post.image, width: 1200, height: 800, alt: post.title }],
+      type: 'article',
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: `${post.title} — Serasa Kreatif`,
+      description: `Baca artikel: ${post.title}.`,
+      images: [post.image],
+    },
+  }
+}
+
+function ArticleSchema({ post }) {
+  const schema = {
+    '@context': 'https://schema.org',
+    '@type': 'BlogPosting',
+    headline: post.title,
+    description: `Insight dan strategi pemasaran digital: ${post.title}`,
+    image: post.image,
+    author: {
+      '@type': 'Organization',
+      name: post.author || 'Serasa Kreatif',
+      url: 'https://serasakreatif.id',
+    },
+    publisher: {
+      '@type': 'Organization',
+      name: 'Serasa Kreatif',
+      logo: {
+        '@type': 'ImageObject',
+        url: 'https://serasakreatif.id/assets/images/logo-serasa.png',
+      },
+    },
+    mainEntityOfPage: `https://serasakreatif.id/blog/${post.slug}`,
+  }
+
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+    />
+  )
 }
 
 export default async function BlogPostPage({ params, searchParams }) {
@@ -114,6 +141,14 @@ export default async function BlogPostPage({ params, searchParams }) {
 
   return (
     <div className="bg-white text-neutral-900 antialiased">
+      <ArticleSchema post={post} />
+      <BreadcrumbSchema
+        items={[
+          { name: 'Beranda', url: 'https://serasakreatif.id' },
+          { name: 'Blog', url: 'https://serasakreatif.id/blog' },
+          { name: post.title, url: `https://serasakreatif.id/blog/${post.slug}` },
+        ]}
+      />
       {/* Hero Image */}
       <section className="relative h-[60vh] bg-gray-900">
         <Image

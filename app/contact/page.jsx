@@ -23,12 +23,43 @@ export const metadata = {
   },
 }
 
+function ContactPageSchema() {
+  const schema = {
+    '@context': 'https://schema.org',
+    '@type': 'ContactPage',
+    name: 'Kontak Serasa Kreatif',
+    url: 'https://serasakreatif.id/contact',
+    mainEntity: {
+      '@type': 'LocalBusiness',
+      name: 'Serasa Kreatif',
+      telephone: '+6281288971453',
+      email: 'serasakreatif.id@gmail.com',
+      address: {
+        '@type': 'PostalAddress',
+        streetAddress: 'Bintaro',
+        addressLocality: 'Tangerang Selatan',
+        addressRegion: 'Banten',
+        postalCode: '15220',
+        addressCountry: 'ID',
+      },
+    },
+  }
+
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+    />
+  )
+}
+
 export default function ContactPage({ searchParams }) {
   const lang = searchParams?.lang === 'id' ? 'id' : 'en'
   const isIndo = lang === 'id'
 
   return (
     <div className="min-h-screen bg-brand-teal pt-32 text-primary">
+      <ContactPageSchema />
       <BreadcrumbSchema
         items={[
           { name: 'Beranda', url: 'https://serasakreatif.id' },

@@ -47,9 +47,45 @@ export const metadata = {
   },
 }
 
+function PrintingServiceSchema() {
+  const schema = {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    serviceType: 'B2B Offset Printing & Packaging',
+    provider: {
+      '@type': 'LocalBusiness',
+      name: 'Serasa Printing (Part of Serasa Kreatif)',
+      url: 'https://serasakreatif.id/services/printing',
+      telephone: '+6281288971453',
+      address: {
+        '@type': 'PostalAddress',
+        streetAddress: 'Bintaro',
+        addressLocality: 'Tangerang Selatan',
+        addressRegion: 'Banten',
+        postalCode: '15220',
+        addressCountry: 'ID',
+      },
+    },
+    areaServed: {
+      '@type': 'Country',
+      name: 'Indonesia',
+    },
+    description:
+      'Jasa cetak offset B2B premium: kemasan custom, stationery kantor, company profile, dan materi promosi.',
+  }
+
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+    />
+  )
+}
+
 export default function SerasaPrintingPage() {
   return (
     <div className="bg-white text-neutral-900 antialiased">
+      <PrintingServiceSchema />
       <BreadcrumbSchema
         items={[
           { name: 'Beranda', url: 'https://serasakreatif.id' },
