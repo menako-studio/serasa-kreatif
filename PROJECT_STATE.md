@@ -17,17 +17,17 @@
 
 | Category                   | Technology                  | Version / Configuration                                                                                                          |
 | :------------------------- | :-------------------------- | :------------------------------------------------------------------------------------------------------------------------------- |
-| **Framework**              | Next.js (App Router)        | `^14.2.33` (`output: 'standalone'` in `next.config.mjs`)                                                                         |
+| **Framework**              | Next.js (App Router)        | `15.5.25` (`output: 'standalone'` in `next.config.mjs`)                                                                          |
 | **Runtime & React**        | React / React DOM           | `^18.3.0`, Node.js `>=18.0.0`, npm `>=9.0.0`                                                                                     |
 | **Language**               | JavaScript (ES6+ / JSX)     | Native JS project (`react-compiler-runtime` `^1.0.0`)                                                                            |
-| **Styling**                | Tailwind CSS + Autoprefixer | `tailwindcss` `^3.4.0`, `styled-components` `^6.4.3`, `clsx` `^2.1.0`                                                            |
+| **Styling**                | Tailwind CSS + Autoprefixer | `tailwindcss` `^3.4.0`, `styled-components` `^6.4.3`, `clsx` `^2.1.0`, `postcss` `^8.5.28`                                       |
 | **Animations**             | Framer Motion               | `framer-motion` `^11.0.0` (optimized package imports enabled)                                                                    |
 | **CMS**                    | Sanity CMS (Headless)       | `sanity` `^3.99.0`, `next-sanity` `^9.12.3`, `@sanity/client` `^6.15.0`                                                          |
 | **State Management**       | React Context + URL State   | `LanguageContext` for i18n, URL `SearchParams` for filters & language                                                            |
 | **Email & Security**       | Resend API + Rate Limiter   | `resend` `^6.16.0`, Cloudflare Turnstile token verification                                                                      |
 | **Analytics & Monitoring** | GA4 + GTM + GSC + Sentry    | `@next/third-parties/google` (`NEXT_PUBLIC_GA_MEASUREMENT_ID`, `NEXT_PUBLIC_GTM_ID`: `GTM-NKKPT23S`), `@sentry/nextjs` `^8.55.2` |
-| **Testing**                | Vitest + Playwright         | `vitest` `^1.6.1` (jsdom, v8 coverage), `@playwright/test` `^1.42.0` (E2E)                                                       |
-| **Code Quality & CI/CD**   | ESLint + Prettier + Husky   | `eslint-config-next` `^14.2.0`, `lint-staged`, `husky` `^9.1.7`, `commitlint` `^20.1.0`                                          |
+| **Testing**                | Vitest + Playwright         | `vitest` `^4.1.11` (jsdom, v8 coverage), `@playwright/test` `^1.42.0` (E2E)                                                      |
+| **Code Quality & CI/CD**   | ESLint + Prettier + Husky   | `eslint-config-next` `15.5.25`, `lint-staged`, `husky` `^9.1.7`, `commitlint` `^20.1.0`                                          |
 
 ---
 
@@ -141,9 +141,10 @@ serasa-kreatif/
 
 ### Testing Status
 
-- **Unit Tests (`tests/unit/`):** 12 unit tests passing in Vitest (`tests/unit/CaseCard.test.jsx`, `tests/unit/analytics.test.js`).
+- **Unit Tests (`tests/unit/`):** 12 unit tests passing in Vitest 4 (`tests/unit/CaseCard.test.jsx`, `tests/unit/analytics.test.js`).
 - **Linting & Code Quality:** 0 ESLint warnings or errors (`npm run lint`).
-- **Production Build:** Next.js 14 standalone build passing with all 27 static and dynamic routes compiling cleanly (`npm run build`).
+- **Production Build:** Next.js 15.5.25 standalone build passing with all 27 static and dynamic routes compiling cleanly (`npm run build`).
+- **Security & Vulnerabilities:** Resolved 25 Next.js CVEs, all 12 Vite advisories, Vitest UI/mocker advisories, Sharp libheif, PostCSS sourceMappingURL traversal/XSS, and transitive vulnerabilities in glob, nanoid, fast-uri, js-yaml, minimatch, flatted, picomatch, tar, undici, adm-zip, rollup, prismjs, dompurify, browserslist, and baseline-browser-mapping.
 
 ### Pending Tasks & Technical Debt
 
