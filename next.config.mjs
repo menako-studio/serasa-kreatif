@@ -18,8 +18,6 @@ const nextConfig = {
   },
   experimental: {
     optimizePackageImports: ['framer-motion'],
-    // Required for Sentry server-side instrumentation in Next.js 14
-    instrumentationHook: true,
   },
 }
 

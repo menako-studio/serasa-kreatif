@@ -28,7 +28,7 @@
     "@sentry/nextjs": "^8.55.2",
     "clsx": "^2.1.0",
     "framer-motion": "^11.0.0",
-    "next": "^14.2.0",
+    "next": "15.5.25",
     "next-sanity": "^9.12.3",
     "react": "^18.3.0",
     "react-compiler-runtime": "^1.0.0",
@@ -48,7 +48,7 @@
     "@vitest/coverage-v8": "^4.1.11",
     "autoprefixer": "^10.4.0",
     "eslint": "^8.57.0",
-    "eslint-config-next": "^14.2.0",
+    "eslint-config-next": "15.5.25",
     "husky": "^9.1.7",
     "jsdom": "^24.0.0",
     "lint-staged": "^16.2.6",
@@ -64,6 +64,9 @@
     "npm": ">=9.0.0"
   },
   "overrides": {
+    "next": {
+      "postcss": "^8.5.28"
+    },
     "brace-expansion": "^1.1.18",
     "glob": "^10.5.0",
     "@sanity/export": {
@@ -96,6 +99,10 @@
     "dompurify": "^3.4.15",
     "browserslist": "^4.28.9",
     "baseline-browser-mapping": "^2.11.22",
-    "uuid": "^11.1.1"
+    "uuid": "^11.1.1",
+    "postcss-selector-parser": "^6.1.4",
+    "@commitlint/cli": {
+      "ajv": "^8.20.0"
+    }
   }
 }
