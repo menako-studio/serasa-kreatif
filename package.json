@@ -93,7 +93,7 @@
     "picomatch": "^4.0.3",
     "tar": "^7.5.22",
     "undici": "^6.28.1",
-    "adm-zip": "^0.5.18",
+    "adm-zip": "^0.6.1",
     "rollup": "^4.63.1",
     "prismjs": "^1.30.0",
     "dompurify": "^3.4.15",
