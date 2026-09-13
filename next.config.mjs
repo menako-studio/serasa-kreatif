@@ -1,4 +1,4 @@
-import { withSentryConfig } from '@sentry/nextjs'
+import { withSentryConfig } from '@sentry/nextjs/config'
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -21,7 +21,7 @@ const nextConfig = {
   },
 }
 
-// Sentry webpack plugin configuration
+// Sentry configuration
 // See: https://docs.sentry.io/platforms/javascript/guides/nextjs/manual-setup/
 const sentryConfig = {
   // Suppress Sentry build output logs
@@ -30,11 +30,14 @@ const sentryConfig = {
   // Hide source maps from the client bundle (security best practice)
   hideSourceMaps: true,
 
-  // Disables the Sentry logger to reduce build output noise
-  disableLogger: true,
-
-  // Skip Vercel Cron Monitor creation (we don't use it)
-  automaticVercelMonitors: false,
+  webpack: {
+    // Disables the Sentry logger to reduce build output noise
+    treeshake: {
+      removeDebugLogging: true,
+    },
+    // Skip Vercel Cron Monitor creation (we don't use it)
+    automaticVercelMonitors: false,
+  },
 
   // Source map upload is automatically skipped when SENTRY_AUTH_TOKEN is not set.
   // To enable source maps for better error stack traces, add SENTRY_AUTH_TOKEN
