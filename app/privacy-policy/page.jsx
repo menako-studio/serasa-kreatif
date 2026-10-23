@@ -1,24 +1,12 @@
 import BreadcrumbSchema from '@/components/BreadcrumbSchema'
+import { buildMetadata } from '@/lib/seo'
 
-export const metadata = {
-  title: 'Kebijakan Privasi (Privacy Policy) — Serasa Kreatif',
+export const metadata = buildMetadata({
+  title: 'Kebijakan Privasi (Privacy Policy)',
   description:
     'Kebijakan privasi Serasa Kreatif. Pelajari bagaimana kami mengumpulkan, menggunakan, dan melindungi data pribadi pengunjung website kami.',
-  alternates: {
-    canonical: 'https://serasakreatif.id/privacy-policy',
-  },
-  openGraph: {
-    title: 'Kebijakan Privasi — Serasa Kreatif',
-    description:
-      'Pelajari bagaimana kami mengumpulkan, menggunakan, dan melindungi data pribadi Anda.',
-    url: 'https://serasakreatif.id/privacy-policy',
-    images: ['/og-image.jpg'],
-  },
-  robots: {
-    index: true,
-    follow: true,
-  },
-}
+  path: '/privacy-policy',
+})
 
 export default function PrivacyNoticePage() {
   return (
@@ -345,7 +333,7 @@ export default function PrivacyNoticePage() {
                     Email:{' '}
                     <a
                       href="mailto:serasakreatif.id@gmail.com"
-                      className="text-primary underline hover:text-brand-teal"
+                      className="text-primary hover:text-brand-teal underline"
                     >
                       serasakreatif.id@gmail.com
                     </a>
@@ -354,7 +342,7 @@ export default function PrivacyNoticePage() {
                     Telepon:{' '}
                     <a
                       href="tel:+6281288971453"
-                      className="text-primary underline hover:text-brand-teal"
+                      className="text-primary hover:text-brand-teal underline"
                     >
                       +62 812-8897-1453
                     </a>
@@ -372,73 +360,73 @@ export default function PrivacyNoticePage() {
                 <nav className="space-y-3">
                   <a
                     href="#information"
-                    className="block text-sm text-gray-700 transition-colors hover:text-primary"
+                    className="hover:text-primary block text-sm text-gray-700 transition-colors"
                   >
                     Information We Provide
                   </a>
                   <a
                     href="#sources"
-                    className="block text-sm text-gray-700 transition-colors hover:text-primary"
+                    className="hover:text-primary block text-sm text-gray-700 transition-colors"
                   >
                     Information from Sources
                   </a>
                   <a
                     href="#automated"
-                    className="block text-sm text-gray-700 transition-colors hover:text-primary"
+                    className="hover:text-primary block text-sm text-gray-700 transition-colors"
                   >
                     Automated Collection
                   </a>
                   <a
                     href="#usage"
-                    className="block text-sm text-gray-700 transition-colors hover:text-primary"
+                    className="hover:text-primary block text-sm text-gray-700 transition-colors"
                   >
                     Use of Information
                   </a>
                   <a
                     href="#sharing"
-                    className="block text-sm text-gray-700 transition-colors hover:text-primary"
+                    className="hover:text-primary block text-sm text-gray-700 transition-colors"
                   >
                     Sharing Information
                   </a>
                   <a
                     href="#cookies"
-                    className="block text-sm text-gray-700 transition-colors hover:text-primary"
+                    className="hover:text-primary block text-sm text-gray-700 transition-colors"
                   >
                     Cookies and Tracking
                   </a>
                   <a
                     href="#security"
-                    className="block text-sm text-gray-700 transition-colors hover:text-primary"
+                    className="hover:text-primary block text-sm text-gray-700 transition-colors"
                   >
                     Data Security
                   </a>
                   <a
                     href="#retention"
-                    className="block text-sm text-gray-700 transition-colors hover:text-primary"
+                    className="hover:text-primary block text-sm text-gray-700 transition-colors"
                   >
                     Data Retention
                   </a>
                   <a
                     href="#rights"
-                    className="block text-sm text-gray-700 transition-colors hover:text-primary"
+                    className="hover:text-primary block text-sm text-gray-700 transition-colors"
                   >
                     Your Rights
                   </a>
                   <a
                     href="#children"
-                    className="block text-sm text-gray-700 transition-colors hover:text-primary"
+                    className="hover:text-primary block text-sm text-gray-700 transition-colors"
                   >
                     Children&apos;s Privacy
                   </a>
                   <a
                     href="#changes"
-                    className="block text-sm text-gray-700 transition-colors hover:text-primary"
+                    className="hover:text-primary block text-sm text-gray-700 transition-colors"
                   >
                     Changes
                   </a>
                   <a
                     href="#contact"
-                    className="block text-sm text-gray-700 transition-colors hover:text-primary"
+                    className="hover:text-primary block text-sm text-gray-700 transition-colors"
                   >
                     Contact Us
                   </a>

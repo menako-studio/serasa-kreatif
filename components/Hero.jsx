@@ -136,8 +136,10 @@ export default function Hero() {
   const activeSlide = slides[currentSlide]
 
   return (
-    <section className="relative h-auto min-h-[90vh] w-full overflow-hidden bg-primary text-white md:min-h-screen lg:h-auto lg:min-h-screen">
-      <AnimatePresence mode="wait">
+    <section className="bg-primary relative h-auto min-h-[90vh] w-full overflow-hidden text-white md:min-h-screen lg:h-auto lg:min-h-screen">
+      {/* initial={false}: render the first slide in its final state so the H1/LCP is visible in the
+          server HTML instead of waiting for hydration to animate opacity 0 -> 1. */}
+      <AnimatePresence mode="wait" initial={false}>
         {currentSlide === 0 ? (
           <motion.div
             key="slide-0"
@@ -150,7 +152,7 @@ export default function Hero() {
             <div className="container-custom w-full">
               {/* Headline */}
               <motion.div
-                initial={{ opacity: 0, y: 20 }}
+                initial={false}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6 }}
                 className="mb-6 md:mb-8 lg:mb-8 xl:mb-10"
@@ -199,7 +201,7 @@ export default function Hero() {
 
               {/* Mosaic Grid Hook */}
               <motion.div
-                initial={{ opacity: 0, y: 20 }}
+                initial={false}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.2 }}
                 className="grid grid-cols-8 gap-2 md:gap-3"
@@ -220,11 +222,10 @@ export default function Hero() {
                         className="object-cover transition-transform duration-500 group-hover:scale-105"
                         sizes={item.sizes}
                         priority={item.priority}
-                        quality={100}
                       />
                       {/* Gradient Overlay & Content on Hover */}
                       <div className="absolute inset-0 flex flex-col justify-end bg-gradient-to-t from-black/90 via-black/30 to-transparent p-3 opacity-0 transition-opacity duration-300 group-hover:opacity-100 md:p-4">
-                        <span className="mb-1 font-mono text-[9px] font-semibold uppercase tracking-wider text-brand-teal">
+                        <span className="text-brand-teal mb-1 font-mono text-[9px] font-semibold uppercase tracking-wider">
                           {item.tag}
                         </span>
                         <h4 className="text-xs font-black uppercase leading-tight tracking-tight text-white md:text-sm">
@@ -243,10 +244,10 @@ export default function Hero() {
                   <Link href="/portfolio" className="group block h-full">
                     <div className="hover:bg-brand-pink group-hover:bg-brand-pink relative flex aspect-[4/3] h-full items-center justify-center rounded-xl bg-amber-50 p-6 transition-all duration-300 lg:aspect-[16/10]">
                       <div className="text-center">
-                        <p className="font-sans text-xs font-black uppercase tracking-wider text-primary transition-colors duration-300 group-hover:text-white md:text-sm">
+                        <p className="text-primary font-sans text-xs font-black uppercase tracking-wider transition-colors duration-300 group-hover:text-white md:text-sm">
                           {language === 'id' ? 'Semua Proyek' : 'All Projects'}
                         </p>
-                        <span className="mt-1 block text-[10px] text-primary/60 transition-colors duration-300 group-hover:text-white/80">
+                        <span className="text-primary/60 mt-1 block text-[10px] transition-colors duration-300 group-hover:text-white/80">
                           {language === 'id' ? 'Lihat Portofolio →' : 'View Portfolio →'}
                         </span>
                       </div>
@@ -275,9 +276,9 @@ export default function Hero() {
                 alt={activeSlide.alt}
                 fill
                 style={{ objectFit: 'contain' }}
+                sizes="100vw"
                 className="animate-fade-in"
                 priority
-                quality={100}
               />
             </div>
             {/* Background image Desktop */}
@@ -287,9 +288,9 @@ export default function Hero() {
                 alt={activeSlide.alt}
                 fill
                 style={{ objectFit: 'contain' }}
+                sizes="100vw"
                 className="animate-fade-in"
                 priority
-                quality={100}
               />
             </div>
 

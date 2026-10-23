@@ -27,7 +27,6 @@ export default function WorkCard({ work }) {
           fill
           className="object-cover transition-transform duration-500 group-hover:scale-105"
           sizes="(max-width: 768px) 100vw, 50vw"
-          quality={100}
         />
       </div>
 
@@ -35,7 +34,7 @@ export default function WorkCard({ work }) {
         <div className="text-brand-pink mb-1 text-xs font-bold uppercase tracking-wider">
           {work.category}
         </div>
-        <h3 className="font-sans text-lg font-black uppercase text-primary">{work.title}</h3>
+        <h3 className="text-primary font-sans text-lg font-black uppercase">{work.title}</h3>
         <p className="mt-2 text-sm text-gray-600">{work.description}</p>
       </div>
     </Link>

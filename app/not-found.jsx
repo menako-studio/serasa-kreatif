@@ -2,7 +2,7 @@ import Link from 'next/link'
 import NavBar from '@/components/NavBar'
 
 export const metadata = {
-  title: '404 — Halaman Tidak Ditemukan | Serasa Kreatif',
+  title: '404 — Halaman Tidak Ditemukan',
   description: 'Halaman yang Anda cari tidak ditemukan. Kembali ke beranda Serasa Kreatif.',
   robots: {
     index: false,
@@ -24,7 +24,7 @@ export default function NotFound() {
           </h1>
 
           {/* Message */}
-          <div className="mb-12 max-w-2xl border-l-4 border-brand-teal pl-6">
+          <div className="border-brand-teal mb-12 max-w-2xl border-l-4 pl-6">
             <h2 className="font-display mb-4 text-3xl font-black uppercase leading-tight text-gray-900 md:text-4xl lg:text-5xl">
               Page not found –
             </h2>
@@ -52,13 +52,13 @@ function NavLink({ href, children }) {
   return (
     <Link
       href={href}
-      className="group flex items-center justify-between border-b border-gray-200 pb-4 transition-colors hover:border-brand-teal"
+      className="hover:border-brand-teal group flex items-center justify-between border-b border-gray-200 pb-4 transition-colors"
     >
-      <span className="text-xl font-bold uppercase tracking-wide transition-colors group-hover:text-brand-teal md:text-2xl">
+      <span className="group-hover:text-brand-teal text-xl font-bold uppercase tracking-wide transition-colors md:text-2xl">
         {children}
       </span>
       <svg
-        className="h-6 w-6 transition-transform group-hover:translate-x-2 group-hover:text-brand-teal md:h-8 md:w-8"
+        className="group-hover:text-brand-teal h-6 w-6 transition-transform group-hover:translate-x-2 md:h-8 md:w-8"
         fill="none"
         stroke="currentColor"
         viewBox="0 0 24 24"

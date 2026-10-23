@@ -11,12 +11,12 @@ export default function CaseCard({ slug, title, client, category, image, descrip
             src={image}
             alt={title}
             fill
+            sizes="(min-width: 768px) 50vw, 100vw"
             className="object-cover transition-transform duration-500 group-hover:scale-110"
-            quality={100}
           />
           {/* Category tag */}
           <div className="absolute left-4 top-4 rounded-full bg-white/90 px-4 py-2 backdrop-blur-sm">
-            <span className="text-sm font-medium text-primary">{category}</span>
+            <span className="text-primary text-sm font-medium">{category}</span>
           </div>
         </div>
 
@@ -46,7 +46,7 @@ export default function CaseCard({ slug, title, client, category, image, descrip
           )}
 
           {/* CTA */}
-          <div className="flex items-center gap-2 pt-2 font-medium text-primary transition-all group-hover:gap-4">
+          <div className="text-primary flex items-center gap-2 pt-2 font-medium transition-all group-hover:gap-4">
             <span>View Case Study</span>
             <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path

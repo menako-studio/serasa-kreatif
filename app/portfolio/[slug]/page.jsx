@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { caseStudies } from '@/lib/case-data'
 import PortfolioVideoGrid from '@/components/PortfolioVideoGrid'
 import BreadcrumbSchema from '@/components/BreadcrumbSchema'
+import { buildMetadata, IDS } from '@/lib/seo'
 
 export async function generateStaticParams() {
   return caseStudies.map((study) => ({
@@ -27,39 +28,19 @@ export async function generateMetadata({ params }) {
     .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
     .join(' ')
 
-  return {
-    title: `${caseStudy.client} — ${formattedCategory} Case Study`,
-    description: caseStudy.description,
-    keywords: [
-      `case study ${caseStudy.client.toLowerCase()}`,
-      caseStudy.category.toLowerCase(),
-      'portfolio serasa kreatif',
-      'studi kasus umkm',
-      ...caseStudy.tags.map((tag) => tag.toLowerCase()),
-    ],
-    openGraph: {
-      title: `${caseStudy.client} — ${caseStudy.title}`,
-      description: caseStudy.description,
-      images: [
-        {
-          url: caseStudy.image,
-          width: 1200,
-          height: 630,
-          alt: `${caseStudy.client} — ${caseStudy.title}`,
-        },
-      ],
-      type: 'article',
+  return buildMetadata({
+    // Short title: the brand suffix is appended by the root template (keeps it under ~60 chars).
+    title: `Studi Kasus ${caseStudy.client}`,
+    description: `${formattedCategory}: ${caseStudy.description}`.slice(0, 160),
+    path: `/portfolio/${caseStudy.slug}`,
+    type: 'article',
+    image: {
+      url: caseStudy.image,
+      width: 1200,
+      height: 630,
+      alt: `${caseStudy.client} — ${caseStudy.title}`,
     },
-    twitter: {
-      card: 'summary_large_image',
-      title: `${caseStudy.client} — ${caseStudy.title}`,
-      description: caseStudy.description,
-      images: [caseStudy.image],
-    },
-    alternates: {
-      canonical: `https://serasakreatif.id/portfolio/${caseStudy.slug}`,
-    },
-  }
+  })
 }
 
 function CaseStudySchema({ caseStudy }) {
@@ -70,19 +51,9 @@ function CaseStudySchema({ caseStudy }) {
     name: `${caseStudy.client} Case Study`,
     description: caseStudy.description,
     image: caseStudy.image,
-    creator: {
-      '@type': 'Organization',
-      name: 'Serasa Kreatif',
-      url: 'https://serasakreatif.id',
-    },
-    publisher: {
-      '@type': 'Organization',
-      name: 'Serasa Kreatif',
-      logo: {
-        '@type': 'ImageObject',
-        url: 'https://serasakreatif.id/assets/images/logo-serasa.png',
-      },
-    },
+    inLanguage: 'id-ID',
+    creator: { '@id': IDS.business },
+    publisher: { '@id': IDS.business },
     about: {
       '@type': 'Thing',
       name: caseStudy.category,
@@ -123,7 +94,7 @@ export default function CaseDetailPage({ params }) {
           fill
           className="object-cover opacity-50"
           priority
-          quality={100}
+          sizes="100vw"
         />
 
         <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent" />
@@ -153,7 +124,7 @@ export default function CaseDetailPage({ params }) {
           </div>
 
           {/* Title - Extra Large */}
-          <h1 className="font-display mb-4 text-4xl font-black uppercase leading-[0.95] tracking-tight text-brand-teal md:text-5xl lg:text-6xl xl:text-7xl">
+          <h1 className="font-display text-brand-teal mb-4 text-4xl font-black uppercase leading-[0.95] tracking-tight md:text-5xl lg:text-6xl xl:text-7xl">
             {caseStudy.title}
           </h1>
 
@@ -171,19 +142,19 @@ export default function CaseDetailPage({ params }) {
           <div className="mb-12 grid gap-8 border-b border-gray-200 pb-12 md:grid-cols-3 md:gap-10">
             <div>
               <h4 className="mb-2 text-xs font-bold uppercase tracking-widest">CLIENT</h4>
-              <p className="font-display text-xl font-black uppercase leading-tight text-primary md:text-2xl">
+              <p className="font-display text-primary text-xl font-black uppercase leading-tight md:text-2xl">
                 {caseStudy.client}
               </p>
             </div>
             <div>
               <h4 className="mb-2 text-xs font-bold uppercase tracking-widest">TIMELINE</h4>
-              <p className="font-display text-xl font-black uppercase leading-tight text-primary md:text-2xl">
+              <p className="font-display text-primary text-xl font-black uppercase leading-tight md:text-2xl">
                 {caseStudy.timeline}
               </p>
             </div>
             <div>
               <h4 className="mb-2 text-xs font-bold uppercase tracking-widest">OUR ROLE</h4>
-              <p className="font-display text-xl font-black uppercase leading-tight text-primary md:text-2xl">
+              <p className="font-display text-primary text-xl font-black uppercase leading-tight md:text-2xl">
                 {caseStudy.role}
               </p>
             </div>
@@ -220,10 +191,10 @@ export default function CaseDetailPage({ params }) {
       {/* The Challenge - White */}
       <section className="bg-white py-16 md:py-24">
         <div className="container-custom max-w-4xl">
-          <h2 className="font-display mb-8 text-3xl font-black uppercase text-primary md:text-4xl lg:text-5xl">
+          <h2 className="font-display text-primary mb-8 text-3xl font-black uppercase md:text-4xl lg:text-5xl">
             THE CHALLENGE
           </h2>
-          <p className="text-lg leading-relaxed text-primary md:text-xl md:leading-relaxed">
+          <p className="text-primary text-lg leading-relaxed md:text-xl md:leading-relaxed">
             {caseStudy.challenge}
           </p>
         </div>
@@ -234,10 +205,10 @@ export default function CaseDetailPage({ params }) {
         <section className="relative h-[60vh] min-h-[500px] md:h-[80vh]">
           <Image
             src={caseStudy.gallery[0]}
-            alt={`${caseStudy.title} - Image 1`}
+            alt={`${caseStudy.client} — ${caseStudy.title} (dokumentasi proyek 1)`}
             fill
+            sizes="100vw"
             className="object-cover"
-            quality={100}
           />
         </section>
       )}
@@ -245,10 +216,10 @@ export default function CaseDetailPage({ params }) {
       {/* Our Approach - White */}
       <section className="bg-white py-16 md:py-24">
         <div className="container-custom max-w-4xl">
-          <h2 className="font-display mb-8 text-3xl font-black uppercase text-primary md:text-4xl lg:text-5xl">
+          <h2 className="font-display text-primary mb-8 text-3xl font-black uppercase md:text-4xl lg:text-5xl">
             OUR APPROACH
           </h2>
-          <p className="text-lg leading-relaxed text-primary md:text-xl md:leading-relaxed">
+          <p className="text-primary text-lg leading-relaxed md:text-xl md:leading-relaxed">
             {caseStudy.approach}
           </p>
         </div>
@@ -263,19 +234,19 @@ export default function CaseDetailPage({ params }) {
             <div className="relative h-[50vh] min-h-[400px] md:h-[70vh]">
               <Image
                 src={caseStudy.gallery[1]}
-                alt={`${caseStudy.title} - Image 2`}
+                alt={`${caseStudy.client} — ${caseStudy.title} (dokumentasi proyek 2)`}
                 fill
+                sizes="(min-width: 768px) 50vw, 100vw"
                 className="object-cover"
-                quality={100}
               />
             </div>
             <div className="relative h-[50vh] min-h-[400px] md:h-[70vh]">
               <Image
                 src={caseStudy.gallery[2]}
-                alt={`${caseStudy.title} - Image 3`}
+                alt={`${caseStudy.client} — ${caseStudy.title} (dokumentasi proyek 3)`}
                 fill
+                sizes="(min-width: 768px) 50vw, 100vw"
                 className="object-cover"
-                quality={100}
               />
             </div>
           </section>
@@ -285,10 +256,10 @@ export default function CaseDetailPage({ params }) {
       {/* The Results - Black */}
       <section className="bg-brand-teal py-16 text-white md:py-24">
         <div className="container-custom max-w-4xl">
-          <h2 className="font-display mb-8 text-3xl font-black uppercase text-primary md:text-4xl lg:text-5xl">
+          <h2 className="font-display text-primary mb-8 text-3xl font-black uppercase md:text-4xl lg:text-5xl">
             THE RESULTS
           </h2>
-          <p className="mb-10 text-lg leading-relaxed text-primary md:mb-12 md:text-xl md:leading-relaxed">
+          <p className="text-primary mb-10 text-lg leading-relaxed md:mb-12 md:text-xl md:leading-relaxed">
             {caseStudy.results}
           </p>
 
@@ -313,10 +284,10 @@ export default function CaseDetailPage({ params }) {
             <section key={index} className="relative h-[60vh] min-h-[500px] md:h-[80vh]">
               <Image
                 src={image}
-                alt={`${caseStudy.title} - Image ${index + 4}`}
+                alt={`${caseStudy.client} — ${caseStudy.title} (dokumentasi proyek ${index + 4})`}
                 fill
+                sizes="100vw"
                 className="object-cover"
-                quality={100}
               />
             </section>
           ))}

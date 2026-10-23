@@ -7,12 +7,11 @@ import ServiceAccordionItem from '@/components/ServiceAccordionItem'
 import { trackEngagement } from '@/lib/analytics'
 import { useLanguage } from '@/components/LanguageContext'
 
-export default function ServicesPageClient({ lang }) {
+export default function ServicesPageClient() {
   const { language, dict } = useLanguage()
   const [openAccordion, setOpenAccordion] = useState(null)
 
-  const activeLang = lang || language
-  const isIndo = activeLang === 'id'
+  const isIndo = language === 'id'
   const servicesPageData = dict?.servicesPage || {}
 
   const toggleAccordion = (index) => {
@@ -26,15 +25,21 @@ export default function ServicesPageClient({ lang }) {
   }
 
   return (
-    <div className="min-h-screen bg-primary">
+    <div className="bg-primary min-h-screen">
       {/* Hero Section */}
       <section className="section-padding pb-20 pt-32 text-white md:pt-40 lg:pt-44">
         <div className="container-custom">
-          <SectionHeading white className="mb-8 text-4xl md:text-5xl lg:text-6xl">
+          {/* The page previously had no <h1> (only an h2 holding a long sentence). */}
+          <SectionHeading as="h1" white className="mb-8 text-4xl md:text-5xl lg:text-6xl">
+            {isIndo
+              ? 'Jasa Social Media, Branding & Iklan Digital di Jakarta'
+              : 'Social Media, Branding & Digital Advertising Services in Jakarta'}
+          </SectionHeading>
+          <p className="max-w-3xl text-xl leading-relaxed text-white/80 md:text-2xl">
             {isIndo
               ? 'Kami memadukan strategi dan kreativitas untuk menciptakan pengalaman digital yang mendorong penjualan dan pertumbuhan bisnis Anda.'
               : 'We blend strategy and storytelling to create digital experiences that drive sales and growth.'}
-          </SectionHeading>
+          </p>
         </div>
       </section>
 
@@ -66,12 +71,12 @@ export default function ServicesPageClient({ lang }) {
       </section>
 
       {/* CTA Section */}
-      <section className="section-padding border-t border-white/10 bg-brand-teal py-20 text-white">
+      <section className="section-padding bg-brand-teal border-t border-white/10 py-20 text-white">
         <div className="container-custom text-center">
-          <h2 className="font-display mb-6 text-4xl font-bold text-primary md:text-5xl lg:text-6xl">
+          <h2 className="font-display text-primary mb-6 text-4xl font-bold md:text-5xl lg:text-6xl">
             {isIndo ? 'Siap untuk Mulai?' : 'Ready to Start?'}
           </h2>
-          <p className="mx-auto mb-8 max-w-2xl text-lg text-primary md:text-xl">
+          <p className="text-primary mx-auto mb-8 max-w-2xl text-lg md:text-xl">
             {isIndo
               ? 'Mari diskusikan bagaimana layanan kami dapat membantu brand Anda mencapai tujuannya.'
               : "Let's discuss how our services can help your brand achieve its goals."}
@@ -79,7 +84,7 @@ export default function ServicesPageClient({ lang }) {
 
           <a
             href="/contact"
-            className="inline-flex items-center border-2 border-primary px-8 py-4 font-bold uppercase text-primary transition-all duration-300 hover:bg-white hover:text-primary"
+            className="border-primary text-primary hover:text-primary inline-flex items-center border-2 px-8 py-4 font-bold uppercase transition-all duration-300 hover:bg-white"
           >
             {dict?.nav?.contact || 'Contact Us'}
           </a>

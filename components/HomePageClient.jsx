@@ -21,12 +21,60 @@ const workShowcase = caseStudies.slice(0, 4).map((study) => ({
   description: study.description,
 }))
 
-export default function HomePageClient({ lang }) {
+// Internal links to the SEO landing page + articles. These pages previously had no inbound links
+// from the nav, footer or homepage, so crawlers could only discover them through the sitemap.
+const guideLinks = [
+  {
+    href: '/agensi-kreatif-bintaro',
+    id: {
+      title: 'Agensi Kreatif Bintaro & Tangerang Selatan',
+      desc: 'Layanan kami untuk bisnis di Bintaro dan Jabodetabek.',
+    },
+    en: {
+      title: 'Creative Agency in Bintaro & South Tangerang',
+      desc: 'Our services for businesses in Bintaro and Greater Jakarta.',
+    },
+  },
+  {
+    href: '/blog/apa-itu-agensi-kreatif',
+    id: {
+      title: 'Apa Itu Agensi Kreatif?',
+      desc: 'Fungsi, layanan, dan manfaatnya untuk pertumbuhan bisnis.',
+    },
+    en: {
+      title: 'What Is a Creative Agency?',
+      desc: 'Functions, services, and benefits for business growth (Indonesian).',
+    },
+  },
+  {
+    href: '/blog/jasa-social-media-management-jakarta',
+    id: {
+      title: 'Jasa Social Media Management Jakarta',
+      desc: 'Lingkup kerja, komponen harga, dan cara memilih agensi.',
+    },
+    en: {
+      title: 'Social Media Management in Jakarta',
+      desc: 'Scope of work, pricing components, and how to choose (Indonesian).',
+    },
+  },
+  {
+    href: '/blog/cara-memilih-agensi-sosial-media',
+    id: {
+      title: '7 Tips Memilih Agensi Sosial Media',
+      desc: 'Kriteria penting agar tidak salah pilih partner pemasaran.',
+    },
+    en: {
+      title: '7 Tips for Choosing a Social Media Agency',
+      desc: 'Key criteria for choosing a marketing partner (Indonesian).',
+    },
+  },
+]
+
+export default function HomePageClient() {
   const { language, dict } = useLanguage()
   const [openAccordion, setOpenAccordion] = useState(null)
 
-  const activeLang = lang || language
-  const isIndo = activeLang === 'id'
+  const isIndo = language === 'id'
 
   const currentDict = dict || {}
   const servicesData = currentDict.services || {}
@@ -105,6 +153,32 @@ export default function HomePageClient({ lang }) {
         </div>
       </section>
 
+      {/* Guides & local landing page — crawlable internal links (server-rendered in the HTML) */}
+      <section className="section-padding bg-neutral-50">
+        <div className="container-custom">
+          <h2 className="text-primary mb-8 font-sans text-2xl font-black uppercase tracking-tight md:text-3xl">
+            {isIndo ? 'Panduan & Insight Agensi Kreatif' : 'Guides & Insights'}
+          </h2>
+          <div className="grid gap-6 md:grid-cols-2">
+            {guideLinks.map((item) => {
+              const copy = isIndo ? item.id : item.en
+              return (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className="hover:border-primary group block border border-neutral-200 bg-white p-6 transition-colors"
+                >
+                  <h3 className="text-primary mb-2 font-sans text-lg font-bold group-hover:underline">
+                    {copy.title}
+                  </h3>
+                  <p className="text-sm text-neutral-600">{copy.desc}</p>
+                </Link>
+              )
+            })}
+          </div>
+        </div>
+      </section>
+
       {/* Join Section */}
       <section className="section-padding bg-brand-teal text-white">
         <div className="container-custom">
@@ -122,7 +196,7 @@ export default function HomePageClient({ lang }) {
             </div>
             <PrimaryButton
               href="/contact"
-              className="border-white bg-white text-primary hover:text-white"
+              className="text-primary border-white bg-white hover:text-white"
             >
               {contactData.ctaStartProject || "LET'S TALK"}
             </PrimaryButton>
@@ -148,18 +222,18 @@ function WorkGrid({ works }) {
 function ContactInfoItem({ label, value, href, isExternal }) {
   return (
     <div>
-      <div className="mb-2 text-xs font-bold uppercase tracking-wider text-primary">{label}</div>
+      <div className="text-primary mb-2 text-xs font-bold uppercase tracking-wider">{label}</div>
       {href ? (
         <Link
           href={href}
           target={isExternal ? '_blank' : undefined}
           rel={isExternal ? 'noopener noreferrer' : undefined}
-          className="hover:text-brand-pink text-lg text-primary underline transition-colors"
+          className="hover:text-brand-pink text-primary text-lg underline transition-colors"
         >
           {value}
         </Link>
       ) : (
-        <div className="text-lg text-primary">{value}</div>
+        <div className="text-primary text-lg">{value}</div>
       )}
     </div>
   )

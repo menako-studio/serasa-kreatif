@@ -1,231 +1,135 @@
-import Image from 'next/image'
+import Link from 'next/link'
 import BreadcrumbSchema from '@/components/BreadcrumbSchema'
+import { buildMetadata, IDS, SITE_URL } from '@/lib/seo'
 
-export const metadata = {
-  title: 'Blog & Tips Social Media — Serasa Kreatif',
+export const metadata = buildMetadata({
+  title: 'Blog & Tips Social Media dan Branding',
   description:
-    'Artikel, tips, dan insight dari Serasa Kreatif tentang social media management, branding, dan digital marketing untuk bisnis Indonesia. Belajar dari agensi kreatif Bintaro.',
-  keywords: [
-    'tips social media management indonesia',
-    'blog agensi kreatif jakarta',
-    'artikel branding umkm',
-    'digital marketing insights indonesia',
-    'panduan social media bisnis',
-  ],
-  alternates: {
-    canonical: 'https://serasakreatif.id/blog',
-    languages: {
-      'en-US': 'https://serasakreatif.id/blog',
-      'id-ID': 'https://serasakreatif.id/blog?lang=id',
-      'x-default': 'https://serasakreatif.id/blog',
-    },
-  },
-}
+    'Artikel, panduan, dan insight dari Serasa Kreatif tentang agensi kreatif, social media management, branding, dan digital marketing untuk bisnis di Jakarta dan Jabodetabek.',
+  path: '/blog',
+})
 
-// Sample news data - fully translated to English
-const newsData = [
+// Real articles only. The previous index listed eight placeholder posts (stock photos, an
+// invented "Best Creative Agency Award 2025", "new Jakarta office") that all resolved to one mock
+// article via a catch-all /blog/[slug] route. Add new articles here when they are published.
+const articles = [
   {
-    id: 1,
-    title: 'Serasa Kreatif Launches Brand Identity Campaign for Local Clients',
-    date: '12.08.25',
-    category: 'Brand Identity',
-    image: 'https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=800&h=600&fit=crop',
+    slug: 'apa-itu-agensi-kreatif',
+    title: 'Apa Itu Agensi Kreatif? Fungsi, Layanan, dan Manfaat untuk Bisnis Anda',
+    description:
+      'Panduan lengkap memahami apa itu agensi kreatif (creative agency), bedanya dengan advertising agency biasa, jenis layanan, serta manfaatnya untuk pertumbuhan bisnis Anda.',
+    date: '2026-07-23',
+    dateLabel: '23 Juli 2026',
+    category: 'Panduan',
   },
   {
-    id: 2,
-    title: 'Creative Content Strategies in the Digital Era',
-    date: '11.28.25',
-    category: 'Digital Strategy',
-    image: 'https://images.unsplash.com/photo-1553877522-43269d4ea984?w=800&h=600&fit=crop',
+    slug: 'jasa-social-media-management-jakarta',
+    title: 'Jasa Social Media Management Jakarta: Panduan & Estimasi Harga 2026',
+    description:
+      'Panduan lengkap jasa social media management di Jakarta & Bintaro. Ketahui lingkup kerja, komponen harga, manfaat untuk bisnis, dan cara memilih agensi yang tepat.',
+    date: '2026-07-23',
+    dateLabel: '23 Juli 2026',
+    category: 'Social Media',
   },
   {
-    id: 3,
-    title: 'Serasa Kreatif Wins Best Creative Agency Award 2025',
-    date: '11.15.25',
-    category: 'Awards',
-    image: 'https://images.unsplash.com/photo-1557804506-669a67965ba0?w=800&h=600&fit=crop',
-  },
-  {
-    id: 4,
-    title: 'The Future of Brand Design: Trends and Predictions',
-    date: '10.30.25',
-    category: 'Insights',
-    image: 'https://images.unsplash.com/photo-1561070791-2526d30994b5?w=800&h=600&fit=crop',
-  },
-  {
-    id: 5,
-    title: 'Serasa Kreatif Opens New Office in Jakarta',
-    date: '10.18.25',
-    category: 'Company News',
-    image: 'https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&h=600&fit=crop',
-  },
-  {
-    id: 6,
-    title: 'When Brands Become Real: Digital Campaign Case Study',
-    date: '10.05.25',
-    category: 'Case Study',
-    image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop',
-  },
-  {
-    id: 7,
-    title: 'Workshop: Building a Strong Brand Identity',
-    date: '09.22.25',
-    category: 'Events',
-    image: 'https://images.unsplash.com/photo-1475721027785-f74eccf877e2?w=800&h=600&fit=crop',
-  },
-  {
-    id: 8,
-    title: 'How Serasa Kreatif Leverages AI for Better Campaigns',
-    date: '09.08.25',
-    category: 'Technology',
-    image: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&h=600&fit=crop',
+    slug: 'cara-memilih-agensi-sosial-media',
+    title: '7 Tips Cara Memilih Agensi Sosial Media yang Tepat untuk Bisnis Anda',
+    description:
+      'Panduan praktis cara memilih agensi sosial media terbaik di Jakarta. Hindari salah pilih partner pemasaran dengan 7 kriteria penting ini.',
+    date: '2026-07-23',
+    dateLabel: '23 Juli 2026',
+    category: 'Tips',
   },
 ]
 
-const categories = [
-  'All',
-  'Brand Identity',
-  'Digital Strategy',
-  'Awards',
-  'Insights',
-  'Company News',
-  'Case Study',
-  'Events',
-  'Technology',
-]
-const years = ['2025', '2024', '2023']
-
-export default function NewsPage({ searchParams }) {
-  const lang = searchParams?.lang === 'id' ? 'id' : 'en'
-  const isIndo = lang === 'id'
+function BlogSchema() {
+  const schema = {
+    '@context': 'https://schema.org',
+    '@type': 'Blog',
+    '@id': `${SITE_URL}/blog#blog`,
+    name: 'Blog Serasa Kreatif',
+    url: `${SITE_URL}/blog`,
+    inLanguage: 'id-ID',
+    publisher: { '@id': IDS.business },
+    isPartOf: { '@id': IDS.website },
+    blogPost: articles.map((a) => ({
+      '@type': 'BlogPosting',
+      headline: a.title,
+      url: `${SITE_URL}/blog/${a.slug}`,
+      datePublished: a.date,
+    })),
+  }
 
   return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+    />
+  )
+}
+
+export default function BlogPage() {
+  return (
     <div className="bg-white text-neutral-900 antialiased">
+      <BlogSchema />
       <BreadcrumbSchema
         items={[
-          { name: 'Beranda', url: 'https://serasakreatif.id' },
-          { name: 'Blog', url: 'https://serasakreatif.id/blog' },
+          { name: 'Beranda', url: SITE_URL },
+          { name: 'Blog', url: `${SITE_URL}/blog` },
         ]}
       />
+
       {/* Hero */}
       <section className="bg-primary pb-16 pt-32 text-white md:pb-24 md:pt-40 lg:pt-44">
         <div className="container-custom">
           <h1 className="font-sans text-5xl font-black uppercase tracking-tight md:text-7xl lg:text-8xl">
-            {isIndo ? 'BLOG & WAWASAN' : 'BLOG & INSIGHTS'}
+            BLOG & WAWASAN
           </h1>
+          <p className="mt-6 max-w-2xl text-lg text-gray-300 md:text-xl">
+            Panduan seputar agensi kreatif, social media management, dan branding untuk bisnis di
+            Jakarta, Bintaro, dan Jabodetabek.
+          </p>
         </div>
       </section>
 
-      {/* Main Content */}
+      {/* Articles */}
       <section className="section-padding bg-white">
         <div className="container-custom">
-          <div className="grid gap-12 lg:grid-cols-12">
-            {/* Sidebar Filters */}
-            <aside className="lg:col-span-3">
-              <div className="sticky top-24 space-y-8">
-                {/* Sort By */}
-                <div>
-                  <h3 className="mb-4 font-sans text-xs font-bold uppercase tracking-wider text-gray-500">
-                    {isIndo ? 'Urutkan' : 'Sort By'}
-                  </h3>
-                  <div className="space-y-2">
-                    <button className="hover:text-brand-pink block w-full text-left text-sm text-gray-900 transition-colors">
-                      {isIndo ? 'Semua' : 'All'}
-                    </button>
-                  </div>
-                </div>
+          <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-3">
+            {articles.map((article) => (
+              <article
+                key={article.slug}
+                className="border-primary group flex flex-col border-t-4 pt-6"
+              >
+                <p className="mb-3 text-xs font-bold uppercase tracking-wider text-gray-500">
+                  {article.category} · <time dateTime={article.date}>{article.dateLabel}</time>
+                </p>
+                <h2 className="text-primary mb-3 font-sans text-xl font-bold leading-tight tracking-tight">
+                  <Link href={`/blog/${article.slug}`} className="hover:underline">
+                    {article.title}
+                  </Link>
+                </h2>
+                <p className="mb-6 flex-1 text-sm leading-relaxed text-gray-600">
+                  {article.description}
+                </p>
+                <Link
+                  href={`/blog/${article.slug}`}
+                  className="text-primary text-sm font-bold uppercase tracking-wider underline"
+                >
+                  Baca Artikel
+                </Link>
+              </article>
+            ))}
+          </div>
 
-                {/* Categories */}
-                <div>
-                  <h3 className="mb-4 font-sans text-xs font-bold uppercase tracking-wider text-gray-500">
-                    {isIndo ? 'Kategori' : 'Categories'}
-                  </h3>
-                  <div className="space-y-2">
-                    {categories.map((category) => (
-                      <button
-                        key={category}
-                        className="hover:text-brand-pink block w-full text-left text-sm text-gray-700 transition-colors"
-                      >
-                        {category}
-                      </button>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Years */}
-                <div>
-                  <h3 className="mb-4 font-sans text-xs font-bold uppercase tracking-wider text-gray-500">
-                    {isIndo ? 'Tahun' : 'Year'}
-                  </h3>
-                  <div className="space-y-2">
-                    {years.map((year) => (
-                      <button
-                        key={year}
-                        className="hover:text-brand-pink block w-full text-left text-sm text-gray-700 transition-colors"
-                      >
-                        {year}
-                      </button>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </aside>
-
-            {/* News Grid */}
-            <div className="lg:col-span-9">
-              <div className="grid gap-12 md:grid-cols-2">
-                {newsData.map((news) => (
-                  <article key={news.id} className="group">
-                    <a href={`/blog/${news.id}${isIndo ? '?lang=id' : ''}`} className="block">
-                      {/* Image */}
-                      <div className="relative mb-4 aspect-[4/3] overflow-hidden bg-gray-900">
-                        <Image
-                          src={news.image}
-                          alt={news.title}
-                          fill
-                          className="object-cover transition-transform duration-500 group-hover:scale-105"
-                        />
-                        {/* Pink accent corner to match Serasa Kreatif style */}
-                        <div className="bg-brand-pink absolute right-0 top-0 z-10 h-12 w-12"></div>
-                      </div>
-
-                      {/* Date */}
-                      <p className="mb-2 text-xs uppercase tracking-wider text-gray-500">
-                        {news.date}
-                      </p>
-
-                      {/* Title */}
-                      <h2 className="group-hover:text-brand-pink mb-2 font-sans text-xl font-bold leading-tight tracking-tight transition-colors">
-                        {news.title}
-                      </h2>
-
-                      {/* Category */}
-                      <p className="text-sm text-gray-600">{news.category}</p>
-                    </a>
-                  </article>
-                ))}
-              </div>
-
-              {/* Load More Button */}
-              <div className="mt-16 flex justify-center border-t border-gray-200 pt-8">
-                <button className="hover:text-brand-pink group flex items-center gap-2 font-sans text-sm font-bold uppercase tracking-wider transition-colors">
-                  <span>{isIndo ? 'Tampilkan Lebih Banyak' : 'Show More'}</span>
-                  <svg
-                    className="h-4 w-4 transition-transform group-hover:translate-y-1"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M19 9l-7 7-7-7"
-                    />
-                  </svg>
-                </button>
-              </div>
-            </div>
+          <div className="mt-16 border-t border-gray-200 pt-8">
+            <p className="text-gray-700">
+              Mencari agensi kreatif di Bintaro?{' '}
+              <Link href="/agensi-kreatif-bintaro" className="text-primary font-bold underline">
+                Lihat layanan kami untuk Bintaro &amp; Tangerang Selatan
+              </Link>
+              .
+            </p>
           </div>
         </div>
       </section>

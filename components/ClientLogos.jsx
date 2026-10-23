@@ -127,7 +127,6 @@ export default function ClientLogos() {
                         height={60}
                         className="max-h-14 max-w-[120px] object-contain"
                         onError={() => setFailed((s) => ({ ...s, [key]: true }))}
-                        quality={95}
                         loading="lazy"
                       />
                     )}
@@ -155,7 +154,6 @@ export default function ClientLogos() {
                         height={60}
                         className="max-h-14 max-w-[120px] object-contain"
                         onError={() => setFailed((s) => ({ ...s, [key]: true }))}
-                        quality={95}
                         loading="lazy"
                       />
                     )}

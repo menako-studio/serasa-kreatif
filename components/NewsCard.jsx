@@ -13,13 +13,12 @@ export default function NewsCard({ news }) {
           fill
           className="object-cover transition-transform duration-500 group-hover:scale-105"
           sizes="(max-width: 768px) 100vw, 25vw"
-          quality={100}
         />
       </div>
       <div className="mb-2 text-xs font-bold uppercase tracking-wider text-gray-500">
         {news.category}
       </div>
-      <h3 className="font-sans text-lg font-black uppercase transition-colors group-hover:text-accent">
+      <h3 className="group-hover:text-accent font-sans text-lg font-black uppercase transition-colors">
         {news.title}
       </h3>
     </div>

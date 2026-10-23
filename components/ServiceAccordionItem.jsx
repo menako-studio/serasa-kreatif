@@ -59,7 +59,7 @@ export default function ServiceAccordionItem({
                       key={d + i}
                       className="flex items-start gap-3 transition-transform duration-200 hover:translate-x-1"
                     >
-                      <span className="mt-1 text-brand-teal">•</span>
+                      <span className="text-brand-teal mt-1">•</span>
                       <span>{d}</span>
                     </li>
                   ))}
@@ -69,7 +69,7 @@ export default function ServiceAccordionItem({
                 <div className="pt-4">
                   <a
                     href={service.link}
-                    className="inline-flex items-center gap-2 bg-brand-teal px-6 py-3 text-xs font-bold uppercase tracking-wider text-primary transition-all duration-300 hover:scale-105 hover:bg-brand-accent"
+                    className="bg-brand-teal text-primary hover:bg-brand-accent inline-flex items-center gap-2 px-6 py-3 text-xs font-bold uppercase tracking-wider transition-all duration-300 hover:scale-105"
                   >
                     <span>Explore {service.brandName || service.title}</span>
                     <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -95,7 +95,6 @@ export default function ServiceAccordionItem({
                   fill
                   className="object-cover transition-transform duration-500 group-hover:scale-105"
                   sizes="(max-width: 768px) 100vw, 50vw"
-                  quality={100}
                 />
               )}
             </div>

@@ -19,6 +19,31 @@ const nextConfig = {
   experimental: {
     optimizePackageImports: ['framer-motion'],
   },
+
+  // SEO: one canonical host. GSC showed https://www.serasakreatif.id/ and http://www.serasakreatif.id/
+  // being served and indexed alongside https://serasakreatif.id/, splitting impressions and link
+  // signals across duplicate URLs. Permanent (308) redirect everything on the www host to the apex.
+  // (http -> https is already enforced by Vercel for custom domains.)
+  async redirects() {
+    return [
+      {
+        source: '/:path*',
+        has: [{ type: 'host', value: 'www.serasakreatif.id' }],
+        destination: 'https://serasakreatif.id/:path*',
+        permanent: true,
+      },
+    ]
+  },
+
+  async headers() {
+    return [
+      {
+        // public/admin.html is a static CMS admin UI: keep it out of the index.
+        source: '/admin.html',
+        headers: [{ key: 'X-Robots-Tag', value: 'noindex, nofollow, noarchive' }],
+      },
+    ]
+  },
 }
 
 // Sentry configuration
@@ -47,4 +72,3 @@ const sentryConfig = {
 }
 
 export default withSentryConfig(nextConfig, sentryConfig)
-

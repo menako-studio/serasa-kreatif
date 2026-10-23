@@ -5,7 +5,21 @@ import TrackedLink from '@/components/TrackedLink'
 import { useLanguage } from '@/components/LanguageContext'
 
 export default function Footer() {
-  const { dict } = useLanguage()
+  const { dict, language } = useLanguage()
+  const isIndo = language === 'id'
+
+  // Sitewide internal links to the key commercial/SEO pages (crawlable <a> in the server HTML).
+  const exploreLinks = [
+    { name: isIndo ? 'Layanan' : 'Services', href: '/services' },
+    { name: isIndo ? 'Portofolio' : 'Portfolio', href: '/portfolio' },
+    { name: isIndo ? 'Cetak Offset B2B' : 'B2B Offset Printing', href: '/services/printing' },
+    {
+      name: isIndo ? 'Agensi Kreatif Bintaro' : 'Creative Agency Bintaro',
+      href: '/agensi-kreatif-bintaro',
+    },
+    { name: 'Blog', href: '/blog' },
+    { name: isIndo ? 'Tentang Kami' : 'About Us', href: '/about' },
+  ]
 
   const footerLinks = {
     legal: [
@@ -15,7 +29,7 @@ export default function Footer() {
   }
 
   return (
-    <footer className="border-t border-primary-dark bg-primary text-white">
+    <footer className="border-primary-dark bg-primary border-t text-white">
       <div className="container-custom py-12">
         <div className="mb-12 grid grid-cols-2 gap-8 md:grid-cols-3">
           {/* Contact Info */}
@@ -24,14 +38,14 @@ export default function Footer() {
               {dict?.contact?.locationLabel || 'CONTACT'}
             </div>
             <div className="space-y-2 text-sm">
-              <p className="text-white">Bintaro, Tangerang Selatan</p>
+              <p className="text-white">Jl. Akasia No.12, Pondok Aren, Tangerang Selatan 15224</p>
               <p className="text-white">
                 <TrackedLink
                   href="tel:+6281288971453"
                   type="tel"
                   label="footer_phone"
                   location="footer"
-                  className="transition-colors hover:text-accent"
+                  className="hover:text-accent transition-colors"
                 >
                   +62 812-8897-1453
                 </TrackedLink>
@@ -42,7 +56,7 @@ export default function Footer() {
                   type="email"
                   label="footer_email"
                   location="footer"
-                  className="transition-colors hover:text-accent"
+                  className="hover:text-accent transition-colors"
                 >
                   serasakreatif.id@gmail.com
                 </TrackedLink>
@@ -55,7 +69,7 @@ export default function Footer() {
                   location="footer"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-gray-300 underline transition-colors hover:text-accent"
+                  className="hover:text-accent text-gray-300 underline transition-colors"
                 >
                   📍 Google Maps Location
                 </TrackedLink>
@@ -66,7 +80,7 @@ export default function Footer() {
                   location="footer"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-gray-300 underline transition-colors hover:text-accent"
+                  className="hover:text-accent text-gray-300 underline transition-colors"
                 >
                   ⭐ Google Business Profile
                 </TrackedLink>
@@ -85,7 +99,7 @@ export default function Footer() {
                 location="footer"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="block text-white transition-colors hover:text-accent"
+                className="hover:text-accent block text-white transition-colors"
               >
                 Instagram
               </TrackedLink>
@@ -96,7 +110,7 @@ export default function Footer() {
                 location="footer"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="block text-white transition-colors hover:text-accent"
+                className="hover:text-accent block text-white transition-colors"
               >
                 TikTok
               </TrackedLink>
@@ -107,7 +121,7 @@ export default function Footer() {
                 location="footer"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="block text-white transition-colors hover:text-accent"
+                className="hover:text-accent block text-white transition-colors"
               >
                 YouTube
               </TrackedLink>
@@ -118,7 +132,7 @@ export default function Footer() {
                 location="footer"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="block text-white transition-colors hover:text-accent"
+                className="hover:text-accent block text-white transition-colors"
               >
                 LinkedIn
               </TrackedLink>
@@ -138,7 +152,7 @@ export default function Footer() {
                 location="footer"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="block text-white transition-colors hover:text-accent"
+                className="hover:text-accent block text-white transition-colors"
               >
                 {dict?.footer?.linkCareers || 'Join Our Team'}
               </TrackedLink>
@@ -146,8 +160,24 @@ export default function Footer() {
           </div>
         </div>
 
+        {/* Explore links */}
+        <nav aria-label={isIndo ? 'Navigasi footer' : 'Footer navigation'} className="mb-8">
+          <ul className="flex flex-wrap gap-x-6 gap-y-2 text-sm">
+            {exploreLinks.map((link) => (
+              <li key={link.href}>
+                <Link
+                  href={link.href}
+                  className="hover:text-accent text-gray-200 transition-colors"
+                >
+                  {link.name}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </nav>
+
         {/* Bottom Bar */}
-        <div className="flex flex-col items-center justify-between gap-4 border-t border-primary-dark pt-8 text-xs text-white md:flex-row">
+        <div className="border-primary-dark flex flex-col items-center justify-between gap-4 border-t pt-8 text-xs text-white md:flex-row">
           <p>
             © {new Date().getFullYear()} PT SELARAS MAKMUR PERKASA.{' '}
             {dict?.footer?.copyright ? 'HAK CIPTA DILINDUNGI.' : 'ALL RIGHTS RESERVED.'}
@@ -157,7 +187,7 @@ export default function Footer() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="uppercase transition-colors hover:text-accent"
+                className="hover:text-accent uppercase transition-colors"
               >
                 {link.name}
               </Link>

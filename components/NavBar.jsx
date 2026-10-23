@@ -33,6 +33,7 @@ export default function NavBar() {
     { name: dict?.nav?.portfolio || 'Portfolio', href: '/portfolio' },
     { name: dict?.nav?.services || 'Services', href: '/services' },
     { name: dict?.nav?.about || 'About', href: '/about' },
+    { name: dict?.nav?.blog || 'Blog', href: '/blog' },
   ]
 
   useEffect(() => {
@@ -78,7 +79,10 @@ export default function NavBar() {
           className="flex items-center space-x-2"
           onClick={() => handleNavClick('Logo Home', '/')}
         >
-          <div className="relative h-20 w-64 transition-all duration-300 md:h-28 md:w-[420px] lg:h-32 lg:w-[500px]">
+          {/* Box is square = the logo's rendered size (object-contain, left-aligned). It used to be
+              256/420/500px wide around a ~80-130px logo, which pushed the nav links and the
+              Contact button past the viewport edge at 1024-1340px once a 4th link was present. */}
+          <div className="relative h-20 w-20 transition-all duration-300 md:h-28 md:w-28 lg:h-32 lg:w-32">
             <Image
               src={
                 isDarkNav
@@ -87,7 +91,9 @@ export default function NavBar() {
               }
               alt="Serasa Kreatif"
               fill={true}
-              quality={100}
+              // The logo is a 1080px square shown at <=128px; without `sizes` Next served the
+              // 100vw (up to ~1200w) variant on every page load.
+              sizes="(min-width: 1024px) 128px, (min-width: 768px) 112px, 80px"
               style={{ objectFit: 'contain', objectPosition: 'left' }}
               priority
             />
@@ -106,7 +112,7 @@ export default function NavBar() {
                     ? 'text-brand-teal underline underline-offset-4'
                     : 'text-brand-pink underline underline-offset-4'
                   : isDarkNav
-                    ? 'text-white hover:text-brand-teal'
+                    ? 'hover:text-brand-teal text-white'
                     : 'hover:text-brand-pink text-primary'
               }`}
             >
@@ -119,7 +125,7 @@ export default function NavBar() {
               window.dispatchEvent(new CustomEvent('open-search'))
             }}
             className={`flex items-center gap-1.5 rounded px-3 py-2 text-sm font-medium uppercase tracking-wider transition-colors ${
-              isDarkNav ? 'text-white hover:text-brand-teal' : 'hover:text-brand-pink text-primary'
+              isDarkNav ? 'hover:text-brand-teal text-white' : 'hover:text-brand-pink text-primary'
             }`}
             aria-label="Search"
           >
@@ -131,7 +137,8 @@ export default function NavBar() {
                 d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
               />
             </svg>
-            <span>Search</span>
+            {/* Text label only from xl: at 1024-1279px it pushed the Contact button off-screen. */}
+            <span className="hidden xl:inline">Search</span>
           </button>
 
           {/* Language Toggle Component (Premium glassmorphic pill) */}
@@ -139,7 +146,7 @@ export default function NavBar() {
             onClick={() => handleLanguageToggle('navbar_desktop')}
             className={`flex items-center gap-1 rounded-full border px-3 py-1.5 text-xs font-bold uppercase tracking-wider transition-all duration-300 ${
               isDarkNav
-                ? 'border-white/20 text-white hover:border-brand-teal'
+                ? 'hover:border-brand-teal border-white/20 text-white'
                 : 'hover:border-brand-pink border-primary/10 text-primary'
             }`}
             aria-label="Switch language"
@@ -174,8 +181,8 @@ export default function NavBar() {
             onClick={() => handleNavClick('Contact CTA Button', '/contact')}
             className={`ml-4 rounded border-2 px-6 py-2 text-sm font-bold uppercase transition-colors ${
               isDarkNav
-                ? 'border-white bg-white text-black hover:border-brand-teal hover:bg-brand-teal hover:text-white'
-                : 'border-primary bg-primary text-white hover:border-brand-teal hover:bg-brand-teal'
+                ? 'hover:border-brand-teal hover:bg-brand-teal border-white bg-white text-black hover:text-white'
+                : 'border-primary bg-primary hover:border-brand-teal hover:bg-brand-teal text-white'
             }`}
           >
             {dict?.nav?.contact || 'Contact Us'}
@@ -203,7 +210,7 @@ export default function NavBar() {
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
         <div
-          className={`mt-4 animate-fade-in border-t border-gray-200 py-6 lg:hidden ${isDarkNav ? 'bg-primary' : 'bg-white'}`}
+          className={`animate-fade-in mt-4 border-t border-gray-200 py-6 lg:hidden ${isDarkNav ? 'bg-primary' : 'bg-white'}`}
         >
           <div className="container-custom flex flex-col space-y-4">
             {navLinks?.map((link) => (
@@ -216,7 +223,7 @@ export default function NavBar() {
                       ? 'text-white'
                       : 'text-black'
                     : isDarkNav
-                      ? 'text-white hover:text-brand-teal'
+                      ? 'hover:text-brand-teal text-white'
                       : 'hover:text-brand-pink text-gray-600'
                 }`}
                 onClick={() => {

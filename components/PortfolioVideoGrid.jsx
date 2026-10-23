@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import LazyVideo from '@/components/LazyVideo'
 
 const getYoutubeEmbedUrl = (url) => {
   if (!url) return null
@@ -76,6 +77,7 @@ export default function PortfolioVideoGrid({ videos = [] }) {
               {/* Video element */}
               {embedUrl ? (
                 <iframe
+                  loading="lazy"
                   src={embedUrl}
                   className="h-full w-full border-0"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -83,11 +85,8 @@ export default function PortfolioVideoGrid({ videos = [] }) {
                   title={`Portfolio Video ${index + 1}`}
                 />
               ) : (
-                <video
+                <LazyVideo
                   src={src}
-                  autoPlay
-                  loop
-                  playsInline
                   muted={mutedStates[index]}
                   className="h-full w-full object-cover"
                 />
@@ -119,7 +118,7 @@ export default function PortfolioVideoGrid({ videos = [] }) {
                   ) : (
                     // Unmuted Icon
                     <svg
-                      className="h-5 w-5 text-brand-teal"
+                      className="text-brand-teal h-5 w-5"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"

@@ -15,19 +15,19 @@
 
 ### Tech Stack & Core Dependencies
 
-| Category                   | Technology                  | Version / Configuration                                                                                                           |
-| :------------------------- | :-------------------------- | :-------------------------------------------------------------------------------------------------------------------------------- |
-| **Framework**              | Next.js (App Router)        | `15.5.25` (`output: 'standalone'` in `next.config.mjs`)                                                                           |
-| **Runtime & React**        | React / React DOM           | `^18.3.0`, Node.js `>=18.0.0`, npm `>=9.0.0`                                                                                      |
-| **Language**               | JavaScript (ES6+ / JSX)     | Native JS project (`react-compiler-runtime` `^1.0.0`)                                                                             |
-| **Styling**                | Tailwind CSS + Autoprefixer | `tailwindcss` `^3.4.0`, `styled-components` `^6.4.3`, `clsx` `^2.1.0`, `postcss` `^8.5.28`                                        |
-| **Animations**             | Framer Motion               | `framer-motion` `^11.0.0` (optimized package imports enabled)                                                                     |
-| **CMS**                    | Sanity CMS (Headless)       | `sanity` `^3.99.0`, `next-sanity` `^9.12.3`, `@sanity/client` `^6.15.0`                                                           |
-| **State Management**       | React Context + URL State   | `LanguageContext` for i18n, URL `SearchParams` for filters & language                                                             |
-| **Email & Security**       | Resend API + Rate Limiter   | `resend` `^6.16.0`, Cloudflare Turnstile token verification                                                                       |
-| **Analytics & Monitoring** | GA4 + GTM + GSC + Sentry    | `@next/third-parties/google` (`NEXT_PUBLIC_GA_MEASUREMENT_ID`, `NEXT_PUBLIC_GTM_ID`: `GTM-NKKPT23S`), `@sentry/nextjs` `^10.74.0` |
-| **Testing**                | Vitest + Playwright         | `vitest` `^4.1.11` (jsdom, v8 coverage), `@playwright/test` `^1.42.0` (E2E)                                                       |
-| **Code Quality & CI/CD**   | ESLint + Prettier + Husky   | `eslint-config-next` `15.5.25`, `lint-staged`, `husky` `^9.1.7`, `commitlint` `^20.1.0`                                           |
+| Category                   | Technology                  | Version / Configuration                                                                                                                                              |
+| :------------------------- | :-------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Framework**              | Next.js (App Router)        | `15.5.25` (`output: 'standalone'` in `next.config.mjs`)                                                                                                              |
+| **Runtime & React**        | React / React DOM           | `^18.3.0`, Node.js `>=18.0.0`, npm `>=9.0.0`                                                                                                                         |
+| **Language**               | JavaScript (ES6+ / JSX)     | Native JS project (`react-compiler-runtime` `^1.0.0`)                                                                                                                |
+| **Styling**                | Tailwind CSS + Autoprefixer | `tailwindcss` `^3.4.0`, `styled-components` `^6.4.3`, `clsx` `^2.1.0`, `postcss` `^8.5.28`                                                                           |
+| **Animations**             | Framer Motion               | `framer-motion` `^11.0.0` (optimized package imports enabled)                                                                                                        |
+| **CMS**                    | Sanity CMS (Headless)       | `sanity` `^3.99.0`, `next-sanity` `^9.12.3`, `@sanity/client` `^6.15.0`                                                                                              |
+| **State Management**       | React Context + URL State   | `LanguageContext` for i18n, URL `SearchParams` for filters & language                                                                                                |
+| **Email & Security**       | Resend API + Rate Limiter   | `resend` `^6.16.0`, Cloudflare Turnstile token verification                                                                                                          |
+| **Analytics & Monitoring** | GA4 + GSC + Sentry          | `@next/third-parties/google` (`NEXT_PUBLIC_GA_MEASUREMENT_ID`; GTM `GTM-NKKPT23S` is intentionally not loaded — the container is empty), `@sentry/nextjs` `^10.74.0` |
+| **Testing**                | Vitest + Playwright         | `vitest` `^4.1.11` (jsdom, v8 coverage), `@playwright/test` `^1.42.0` (E2E)                                                                                          |
+| **Code Quality & CI/CD**   | ESLint + Prettier + Husky   | `eslint-config-next` `15.5.25`, `lint-staged`, `husky` `^9.1.7`, `commitlint` `^20.1.0`                                                                              |
 
 ---
 
@@ -93,11 +93,19 @@ serasa-kreatif/
 └── tailwind.config.js           # Brand design system tokens (primary navy `#04104b`, brand-teal `#00d6b6`)
 ```
 
+### SEO Rendering Rules (do not regress)
+
+- **Never call `useSearchParams()` in the layout tree or wrap the layout in `<Suspense>` for it.** It makes every statically prerendered page ship an empty shell (client-side-render bailout) — this was why the blog posts and the Bintaro landing page were never indexed.
+- **Never read `searchParams` in a `page.jsx`/`generateMetadata`.** It turns the route dynamic (no CDN cache, slower TTFB). Filters (e.g. `/portfolio?service=`) are client state seeded from `window.location`.
+- Every page gets its metadata from `buildMetadata()` (`lib/seo.js`): self-canonical, full OG/Twitter incl. image, title **without** the brand suffix (the root template appends it).
+- `public/og-image.jpg` (1200×630), `favicon.ico` (48/32/16) and `icon-*.png` are real assets generated from the logo — do not replace them with placeholders.
+- Verify after a build: `.next/server/app/<page>.html` must contain the `<h1>` and visible text (no `BAILOUT_TO_CLIENT_SIDE_RENDERING`).
+
 ### Architectural Patterns Applied
 
 1. **Dual-Dispatch Analytics Architecture:** Single utility `lib/analytics.js` dispatches events simultaneously to `window.dataLayer.push` (GTM) and `window.gtag('event', ...)` (GA4) with type-safe methods (`trackEvent`, `trackPageView`, `trackForm`, `trackOutboundClick`, `trackVideo`, `trackEngagement`, `trackSearch`, `trackLanguageChange`).
-2. **SPA Client-Side Route Transition Tracking:** `components/AnalyticsTracker.jsx` listens to Next.js App Router `usePathname` and `useSearchParams` changes inside `<Suspense>`, automatically pushing virtual `page_view` events on client navigation.
-3. **Structured Data Rich Snippets (Schema.org):** Modular JSON-LD injection across all page types: `LocalBusiness`, `Organization`, `WebSite` (Sitelinks Searchbox), `FAQPage`, `Service`, `BreadcrumbList`, `CreativeWork`, `BlogPosting`, `AboutPage`, and `ContactPage`.
+2. **SPA Client-Side Route Transition Tracking:** `components/AnalyticsTracker.jsx` listens to Next.js App Router `usePathname` changes (query string read from `window.location`) and pushes virtual `page_view` events on client navigation only — the initial page_view comes from the GA4 tag itself.
+3. **Structured Data Rich Snippets (Schema.org):** Sitewide `@graph` in `components/StructuredData.jsx` (one `LocalBusiness`/`ProfessionalService` node + `WebSite`); page-level nodes (`Service`, `AboutPage`, `ContactPage`, `CollectionPage`, `Blog`/`BlogPosting`, `CreativeWork`, `FAQPage` on `/agensi-kreatif-bintaro` only, `BreadcrumbList`) reference those nodes by `@id` (see `IDS` in `lib/seo.js`) instead of redefining the business. No `aggregateRating` (not verifiable on-page).
 4. **Server / Client Component Boundary:** Server Components handle initial metadata, canonical tags, Open Graph, Twitter cards, and JSON-LD; Client Components handle interactive UI and tracking hooks.
 5. **Dual-Source Content Fallback:** Content fetches attempt GROQ queries via Sanity CMS (`lib/sanity-queries.js`). If Sanity credentials are unconfigured or fail, systems fallback gracefully to static datasets in `lib/case-data.js`.
 6. **Token Bucket Rate Limiting:** Serverless route handler (`app/api/contact/route.js`) enforces an in-memory token bucket rate limiter (3 req/min in prod, 20 in dev/test) with standard headers (`X-RateLimit-Limit`, `Retry-After`).
@@ -109,10 +117,10 @@ serasa-kreatif/
 ### Built Modules & Active Features
 
 - **Analytics & Event Dispatch System:** Complete standard GA4 and GTM conversion and engagement tracking across all UI elements (forms, videos, search, filters, navigation, language toggle, and outbound links).
-- **Google Search Console & Local SEO Integration:** Site verification tag (`lfIU-Zm4oh9gQVqO8U4ZaJm1pumqC6FKlZ_lNMsZDUM`), canonical URLs with `hreflang` alternates, dynamic XML sitemap, robot rules, and `/agensi-kreatif-bintaro` local landing page.
+- **Google Search Console & Local SEO Integration:** Site verification tag (`lfIU-Zm4oh9gQVqO8U4ZaJm1pumqC6FKlZ_lNMsZDUM`), self-referencing canonical URLs (via `buildMetadata` in `lib/seo.js`), sitemap derived from `caseStudies`, robot rules, `www` → apex 308 redirect (`next.config.mjs`), `llms.txt`, and `/agensi-kreatif-bintaro` local landing page.
 - **Interactive Service Pricing Estimator:** Dynamic quote calculator allowing users to select services, calculate estimates, and export a formatted lead message directly to WhatsApp.
 - **Portfolio & Dynamic Case Studies:** Grid listing with category filters, keyword search, video modal previews, and detailed case study pages (`/portfolio/[slug]`).
-- **Bilingual i18n System:** Instant English/Indonesian switching across navbar, headers, body text, and metadata via `LanguageContext`.
+- **Bilingual i18n System:** Indonesian is the server-rendered default (`<html lang="id">`); English is an explicit client-side choice (`?lang=en`, localStorage, cookie) via `LanguageContext`. Browser-language auto-detection is intentionally disabled (Googlebot reports en-US). Use `<Lang id=… en=… />` in server components, or `useLanguage()` in client components.
 - **Global Command Palette:** Keyboard shortcut (`Cmd+K` / `Ctrl+K`) opening a fast search overlay for pages, case studies, and services with debounced analytics search tracking.
 - **Contact & Specialized Printing Landing Page:** Responsive form handling with input validation, rate limiting, and optional Cloudflare Turnstile token verification (`/contact` & `/services/printing`).
 - **Embedded Sanity Studio:** Live content management interface accessible at `/studio`.

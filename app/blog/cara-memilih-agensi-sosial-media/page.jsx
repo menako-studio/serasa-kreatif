@@ -1,28 +1,19 @@
 import Link from 'next/link'
 import BreadcrumbSchema from '@/components/BreadcrumbSchema'
+import { buildMetadata, IDS, SITE_URL } from '@/lib/seo'
 
-export const metadata = {
-  title: '7 Tips Cara Memilih Agensi Sosial Media yang Tepat untuk Bisnis Anda — Serasa Kreatif',
+export const metadata = buildMetadata({
+  title: '7 Tips Memilih Agensi Sosial Media Terbaik',
   description:
     'Panduan praktis cara memilih agensi sosial media terbaik di Jakarta. Hindari salah pilih partner pemasaran dengan 7 kriteria penting ini.',
-  keywords: [
-    'cara memilih agensi sosial media',
-    'tips memilih social media agency',
-    'agensi sosial media terbaik jakarta',
-    'kriteria agensi kreatif',
-    'memilih social media agency indonesia',
-  ],
-  alternates: {
-    canonical: 'https://serasakreatif.id/blog/cara-memilih-agensi-sosial-media',
+  path: '/blog/cara-memilih-agensi-sosial-media',
+  type: 'article',
+  article: {
+    publishedTime: '2026-07-23',
+    modifiedTime: '2026-07-23',
+    authors: ['Serasa Kreatif'],
   },
-  openGraph: {
-    title: '7 Tips Cara Memilih Agensi Sosial Media yang Tepat untuk Bisnis Anda',
-    description:
-      'Panduan memilih mitra agensi sosial media yang berpengalaman dan transparan untuk pertumbuhan brand Anda.',
-    url: 'https://serasakreatif.id/blog/cara-memilih-agensi-sosial-media',
-    images: ['/og-image.jpg'],
-  },
-}
+})
 
 function ArticleSchema() {
   const schema = {
@@ -36,14 +27,10 @@ function ArticleSchema() {
       name: 'Serasa Kreatif',
       url: 'https://serasakreatif.id',
     },
-    publisher: {
-      '@type': 'Organization',
-      name: 'Serasa Kreatif',
-      logo: {
-        '@type': 'ImageObject',
-        url: 'https://serasakreatif.id/assets/images/logo-serasa.png',
-      },
-    },
+    publisher: { '@id': IDS.business },
+    image: `${SITE_URL}/og-image.jpg`,
+    inLanguage: 'id-ID',
+    isPartOf: { '@id': IDS.website },
     datePublished: '2026-07-23',
     dateModified: '2026-07-23',
     mainEntityOfPage: 'https://serasakreatif.id/blog/cara-memilih-agensi-sosial-media',
@@ -75,7 +62,7 @@ export default function ArticleCaraMemilihAgensi() {
       {/* Article Header */}
       <section className="bg-primary pb-16 pt-32 text-white md:pt-40 lg:pt-44">
         <div className="container-custom max-w-4xl">
-          <div className="mb-4 flex items-center gap-3 text-xs font-bold uppercase tracking-wider text-brand-teal">
+          <div className="text-brand-teal mb-4 flex items-center gap-3 text-xs font-bold uppercase tracking-wider">
             <span>Panduan Bisnis</span>
             <span>•</span>
             <span>23 Juli 2026</span>
@@ -101,7 +88,7 @@ export default function ArticleCaraMemilihAgensi() {
               masalah operasional.
             </p>
 
-            <h2 className="mb-4 text-2xl font-bold text-primary">
+            <h2 className="text-primary mb-4 text-2xl font-bold">
               7 Kriteria Memilih Agensi Sosial Media Terbaik
             </h2>
 
@@ -164,8 +151,8 @@ export default function ArticleCaraMemilihAgensi() {
               adalah bukti komitmen layanan mereka.
             </p>
 
-            <div className="my-10 border-l-4 border-brand-teal bg-neutral-50 p-6">
-              <h4 className="mb-2 font-bold text-primary">
+            <div className="border-brand-teal my-10 border-l-4 bg-neutral-50 p-6">
+              <h4 className="text-primary mb-2 font-bold">
                 Siap Berdiskusi Dengan Tim Serasa Kreatif?
               </h4>
               <p className="mb-4 text-sm text-neutral-600">
@@ -176,7 +163,7 @@ export default function ArticleCaraMemilihAgensi() {
                 href="https://api.whatsapp.com/send?phone=6281288971453&text=Halo%20Serasa%20Kreatif%2C%20saya%20membaca%20artikel%207%20tips%20memilih%20agensi%20dan%20inisiatif%20diskusi."
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-block bg-brand-teal px-6 py-3 text-sm font-bold uppercase text-primary hover:bg-brand-accent"
+                className="bg-brand-teal text-primary hover:bg-brand-accent inline-block px-6 py-3 text-sm font-bold uppercase"
               >
                 Mulai Diskusi via WhatsApp
               </a>
@@ -187,11 +174,11 @@ export default function ArticleCaraMemilihAgensi() {
           <div className="mt-12 flex justify-between border-t border-neutral-200 pt-6 text-sm">
             <Link
               href="/blog/jasa-social-media-management-jakarta"
-              className="hover:text-brand-pink font-bold text-primary"
+              className="hover:text-brand-pink text-primary font-bold"
             >
               ← Panduan Social Media Management
             </Link>
-            <Link href="/blog" className="hover:text-brand-pink font-bold text-primary">
+            <Link href="/blog" className="hover:text-brand-pink text-primary font-bold">
               Kembali ke Blog →
             </Link>
           </div>

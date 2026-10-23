@@ -1,23 +1,12 @@
 import BreadcrumbSchema from '@/components/BreadcrumbSchema'
+import { buildMetadata } from '@/lib/seo'
 
-export const metadata = {
-  title: 'Syarat & Ketentuan Penggunaan (Terms of Use) — Serasa Kreatif',
+export const metadata = buildMetadata({
+  title: 'Syarat & Ketentuan Penggunaan',
   description:
     'Syarat dan ketentuan penggunaan website Serasa Kreatif. Baca ketentuan layanan kami sebelum menggunakan layanan dan platform kami.',
-  alternates: {
-    canonical: 'https://serasakreatif.id/terms-of-use',
-  },
-  openGraph: {
-    title: 'Syarat & Ketentuan Penggunaan — Serasa Kreatif',
-    description: 'Syarat dan ketentuan penggunaan website dan layanan Serasa Kreatif.',
-    url: 'https://serasakreatif.id/terms-of-use',
-    images: ['/og-image.jpg'],
-  },
-  robots: {
-    index: true,
-    follow: true,
-  },
-}
+  path: '/terms-of-use',
+})
 
 export default function TermsOfUsePage() {
   return (
@@ -99,7 +88,7 @@ export default function TermsOfUsePage() {
                   purposes. Please see our{' '}
                   <a
                     href="/privacy-policy"
-                    className="text-primary underline hover:text-brand-teal"
+                    className="text-primary hover:text-brand-teal underline"
                   >
                     Privacy Notice
                   </a>{' '}
@@ -300,12 +289,14 @@ export default function TermsOfUsePage() {
                   <p className="mb-2">
                     <strong>Serasa Kreatif</strong>
                   </p>
-                  <p className="mb-2">Bintaro, Tangerang Selatan, Indonesia</p>
+                  <p className="mb-2">
+                    Jl. Akasia No.12, Pondok Aren, Tangerang Selatan, Banten 15224, Indonesia
+                  </p>
                   <p className="mb-2">
                     Email:{' '}
                     <a
                       href="mailto:serasakreatif.id@gmail.com"
-                      className="text-primary underline hover:text-brand-teal"
+                      className="text-primary hover:text-brand-teal underline"
                     >
                       serasakreatif.id@gmail.com
                     </a>
@@ -314,7 +305,7 @@ export default function TermsOfUsePage() {
                     Phone:{' '}
                     <a
                       href="tel:+6281288971453"
-                      className="text-primary underline hover:text-brand-teal"
+                      className="text-primary hover:text-brand-teal underline"
                     >
                       +62 812-8897-1453
                     </a>
@@ -332,49 +323,49 @@ export default function TermsOfUsePage() {
                 <nav className="space-y-3">
                   <a
                     href="#acceptance"
-                    className="block text-sm text-gray-700 transition-colors hover:text-primary"
+                    className="hover:text-primary block text-sm text-gray-700 transition-colors"
                   >
                     Acceptance of Terms
                   </a>
                   <a
                     href="#privacy"
-                    className="block text-sm text-gray-700 transition-colors hover:text-primary"
+                    className="hover:text-primary block text-sm text-gray-700 transition-colors"
                   >
                     Privacy Notice
                   </a>
                   <a
                     href="#general-use"
-                    className="block text-sm text-gray-700 transition-colors hover:text-primary"
+                    className="hover:text-primary block text-sm text-gray-700 transition-colors"
                   >
                     General Use Restrictions
                   </a>
                   <a
                     href="#third-party-links"
-                    className="block text-sm text-gray-700 transition-colors hover:text-primary"
+                    className="hover:text-primary block text-sm text-gray-700 transition-colors"
                   >
                     Links to Third-Party Websites
                   </a>
                   <a
                     href="#disclaimer"
-                    className="block text-sm text-gray-700 transition-colors hover:text-primary"
+                    className="hover:text-primary block text-sm text-gray-700 transition-colors"
                   >
                     Disclaimer of Warranties
                   </a>
                   <a
                     href="#limitation-of-liability"
-                    className="block text-sm text-gray-700 transition-colors hover:text-primary"
+                    className="hover:text-primary block text-sm text-gray-700 transition-colors"
                   >
                     Limitation of Liability
                   </a>
                   <a
                     href="#governing-law"
-                    className="block text-sm text-gray-700 transition-colors hover:text-primary"
+                    className="hover:text-primary block text-sm text-gray-700 transition-colors"
                   >
                     Governing Law
                   </a>
                   <a
                     href="#contact"
-                    className="block text-sm text-gray-700 transition-colors hover:text-primary"
+                    className="hover:text-primary block text-sm text-gray-700 transition-colors"
                   >
                     Contact Us
                   </a>
