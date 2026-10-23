@@ -7,8 +7,9 @@ test.describe('Homepage', () => {
     // Check hero section
     const heading = page.getByRole('heading', { level: 1 })
     await expect(heading).toBeVisible()
-    await expect(heading).toContainText(/connecting/i)
-    await expect(heading).toContainText(/growth/i)
+    // Indonesian is the server-rendered default language
+    await expect(heading).toContainText(/agensi kreatif/i)
+    await expect(heading).toContainText(/social media/i)
 
     // Check navigation links are attached to the document
     await expect(page.locator('a[href="/portfolio"]').first()).toBeAttached()
@@ -27,12 +28,12 @@ test.describe('Homepage', () => {
     }
 
     await page
-      .getByRole('link', { name: /portfolio/i })
+      .getByRole('link', { name: /portofolio|portfolio/i })
       .filter({ visible: true })
       .first()
       .click()
     await expect(page).toHaveURL(/.*portfolio/)
-    await expect(page.getByRole('heading', { name: /portfolio/i })).toBeVisible()
+    await expect(page.getByRole('heading', { name: /portofolio|portfolio/i })).toBeVisible()
   })
 })
 
