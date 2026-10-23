@@ -11,7 +11,6 @@ export default function TeamMemberCard({ name, role, location, image }) {
           src={image}
           alt={name}
           fill
-          quality={100}
           className="object-cover grayscale transition-all duration-500 group-hover:scale-105 group-hover:grayscale-0"
           sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
         />

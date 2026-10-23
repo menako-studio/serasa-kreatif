@@ -77,6 +77,7 @@ export default function CreativeReels({ reels = [] }) {
                     {/* Instagram Embed Container */}
                     <div className="aspect-video overflow-hidden rounded-lg border border-gray-200 bg-gray-100">
                       <iframe
+                        loading="lazy"
                         src={`${reels[activeIndex].url}embed`}
                         width="100%"
                         height="100%"

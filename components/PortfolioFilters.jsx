@@ -1,46 +1,22 @@
 'use client'
 
-import { useRouter, usePathname, useSearchParams } from 'next/navigation'
-import { useTransition } from 'react'
-import { trackEngagement, trackSearch } from '@/lib/analytics'
-
-export default function PortfolioFilters({ filterOptions, currentFilters }) {
-  const router = useRouter()
-  const pathname = usePathname()
-  const searchParams = useSearchParams()
-  const [isPending, startTransition] = useTransition()
-
+/**
+ * Controlled filter bar for the portfolio grid. State lives in PortfolioPageClient (seeded from the
+ * URL after mount) — this component intentionally does not use useSearchParams()/useRouter(),
+ * which would force the whole statically-rendered /portfolio route into client-side rendering.
+ */
+export default function PortfolioFilters({
+  filterOptions,
+  currentFilters,
+  onFilterChange,
+  isIndo = true,
+}) {
   function handleFilterChange(key, value) {
-    const params = new URLSearchParams(searchParams)
-    if (value && value !== 'ALL SERVICES' && value !== 'ALL INDUSTRIES') {
-      params.set(key, value.toLowerCase())
-    } else {
-      params.delete(key)
-    }
-
-    trackEngagement('portfolio_filter_change', {
-      filter_key: key,
-      filter_value: value || 'all',
-    })
-
-    startTransition(() => {
-      router.push(`${pathname}?${params.toString()}`, { scroll: false })
-    })
+    onFilterChange(key, value)
   }
 
   function handleSearchChange(e) {
-    const value = e.target.value
-    const params = new URLSearchParams(searchParams)
-    if (value) {
-      params.set('q', value)
-      trackSearch(value, 'portfolio_search')
-    } else {
-      params.delete('q')
-    }
-
-    startTransition(() => {
-      router.push(`${pathname}?${params.toString()}`, { scroll: false })
-    })
+    onFilterChange('q', e.target.value)
   }
 
   return (
@@ -54,16 +30,15 @@ export default function PortfolioFilters({ filterOptions, currentFilters }) {
           <input
             id="search-input"
             type="text"
-            placeholder="Search client, industry, or service..."
+            placeholder={
+              isIndo
+                ? 'Cari klien, industri, atau layanan...'
+                : 'Search client, industry, or service...'
+            }
             value={currentFilters.q || ''}
             onChange={handleSearchChange}
-            className="w-full rounded-lg border border-gray-300 bg-white px-4 py-3 text-sm text-primary placeholder-gray-400 focus:border-brand-teal focus:outline-none"
+            className="text-primary focus:border-brand-teal w-full rounded-lg border border-gray-300 bg-white px-4 py-3 text-sm placeholder-gray-400 focus:outline-none"
           />
-          {isPending && (
-            <div className="absolute right-4 top-1/2 -translate-y-1/2">
-              <div className="h-4 w-4 animate-spin rounded-full border-2 border-brand-teal border-t-transparent" />
-            </div>
-          )}
         </div>
       </div>
 
@@ -75,7 +50,7 @@ export default function PortfolioFilters({ filterOptions, currentFilters }) {
             aria-label="Filter Service"
             value={currentFilters.service?.toUpperCase() || 'ALL SERVICES'}
             onChange={(e) => handleFilterChange('service', e.target.value)}
-            className="w-full cursor-pointer appearance-none rounded-lg border border-white bg-brand-teal px-4 py-3 text-sm uppercase tracking-wider text-white transition-colors hover:border-gray-500"
+            className="bg-brand-teal w-full cursor-pointer appearance-none rounded-lg border border-white px-4 py-3 text-sm uppercase tracking-wider text-white transition-colors hover:border-gray-500"
           >
             {filterOptions.services.map((opt) => (
               <option key={opt} value={opt} className="bg-brand-teal text-white">
@@ -101,7 +76,7 @@ export default function PortfolioFilters({ filterOptions, currentFilters }) {
             aria-label="Filter Industry"
             value={currentFilters.industry?.toUpperCase() || 'ALL INDUSTRIES'}
             onChange={(e) => handleFilterChange('industry', e.target.value)}
-            className="w-full cursor-pointer appearance-none rounded-lg border border-white bg-brand-teal px-4 py-3 text-sm uppercase tracking-wider text-white transition-colors hover:border-gray-500"
+            className="bg-brand-teal w-full cursor-pointer appearance-none rounded-lg border border-white px-4 py-3 text-sm uppercase tracking-wider text-white transition-colors hover:border-gray-500"
           >
             {filterOptions.industries.map((opt) => (
               <option key={opt} value={opt} className="bg-brand-teal text-white">

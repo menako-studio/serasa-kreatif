@@ -6,9 +6,11 @@ export default function robots() {
       {
         userAgent: '*',
         allow: '/',
-        // Prevent indexing of language query-param URLs as separate pages.
-        // Language alternates are handled via hreflang annotations in page metadata.
-        disallow: ['/api/', '/admin/', '/_next/', '/studio', '/studio/', '/*?lang='],
+        // `?lang=` URLs are intentionally NOT disallowed any more: blocking them stopped Google from
+        // ever seeing their canonical tag, so previously discovered `/?lang=id` URLs could linger in
+        // the index as "indexed, though blocked". They serve the same HTML and canonicalise to the
+        // clean URL, which consolidates them.
+        disallow: ['/api/', '/admin/', '/admin.html', '/studio', '/studio/'],
       },
     ],
     sitemap: `${baseUrl}/sitemap.xml`,

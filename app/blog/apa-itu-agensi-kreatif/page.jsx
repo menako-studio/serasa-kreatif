@@ -1,29 +1,19 @@
 import Link from 'next/link'
 import BreadcrumbSchema from '@/components/BreadcrumbSchema'
+import { buildMetadata, IDS, SITE_URL } from '@/lib/seo'
 
-export const metadata = {
-  title: 'Apa Itu Agensi Kreatif? Fungsi, Layanan, dan Manfaatnya — Serasa Kreatif',
+export const metadata = buildMetadata({
+  title: 'Apa Itu Agensi Kreatif? Fungsi & Manfaatnya',
   description:
     'Panduan lengkap memahami apa itu agensi kreatif (creative agency), bedanya dengan advertising agency biasa, jenis layanan, serta manfaatnya untuk pertumbuhan bisnis Anda.',
-  keywords: [
-    'apa itu agensi kreatif',
-    'agensi kreatif adalah',
-    'fungsi agensi kreatif',
-    'creative agency jakarta',
-    'layanan agensi kreatif',
-    'perbedaan agensi kreatif dan advertising agency',
-  ],
-  alternates: {
-    canonical: 'https://serasakreatif.id/blog/apa-itu-agensi-kreatif',
+  path: '/blog/apa-itu-agensi-kreatif',
+  type: 'article',
+  article: {
+    publishedTime: '2026-07-23',
+    modifiedTime: '2026-07-23',
+    authors: ['Serasa Kreatif'],
   },
-  openGraph: {
-    title: 'Apa Itu Agensi Kreatif? Fungsi, Layanan, dan Manfaat untuk Bisnis Anda',
-    description:
-      'Panduan lengkap memahami peran penting agensi kreatif dalam membangun brand dan strategi pemasaran digital bisnis Anda.',
-    url: 'https://serasakreatif.id/blog/apa-itu-agensi-kreatif',
-    images: ['/og-image.jpg'],
-  },
-}
+})
 
 function ArticleSchema() {
   const schema = {
@@ -37,14 +27,10 @@ function ArticleSchema() {
       name: 'Serasa Kreatif',
       url: 'https://serasakreatif.id',
     },
-    publisher: {
-      '@type': 'Organization',
-      name: 'Serasa Kreatif',
-      logo: {
-        '@type': 'ImageObject',
-        url: 'https://serasakreatif.id/assets/images/logo-serasa.png',
-      },
-    },
+    publisher: { '@id': IDS.business },
+    image: `${SITE_URL}/og-image.jpg`,
+    inLanguage: 'id-ID',
+    isPartOf: { '@id': IDS.website },
     datePublished: '2026-07-23',
     dateModified: '2026-07-23',
     mainEntityOfPage: 'https://serasakreatif.id/blog/apa-itu-agensi-kreatif',
@@ -76,7 +62,7 @@ export default function ArticleApaItuAgensiKreatif() {
       {/* Article Header */}
       <section className="bg-primary pb-16 pt-32 text-white md:pt-40 lg:pt-44">
         <div className="container-custom max-w-4xl">
-          <div className="mb-4 flex items-center gap-3 text-xs font-bold uppercase tracking-wider text-brand-teal">
+          <div className="text-brand-teal mb-4 flex items-center gap-3 text-xs font-bold uppercase tracking-wider">
             <span>Panduan &amp; Edukasi</span>
             <span>•</span>
             <span>23 Juli 2026</span>
@@ -101,7 +87,7 @@ export default function ArticleApaItuAgensiKreatif() {
               yang membedakannya dengan penyedia jasa pemasaran lainnya.
             </p>
 
-            <h2 className="mb-4 text-2xl font-bold text-primary">Pengertian Agensi Kreatif</h2>
+            <h2 className="text-primary mb-4 text-2xl font-bold">Pengertian Agensi Kreatif</h2>
             <p>
               <strong>Agensi kreatif</strong> adalah perusahaan profesional yang menyediakan
               gabungan strategi komunikasi, ide visual, pembuatan konten, dan desain untuk membantu
@@ -114,7 +100,7 @@ export default function ArticleApaItuAgensiKreatif() {
               estetika visual.
             </p>
 
-            <h2 className="mb-4 text-2xl font-bold text-primary">
+            <h2 className="text-primary mb-4 text-2xl font-bold">
               Perbedaan Agensi Kreatif vs Advertising Agency
             </h2>
             <p>
@@ -134,7 +120,7 @@ export default function ArticleApaItuAgensiKreatif() {
               </li>
             </ul>
 
-            <h2 className="mb-4 text-2xl font-bold text-primary">
+            <h2 className="text-primary mb-4 text-2xl font-bold">
               Layanan Utama yang Ditawarkan Agensi Kreatif
             </h2>
             <ol className="list-decimal space-y-3 pl-6">
@@ -156,7 +142,7 @@ export default function ArticleApaItuAgensiKreatif() {
               </li>
             </ol>
 
-            <h2 className="mb-4 text-2xl font-bold text-primary">
+            <h2 className="text-primary mb-4 text-2xl font-bold">
               Manfaat Bermitra dengan Agensi Kreatif Seperti Serasa Kreatif
             </h2>
             <p>
@@ -179,8 +165,8 @@ export default function ArticleApaItuAgensiKreatif() {
               </li>
             </ul>
 
-            <div className="my-10 border-l-4 border-brand-teal bg-neutral-50 p-6">
-              <h4 className="mb-2 font-bold text-primary">Siap Melejitkan Brand Anda?</h4>
+            <div className="border-brand-teal my-10 border-l-4 bg-neutral-50 p-6">
+              <h4 className="text-primary mb-2 font-bold">Siap Melejitkan Brand Anda?</h4>
               <p className="mb-4 text-sm text-neutral-600">
                 Diskusikan kebutuhan branding dan strategi media sosial Anda bersama tim ahli dari
                 Serasa Kreatif Bintaro.
@@ -189,7 +175,7 @@ export default function ArticleApaItuAgensiKreatif() {
                 href="https://api.whatsapp.com/send?phone=6281288971453&text=Halo%20Serasa%20Kreatif%2C%20saya%20membaca%20artikel%20apa-itu-agensi-kreatif%20dan%20ingin%20konsultasi."
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-block bg-brand-teal px-6 py-3 text-sm font-bold uppercase text-primary hover:bg-brand-accent"
+                className="bg-brand-teal text-primary hover:bg-brand-accent inline-block px-6 py-3 text-sm font-bold uppercase"
               >
                 Hubungi Kami via WhatsApp
               </a>
@@ -198,12 +184,12 @@ export default function ArticleApaItuAgensiKreatif() {
 
           {/* Navigation to related */}
           <div className="mt-12 flex justify-between border-t border-neutral-200 pt-6 text-sm">
-            <Link href="/blog" className="hover:text-brand-pink font-bold text-primary">
+            <Link href="/blog" className="hover:text-brand-pink text-primary font-bold">
               ← Kembali ke Blog
             </Link>
             <Link
               href="/blog/jasa-social-media-management-jakarta"
-              className="hover:text-brand-pink font-bold text-primary"
+              className="hover:text-brand-pink text-primary font-bold"
             >
               Panduan Social Media Management →
             </Link>

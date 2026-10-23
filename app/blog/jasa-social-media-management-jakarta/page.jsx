@@ -1,29 +1,19 @@
 import Link from 'next/link'
 import BreadcrumbSchema from '@/components/BreadcrumbSchema'
+import { buildMetadata, IDS, SITE_URL } from '@/lib/seo'
 
-export const metadata = {
-  title: 'Jasa Social Media Management Jakarta: Panduan & Estimasi Harga 2026 — Serasa Kreatif',
+export const metadata = buildMetadata({
+  title: 'Jasa Social Media Management Jakarta 2026',
   description:
     'Panduan lengkap jasa social media management di Jakarta & Bintaro. Ketahui lingkup kerja, komponen harga, manfaat untuk bisnis, dan cara memilih agensi yang tepat.',
-  keywords: [
-    'jasa social media management jakarta',
-    'harga social media management jakarta',
-    'jasa kelola instagram jakarta',
-    'jasa konten tiktok bisnis',
-    'agensi sosial media jakarta',
-    'jasa admin sosmed bintaro',
-  ],
-  alternates: {
-    canonical: 'https://serasakreatif.id/blog/jasa-social-media-management-jakarta',
+  path: '/blog/jasa-social-media-management-jakarta',
+  type: 'article',
+  article: {
+    publishedTime: '2026-07-23',
+    modifiedTime: '2026-07-23',
+    authors: ['Serasa Kreatif'],
   },
-  openGraph: {
-    title: 'Jasa Social Media Management Jakarta: Panduan & Estimasi Harga 2026',
-    description:
-      'Semua yang perlu Anda ketahui tentang layanan manajemen media sosial di Jakarta untuk tingkatkan omset bisnis.',
-    url: 'https://serasakreatif.id/blog/jasa-social-media-management-jakarta',
-    images: ['/og-image.jpg'],
-  },
-}
+})
 
 function ArticleSchema() {
   const schema = {
@@ -37,14 +27,10 @@ function ArticleSchema() {
       name: 'Serasa Kreatif',
       url: 'https://serasakreatif.id',
     },
-    publisher: {
-      '@type': 'Organization',
-      name: 'Serasa Kreatif',
-      logo: {
-        '@type': 'ImageObject',
-        url: 'https://serasakreatif.id/assets/images/logo-serasa.png',
-      },
-    },
+    publisher: { '@id': IDS.business },
+    image: `${SITE_URL}/og-image.jpg`,
+    inLanguage: 'id-ID',
+    isPartOf: { '@id': IDS.website },
     datePublished: '2026-07-23',
     dateModified: '2026-07-23',
     mainEntityOfPage: 'https://serasakreatif.id/blog/jasa-social-media-management-jakarta',
@@ -76,7 +62,7 @@ export default function ArticleSocialMediaJakarta() {
       {/* Article Header */}
       <section className="bg-primary pb-16 pt-32 text-white md:pt-40 lg:pt-44">
         <div className="container-custom max-w-4xl">
-          <div className="mb-4 flex items-center gap-3 text-xs font-bold uppercase tracking-wider text-brand-teal">
+          <div className="text-brand-teal mb-4 flex items-center gap-3 text-xs font-bold uppercase tracking-wider">
             <span>Strategi &amp; Bisnis</span>
             <span>•</span>
             <span>23 Juli 2026</span>
@@ -101,7 +87,7 @@ export default function ArticleSocialMediaJakarta() {
               yang dilihat calon pelanggan Anda sebelum mereka memutuskan untuk membeli.
             </p>
 
-            <h2 className="mb-4 text-2xl font-bold text-primary">
+            <h2 className="text-primary mb-4 text-2xl font-bold">
               Apa Itu Jasa Social Media Management?
             </h2>
             <p>
@@ -111,7 +97,7 @@ export default function ArticleSocialMediaJakarta() {
               hingga analisis performa setiap bulan.
             </p>
 
-            <h2 className="mb-4 text-2xl font-bold text-primary">
+            <h2 className="text-primary mb-4 text-2xl font-bold">
               Apa Saja Lingkup Kerja Agensi Social Media?
             </h2>
             <p>
@@ -141,7 +127,7 @@ export default function ArticleSocialMediaJakarta() {
               </li>
             </ul>
 
-            <h2 className="mb-4 text-2xl font-bold text-primary">
+            <h2 className="text-primary mb-4 text-2xl font-bold">
               Faktor yang Mempengaruhi Harga Jasa Social Media Management
             </h2>
             <p>
@@ -159,7 +145,7 @@ export default function ArticleSocialMediaJakarta() {
               <li>Alokasi budget iklan digital (Meta Ads).</li>
             </ol>
 
-            <h2 className="mb-4 text-2xl font-bold text-primary">
+            <h2 className="text-primary mb-4 text-2xl font-bold">
               Mengapa UMKM &amp; Brand Jakarta Memilih Serasa Kreatif?
             </h2>
             <p>
@@ -169,8 +155,8 @@ export default function ArticleSocialMediaJakarta() {
               percetakan B2B) memiliki kehadiran digital yang mengesankan.
             </p>
 
-            <div className="my-10 border-l-4 border-brand-teal bg-neutral-50 p-6">
-              <h4 className="mb-2 font-bold text-primary">Ingin Konsultasi Paket Social Media?</h4>
+            <div className="border-brand-teal my-10 border-l-4 bg-neutral-50 p-6">
+              <h4 className="text-primary mb-2 font-bold">Ingin Konsultasi Paket Social Media?</h4>
               <p className="mb-4 text-sm text-neutral-600">
                 Hubungi tim Serasa Kreatif untuk mendapatkan proposal dan paket harga yang
                 transparan sesuai kebutuhan bisnis Anda.
@@ -179,7 +165,7 @@ export default function ArticleSocialMediaJakarta() {
                 href="https://api.whatsapp.com/send?phone=6281288971453&text=Halo%20Serasa%20Kreatif%2C%20saya%20tertarik%20dengan%20jasa%20social%20media%20management."
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-block bg-brand-teal px-6 py-3 text-sm font-bold uppercase text-primary hover:bg-brand-accent"
+                className="bg-brand-teal text-primary hover:bg-brand-accent inline-block px-6 py-3 text-sm font-bold uppercase"
               >
                 Konsultasi Paket via WhatsApp
               </a>
@@ -190,13 +176,13 @@ export default function ArticleSocialMediaJakarta() {
           <div className="mt-12 flex justify-between border-t border-neutral-200 pt-6 text-sm">
             <Link
               href="/blog/apa-itu-agensi-kreatif"
-              className="hover:text-brand-pink font-bold text-primary"
+              className="hover:text-brand-pink text-primary font-bold"
             >
               ← Apa Itu Agensi Kreatif
             </Link>
             <Link
               href="/blog/cara-memilih-agensi-sosial-media"
-              className="hover:text-brand-pink font-bold text-primary"
+              className="hover:text-brand-pink text-primary font-bold"
             >
               Cara Memilih Agensi Sosial Media →
             </Link>

@@ -4,6 +4,7 @@ import { useState } from 'react'
 import SectionHeading from './SectionHeading'
 import SectionDescription from './SectionDescription'
 import { trackVideo } from '@/lib/analytics'
+import LazyVideo from '@/components/LazyVideo'
 
 const printingReels = [
   {
@@ -94,11 +95,8 @@ export default function PrintingReels() {
                 <div className="pointer-events-none absolute left-1/2 top-1 z-30 h-3 w-12 -translate-x-1/2 rounded-full bg-black" />
 
                 {/* Video */}
-                <video
+                <LazyVideo
                   src={reel.src}
-                  autoPlay
-                  loop
-                  playsInline
                   muted={mutedStates[index]}
                   className="h-full w-full object-cover"
                 />
@@ -126,7 +124,7 @@ export default function PrintingReels() {
                     </svg>
                   ) : (
                     <svg
-                      className="h-4 w-4 text-brand-teal"
+                      className="text-brand-teal h-4 w-4"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -145,7 +143,7 @@ export default function PrintingReels() {
               {/* Copy & Details */}
               <div className="mt-4 flex flex-grow flex-col justify-between p-2">
                 <div>
-                  <h4 className="group-hover:text-brand-pink font-sans text-sm font-black uppercase tracking-tight text-primary transition-colors duration-300">
+                  <h4 className="group-hover:text-brand-pink text-primary font-sans text-sm font-black uppercase tracking-tight transition-colors duration-300">
                     {reel.title}
                   </h4>
                   <p className="mt-2 whitespace-pre-line text-xs font-medium leading-relaxed text-neutral-600">
