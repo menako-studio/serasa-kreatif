@@ -28,13 +28,13 @@
     "@sentry/nextjs": "^10.75.2",
     "clsx": "^2.1.0",
     "framer-motion": "^11.0.0",
-    "next": "15.5.28",
-    "next-sanity": "^9.12.3",
+    "next": "15.5.29",
+    "next-sanity": "^13.5.1",
     "react": "^18.3.0",
     "react-compiler-runtime": "^1.0.0",
     "react-dom": "^18.3.0",
     "resend": "^6.16.0",
-    "sanity": "^3.99.0",
+    "sanity": "^6.24.0",
     "sharp": "^0.35.4",
     "styled-components": "^6.4.3"
   },
@@ -79,7 +79,7 @@
         "brace-expansion": "^5.0.9"
       }
     },
-    "fast-uri": "^3.1.7",
+    "fast-uri": "^3.1.9",
     "nanoid": "^3.3.19",
     "js-yaml": "^4.3.2",
     "preferred-pm": {
@@ -92,7 +92,7 @@
     "flatted": "^3.4.4",
     "picomatch": "^4.0.3",
     "tar": "^7.5.22",
-    "undici": "^6.28.1",
+    "undici": "^6.29.1",
     "adm-zip": "^0.6.1",
     "decompress": "npm:@xhmikosr/decompress@^11.1.4",
     "rollup": "^4.63.1",
